@@ -41,16 +41,6 @@ class ViewController: UIViewController {
         
         con.start()
         
-        //testWIF()
-        //testPublicAddress()
-        
-        //let coinKey = BitcoinTestnet()
-        
-        //let pubKeyData = coinKey.publicKeyHexString.hexStringToNSData()
-        
-        //let coinKey = CoinKey(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f)
-        
-        
     }
     
     func testWIF() {
