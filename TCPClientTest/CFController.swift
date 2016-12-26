@@ -188,8 +188,9 @@ public class CFController: CFConnectionDelegate {
             print(transactionMessage)
             for output in transactionMessage.outputs {
                 let script = output.script
-                let hash160 = OutputScript(script: script).hash160
-                print(hash160?.bitcoinData)
+                print(script)
+                //let hash160 = OutputScript(script: script).hash160
+                //print(hash160?.bitcoinData)
             }
             
         default:

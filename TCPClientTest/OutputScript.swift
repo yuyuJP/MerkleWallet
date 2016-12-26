@@ -8,24 +8,37 @@
 
 import Foundation
 
+public func == (left: OutputScript.P2PKHScript, right: OutputScript.P2PKHScript) -> Bool {
+    return left.hash160 == right.hash160
+}
+
 public struct OutputScript {
     
-    public let script: NSData
-    
-    public init(script: NSData) {
-        self.script = script
+    //P2PKH outputScript only!!
+    //Need to support other script formats
+    public struct P2PKHScript: Equatable {
+        
+        public let hash160 : RIPEMD160HASH
+        
+        public init(hash160: RIPEMD160HASH) {
+            self.hash160 = hash160
+        }
+    }
+}
+
+extension OutputScript.P2PKHScript: BitcoinSerializable {
+    public var bitcoinData: NSData {
+        let data = NSMutableData()
+        data.appendUInt8(0x76) //OP_DUP
+        data.appendUInt8(0xa9) //OP_HASH160
+        data.appendUInt8(0x14) //length
+        data.append(hash160.bitcoinData as Data) //public key hash
+        data.appendUInt8(0x88) //OP_EQUALVERIFY
+        data.appendUInt8(0xac) //OP_CHECKSIG
+        return data
     }
     
-    public var hash160 : RIPEMD160HASH? {
-        //P2PKH outputScript only!!
-        //Need to support other script formats
-        
-        if self.script.length != 25 {
-            print("unsupported output script")
-            return nil
-        }
-        let stream = InputStream(data: self.script as Data)
-        stream.open()
+    public static func fromBitcoinStream(_ stream: InputStream) -> OutputScript.P2PKHScript? {
         
         if stream.readUInt8() != 0x76 {
             print("Not OP_DUP")
@@ -57,7 +70,8 @@ public struct OutputScript {
             return nil
         }
         
-        return hash160
+        return OutputScript.P2PKHScript(hash160: hash160)
     }
     
 }
+   

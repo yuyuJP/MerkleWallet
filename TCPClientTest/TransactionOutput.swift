@@ -19,9 +19,9 @@ public extension Transaction {
         
         public let value: Int64
         
-        public let script: NSData
+        public let script: OutputScript.P2PKHScript
         
-        public init(value: Int64, script: NSData) {
+        public init(value: Int64, script: OutputScript.P2PKHScript) {
             // TODO: Validate script!!!!!!!!!
             
             self.value = value
@@ -34,8 +34,8 @@ extension Transaction.Output: BitcoinSerializable {
     public var bitcoinData: NSData {
         let data = NSMutableData()
         data.appendInt64(value)
-        data.appendVarInt(script.length)
-        data.append(script as Data)
+        data.appendVarInt(script.bitcoinData.length)
+        data.append(script.bitcoinData as Data)
         return data
     }
     
@@ -50,8 +50,19 @@ extension Transaction.Output: BitcoinSerializable {
             return nil
         }
         
-        guard let script = stream.readData(Int(scriptLength)) else {
+        if scriptLength != 25 {
+            print("Not Supported Script. Script Length must be 25. P2PKH Script is currently only supported")
+            return nil
+        }
+        
+        
+        /*guard let script = stream.readData(Int(scriptLength)) else {
             print("Failed to parse scriptLength from Transaction.Output")
+            return nil
+        }*/
+        
+        guard let script = OutputScript.P2PKHScript.fromBitcoinStream(stream) else {
+            print("Failed to parse P2PKH Script from Transaction.Output")
             return nil
         }
         

@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         
 
         let coinkey = CoinKey(privateKeyHex: "2ab9b2aa6a4be7ad2ab9b2aa1c6b6a292163af6b2ab9b2aad868844dd3d22c39", privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, skipPublicKeyGeneration: false)
-
+    
         //let pubKeyData = "n3TLeMCT6vQy4QoyqCp9nPbN9s8KS86Kmk".base58StringToNSData()
         var pubKeyData = coinkey.publicAddress.base58StringToNSData().toBytes()
         for _ in 0 ..< 4 {

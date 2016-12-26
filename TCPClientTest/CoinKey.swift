@@ -73,12 +73,8 @@ public class CoinKey : ECKey {
     }
     
     public var publicAddress : String {
-        /*let sha256: NSData = SHA256.hexStringDigest(self.publicKeyHexString)
-        
-        let ripemd: NSData = RIPEMD.digest(sha256)*/
         
         let ripemd = Hash160.hexStringDigest(self.publicKeyHexString)
-        
         let extendedRipemd = NSMutableData()
         
         let versionByte: [UInt8] = [publicKeyPrefix]
