@@ -15,7 +15,8 @@ class ViewController: UIViewController {
         
 
         /*let coinkey = CoinKey(privateKeyHex: "2ab9b2aa6a4be7ad2ab9b2aa1c6b6a292163af6b2ab9b2aad868844dd3d22c39", privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, skipPublicKeyGeneration: false)
-    
+        print(coinkey.publicKeyHexString)*/
+        /*
         //let pubKeyData = "n3TLeMCT6vQy4QoyqCp9nPbN9s8KS86Kmk".base58StringToNSData()
         var pubKeyData = coinkey.publicAddress.base58StringToNSData().toBytes()
         for _ in 0 ..< 4 {
@@ -42,10 +43,20 @@ class ViewController: UIViewController {
         con.start()
         */
         
-        transactionMessageConstructTest()
+        //transactionMessageConstructTest()
+        testSignatureScriptFromTransactionBuilder()
+        
+        
     }
     
-    func transactionMessageConstructTest() {
+    func testSignatureScriptFromTransactionBuilder() {
+        let key = BitcoinTestnet(privateKeyHex: "16260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
+        
+        let transactionBulider = TransactionBuilder(transactionMessage: transactionMessageConstructTest(), key: key)
+        print(transactionBulider.scriptSignature)
+    }
+    
+    func transactionMessageConstructTest() -> TransactionMessage {
         let txHash = SHA256Hash("f34e1c37e736727770fed85d1b129713ef7f300304498c31c833985f487fa2f3".hexStringToNSData())
         let testInputScript = "76a9146bf19e55f94d986b4640c154d86469934191951188ac".hexStringToNSData()
         let testOutputScriptData1 = "18ba14b3682295cb05230e31fecb000892406608".hexStringToNSData().reversedData
@@ -60,9 +71,11 @@ class ViewController: UIViewController {
         
         let transactionMessage = TransactionMessage(version: 0x01, inputs: [input], outputs: [output1, output2], lockTime: Transaction.LockTime.AlwaysLocked, sigHash: 0x01)
         
-        print(transactionMessage.bitcoinData)
-        let hash256 = Hash256.digest(transactionMessage.bitcoinData)
-        print(hash256)
+        //print(transactionMessage.bitcoinData)
+        //let hash256 = Hash256.digest(transactionMessage.bitcoinData)
+        //print(hash256)
+        
+        return transactionMessage
     }
     
     
