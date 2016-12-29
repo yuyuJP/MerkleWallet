@@ -59,6 +59,10 @@ extension NSMutableData {
         self.append([value] as [UInt8], length: 1)
     }
     
+    public func appendOPCode(_ opcode: OPCode) {
+        self.append([opcode.rawValue] as [UInt8], length: 1)
+    }
+    
     public func appendUInt16(_ value: UInt16, endianness: Endianness = .LittleEndian) {
         var bytes = toByteArray(value)
         

@@ -19,6 +19,13 @@ extension InputStream {
         return int
     }
     
+    public func readOPCode() -> OPCode? {
+        if let rawValue = readUInt8() {
+            return OPCode(rawValue: rawValue)
+        }
+        return nil
+    }
+    
     public func readUInt16(_ endianness: Endianness = .LittleEndian) -> UInt16? {
         let size = 2
         var readBuffer = [UInt8](repeating: 0, count: size)

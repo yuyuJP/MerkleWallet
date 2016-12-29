@@ -29,23 +29,23 @@ public struct OutputScript {
 extension OutputScript.P2PKHScript: BitcoinSerializable {
     public var bitcoinData: NSData {
         let data = NSMutableData()
-        data.appendUInt8(0x76) //OP_DUP
-        data.appendUInt8(0xa9) //OP_HASH160
+        data.appendOPCode(OPCode.OP_DUP)
+        data.appendOPCode(OPCode.OP_HASH160)
         data.appendUInt8(0x14) //length
-        data.append(hash160.bitcoinData as Data) //public key hash
-        data.appendUInt8(0x88) //OP_EQUALVERIFY
-        data.appendUInt8(0xac) //OP_CHECKSIG
+        data.append(hash160.bitcoinData as Data)
+        data.appendOPCode(OPCode.OP_EQUALVERIFY)
+        data.appendOPCode(OPCode.OP_CHECKSIG)
         return data
     }
     
     public static func fromBitcoinStream(_ stream: InputStream) -> OutputScript.P2PKHScript? {
         
-        if stream.readUInt8() != 0x76 {
+        if stream.readOPCode() != OPCode.OP_DUP {
             print("Not OP_DUP")
             return nil
         }
         
-        if stream.readUInt8() != 0xa9 {
+        if stream.readOPCode() != OPCode.OP_HASH160 {
             print("Not OP_HASH160")
             return nil
         }
@@ -60,12 +60,13 @@ extension OutputScript.P2PKHScript: BitcoinSerializable {
             return nil
         }
         
-        if stream.readUInt8() != 0x88 {
+        if stream.readOPCode() != OPCode.OP_EQUALVERIFY {
             print("Not OP_EQUALVERIFY")
             return nil
         }
         
-        if stream.readUInt8() != 0xac {
+        
+        if stream.readOPCode() != OPCode.OP_CHECKSIG {
             print("Not OP_CHECKSIG")
             return nil
         }

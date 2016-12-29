@@ -73,6 +73,8 @@
 		E18D54811E0158DC009D2715 /* InventoryMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D54801E0158DC009D2715 /* InventoryMessage.swift */; };
 		E1A819EC1DFDA5B700219B10 /* InventoryVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A819EB1DFDA5B700219B10 /* InventoryVector.swift */; };
 		E1A92CEC1E14E27100811E4C /* OPCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A92CEB1E14E27100811E4C /* OPCode.swift */; };
+		E1A92CEE1E14ECE000811E4C /* TransactionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A92CED1E14ECE000811E4C /* TransactionBuilder.swift */; };
+		E1A92CF01E14FED500811E4C /* TransactionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A92CEF1E14FED500811E4C /* TransactionMessage.swift */; };
 		E1A9F2281DCF006500D373B3 /* GetHeadersMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9F2271DCF006500D373B3 /* GetHeadersMessage.swift */; };
 		E1A9F22A1DCF011900D373B3 /* SHA256Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9F2291DCF011900D373B3 /* SHA256Hash.swift */; };
 		E1AACD291DF661A1005EC11C /* Murmurhash3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AACD281DF661A1005EC11C /* Murmurhash3.swift */; };
@@ -188,6 +190,8 @@
 		E18D54801E0158DC009D2715 /* InventoryMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryMessage.swift; sourceTree = "<group>"; };
 		E1A819EB1DFDA5B700219B10 /* InventoryVector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryVector.swift; sourceTree = "<group>"; };
 		E1A92CEB1E14E27100811E4C /* OPCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPCode.swift; sourceTree = "<group>"; };
+		E1A92CED1E14ECE000811E4C /* TransactionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionBuilder.swift; sourceTree = "<group>"; };
+		E1A92CEF1E14FED500811E4C /* TransactionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionMessage.swift; sourceTree = "<group>"; };
 		E1A9F2271DCF006500D373B3 /* GetHeadersMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHeadersMessage.swift; sourceTree = "<group>"; };
 		E1A9F2291DCF011900D373B3 /* SHA256Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256Hash.swift; sourceTree = "<group>"; };
 		E1AACD281DF661A1005EC11C /* Murmurhash3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Murmurhash3.swift; sourceTree = "<group>"; };
@@ -333,6 +337,8 @@
 				E160A3211DFFA43100915C94 /* TransactionInput.swift */,
 				E160A31D1DFFA08400915C94 /* TransactionOutPoint.swift */,
 				E160A3231DFFA69300915C94 /* TransactionLockTime.swift */,
+				E1A92CED1E14ECE000811E4C /* TransactionBuilder.swift */,
+				E1A92CEF1E14FED500811E4C /* TransactionMessage.swift */,
 				E15723331E0E13EE00BB2523 /* OutputScript.swift */,
 				E1A92CEB1E14E27100811E4C /* OPCode.swift */,
 			);
@@ -580,6 +586,7 @@
 			files = (
 				E159FD641DED16D0005856FB /* ECKey.swift in Sources */,
 				E11454B81DC88F66002122DA /* Bitwise Hacks.swift in Sources */,
+				E1A92CF01E14FED500811E4C /* TransactionMessage.swift in Sources */,
 				E1C7AD431DBA159F003C8A80 /* MessagePrinter.swift in Sources */,
 				E159FD7F1DED30B0005856FB /* Hash160.swift in Sources */,
 				E159FD6D1DED1755005856FB /* RIPEMD.swift in Sources */,
@@ -606,6 +613,7 @@
 				E159FD7A1DED18FC005856FB /* Base58Extension.swift in Sources */,
 				E159FD681DED16DA005856FB /* ECDomain.swift in Sources */,
 				E102D7CF1DB34ABB0078E4C4 /* CFConnection.swift in Sources */,
+				E1A92CEE1E14ECE000811E4C /* TransactionBuilder.swift in Sources */,
 				E159FD731DED1766005856FB /* UInt32+CircularShift.swift in Sources */,
 				E11454A71DC88F66002122DA /* BigUInt Addition.swift in Sources */,
 				E11454AB1DC88F66002122DA /* BigUInt Division.swift in Sources */,

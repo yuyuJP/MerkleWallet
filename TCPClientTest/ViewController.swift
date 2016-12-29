@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
 
-        let coinkey = CoinKey(privateKeyHex: "2ab9b2aa6a4be7ad2ab9b2aa1c6b6a292163af6b2ab9b2aad868844dd3d22c39", privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, skipPublicKeyGeneration: false)
+        /*let coinkey = CoinKey(privateKeyHex: "2ab9b2aa6a4be7ad2ab9b2aa1c6b6a292163af6b2ab9b2aad868844dd3d22c39", privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, skipPublicKeyGeneration: false)
     
         //let pubKeyData = "n3TLeMCT6vQy4QoyqCp9nPbN9s8KS86Kmk".base58StringToNSData()
         var pubKeyData = coinkey.publicAddress.base58StringToNSData().toBytes()
@@ -40,8 +40,31 @@ class ViewController: UIViewController {
         let con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
         
         con.start()
+        */
         
+        transactionMessageConstructTest()
     }
+    
+    func transactionMessageConstructTest() {
+        let txHash = SHA256Hash("f34e1c37e736727770fed85d1b129713ef7f300304498c31c833985f487fa2f3".hexStringToNSData())
+        let testInputScript = "76a9146bf19e55f94d986b4640c154d86469934191951188ac".hexStringToNSData()
+        let testOutputScriptData1 = "18ba14b3682295cb05230e31fecb000892406608".hexStringToNSData().reversedData
+        let testOutputScriptData2 = "6bf19e55f94d986b4640c154d864699341919511".hexStringToNSData().reversedData
+        let testOutputScript1 = OutputScript.P2PKHScript(hash160: RIPEMD160HASH(testOutputScriptData1))
+        let testOutputScript2 = OutputScript.P2PKHScript(hash160: RIPEMD160HASH(testOutputScriptData2))
+        
+        let outpoint = Transaction.OutPoint(transactionHash: txHash, index: 0x00)
+        let input = Transaction.Input(outPoint: outpoint, scriptSignature: testInputScript, sequence: 0xffffffff)
+        let output1 = Transaction.Output(value: 0x017efee0, script: testOutputScript1)
+        let output2 = Transaction.Output(value: 0x03b084e0, script: testOutputScript2)
+        
+        let transactionMessage = TransactionMessage(version: 0x01, inputs: [input], outputs: [output1, output2], lockTime: Transaction.LockTime.AlwaysLocked, sigHash: 0x01)
+        
+        print(transactionMessage.bitcoinData)
+        let hash256 = Hash256.digest(transactionMessage.bitcoinData)
+        print(hash256)
+    }
+    
     
     func testWIF() {
         let coinkey = CoinKey(privateKeyHex: "0C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D", privateKeyPrefix: 0x80, publicKeyPrefix: 0x00, skipPublicKeyGeneration: false)

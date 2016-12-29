@@ -61,7 +61,6 @@ public class ECKey {
     }
     
     public class func pointFromHex(_ hexString: String, _ curve: ECurve) -> ECPoint {
-        //print("length 130?? length : \(hexString.characters.count)")
         
         let x: String = (hexString as NSString).substring(with: NSRange(location: 2, length: 64))
         let y: String = (hexString as NSString).substring(with: NSRange(location: 66, length: 64))
