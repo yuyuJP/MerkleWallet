@@ -72,6 +72,7 @@
 		E18D547F1E015441009D2715 /* GetBlocksMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D547E1E015441009D2715 /* GetBlocksMessage.swift */; };
 		E18D54811E0158DC009D2715 /* InventoryMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D54801E0158DC009D2715 /* InventoryMessage.swift */; };
 		E1A819EC1DFDA5B700219B10 /* InventoryVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A819EB1DFDA5B700219B10 /* InventoryVector.swift */; };
+		E1A92CEC1E14E27100811E4C /* OPCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A92CEB1E14E27100811E4C /* OPCode.swift */; };
 		E1A9F2281DCF006500D373B3 /* GetHeadersMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9F2271DCF006500D373B3 /* GetHeadersMessage.swift */; };
 		E1A9F22A1DCF011900D373B3 /* SHA256Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A9F2291DCF011900D373B3 /* SHA256Hash.swift */; };
 		E1AACD291DF661A1005EC11C /* Murmurhash3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AACD281DF661A1005EC11C /* Murmurhash3.swift */; };
@@ -186,6 +187,7 @@
 		E18D547E1E015441009D2715 /* GetBlocksMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBlocksMessage.swift; sourceTree = "<group>"; };
 		E18D54801E0158DC009D2715 /* InventoryMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryMessage.swift; sourceTree = "<group>"; };
 		E1A819EB1DFDA5B700219B10 /* InventoryVector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryVector.swift; sourceTree = "<group>"; };
+		E1A92CEB1E14E27100811E4C /* OPCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPCode.swift; sourceTree = "<group>"; };
 		E1A9F2271DCF006500D373B3 /* GetHeadersMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHeadersMessage.swift; sourceTree = "<group>"; };
 		E1A9F2291DCF011900D373B3 /* SHA256Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256Hash.swift; sourceTree = "<group>"; };
 		E1AACD281DF661A1005EC11C /* Murmurhash3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Murmurhash3.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				E160A31D1DFFA08400915C94 /* TransactionOutPoint.swift */,
 				E160A3231DFFA69300915C94 /* TransactionLockTime.swift */,
 				E15723331E0E13EE00BB2523 /* OutputScript.swift */,
+				E1A92CEB1E14E27100811E4C /* OPCode.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				E11454A61DC88F66002122DA /* BigIntAddition.swift in Sources */,
 				E11454A81DC88F66002122DA /* BigUInt Bitwise Ops.swift in Sources */,
 				E1BA98AD1DD1B72D00C1B17B /* HeadersMessage.swift in Sources */,
+				E1A92CEC1E14E27100811E4C /* OPCode.swift in Sources */,
 				E11454B31DC88F66002122DA /* BigUInt Shifts.swift in Sources */,
 				E1A9F2281DCF006500D373B3 /* GetHeadersMessage.swift in Sources */,
 				E11454AA1DC88F66002122DA /* BigUInt Data.swift in Sources */,

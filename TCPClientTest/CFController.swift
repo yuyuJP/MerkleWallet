@@ -85,6 +85,8 @@ public class CFController: CFConnectionDelegate {
             
                 
                 let blkHash = SHA256Hash("0000000053be966d2beb2aa8f87b2cba790422b3efc096f6e1aa36a69a048335".hexStringToNSData())
+                
+            
                 let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)
                 
                 let msg = GetDataMessage(inventoryVectors: [inv])
