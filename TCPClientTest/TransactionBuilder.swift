@@ -11,18 +11,26 @@ import Foundation
 
 public class TransactionBuilder {
     public let transactionMessage: TransactionMessage
-    public let key: BitcoinTestnet
+    public let key: ECKey
     
-    public init(transactionMessage: TransactionMessage, key: BitcoinTestnet) {
+    public init(transactionMessage: TransactionMessage, key: ECKey) {
         self.transactionMessage = transactionMessage
         self.key = key
+    }
+    
+    public var transaction: Transaction {
+        var inputs : [Transaction.Input] = []
+        for input in transactionMessage.inputs {
+            let transactionInput = Transaction.Input(outPoint: input.outPoint, scriptSignature: scriptSignature, sequence: input.sequence)
+            inputs.append(transactionInput)
+        }
+        let transaction = Transaction(version: transactionMessage.version, inputs: inputs, outputs: transactionMessage.outputs)
+        return transaction
     }
     
     public var scriptSignature: NSData {
         let signature = produceDERSignature()
         let data = NSMutableData()
-        print("length")
-        print(UInt8(signature.length + 1))
         data.appendUInt8(UInt8(signature.length + 1))
         data.append(signature as Data)
         data.appendUInt8(0x01) //SIGHASH
@@ -42,8 +50,7 @@ public class TransactionBuilder {
         let hash = transactionMessageHash
         let digest = BigUInt(hash.data as Data)
         let (r, s) = key.sign(digest)
-        return BitcoinTestnet.der(r, s)
+        return ECKey.der(r, s)
     }
-    
 }
 
