@@ -39,6 +39,11 @@ public struct Transaction: Equatable {
     public init(params: TransactionParameters, inputs: [Input], outputs: [Output], lockTime: LockTime = .AlwaysLocked) {
         self.init(version: params.transactionVersion,inputs: inputs,outputs: outputs,lockTime: lockTime)
     }
+    
+    public var hash: SHA256Hash {
+        let data = Hash256.digest(bitcoinData)
+        return SHA256Hash(data.reversedData)
+    }
 }
 
 extension Transaction: MessagePayload {

@@ -21,12 +21,17 @@ public class CFController: CFConnectionDelegate {
     private var blockHashesDownloaded : [InventoryVector] = []
     private var blockHashesCountDownloaded = 0
     
+    private var pendingSendTransaction: [Transaction] = []
     
     public init(hostname: String, port: UInt16, network: [UInt8]) {
         self.hostname = hostname
         self.port = port
         self.network = network
         self.queue = OperationQueue.main
+    }
+    
+    public func connectionStatus() -> CFConnection.Status {
+        return connection!._status
     }
     
     public func start() {
@@ -84,13 +89,14 @@ public class CFController: CFConnectionDelegate {
                 self.connection?.sendMessageWithPayload(memPoolMessage)
             
                 
-                let blkHash = SHA256Hash("0000000053be966d2beb2aa8f87b2cba790422b3efc096f6e1aa36a69a048335".hexStringToNSData())
+                /*let blkHash = SHA256Hash("0000000053be966d2beb2aa8f87b2cba790422b3efc096f6e1aa36a69a048335".hexStringToNSData())
                 
             
                 let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)
                 
                 let msg = GetDataMessage(inventoryVectors: [inv])
                 self.connection?.sendMessageWithPayload(msg)
+                */
                 
                 /*print("Sending getHeaders Message")
                 
@@ -144,6 +150,14 @@ public class CFController: CFConnectionDelegate {
         self.connection?.sendMessageWithPayload(getDataMessage)
     }
     
+    public func sendTransaction(transaction: Transaction) {
+        let inv = InventoryVector(type: .Transaction, hash: transaction.hash)
+        print("transaction hash: \(transaction.hash)")
+        let invMessage = InventoryMessage(inventoryVectors: [inv])
+        self.connection?.sendMessageWithPayload(invMessage)
+        self.pendingSendTransaction.append(transaction)
+    }
+    
     public func cfConnection(peerConnection: CFConnection, didReceiveMessage message: PeerConnectionMessage) {
         switch message {
         
@@ -187,12 +201,22 @@ public class CFController: CFConnectionDelegate {
             //print(merkleBlockMessage)
             
         case let .TransactionMessage(transactionMessage):
-            print(transactionMessage)
+            print(transactionMessage.hash)
             for output in transactionMessage.outputs {
                 let script = output.script
                 print(script)
                 //let hash160 = OutputScript(script: script).hash160
                 //print(hash160?.bitcoinData)
+            }
+            
+        case let .GetDataMessage(getDataMessage):
+            print("received getDataMessage \(getDataMessage)")
+            for inv in getDataMessage.inventoryVectors {
+                for tx in pendingSendTransaction {
+                    if inv.hash == tx.hash {
+                        self.connection?.sendMessageWithPayload(tx)
+                    }
+                }
             }
             
         default:

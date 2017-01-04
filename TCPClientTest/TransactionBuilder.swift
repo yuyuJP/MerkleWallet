@@ -37,6 +37,7 @@ public class TransactionBuilder {
         
         let publicKey = key.publicKeyPoint.toData
         data.appendUInt8(UInt8(publicKey.length))
+        print(publicKey.length)
         data.append(publicKey as Data)
         return data
     }
@@ -47,7 +48,7 @@ public class TransactionBuilder {
     }
     
     private func produceDERSignature() -> NSData {
-        let hash = transactionMessageHash
+        let hash = self.transactionMessageHash
         let digest = BigUInt(hash.data as Data)
         let (r, s) = key.sign(digest)
         return ECKey.der(r, s)

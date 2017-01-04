@@ -29,6 +29,7 @@ public struct Message {
         case Inventory = "inv"
         case GetData = "getdata"
         case MerkleBlock = "merkleblock"
+        case Reject = "reject"
         
         public static let encodedLength = 12
         

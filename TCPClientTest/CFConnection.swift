@@ -22,6 +22,7 @@ public enum PeerConnectionMessage {
     case InventoryMessage(InventoryMessage)
     case MerkleBlockMessage(MerkleBlockMessage)
     case TransactionMessage(Transaction)
+    case GetDataMessage(GetDataMessage)
     
 }
 
@@ -271,7 +272,12 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
                 }
             }
         case .GetData:
-            print(message)
+            if let getDataMessage = GetDataMessage.fromBitcoinStream(payloadStream) {
+                self.delegateQueue.addOperation {
+                    let message = PeerConnectionMessage.GetDataMessage(getDataMessage)
+                    self.delegate?.cfConnection(peerConnection: self, didReceiveMessage: message)
+                }
+            }
             
         case .MerkleBlock:
             if let merkleBlockMessage = MerkleBlockMessage.fromBitcoinStream(payloadStream) {
@@ -280,7 +286,10 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
                     self.delegate?.cfConnection(peerConnection: self, didReceiveMessage: message)
                 }
             }
-            
+        case .Reject:
+            if let rejectMessage = RejectMessage.fromBitcoinStream(payloadStream) {
+                print(rejectMessage)
+            }
         }
     }
     
