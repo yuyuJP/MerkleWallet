@@ -127,6 +127,7 @@ public class ECKey {
     }
     
     public class func der(_ r: BigUInt, _ s: BigUInt) -> NSData {
+        /*
         var bytes: [UInt8] = [0x30, 0x45, 0x02, 0x20]
         let signature = NSMutableData(bytes: &bytes, length: bytes.count)
         signature.append(r.serialize())
@@ -136,6 +137,34 @@ public class ECKey {
         signature.append(s.serialize())
         
         return signature as NSData
+        */
+        
+        var r_bytes = (r.serialize() as NSData).toBytes()
+        var s_bytes = (s.serialize() as NSData).toBytes()
+        
+        //r and s is unsigned, so if first byte of r or s is > 7f append 0x00 as prefix
+        if r_bytes[0] > 0x7f {
+            r_bytes.insert(0x00, at: 0)
+        }
+        if s_bytes[0] > 0x7f {
+            s_bytes.insert(0x00, at: 0)
+        }
+        
+        var bytes: [UInt8] = [0x30]
+        
+        var z: [UInt8] = [0x02]
+        z.append(UInt8(r_bytes.count))
+        z += r_bytes
+        z.append(0x02)
+        z.append(UInt8(s_bytes.count))
+        z += s_bytes
+        
+        bytes.append(UInt8(z.count))
+        bytes += z
+        
+        let signature = NSData(bytes: bytes, length: bytes.count)
+        
+        return signature
     }
     
     

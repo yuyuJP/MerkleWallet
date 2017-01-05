@@ -31,7 +31,12 @@ public class CFController: CFConnectionDelegate {
     }
     
     public func connectionStatus() -> CFConnection.Status {
-        return connection!._status
+        if connection == nil {
+            return CFConnection.Status.NotConnected
+        } else {
+            return connection!._status
+        }
+        
     }
     
     public func start() {
