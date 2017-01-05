@@ -41,7 +41,7 @@ public class TransactionBuilder {
         return data
     }
     
-    private var transactionMessageHash: SHA256Hash {
+    public var transactionMessageHash: SHA256Hash {
         let sha256Data = Hash256.digest(transactionMessage.bitcoinData)
         return SHA256Hash(sha256Data)
     }
@@ -50,7 +50,6 @@ public class TransactionBuilder {
         let hash = self.transactionMessageHash
         let digest = BigUInt(hash.data as Data)
         let (r, s) = key.sign(digest)
-        
         
         return ECKey.der(r, s)
     }

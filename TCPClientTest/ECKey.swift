@@ -127,30 +127,22 @@ public class ECKey {
     }
     
     public class func der(_ r: BigUInt, _ s: BigUInt) -> NSData {
-        /*
-        var bytes: [UInt8] = [0x30, 0x45, 0x02, 0x20]
-        let signature = NSMutableData(bytes: &bytes, length: bytes.count)
-        signature.append(r.serialize())
-        bytes = [0x02, 0x21, 0x00]
-        signature.append(&bytes, length: 3)
         
-        signature.append(s.serialize())
+        //the most significant byte comes first(big-endian) only r and s.
+        //var r_bytes = [UInt8]((r.serialize() as NSData).toBytes().reversed())
+        //var s_bytes = [UInt8]((s.serialize() as NSData).toBytes().reversed())
         
-        return signature as NSData
-        */
+        var r_bytes = [UInt8]((r.serialize() as NSData).toBytes())
+        var s_bytes = [UInt8]((s.serialize() as NSData).toBytes())
         
-        var r_bytes = (r.serialize() as NSData).toBytes()
-        var s_bytes = (s.serialize() as NSData).toBytes()
-        
-        //r and s is unsigned, so if first byte of r or s is > 7f append 0x00 as prefix
+        //r and s is unsigned, so if first byte of r or s is > 7f, append 0x00 as prefix
+        // if first byte of r or s is > 7f, the highest bit is 1, which means negative when it is signed, r and s are unsigned though.
         if r_bytes[0] > 0x7f {
             r_bytes.insert(0x00, at: 0)
         }
         if s_bytes[0] > 0x7f {
             s_bytes.insert(0x00, at: 0)
         }
-        
-        var bytes: [UInt8] = [0x30]
         
         var z: [UInt8] = [0x02]
         z.append(UInt8(r_bytes.count))
@@ -159,6 +151,8 @@ public class ECKey {
         z.append(UInt8(s_bytes.count))
         z += s_bytes
         
+        var bytes: [UInt8] = [0x30]
+
         bytes.append(UInt8(z.count))
         bytes += z
         
