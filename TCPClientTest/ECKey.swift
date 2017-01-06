@@ -60,6 +60,16 @@ public class ECKey {
         }
     }
     
+    public var compressedPublicKeyHexString: String {
+        switch publicKeyPoint.coordinate {
+        case .Affine(_, _):
+            return publicKeyPoint.toCompressedData.toHexString()
+        default:
+            assert(false, "Not implemented")
+            return ""
+        }
+    }
+    
     public class func pointFromHex(_ hexString: String, _ curve: ECurve) -> ECPoint {
         
         let x: String = (hexString as NSString).substring(with: NSRange(location: 2, length: 64))
@@ -84,6 +94,7 @@ public class ECKey {
             
             while r == zero {
                 k = secureRandom(curve.n - 1) + 1
+                print("\(k) in ECKey.swift")
                 let R = k * self.curve.G
                 
                 switch R.coordinate {
@@ -127,11 +138,7 @@ public class ECKey {
     }
     
     public class func der(_ r: BigUInt, _ s: BigUInt) -> NSData {
-        
-        //the most significant byte comes first(big-endian) only r and s.
-        //var r_bytes = [UInt8]((r.serialize() as NSData).toBytes().reversed())
-        //var s_bytes = [UInt8]((s.serialize() as NSData).toBytes().reversed())
-        
+    
         var r_bytes = [UInt8]((r.serialize() as NSData).toBytes())
         var s_bytes = [UInt8]((s.serialize() as NSData).toBytes())
         

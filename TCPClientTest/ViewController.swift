@@ -18,9 +18,11 @@ class ViewController: UIViewController {
         
         
         key = BitcoinTestnet(privateKeyHex: "2ab9b2aa6a4be7ad2ab9b2aa1c6b6a292163af6b2ab9b2aad868844dd3d22c39")
+        //key = BitcoinTestnet(privateKeyHex: "a0dc65ffca799873cbea0ac274015b9526505daaaed385155425f7337704883e")
         
         
         //let pubKeyData = "n3TLeMCT6vQy4QoyqCp9nPbN9s8KS86Kmk".base58StringToNSData()
+        
         var pubKeyData = key.publicAddress.base58StringToNSData().toBytes()
         for _ in 0 ..< 4 {
             pubKeyData.removeLast()
@@ -44,59 +46,11 @@ class ViewController: UIViewController {
         
         //con.start()
         
-        //testSignatureScriptFromTransactionBuilder()
-        //testDER()
-        //638fec7c6680fa3d38f1221d2ce18358097f37d7711dfaaa039f8a540fae4be2
-        print("638fec7c6680fa3d38f1221d2ce18358097f37d7711dfaaa039f8a540fae4be2".hexStringToNSData())
     }
-    
-    func testDER() {
-        let (r, s) = (BigUInt("2B2B529BDBDC93E78AF7E00228B179918B032D76902F74EF454426F7D06CD0F9", radix: 16)!, BigUInt("62DDC76451CD04CB567CA5C5E047E8AC41D3D4CF7CB92434D55CB486CCCF6AF2", radix: 16)!)
-        
-
-        /*var signatureBytes: [UInt8] = [0x30, 0x45, 0x02, 0x20,
-                                       0x61, 0xcc, 0xae, 0x67, 0x5a, 0xe0, 0x9a, 0xf5, 0xd3, 0xb1, 0x83, 0x1d, 0x16, 0x04, 0xb6, 0xa5, 0x78, 0xdc, 0xbb, 0x34, 0x93, 0xdc, 0x04, 0xa7, 0x07, 0x7e, 0x4b, 0xd1, 0x94, 0xcb, 0xbb, 0x6c,
-                                       0x02, 0x21,
-                                       0x00, 0xae, 0x1d, 0xa0, 0xca, 0x5d, 0x73, 0xfe, 0xe8, 0x58, 0x85, 0xf3, 0x1b, 0xef, 0x58, 0x94, 0xf2, 0xd2, 0xcb, 0x3e, 0x83, 0x92, 0x16, 0x3e, 0x20, 0x12, 0x73, 0x68, 0xe3, 0x35, 0x34, 0xb5, 0x3d]*/
-        
-        //let signature = NSData(bytes: &signatureBytes, length: signatureBytes.count)
-        
-        print(ECKey.der(r, s))
-    }
-    
-    func testSignatureScriptFromTransactionBuilder() {
-        let key = BitcoinTestnet(privateKeyHex: "2ab9b2aa6a4be7ad2ab9b2aa1c6b6a292163af6b2ab9b2aad868844dd3d22c39")
-        
-        let transactionBulider = TransactionBuilder(transactionMessage: transactionMessageConstructTest(), key: key)
-        print(transactionBulider.transaction.bitcoinData)
-    }
-    
-    func transactionMessageConstructTest_() -> TransactionMessage {
-        let txHash = SHA256Hash("f34e1c37e736727770fed85d1b129713ef7f300304498c31c833985f487fa2f3".hexStringToNSData())
-        let testInputScript = "76a9146bf19e55f94d986b4640c154d86469934191951188ac".hexStringToNSData()
-        let testOutputScriptData1 = "18ba14b3682295cb05230e31fecb000892406608".hexStringToNSData().reversedData
-        let testOutputScriptData2 = "6bf19e55f94d986b4640c154d864699341919511".hexStringToNSData().reversedData
-        let testOutputScript1 = OutputScript.P2PKHScript(hash160: RIPEMD160HASH(testOutputScriptData1))
-        let testOutputScript2 = OutputScript.P2PKHScript(hash160: RIPEMD160HASH(testOutputScriptData2))
-        
-        let outpoint = Transaction.OutPoint(transactionHash: txHash, index: 0x00)
-        let input = Transaction.Input(outPoint: outpoint, scriptSignature: testInputScript, sequence: 0xffffffff)
-        let output1 = Transaction.Output(value: 0x017efee0, script: testOutputScript1)
-        let output2 = Transaction.Output(value: 0x03b084e0, script: testOutputScript2)
-    
-        let transactionMessage = TransactionMessage(version: 0x01, inputs: [input], outputs: [output1, output2], lockTime: Transaction.LockTime.AlwaysLocked, sigHash: 0x01)
-        
-        return transactionMessage
-        //print(transactionMessage.bitcoinData)
-        //let hash256 = Hash256.digest(transactionMessage.bitcoinData)
-        //print(hash256)
-        
-    }
-    
     
     func transactionMessageConstructTest() -> TransactionMessage {
-        let txHash = SHA256Hash("df366f0c6b64fb2006d7823bbae88bc282ea4d62f713e49831533a9ea73b94c7".hexStringToNSData())
-        //let txHash = SHA256Hash("fe7744dcd9ae47549273b32fa94ec87f2418c70e07039ed203e7ecf381fe10d4".hexStringToNSData())
+        let txHash = SHA256Hash("8adea22e56cab8dd8bffff9494af3ba9b36240aec10d2be4b47922843b6246dc".hexStringToNSData())
+        //let txHash = SHA256Hash("faedecd95900c87c78ede096ea3527f42467fbfd32c85fcf92caa82bb8d27bd7".hexStringToNSData())
         //let txHash = SHA256Hash("fe7744dcd9ae47549273b32fa94ec87f2418c70e07039ed203e7ecf381fe10d4".hexStringToNSData())
         
         let testInputScript = "76a914a8151c512572e9cbdcf6b042f259e0b74462012e88ac".hexStringToNSData()
@@ -107,63 +61,29 @@ class ViewController: UIViewController {
         
         let outpoint = Transaction.OutPoint(transactionHash: txHash, index: 0x00)
         let input = Transaction.Input(outPoint: outpoint, scriptSignature: testInputScript, sequence: 0xffffffff)
-        let output1 = Transaction.Output(value: 75000000, script: testOutputScript1)
-        let output2 = Transaction.Output(value: 10000000, script: testOutputScript2)
+        let output1 = Transaction.Output(value: 90000000, script: testOutputScript1)
+        let output2 = Transaction.Output(value: 9991800, script: testOutputScript2)
         
         let transactionMessage = TransactionMessage(version: 0x01, inputs: [input], outputs: [output1, output2], lockTime: Transaction.LockTime.AlwaysLocked, sigHash: 0x01)
-        
-        //print(transactionMessage.bitcoinData)
-        //let hash256 = Hash256.digest(transactionMessage.bitcoinData)
-        //print(hash256)
         
         return transactionMessage
     }
     
     
     @IBAction func transactionTest(_ sender: Any) {
-        //if con.connectionStatus() == .Connected {
-            //let key = BitcoinTestnet(privateKeyHex: "2ab9b2aa6a4be7ad2ab9b2aa1c6b6a292163af6b2ab9b2aad868844dd3d22c39")
+        //if czon.connectionStatus() == .Connected {
             
             let transactionBulider = TransactionBuilder(transactionMessage: transactionMessageConstructTest(), key: key)
             //print(transactionBulider.transactionMessageHash)
-            //print(transactionBulider.transaction.bitcoinData)
-            con.sendTransaction(transaction: transactionBulider.transaction)
+            print(transactionBulider.transaction.bitcoinData.toHexString())
+            //con.sendTransaction(transaction: transactionBulider.transaction)
         //}
     }
     
-    func testWIF() {
-        let coinkey = CoinKey(privateKeyHex: "0C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D", privateKeyPrefix: 0x80, publicKeyPrefix: 0x00, skipPublicKeyGeneration: false)
-        
-        let wif = "5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ"
-        
-        print(coinkey.publicAddress)
-        print(coinkey.publicKeyHexString)
-        
-        let result = coinkey.wif
-        
-        assert(result == wif, result)
-        
-    }
-    
-    func testPublicAddress() {
-        let coinKey = CoinKey(privateKeyHex: "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd", publicKeyHex: "0450863AD64A87AE8A2FE83C1AF1A8403CB53F53E486D8511DAD8A04887E5B23522CD470243453A299FA9E77237716103ABC11A1DF38855ED6F2EE187E9C582BA6", privateKeyPrefix: 0x80, publicKeyPrefix: 0x00)
-        
-        let result = coinKey.publicAddress
-        
-        
-        
-        
-        assert(result == "16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM","")
-    }
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-
 
 }
 

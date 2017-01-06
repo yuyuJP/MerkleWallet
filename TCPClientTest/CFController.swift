@@ -101,7 +101,7 @@ public class CFController: CFConnectionDelegate {
                 
                 let msg = GetDataMessage(inventoryVectors: [inv])
                 self.connection?.sendMessageWithPayload(msg)
-                */
+                 */
                 
                 /*print("Sending getHeaders Message")
                 
@@ -206,13 +206,13 @@ public class CFController: CFConnectionDelegate {
             //print(merkleBlockMessage)
             
         case let .TransactionMessage(transactionMessage):
-            print(transactionMessage.hash)
-            for output in transactionMessage.outputs {
+            print(transactionMessage)
+            /*for output in transactionMessage.outputs {
                 let script = output.script
                 print(script)
                 //let hash160 = OutputScript(script: script).hash160
                 //print(hash160?.bitcoinData)
-            }
+            }*/
             
         case let .GetDataMessage(getDataMessage):
             print("received getDataMessage \(getDataMessage)")

@@ -36,6 +36,7 @@ public class TransactionBuilder {
         data.appendUInt8(0x01) //SIGHASH
         
         let publicKey = key.publicKeyPoint.toData
+        
         data.appendUInt8(UInt8(publicKey.length))
         data.append(publicKey as Data)
         return data

@@ -72,6 +72,26 @@ public class CoinKey : ECKey {
         return keyWithCheckSum.hexStringToBase58Encoding()
     }
     
+    public var compressedPubkeyWif: String {
+        let extendedKey = privateKeyPrefixString + privateKeyHexString
+        
+        //let hash1: NSData = SHA256.hexStringDigest(extendedKey)
+        
+        //let hash2: String = SHA256.hexStringDigest(hash1)
+        
+        let hash = Hash256.hexStringDigestHexString(extendedKey)
+        
+        var checkSum: String = ""
+        for char in hash.characters {
+            checkSum += String(char)
+            if checkSum.characters.count == 8 { break }
+        }
+        
+        let keyWithCheckSum = extendedKey + checkSum + "01"
+        
+        return keyWithCheckSum.hexStringToBase58Encoding()
+    }
+    
     public var publicAddress : String {
         
         let ripemd = Hash160.hexStringDigest(self.publicKeyHexString)
@@ -87,6 +107,23 @@ public class CoinKey : ECKey {
         let checkSum: String = (doubleSHA as NSString).substring(with: NSMakeRange(0, 8))
         let hexAddress = extendedRipemd.toHexString() + checkSum
     
+        let base58 = hexAddress.hexStringToBase58Encoding()
+        
+        return base58
+    }
+    
+    public var compressedPublicKeyPublicAddress: String {
+        let ripemd = Hash160.digest(publicKeyPoint.toCompressedData)
+        let extendedRipemd = NSMutableData()
+        
+        let versionByte: [UInt8] = [publicKeyPrefix]
+        extendedRipemd.append(versionByte, length: 1)
+        extendedRipemd.append(ripemd.bytes, length: ripemd.length)
+        
+        let doubleSHA: String = Hash256.digestHexString(extendedRipemd)
+        let checkSum: String = (doubleSHA as NSString).substring(with: NSMakeRange(0, 8))
+        let hexAddress = extendedRipemd.toHexString() + checkSum
+        
         let base58 = hexAddress.hexStringToBase58Encoding()
         
         return base58

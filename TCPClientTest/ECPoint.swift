@@ -100,6 +100,27 @@ public struct ECPoint : CustomStringConvertible, Equatable {
         
         return result as NSData
     }
+    
+    public var toCompressedData: NSData {
+        switch coordinate {
+        case let .Affine(x, y):
+            let lastDigit = UInt8(y!.value.serialize().last!)
+            var bytes: [UInt8] = []
+            if lastDigit % 2 == 0 {
+                bytes.append(0x02)
+            } else {
+                bytes.append(0x03)
+            }
+            
+            let result = NSMutableData(bytes: &bytes, length: bytes.count)
+            result.append(x!.value.serialize())
+            return result as NSData
+            
+        default:
+            assert(false, "Not implemented")
+            return NSData()
+        }
+    }
 }
 
 public func == (lhs: ECPoint, rhs: ECPoint) -> Bool {
