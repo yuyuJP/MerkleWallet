@@ -14,6 +14,6 @@ public class BitcoinTestnet : CoinKey {
     }
     
     public init(privateKeyHex: String) {
-        super.init(privateKeyHex: privateKeyHex, privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, skipPublicKeyGeneration: false)
+        super.init(privateKeyHex: privateKeyHex, privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, skipPublicKeyGeneration: false, isCompressedPublicKeyAddress: true)
     }
 }

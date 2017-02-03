@@ -14,9 +14,12 @@ public class ECKey {
     
     public let publicKeyPoint: ECPoint
     
-    public init(_ privateKey: BigUInt, _ curve: ECurve, skipPublicKeyGeneration: Bool = false) {
+    public let isCompressedPublicKeyAddress: Bool
+    
+    public init(_ privateKey: BigUInt, _ curve: ECurve, skipPublicKeyGeneration: Bool = false, isCompressedPublicKeyAddress: Bool) {
         self.privateKey = privateKey
         self.curve = curve
+        self.isCompressedPublicKeyAddress = isCompressedPublicKeyAddress
         
         if !skipPublicKeyGeneration {
             self.publicKeyPoint = self.privateKey * self.curve.G
@@ -25,20 +28,22 @@ public class ECKey {
         }
     }
     
-    public init(privateKey: BigUInt, publicKeyPoint: ECPoint) {
+    public init(privateKey: BigUInt, publicKeyPoint: ECPoint, isCompressedPublicKeyAddress: Bool) {
         self.privateKey = privateKey
         self.publicKeyPoint = publicKeyPoint
         self.curve = publicKeyPoint.curve
+        self.isCompressedPublicKeyAddress = isCompressedPublicKeyAddress
     }
     
-    public init(_ publicKeyPoint: ECPoint) {
+    public init(_ publicKeyPoint: ECPoint, isCompressedPublicKeyAddress: Bool) {
         self.privateKey = 0
         self.publicKeyPoint = publicKeyPoint
         self.curve = publicKeyPoint.curve
+        self.isCompressedPublicKeyAddress = isCompressedPublicKeyAddress
     }
     
-    public convenience init(_ privateKeyHex: String, _ curve: ECurve, skipPublicKeyGeneration: Bool = false) {
-        self.init(BigUInt(privateKeyHex, radix: 16)!, curve, skipPublicKeyGeneration: skipPublicKeyGeneration)
+    public convenience init(_ privateKeyHex: String, _ curve: ECurve, skipPublicKeyGeneration: Bool = false, isCompressedPublicKeyAddress: Bool) {
+        self.init(BigUInt(privateKeyHex, radix: 16)!, curve, skipPublicKeyGeneration: skipPublicKeyGeneration, isCompressedPublicKeyAddress: isCompressedPublicKeyAddress)
     }
     
     public var privateKeyHexString: String {
@@ -49,6 +54,11 @@ public class ECKey {
     }
     
     public var publicKeyHexString: String {
+        
+        if isCompressedPublicKeyAddress {
+            return compressedPublicKeyHexString
+        }
+        
         switch publicKeyPoint.coordinate {
         case let .Affine(x: x, y: y):
             let xStr = ((x!.value.serialize() as NSData).toHexString() as NSString).substring(to: 64)
@@ -77,14 +87,17 @@ public class ECKey {
         return ECPoint(x: FFInt(x, curve.field), y: FFInt(y, curve.field), curve: curve)
     }
     
-    public class func createRandom(_ curve: ECurve, skipPublicKeyGeneration: Bool = false) -> ECKey {
-        return ECKey(secureRandom(curve.n), curve, skipPublicKeyGeneration: skipPublicKeyGeneration)
+    public class func createRandom(_ curve: ECurve, skipPublicKeyGeneration: Bool = false, isCompressedPublicKeyAddress: Bool = true) -> ECKey {
+        //return ECKey(secureRandom(curve.n), curve, skipPublicKeyGeneration: skipPublicKeyGeneration, isCompressedPublicKeyAddress: isCompressedPublicKeyAddress)
+        return ECKey(secureRandom(curve.n), curve, skipPublicKeyGeneration: skipPublicKeyGeneration, isCompressedPublicKeyAddress: isCompressedPublicKeyAddress)
     }
     
     public func sign(_ digest: BigUInt) -> (BigUInt, BigUInt) {
         let field = FiniteField.PrimeField(p: curve.n)
         let zero = field.int(0)
         let e = field.int(digest)
+        
+        //print("e = \(e) digest = \(digest)")
         
         var s = zero
         var k: BigUInt = 0
@@ -93,8 +106,14 @@ public class ECKey {
         while s == field.int(0) {
             
             while r == zero {
-                k = secureRandom(curve.n - 1) + 1
-                print("\(k) in ECKey.swift")
+                //k = secureRandom(curve.n - 1) + 1
+                //k = secureRandom(curve.n - 1)
+                k = curve.n - 18
+
+                if k == 0 {
+                    continue
+                }
+                
                 let R = k * self.curve.G
                 
                 switch R.coordinate {
@@ -104,7 +123,10 @@ public class ECKey {
                     assert(false, "Not affine")
                 }
             }
+            
             s = (e + privateKey * r) / field.int(k)
+            //s = field.int((e.value + privateKey * r.value) / k)
+            
         }
         
         return (r.value, s.value)

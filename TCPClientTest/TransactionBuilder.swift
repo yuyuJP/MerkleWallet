@@ -28,21 +28,23 @@ public class TransactionBuilder {
         return transaction
     }
     
-    public var scriptSignature: NSData {
+    private var scriptSignature: NSData {
         let signature = produceDERSignature()
         let data = NSMutableData()
         data.appendUInt8(UInt8(signature.length + 1))
         data.append(signature as Data)
         data.appendUInt8(0x01) //SIGHASH
         
-        let publicKey = key.publicKeyPoint.toData
-        
+        //let publicKey = key.publicKeyPoint.toData
+        let publicKey = key.publicKeyHexString.hexStringToNSData()
         data.appendUInt8(UInt8(publicKey.length))
         data.append(publicKey as Data)
+        //print(data)
         return data
     }
     
-    public var transactionMessageHash: SHA256Hash {
+    //
+    private var transactionMessageHash: SHA256Hash {
         let sha256Data = Hash256.digest(transactionMessage.bitcoinData)
         return SHA256Hash(sha256Data)
     }

@@ -11,28 +11,34 @@ import Foundation
 public class CoinKey : ECKey {
     let privateKeyPrefix: UInt8
     let publicKeyPrefix: UInt8
+    //let isCompressedPublicKeyAddress: Bool
     
-    public init(privateKeyHex: String, privateKeyPrefix: UInt8, publicKeyPrefix: UInt8, skipPublicKeyGeneration: Bool = true) {
+    public init(privateKeyHex: String, privateKeyPrefix: UInt8, publicKeyPrefix: UInt8, skipPublicKeyGeneration: Bool = true, isCompressedPublicKeyAddress: Bool = true) {
         self.privateKeyPrefix = privateKeyPrefix
         self.publicKeyPrefix = publicKeyPrefix
-        super.init(BigUInt(privateKeyHex, radix: 16)!, ECurve(domain: .Secp256k1), skipPublicKeyGeneration: skipPublicKeyGeneration)
+        //self.isCompressedPublicKeyAddress = isCompressedPublicKeyAddress
+        
+        super.init(BigUInt(privateKeyHex, radix: 16)!, ECurve(domain: .Secp256k1), skipPublicKeyGeneration: skipPublicKeyGeneration, isCompressedPublicKeyAddress: isCompressedPublicKeyAddress)
     }
     
-    public init(privateKeyHex: String, publicKeyHex: String, privateKeyPrefix: UInt8, publicKeyPrefix: UInt8) {
+    public init(privateKeyHex: String, publicKeyHex: String, privateKeyPrefix: UInt8, publicKeyPrefix: UInt8, isCompressedPublicKeyAddress: Bool = true) {
         self.privateKeyPrefix = privateKeyPrefix
         self.publicKeyPrefix = publicKeyPrefix
+        //self.isCompressedPublicKeyAddress = isCompressedPublicKeyAddress
+        
         let point = ECKey.pointFromHex(publicKeyHex, ECurve(domain: .Secp256k1))
-        super.init(privateKey: BigUInt(privateKeyHex, radix: 16)!, publicKeyPoint: point)
+        super.init(privateKey: BigUInt(privateKeyHex, radix: 16)!, publicKeyPoint: point, isCompressedPublicKeyAddress: isCompressedPublicKeyAddress)
     }
     
     // Generates a random Bitcoin keypair
-    public init(privateKeyPrefix: UInt8, publicKeyPrefix: UInt8) {
+    public init(privateKeyPrefix: UInt8, publicKeyPrefix: UInt8, isCompressedPublicKeyAddress: Bool = true) {
         let key = ECKey.createRandom(ECurve(domain: .Secp256k1))
         
         self.privateKeyPrefix = privateKeyPrefix
         self.publicKeyPrefix = publicKeyPrefix
+        //self.isCompressedPublicKeyAddress = isCompressedPublicKeyAddress
         
-        super.init(privateKey: key.privateKey, publicKeyPoint: key.publicKeyPoint)
+        super.init(privateKey: key.privateKey, publicKeyPoint: key.publicKeyPoint, isCompressedPublicKeyAddress: isCompressedPublicKeyAddress)
     }
     
     private var privateKeyPrefixString: String {
@@ -53,11 +59,12 @@ public class CoinKey : ECKey {
     
     
     public var wif : String {
+        
+        if isCompressedPublicKeyAddress {
+            return compressedPubkeyWif
+        }
+        
         let extendedKey = privateKeyPrefixString + privateKeyHexString
-        
-        //let hash1: NSData = SHA256.hexStringDigest(extendedKey)
-        
-        //let hash2: String = SHA256.hexStringDigest(hash1)
         
         let hash = Hash256.hexStringDigestHexString(extendedKey)
         
@@ -72,7 +79,7 @@ public class CoinKey : ECKey {
         return keyWithCheckSum.hexStringToBase58Encoding()
     }
     
-    public var compressedPubkeyWif: String {
+    private var compressedPubkeyWif: String {
         let extendedKey = privateKeyPrefixString + privateKeyHexString
         
         //let hash1: NSData = SHA256.hexStringDigest(extendedKey)
@@ -94,6 +101,10 @@ public class CoinKey : ECKey {
     
     public var publicAddress : String {
         
+        if isCompressedPublicKeyAddress {
+            return compressedPublicKeyPublicAddress
+        }
+        
         let ripemd = Hash160.hexStringDigest(self.publicKeyHexString)
         let extendedRipemd = NSMutableData()
         
@@ -112,8 +123,10 @@ public class CoinKey : ECKey {
         return base58
     }
     
-    public var compressedPublicKeyPublicAddress: String {
+    private var compressedPublicKeyPublicAddress: String {
         let ripemd = Hash160.digest(publicKeyPoint.toCompressedData)
+        //print("rip")
+        //print(ripemd.toHexString())
         let extendedRipemd = NSMutableData()
         
         let versionByte: [UInt8] = [publicKeyPrefix]
