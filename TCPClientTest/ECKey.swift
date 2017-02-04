@@ -107,9 +107,8 @@ public class ECKey {
             
             while r == zero {
                 //k = secureRandom(curve.n - 1) + 1
-                //k = secureRandom(curve.n - 1)
-                k = curve.n - 18
-
+                k = secureRandom(curve.n - 1)
+                
                 if k == 0 {
                     continue
                 }
@@ -124,9 +123,7 @@ public class ECKey {
                 }
             }
             
-            s = (e + privateKey * r) / field.int(k)
-            //s = field.int((e.value + privateKey * r.value) / k)
-            
+            s = (1 / field.int(k)) * (e + privateKey * r)
         }
         
         return (r.value, s.value)

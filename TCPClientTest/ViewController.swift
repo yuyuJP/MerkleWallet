@@ -50,10 +50,10 @@ class ViewController: UIViewController {
     
     func transactionMessageConstructTest() -> TransactionMessage {
         //let txHash = SHA256Hash("8adea22e56cab8dd8bffff9494af3ba9b36240aec10d2be4b47922843b6246dc".hexStringToNSData())
-        let txHash_ = SHA256Hash("7d2c1bf2f8e00acff1521041690f7a114e7e6ee898eb4b1f2641a55ab9e2dd99".hexStringToNSData())
-        let txHash = SHA256Hash("7a4e33753c85b9de2436c23b9b0dc8fd35a8fb1b4022ade193cf546b5ecd3c68".hexStringToNSData())
-        print(txHash_)
-        print(txHash)
+        //let txHash_ = SHA256Hash("ed8dea3271fca5e1bf448c8551dca826dd1b297c3139c5c263d41647082b7b08".hexStringToNSData())
+        let txHash = SHA256Hash("0112728a4a1ef8052e75ac4d0d4f1804077c9554c5d1f8a728a1d3f57d48741e".hexStringToNSData())
+        //print(txHash_)
+        //print(txHash)
         //let testInputScript = "76a914a8151c512572e9cbdcf6b042f259e0b74462012e88ac".hexStringToNSData()
         let testInputScript = "76a91432e741f1bf3264643ea5821ff9b01cad4074ab0d88ac".hexStringToNSData()
         let testOutputScriptData1 = "007a3dba76e82373a9bc545f8951863c28f84221".hexStringToNSData().reversedData
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         let testOutputScript2 = OutputScript.P2PKHScript(hash160: RIPEMD160HASH(testOutputScriptData2))
         
         
-        let outpoint = Transaction.OutPoint(transactionHash: txHash, index: 0x00)
+        let outpoint = Transaction.OutPoint(transactionHash: txHash, index: 0x01)
         let input = Transaction.Input(outPoint: outpoint, scriptSignature: testInputScript, sequence: 0xffffffff)
         let output1 = Transaction.Output(value: 90000000, script: testOutputScript1)
         let output2 = Transaction.Output(value: 9991801, script: testOutputScript2)
