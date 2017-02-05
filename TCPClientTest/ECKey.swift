@@ -97,8 +97,6 @@ public class ECKey {
         let zero = field.int(0)
         let e = field.int(digest)
         
-        //print("e = \(e) digest = \(digest)")
-        
         var s = zero
         var k: BigUInt = 0
         var r = zero
@@ -106,7 +104,7 @@ public class ECKey {
         while s == field.int(0) {
             
             while r == zero {
-                //k = secureRandom(curve.n - 1) + 1
+                
                 k = secureRandom(curve.n - 1)
                 
                 if k == 0 {
