@@ -21,7 +21,7 @@ public class CFController: CFConnectionDelegate {
     private var blockHashesDownloaded : [InventoryVector] = []
     private var blockHashesCountDownloaded = 0
     
-    private var pendingSendTransaction: [Transaction] = []
+    private var pendingTransactions: [Transaction] = []
     
     public init(hostname: String, port: UInt16, network: [UInt8]) {
         self.hostname = hostname
@@ -156,11 +156,11 @@ public class CFController: CFConnectionDelegate {
     }
     
     public func sendTransaction(transaction: Transaction) {
+        self.pendingTransactions.append(transaction)
         let inv = InventoryVector(type: .Transaction, hash: transaction.hash)
         print("transaction hash: \(transaction.hash)")
         let invMessage = InventoryMessage(inventoryVectors: [inv])
         self.connection?.sendMessageWithPayload(invMessage)
-        self.pendingSendTransaction.append(transaction)
     }
     
     public func cfConnection(peerConnection: CFConnection, didReceiveMessage message: PeerConnectionMessage) {
@@ -217,9 +217,10 @@ public class CFController: CFConnectionDelegate {
         case let .GetDataMessage(getDataMessage):
             print("received getDataMessage \(getDataMessage)")
             for inv in getDataMessage.inventoryVectors {
-                for tx in pendingSendTransaction {
-                    if inv.hash == tx.hash {
-                        self.connection?.sendMessageWithPayload(tx)
+                for i in 0 ..< pendingTransactions.count {
+                    if inv.hash == pendingTransactions[i].hash {
+                        self.connection?.sendMessageWithPayload(pendingTransactions[i])
+                        pendingTransactions.remove(at: i)
                     }
                 }
             }

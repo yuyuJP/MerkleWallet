@@ -37,20 +37,9 @@ public class BloomFilter {
     private func filterAdd(bytes: [UInt8]) {
         for i in 0 ..< hash_funcs {
             
-            /*
-            let hash_value = Murmurhash3.hash32Bytes(key: bytes, seed: i &* 0xfba4c795 &+ tweak)
-            let adjust_hash_value = hash_value % UInt32(byteArray.count * 8)
-            let idx = adjust_hash_value >> 3
-            
-            //let value = UInt8((1 << (7 & hash_value)))
-            let value = UInt8((1 << (7 & adjust_hash_value)))
-            byteArray[Int(idx)] = value
-            */
-            
             let idx = self.hash(byteData: bytes, hashNum: i)
             
             byteArray[Int(idx >> 3)] |= UInt8(1 << (7 & idx))
-            
         }
     }
     
