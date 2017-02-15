@@ -77,6 +77,11 @@ public class CoinKey : ECKey {
         let keyWithCheckSum = extendedKey + checkSum
         
         return keyWithCheckSum.hexStringToBase58Encoding()
+        
+        /*let wif_ = Wif(privateKeyPrefix: privateKeyPrefix)
+        wif_.importLegitimateWif(keyWithCheckSum.hexStringToBase58Encoding())
+        
+        return wif_*/
     }
     
     private var compressedPubkeyWif: String {
@@ -97,6 +102,11 @@ public class CoinKey : ECKey {
         let keyWithCheckSum = extendedKey + checkSum + "01"
         
         return keyWithCheckSum.hexStringToBase58Encoding()
+        /*let wif_ = Wif(privateKeyPrefix: privateKeyPrefix)
+        wif_.importLegitimateWif(keyWithCheckSum.hexStringToBase58Encoding())
+        
+        return wif_*/
+
     }
     
     public var publicAddress : String {

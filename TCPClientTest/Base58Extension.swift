@@ -12,6 +12,16 @@ private let ALPHABET : String = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmno
 
 extension String {
     
+    func base58AlphabetContain() -> Bool {
+        for c in self.characters {
+            let cStr = String(c)
+            if !ALPHABET.contains(cStr) {
+                return false
+            }
+        }
+        return true
+    }
+    
     func hexStringToBase58Encoding() -> String {
         let bigNum = BigUInt(self, radix: 16)!
         

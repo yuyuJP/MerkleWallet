@@ -94,14 +94,14 @@ public class CFController: CFConnectionDelegate {
                 self.connection?.sendMessageWithPayload(memPoolMessage)
             
                 
-                /*let blkHash = SHA256Hash("0000000053be966d2beb2aa8f87b2cba790422b3efc096f6e1aa36a69a048335".hexStringToNSData())
+                let blkHash = SHA256Hash("000000000000029afcb87730710e29b95bc574af01af4c4953ea317abda93516".hexStringToNSData())
                 
             
                 let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)
                 
                 let msg = GetDataMessage(inventoryVectors: [inv])
                 self.connection?.sendMessageWithPayload(msg)
-                 */
+                
                 
                 /*print("Sending getHeaders Message")
                 
@@ -186,7 +186,6 @@ public class CFController: CFConnectionDelegate {
             
         case let .InventoryMessage(inventoryMessage):
            
-            
             queue.addOperation {
                 self.blockHashesCountDownloaded += inventoryMessage.inventoryVectors.count
                 print("\(self.blockHashesCountDownloaded) block hashes received / \(self.peerVersion!.blockStartHeight)")
@@ -203,7 +202,7 @@ public class CFController: CFConnectionDelegate {
             
         case let .MerkleBlockMessage(merkleBlockMessage):
             print("Received merkle block")
-            //print(merkleBlockMessage)
+            print(merkleBlockMessage)
             
         case let .TransactionMessage(transactionMessage):
             print(transactionMessage)

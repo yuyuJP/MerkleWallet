@@ -19,6 +19,7 @@
 		E102D7CC1DB260480078E4C4 /* ByteConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7CB1DB260480078E4C4 /* ByteConverter.swift */; };
 		E102D7CF1DB34ABB0078E4C4 /* CFConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7CE1DB34ABB0078E4C4 /* CFConnection.swift */; };
 		E102D7D11DB34AC70078E4C4 /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7D01DB34AC70078E4C4 /* Thread.swift */; };
+		E1078AAD1E54AC39008AE18B /* Wif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1078AAC1E54AC39008AE18B /* Wif.swift */; };
 		E114548F1DC88F48002122DA /* BigDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114548E1DC88F48002122DA /* BigDigit.swift */; };
 		E11454A51DC88F66002122DA /* BigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454911DC88F66002122DA /* BigInt.swift */; };
 		E11454A61DC88F66002122DA /* BigIntAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454921DC88F66002122DA /* BigIntAddition.swift */; };
@@ -137,6 +138,7 @@
 		E102D7CB1DB260480078E4C4 /* ByteConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByteConverter.swift; sourceTree = "<group>"; };
 		E102D7CE1DB34ABB0078E4C4 /* CFConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFConnection.swift; sourceTree = "<group>"; };
 		E102D7D01DB34AC70078E4C4 /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
+		E1078AAC1E54AC39008AE18B /* Wif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wif.swift; sourceTree = "<group>"; };
 		E114548E1DC88F48002122DA /* BigDigit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigDigit.swift; sourceTree = "<group>"; };
 		E11454911DC88F66002122DA /* BigInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigInt.swift; sourceTree = "<group>"; };
 		E11454921DC88F66002122DA /* BigIntAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigIntAddition.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 			children = (
 				E159FD771DED1802005856FB /* CoinKey.swift */,
 				E1AACD381DF87A04005EC11C /* BitcoinTestnet.swift */,
+				E1078AAC1E54AC39008AE18B /* Wif.swift */,
 				E159FD6B1DED16E7005856FB /* ECKey */,
 			);
 			name = CoinKey;
@@ -669,6 +672,7 @@
 				E11454AA1DC88F66002122DA /* BigUInt Data.swift in Sources */,
 				E11454A51DC88F66002122DA /* BigInt.swift in Sources */,
 				E114548F1DC88F48002122DA /* BigDigit.swift in Sources */,
+				E1078AAD1E54AC39008AE18B /* Wif.swift in Sources */,
 				E159FD7D1DED1A55005856FB /* Hash256.swift in Sources */,
 				E1D130D51DBD0CB70028651C /* Message.swift in Sources */,
 				E1AFC97B1DC887250002419D /* VersionAckMessage.swift in Sources */,
