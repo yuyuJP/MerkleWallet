@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
-               BuildableName = "TCPClientTest.app"
-               BlueprintName = "TCPClientTest"
-               ReferencedContainer = "container:TCPClientTest.xcodeproj">
+               BuildableName = "SwiftBitcoin.app"
+               BlueprintName = "SwiftBitcoin"
+               ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E102D7A51DB1C4A00078E4C4"
-               BuildableName = "TCPClientTestTests.xctest"
-               BlueprintName = "TCPClientTestTests"
-               ReferencedContainer = "container:TCPClientTest.xcodeproj">
+               BuildableName = "SwiftBitcoinTests.xctest"
+               BlueprintName = "SwiftBitcoinTests"
+               ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E102D7B01DB1C4A00078E4C4"
-               BuildableName = "TCPClientTestUITests.xctest"
-               BlueprintName = "TCPClientTestUITests"
-               ReferencedContainer = "container:TCPClientTest.xcodeproj">
+               BuildableName = "SwiftBitcoinUITests.xctest"
+               BlueprintName = "SwiftBitcoinUITests"
+               ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
-            BuildableName = "TCPClientTest.app"
-            BlueprintName = "TCPClientTest"
-            ReferencedContainer = "container:TCPClientTest.xcodeproj">
+            BuildableName = "SwiftBitcoin.app"
+            BlueprintName = "SwiftBitcoin"
+            ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
-            BuildableName = "TCPClientTest.app"
-            BlueprintName = "TCPClientTest"
-            ReferencedContainer = "container:TCPClientTest.xcodeproj">
+            BuildableName = "SwiftBitcoin.app"
+            BlueprintName = "SwiftBitcoin"
+            ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
-            BuildableName = "TCPClientTest.app"
-            BlueprintName = "TCPClientTest"
-            ReferencedContainer = "container:TCPClientTest.xcodeproj">
+            BuildableName = "SwiftBitcoin.app"
+            BlueprintName = "SwiftBitcoin"
+            ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

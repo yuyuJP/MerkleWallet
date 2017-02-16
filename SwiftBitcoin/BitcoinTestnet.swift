@@ -22,6 +22,7 @@ public class BitcoinTestnet : CoinKey {
         let wif_candidate = Wif(privateKeyPrefix: 0xef)
         if wif_candidate.importWif(wif) {
             super.init(privateKeyHex: wif_candidate.privateKeyHexString, privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, skipPublicKeyGeneration: false, isCompressedPublicKeyAddress: wif_candidate.isCompressedPublicKey)
+        
         } else {
             return nil
         }
