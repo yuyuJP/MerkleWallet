@@ -44,6 +44,7 @@
 		E11454B81DC88F66002122DA /* Bitwise Hacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454A41DC88F66002122DA /* Bitwise Hacks.swift */; };
 		E11454BA1DC894EC002122DA /* ShiftOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454B91DC894EC002122DA /* ShiftOperations.swift */; };
 		E114A63C1E057DA500A34669 /* MerkleBlockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */; };
+		E122478D1E56E26D00E2DA02 /* UserKeyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */; };
 		E13C83A31DC5B70E004E35EE /* PeerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C83A21DC5B70E004E35EE /* PeerAddress.swift */; };
 		E13C83A51DC5B7B5004E35EE /* PeerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C83A41DC5B7B5004E35EE /* PeerServices.swift */; };
 		E150E49A1DBA88720066B533 /* VarInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150E4991DBA88720066B533 /* VarInt.swift */; };
@@ -173,6 +174,7 @@
 		E11454A41DC88F66002122DA /* Bitwise Hacks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bitwise Hacks.swift"; sourceTree = "<group>"; };
 		E11454B91DC894EC002122DA /* ShiftOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftOperations.swift; sourceTree = "<group>"; };
 		E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerkleBlockMessage.swift; sourceTree = "<group>"; };
+		E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserKeyInfo.swift; sourceTree = "<group>"; };
 		E13C83A21DC5B70E004E35EE /* PeerAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerAddress.swift; sourceTree = "<group>"; };
 		E13C83A41DC5B7B5004E35EE /* PeerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerServices.swift; sourceTree = "<group>"; };
 		E150E4991DBA88720066B533 /* VarInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarInt.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				E102D7C51DB202DD0078E4C4 /* TestVersionMessage.swift */,
 				E102D7CB1DB260480078E4C4 /* ByteConverter.swift */,
 				E1C7AD421DBA159F003C8A80 /* MessagePrinter.swift */,
+				E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */,
 				E1AACD271DF6618F005EC11C /* BloomFilter */,
 				E10BDB3E1DC9DA6400220665 /* Messages */,
 				E159FD7B1DED1924005856FB /* Crypto */,
@@ -839,6 +842,7 @@
 				E102D7961DB1C4A00078E4C4 /* AppDelegate.swift in Sources */,
 				E11454AF1DC88F66002122DA /* BigUInt Multiplication.swift in Sources */,
 				E11454B21DC88F66002122DA /* BigUInt Random.swift in Sources */,
+				E122478D1E56E26D00E2DA02 /* UserKeyInfo.swift in Sources */,
 				E11454B11DC88F66002122DA /* BigUInt Radix Conversion.swift in Sources */,
 				E1D4EC351DC33FDA00C15A89 /* VersionMessage.swift in Sources */,
 				E150E49C1DBB97850066B533 /* VarString.swift in Sources */,

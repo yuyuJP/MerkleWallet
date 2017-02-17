@@ -57,7 +57,12 @@ public class ECKey {
         
         if isCompressedPublicKeyAddress {
             return compressedPublicKeyHexString
+        } else {
+            return uncompressedPublicKeyHexString
         }
+    }
+    
+    public var uncompressedPublicKeyHexString: String {
         
         switch publicKeyPoint.coordinate {
         case let .Affine(x: x, y: y):

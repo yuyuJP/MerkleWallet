@@ -133,6 +133,7 @@ public class CoinKey : ECKey {
         return base58
     }
     
+    
     private var compressedPublicKeyPublicAddress: String {
         let ripemd = Hash160.digest(publicKeyPoint.toCompressedData)
         //print("rip")

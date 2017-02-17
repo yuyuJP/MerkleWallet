@@ -17,6 +17,10 @@ public class BitcoinTestnet : CoinKey {
         super.init(privateKeyHex: privateKeyHex, privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, skipPublicKeyGeneration: false, isCompressedPublicKeyAddress: true)
     }
     
+    public init(privateKeyHex: String, publicKeyHex: String) {
+        super.init(privateKeyHex: privateKeyHex, publicKeyHex: publicKeyHex, privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, isCompressedPublicKeyAddress: true)
+    }
+    
     public init?(wif: String) {
         
         let wif_candidate = Wif(privateKeyPrefix: 0xef)
