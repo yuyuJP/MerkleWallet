@@ -21,10 +21,6 @@ class ViewController: UIViewController {
         if let userKey = UserKeyInfo.loadAll().first {
             
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
-            
-            bloomFilterSet(publicKeyHex: userKey.publicKey, publicKeyHashHex: userKey.publicKeyHash)
-            
-            establishConnection()
         
         } else {
             print("No user info. Generating a new key")
@@ -32,6 +28,10 @@ class ViewController: UIViewController {
             let newUserKeyInfo = UserKeyInfo.create(key: key)
             newUserKeyInfo.save()
         }
+        
+        bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
+        
+        establishConnection()
     }
     
     func bloomFilterSet(publicKeyHex: String, publicKeyHashHex: String) {
@@ -45,19 +45,17 @@ class ViewController: UIViewController {
     }
     
     func establishConnection() {
-        con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
+        //con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
+        con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
         //con = CFController(hostname: "192.168.0.12", port: 18333, network: NetworkMagicBytes.magicBytes())
         
         //con.start()
     }
     
     func transactionMessageConstructTest() -> TransactionMessage {
-        //let txHash = SHA256Hash("8adea22e56cab8dd8bffff9494af3ba9b36240aec10d2be4b47922843b6246dc".hexStringToNSData())
-        //let txHash_ = SHA256Hash("ed8dea3271fca5e1bf448c8551dca826dd1b297c3139c5c263d41647082b7b08".hexStringToNSData())
+        
         let txHash = SHA256Hash("0112728a4a1ef8052e75ac4d0d4f1804077c9554c5d1f8a728a1d3f57d48741e".hexStringToNSData())
-        //print(txHash_)
-        //print(txHash)
-        //let testInputScript = "76a914a8151c512572e9cbdcf6b042f259e0b74462012e88ac".hexStringToNSData()
+    
         let testInputScript = "76a91432e741f1bf3264643ea5821ff9b01cad4074ab0d88ac".hexStringToNSData()
         let testOutputScriptData1 = "007a3dba76e82373a9bc545f8951863c28f84221".hexStringToNSData().reversedData
         let testOutputScriptData2 = "90b2e2241ff5ee6b60a65ec5729a773eefa3ad5f".hexStringToNSData().reversedData

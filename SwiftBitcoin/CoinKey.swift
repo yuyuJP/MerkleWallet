@@ -153,7 +153,7 @@ public class CoinKey : ECKey {
         return base58
     }
     
-    public var publicKeyHash: String {
+    public var publicKeyHashHex: String {
         
         if isCompressedPublicKeyAddress {
             return compressedPublicKeyHash

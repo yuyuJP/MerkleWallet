@@ -37,7 +37,7 @@ class UserKeyInfo: Object {
         userKeyInfo.privateKey = key.privateKeyHexString
         userKeyInfo.uncompressedPublicKey = key.uncompressedPublicKeyHexString
         userKeyInfo.compressedPublicKey = key.compressedPublicKeyHexString
-        userKeyInfo.publicKeyHash = key.publicKeyHash
+        userKeyInfo.publicKeyHash = key.publicKeyHashHex
         userKeyInfo.isCompressedPublicKey = key.isCompressedPublicKeyAddress
         
         return userKeyInfo
