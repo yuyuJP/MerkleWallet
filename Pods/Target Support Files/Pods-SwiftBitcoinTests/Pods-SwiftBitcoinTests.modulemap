@@ -1,0 +1,6 @@
+framework module Pods_SwiftBitcoinTests {
+  umbrella header "Pods-SwiftBitcoinTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
