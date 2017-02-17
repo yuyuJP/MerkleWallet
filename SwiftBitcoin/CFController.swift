@@ -94,7 +94,9 @@ public class CFController: CFConnectionDelegate {
                 self.connection?.sendMessageWithPayload(memPoolMessage)
             
                 
-                let blkHash = SHA256Hash("000000000000029afcb87730710e29b95bc574af01af4c4953ea317abda93516".hexStringToNSData())
+                //let blkHash = SHA256Hash("000000000000029afcb87730710e29b95bc574af01af4c4953ea317abda93516".hexStringToNSData())
+                
+                let blkHash = SHA256Hash("000000000035649ee192038997a3daefec393e4ed137c7ad518f841276c52cd9".hexStringToNSData())
                 
             
                 let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)

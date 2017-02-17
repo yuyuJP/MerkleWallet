@@ -19,8 +19,8 @@ class ViewController: UIViewController {
         //key = BitcoinTestnet(privateKeyHex: "2ab9b2aa6a4be7ad2ab9b2aa1c6b6a292163af6b2ab9b2aad868844dd3d22c39")
         //key = BitcoinTestnet(privateKeyHex: "16260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
         key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
-        
-        //print(key.publicKeyHexString)
+    
+        print(key.publicKeyHash)
         //key = BitcoinTestnet(privateKeyHex: "a0dc65ffca799873cbea0ac274015b9526505daaaed385155425f7337704883e")
         //let pubKeyData = "n3TLeMCT6vQy4QoyqCp9nPbN9s8KS86Kmk".base58StringToNSData()
         
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         
         let data = NSData(bytes: pubKeyData, length: pubKeyData.count)
         
-        //print(data)
+        print(data)
         
         let hash_funcs : UInt32 = 10
         let tweak : UInt32 = 0
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
         //con = CFController(hostname: "192.168.0.12", port: 18333, network: NetworkMagicBytes.magicBytes())
         
-        //con.start()
+        con.start()
         
     }
     

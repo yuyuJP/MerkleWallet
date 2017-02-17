@@ -152,4 +152,19 @@ public class CoinKey : ECKey {
         return base58
     }
     
+    public var publicKeyHash: String {
+        
+        if isCompressedPublicKeyAddress {
+            return compressedPublicKeyHash
+        }
+        
+        let ripemd = Hash160.hexStringDigestHexString(self.publicKeyHexString)
+        return ripemd
+    }
+    
+    private var compressedPublicKeyHash: String {
+        let ripemd = Hash160.digestHexString(publicKeyPoint.toCompressedData)
+        return ripemd
+    }
+    
 }
