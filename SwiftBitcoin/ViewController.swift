@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Realm
 import RealmSwift
 
 class ViewController: UIViewController {
@@ -19,19 +20,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         if let userKey = UserKeyInfo.loadAll().first {
-            
+            print(userKey)
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
         
         } else {
-            print("No user info. Generating a new key")
+            print("No user info. Generating a new key.")
             key = BitcoinTestnet()
             let newUserKeyInfo = UserKeyInfo.create(key: key)
             newUserKeyInfo.save()
         }
         
-        bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
+        //bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        establishConnection()
+        //establishConnection()
+        
+        //dbTest()
     }
     
     func bloomFilterSet(publicKeyHex: String, publicKeyHashHex: String) {
@@ -50,6 +53,26 @@ class ViewController: UIViewController {
         //con = CFController(hostname: "192.168.0.12", port: 18333, network: NetworkMagicBytes.magicBytes())
         
         //con.start()
+    }
+    
+    func dbTest() {
+        if let userKey = UserKeyInfo.loadAll().first {
+            let realm = UserKeyInfo.realm
+            realm.beginWrite()
+            
+            let testTxoutput = TransactionOutputInfo()
+            //let txInfo : [String : Any] = ["txHash" : "", "value" : 100000000, "index" : 1]
+            testTxoutput.txHash = "0112728a4a1ef8052e75ac4d0d4f1804077c9554c5d1f8a728a1d3f57d48741e"
+            testTxoutput.value = 100000000
+            testTxoutput.index = 1
+            
+            userKey.txoutputs.add(testTxoutput)
+            
+            try! realm.commitWrite()
+            
+        } else {
+            print("no key")
+        }
     }
     
     func transactionMessageConstructTest() -> TransactionMessage {

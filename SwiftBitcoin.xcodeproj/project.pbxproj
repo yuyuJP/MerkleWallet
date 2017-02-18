@@ -45,6 +45,7 @@
 		E11454BA1DC894EC002122DA /* ShiftOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454B91DC894EC002122DA /* ShiftOperations.swift */; };
 		E114A63C1E057DA500A34669 /* MerkleBlockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */; };
 		E122478D1E56E26D00E2DA02 /* UserKeyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */; };
+		E122478F1E582E0500E2DA02 /* TransactionOutputInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */; };
 		E13C83A31DC5B70E004E35EE /* PeerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C83A21DC5B70E004E35EE /* PeerAddress.swift */; };
 		E13C83A51DC5B7B5004E35EE /* PeerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C83A41DC5B7B5004E35EE /* PeerServices.swift */; };
 		E150E49A1DBA88720066B533 /* VarInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150E4991DBA88720066B533 /* VarInt.swift */; };
@@ -175,6 +176,7 @@
 		E11454B91DC894EC002122DA /* ShiftOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftOperations.swift; sourceTree = "<group>"; };
 		E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerkleBlockMessage.swift; sourceTree = "<group>"; };
 		E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserKeyInfo.swift; sourceTree = "<group>"; };
+		E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOutputInfo.swift; sourceTree = "<group>"; };
 		E13C83A21DC5B70E004E35EE /* PeerAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerAddress.swift; sourceTree = "<group>"; };
 		E13C83A41DC5B7B5004E35EE /* PeerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerServices.swift; sourceTree = "<group>"; };
 		E150E4991DBA88720066B533 /* VarInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarInt.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				E102D7CB1DB260480078E4C4 /* ByteConverter.swift */,
 				E1C7AD421DBA159F003C8A80 /* MessagePrinter.swift */,
 				E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */,
+				E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */,
 				E1AACD271DF6618F005EC11C /* BloomFilter */,
 				E10BDB3E1DC9DA6400220665 /* Messages */,
 				E159FD7B1DED1924005856FB /* Crypto */,
@@ -853,6 +856,7 @@
 				E15723361E0E1ADC00BB2523 /* RIPEMD160Hash.swift in Sources */,
 				E102D7D11DB34AC70078E4C4 /* Thread.swift in Sources */,
 				E11454AE1DC88F66002122DA /* BigUInt Hashing.swift in Sources */,
+				E122478F1E582E0500E2DA02 /* TransactionOutputInfo.swift in Sources */,
 				E18D547F1E015441009D2715 /* GetBlocksMessage.swift in Sources */,
 				E11454A61DC88F66002122DA /* BigIntAddition.swift in Sources */,
 				E11454A81DC88F66002122DA /* BigUInt Bitwise Ops.swift in Sources */,
