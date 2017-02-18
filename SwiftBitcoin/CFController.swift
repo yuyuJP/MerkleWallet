@@ -96,7 +96,7 @@ public class CFController: CFConnectionDelegate {
                 
                 //let blkHash = SHA256Hash("000000000000029afcb87730710e29b95bc574af01af4c4953ea317abda93516".hexStringToNSData())
                 
-                let blkHash = SHA256Hash("00000000ac2fc0ad2e30963cd52e73962e94c4e49d7d1abbea73b667fdcfeafd".hexStringToNSData())
+                let blkHash = SHA256Hash("000000000000029afcb87730710e29b95bc574af01af4c4953ea317abda93516".hexStringToNSData())
                 
             
                 let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)
@@ -207,7 +207,10 @@ public class CFController: CFConnectionDelegate {
             print(merkleBlockMessage)
             
         case let .TransactionMessage(transactionMessage):
-            print(transactionMessage)
+            //print(transactionMessage)
+            for input in transactionMessage.inputs {
+                print(input.scriptSignatureDetail!)
+            }
             /*for output in transactionMessage.outputs {
                 let script = output.script
                 print(script)

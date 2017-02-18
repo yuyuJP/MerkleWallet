@@ -22,6 +22,7 @@ public extension Transaction {
         public let outPoint: OutPoint
         
         public let scriptSignature: NSData
+        //public let scriptSignature: TransactionInputScriptSignature
         
         public let sequence: UInt32
         
@@ -29,6 +30,19 @@ public extension Transaction {
             self.outPoint = outPoint
             self.scriptSignature = scriptSignature
             self.sequence = sequence
+        }
+        
+        public var scriptSignatureDetail: TransactionInputScriptSignature? {
+            let scriptSigStream = InputStream(data: scriptSignature as Data)
+            scriptSigStream.open()
+            
+            guard let scriptSignature = TransactionInputScriptSignature.fromBitcoinStream(scriptSigStream) else {
+                return nil
+            }
+            
+            scriptSigStream.close()
+            
+            return scriptSignature
         }
     }
 }
@@ -54,16 +68,17 @@ extension Transaction.Input: BitcoinSerializable {
             return nil
         }
         
-        guard let scriptSignature = stream.readData(Int(scriptSignatureLength)) else {
+        guard let scriptSignatureData = stream.readData(Int(scriptSignatureLength)) else {
             print("Failed to parse scriptSignature in Transaction.Input")
             return nil
         }
+        
         guard let sequence = stream.readUInt32() else {
             print("Failed to parse sequence in Transaction.Input")
             return nil
         }
         
-        return Transaction.Input(outPoint: outPoint, scriptSignature: scriptSignature, sequence: sequence)
+        return Transaction.Input(outPoint: outPoint, scriptSignature: scriptSignatureData, sequence: sequence)
         
     }
 }

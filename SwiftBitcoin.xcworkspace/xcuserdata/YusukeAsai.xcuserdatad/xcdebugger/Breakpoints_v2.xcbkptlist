@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "509097913.166503"
+            timestampString = "509128458.306064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "dbTest()"
             landmarkType = "7">
          </BreakpointContent>

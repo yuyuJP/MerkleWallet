@@ -46,6 +46,7 @@
 		E114A63C1E057DA500A34669 /* MerkleBlockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */; };
 		E122478D1E56E26D00E2DA02 /* UserKeyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */; };
 		E122478F1E582E0500E2DA02 /* TransactionOutputInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */; };
+		E12247911E58AB4300E2DA02 /* TransactionInputScriptSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12247901E58AB4300E2DA02 /* TransactionInputScriptSignature.swift */; };
 		E13C83A31DC5B70E004E35EE /* PeerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C83A21DC5B70E004E35EE /* PeerAddress.swift */; };
 		E13C83A51DC5B7B5004E35EE /* PeerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C83A41DC5B7B5004E35EE /* PeerServices.swift */; };
 		E150E49A1DBA88720066B533 /* VarInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150E4991DBA88720066B533 /* VarInt.swift */; };
@@ -177,6 +178,7 @@
 		E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerkleBlockMessage.swift; sourceTree = "<group>"; };
 		E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserKeyInfo.swift; sourceTree = "<group>"; };
 		E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOutputInfo.swift; sourceTree = "<group>"; };
+		E12247901E58AB4300E2DA02 /* TransactionInputScriptSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInputScriptSignature.swift; sourceTree = "<group>"; };
 		E13C83A21DC5B70E004E35EE /* PeerAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerAddress.swift; sourceTree = "<group>"; };
 		E13C83A41DC5B7B5004E35EE /* PeerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerServices.swift; sourceTree = "<group>"; };
 		E150E4991DBA88720066B533 /* VarInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarInt.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				E160A31B1DFFA02C00915C94 /* Transaction.swift */,
 				E160A31F1DFFA26100915C94 /* TransactionOutput.swift */,
 				E160A3211DFFA43100915C94 /* TransactionInput.swift */,
+				E12247901E58AB4300E2DA02 /* TransactionInputScriptSignature.swift */,
 				E160A31D1DFFA08400915C94 /* TransactionOutPoint.swift */,
 				E160A3231DFFA69300915C94 /* TransactionLockTime.swift */,
 				E1A92CED1E14ECE000811E4C /* TransactionBuilder.swift */,
@@ -847,6 +850,7 @@
 				E11454B21DC88F66002122DA /* BigUInt Random.swift in Sources */,
 				E122478D1E56E26D00E2DA02 /* UserKeyInfo.swift in Sources */,
 				E11454B11DC88F66002122DA /* BigUInt Radix Conversion.swift in Sources */,
+				E12247911E58AB4300E2DA02 /* TransactionInputScriptSignature.swift in Sources */,
 				E1D4EC351DC33FDA00C15A89 /* VersionMessage.swift in Sources */,
 				E150E49C1DBB97850066B533 /* VarString.swift in Sources */,
 				E159FD6F1DED175A005856FB /* NSData+HexString.swift in Sources */,

@@ -15,6 +15,6 @@ class TransactionOutputInfo: RLMObject {
     dynamic var value: Int = 0
     dynamic var index: Int = 0
     dynamic var isUTXO: Bool = true
-    let userInfos = LinkingObjects(fromType: UserKeyInfo.self, property: "txoutputs")
+    private let userInfos = LinkingObjects(fromType: UserKeyInfo.self, property: "txoutputs")
     var userInfo: UserKeyInfo? { return userInfos.first }
 }

@@ -21,7 +21,9 @@ class ViewController: UIViewController {
         
         if let userKey = UserKeyInfo.loadAll().first {
             print(userKey)
-            key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
+            //key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
+            key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
+            print(key.publicKeyHexString)
         
         } else {
             print("No user info. Generating a new key.")
@@ -30,9 +32,9 @@ class ViewController: UIViewController {
             newUserKeyInfo.save()
         }
         
-        //bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
+        bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        //establishConnection()
+        establishConnection()
         
         //dbTest()
     }
@@ -52,7 +54,7 @@ class ViewController: UIViewController {
         con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
         //con = CFController(hostname: "192.168.0.12", port: 18333, network: NetworkMagicBytes.magicBytes())
         
-        //con.start()
+        con.start()
     }
     
     func dbTest() {
