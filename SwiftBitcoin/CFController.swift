@@ -208,8 +208,9 @@ public class CFController: CFConnectionDelegate {
             
         case let .TransactionMessage(transactionMessage):
             //print(transactionMessage)
-            for input in transactionMessage.inputs {
-                print(input.scriptSignatureDetail!)
+            for output in transactionMessage.outputs {
+                print(output.script.hash160.bitcoinData.toHexString())
+                //print(input.scriptSignatureDetail!)
             }
             /*for output in transactionMessage.outputs {
                 let script = output.script
