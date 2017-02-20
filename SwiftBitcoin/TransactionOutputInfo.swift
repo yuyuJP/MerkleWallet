@@ -7,14 +7,11 @@
 //
 
 import Foundation
-import Realm
 import RealmSwift
 
-class TransactionOutputInfo: RLMObject {
-    dynamic var txHash = ""
+class TransactionOutputInfo: Object {
+    dynamic var pubKeyHash = ""
     dynamic var value: Int = 0
-    dynamic var index: Int = 0
-    dynamic var isUTXO: Bool = true
-    private let userInfos = LinkingObjects(fromType: UserKeyInfo.self, property: "txoutputs")
-    var userInfo: UserKeyInfo? { return userInfos.first }
+    private let txs = LinkingObjects(fromType: TransactionInfo.self, property: "output")
+    var inverse_tx: TransactionInfo? { return txs.first }
 }

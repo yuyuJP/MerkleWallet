@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         if let userKey = UserKeyInfo.loadAll().first {
-            //print(userKey)
+            print(userKey)
             //key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
             key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
             print(key.publicAddress)
@@ -56,11 +56,11 @@ class ViewController: UIViewController {
         con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
         //con = CFController(hostname: "192.168.0.12", port: 18333, network: NetworkMagicBytes.magicBytes())
         
-        con.start()
+        //con.start()
     }
     
     func dbTest() {
-        if let userKey = UserKeyInfo.loadAll().first {
+        /*if let userKey = UserKeyInfo.loadAll().first {
             let realm = UserKeyInfo.realm
             realm.beginWrite()
             
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
             
         } else {
             print("no key")
-        }
+        }*/
     }
     
     func transactionMessageConstructTest() -> TransactionMessage {

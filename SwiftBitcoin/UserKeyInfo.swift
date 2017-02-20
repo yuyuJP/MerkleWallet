@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Realm
 import RealmSwift
 
 class UserKeyInfo: Object {
@@ -20,7 +19,8 @@ class UserKeyInfo: Object {
     dynamic var publicKeyHash = ""
     dynamic var isCompressedPublicKey: Bool = false
     
-    dynamic var txoutputs = RLMArray(objectClassName: TransactionOutputInfo.className())
+    //dynamic var txoutputs = RLMArray(objectClassName: TransactionOutputInfo.className())
+    let txs = List<TransactionInfo>()
     
     public var publicKey: String {
         if isCompressedPublicKey {

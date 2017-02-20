@@ -77,6 +77,10 @@
 		E17431111DC8BE8B0002BBFD /* CFController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17431101DC8BE8B0002BBFD /* CFController.swift */; };
 		E18D547F1E015441009D2715 /* GetBlocksMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D547E1E015441009D2715 /* GetBlocksMessage.swift */; };
 		E18D54811E0158DC009D2715 /* InventoryMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D54801E0158DC009D2715 /* InventoryMessage.swift */; };
+		E193B9761E5ACC0400777236 /* TransactionDataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */; };
+		E193B9781E5ACE5100777236 /* TransactionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193B9771E5ACE5100777236 /* TransactionInfo.swift */; };
+		E193B97A1E5ACF1500777236 /* TransactionInputInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193B9791E5ACF1500777236 /* TransactionInputInfo.swift */; };
+		E193B97C1E5AD27200777236 /* TransactionOutPointInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193B97B1E5AD27200777236 /* TransactionOutPointInfo.swift */; };
 		E1A819EC1DFDA5B700219B10 /* InventoryVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A819EB1DFDA5B700219B10 /* InventoryVector.swift */; };
 		E1A92CEC1E14E27100811E4C /* OPCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A92CEB1E14E27100811E4C /* OPCode.swift */; };
 		E1A92CEE1E14ECE000811E4C /* TransactionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A92CED1E14ECE000811E4C /* TransactionBuilder.swift */; };
@@ -209,6 +213,10 @@
 		E17431101DC8BE8B0002BBFD /* CFController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFController.swift; sourceTree = "<group>"; };
 		E18D547E1E015441009D2715 /* GetBlocksMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBlocksMessage.swift; sourceTree = "<group>"; };
 		E18D54801E0158DC009D2715 /* InventoryMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryMessage.swift; sourceTree = "<group>"; };
+		E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDataStoreManager.swift; sourceTree = "<group>"; };
+		E193B9771E5ACE5100777236 /* TransactionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInfo.swift; sourceTree = "<group>"; };
+		E193B9791E5ACF1500777236 /* TransactionInputInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInputInfo.swift; sourceTree = "<group>"; };
+		E193B97B1E5AD27200777236 /* TransactionOutPointInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOutPointInfo.swift; sourceTree = "<group>"; };
 		E1A819EB1DFDA5B700219B10 /* InventoryVector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryVector.swift; sourceTree = "<group>"; };
 		E1A92CEB1E14E27100811E4C /* OPCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPCode.swift; sourceTree = "<group>"; };
 		E1A92CED1E14ECE000811E4C /* TransactionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionBuilder.swift; sourceTree = "<group>"; };
@@ -320,8 +328,8 @@
 				E102D7C51DB202DD0078E4C4 /* TestVersionMessage.swift */,
 				E102D7CB1DB260480078E4C4 /* ByteConverter.swift */,
 				E1C7AD421DBA159F003C8A80 /* MessagePrinter.swift */,
-				E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */,
-				E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */,
+				E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */,
+				E193B97D1E5AD8D000777236 /* Local-DB */,
 				E1AACD271DF6618F005EC11C /* BloomFilter */,
 				E10BDB3E1DC9DA6400220665 /* Messages */,
 				E159FD7B1DED1924005856FB /* Crypto */,
@@ -482,6 +490,18 @@
 				E11454901DC88F4E002122DA /* BigInt */,
 			);
 			name = Crypto;
+			sourceTree = "<group>";
+		};
+		E193B97D1E5AD8D000777236 /* Local-DB */ = {
+			isa = PBXGroup;
+			children = (
+				E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */,
+				E193B9771E5ACE5100777236 /* TransactionInfo.swift */,
+				E193B9791E5ACF1500777236 /* TransactionInputInfo.swift */,
+				E193B97B1E5AD27200777236 /* TransactionOutPointInfo.swift */,
+				E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */,
+			);
+			name = "Local-DB";
 			sourceTree = "<group>";
 		};
 		E1AACD271DF6618F005EC11C /* BloomFilter */ = {
@@ -825,6 +845,7 @@
 				E159FD611DED1623005856FB /* FiniteFieldInteger.swift in Sources */,
 				E11454A91DC88F66002122DA /* BigUInt Comparison.swift in Sources */,
 				E11454B61DC88F66002122DA /* BigUInt.swift in Sources */,
+				E193B97A1E5ACF1500777236 /* TransactionInputInfo.swift in Sources */,
 				E150E49A1DBA88720066B533 /* VarInt.swift in Sources */,
 				E160A3201DFFA26100915C94 /* TransactionOutput.swift in Sources */,
 				E11454B41DC88F66002122DA /* BigUInt Square Root.swift in Sources */,
@@ -832,8 +853,10 @@
 				E159FD5F1DED161E005856FB /* FiniteField.swift in Sources */,
 				E102D7C61DB202DD0078E4C4 /* TestVersionMessage.swift in Sources */,
 				E13C83A31DC5B70E004E35EE /* PeerAddress.swift in Sources */,
+				E193B9761E5ACC0400777236 /* TransactionDataStoreManager.swift in Sources */,
 				E1D130CF1DBD01670028651C /* MessageParser.swift in Sources */,
 				E1AACD2D1DF6A23C005EC11C /* FilterLoadMessage.swift in Sources */,
+				E193B9781E5ACE5100777236 /* TransactionInfo.swift in Sources */,
 				E1BA98AF1DD1B7DC00C1B17B /* BlockHeader.swift in Sources */,
 				E11454AC1DC88F66002122DA /* BigUInt Exponentiation.swift in Sources */,
 				E159FD711DED175E005856FB /* RIPEMD+Block.swift in Sources */,
@@ -845,6 +868,7 @@
 				E1D130D11DBD03940028651C /* NetworkMagicBytes.swift in Sources */,
 				E160A3221DFFA43100915C94 /* TransactionInput.swift in Sources */,
 				E1CE76D11DC34DD4006B6F6E /* NSMutableData+BitcoinEncoding.swift in Sources */,
+				E193B97C1E5AD27200777236 /* TransactionOutPointInfo.swift in Sources */,
 				E102D7961DB1C4A00078E4C4 /* AppDelegate.swift in Sources */,
 				E11454AF1DC88F66002122DA /* BigUInt Multiplication.swift in Sources */,
 				E11454B21DC88F66002122DA /* BigUInt Random.swift in Sources */,
