@@ -42,9 +42,10 @@ public func == (lhs: FiniteField, rhs: FiniteField) -> Bool {
 
 }
 
-private func powDouble(n: Int) -> Int {
+private func powDouble(n: Int) -> UInt64 {
     
-    return Int(pow(Double(2), Double(n)))
+    return UInt64(n * n)
+    //return UInt64(pow(Double(2), Double(n)))
 }
 
 
@@ -82,23 +83,11 @@ extension BigUInt {
         
         if e == 0 { bitLength -= 32} else {
             for i in 0 ..< 31 {
-                if powDouble(n: 31 - i) & e != 0 { break } else {
+                if powDouble(n: 31 - i) & UInt64(e) != 0 { break } else {
                     bitLength -= 1
                 }
             }
         }
-        
-        /*for int in self {
-         /*if int == 0 { bitLength -= 32 } else {
-         for i in 0..<31 {
-         if powDouble(n: 31 - i) & int != 0 { break } else {
-         bitLength -= 1
-         }
-         }
-         break
-         }*/
-         print(int)
-         }*/
         
         return Int(bitLength)
     }
