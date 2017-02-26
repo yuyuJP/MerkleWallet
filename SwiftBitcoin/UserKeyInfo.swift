@@ -20,7 +20,7 @@ class UserKeyInfo: Object {
     dynamic var isCompressedPublicKey: Bool = false
     
     //dynamic var txoutputs = RLMArray(objectClassName: TransactionOutputInfo.className())
-    let txs = List<TransactionInfo>()
+    var txs = List<TransactionInfo>()
     
     public var publicKey: String {
         if isCompressedPublicKey {

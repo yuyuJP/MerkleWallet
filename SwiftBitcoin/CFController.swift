@@ -207,17 +207,8 @@ public class CFController: CFConnectionDelegate {
             print(merkleBlockMessage)
             
         case let .TransactionMessage(transactionMessage):
-            print(transactionMessage)
-            /*for output in transactionMessage.outputs {
-                print(output.script.hash160.bitcoinData.toHexString())
-                //print(input.scriptSignatureDetail!)
-            }*/
-            /*for output in transactionMessage.outputs {
-                let script = output.script
-                print(script)
-                //let hash160 = OutputScript(script: script).hash160
-                //print(hash160?.bitcoinData)
-            }*/
+            //TODO: Add tx to Local-DB after validating merkle block and received tx
+            TransactionDataStoreManager.add(tx: transactionMessage)
             
         case let .GetDataMessage(getDataMessage):
             print("received getDataMessage \(getDataMessage)")

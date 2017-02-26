@@ -20,10 +20,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         if let userKey = UserKeyInfo.loadAll().first {
-            print(userKey)
+            print(userKey.txs)
+            //print(userKey.txs[3].outputs)
+            //print(userKey.publicKeyHash)
             //key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
             key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
-            print(key.publicAddress)
+            //print(key.publicAddress)
             print(key.publicKeyHashHex)
             
         
@@ -52,8 +54,8 @@ class ViewController: UIViewController {
     }
     
     func establishConnection() {
-        //con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
-        con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
+        con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
+        //con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
         //con = CFController(hostname: "192.168.0.12", port: 18333, network: NetworkMagicBytes.magicBytes())
         
         //con.start()

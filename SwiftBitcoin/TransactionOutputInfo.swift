@@ -11,7 +11,14 @@ import RealmSwift
 
 class TransactionOutputInfo: Object {
     dynamic var pubKeyHash = ""
-    dynamic var value: Int = 0
-    private let txs = LinkingObjects(fromType: TransactionInfo.self, property: "output")
+    dynamic var value: Int64 = 0
+    private let txs = LinkingObjects(fromType: TransactionInfo.self, property: "outputs")
     var inverse_tx: TransactionInfo? { return txs.first }
+    
+    public static func create(_ output: Transaction.Output) -> TransactionOutputInfo {
+        let outputInfo = TransactionOutputInfo()
+        outputInfo.pubKeyHash = output.script.hash160.bitcoinData.toHexString()
+        outputInfo.value = output.value
+        return outputInfo
+    }
 }

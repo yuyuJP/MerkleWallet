@@ -10,8 +10,22 @@ import Foundation
 import RealmSwift
 
 class TransactionInfo: Object {
-    dynamic var input: TransactionInputInfo?
-    dynamic var output: TransactionOutputInfo?
+    var inputs = List<TransactionInputInfo>()
+    var outputs = List<TransactionOutputInfo>()
     private let keyInfos = LinkingObjects(fromType: UserKeyInfo.self, property: "txs")
     var inverse_keyInfo: UserKeyInfo? { return keyInfos.first }
+    
+    public static func create(_ tx: Transaction) -> TransactionInfo {
+        let txInfo = TransactionInfo()
+        for input in tx.inputs {
+            let inputInfo = TransactionInputInfo.create(input)
+            txInfo.inputs.append(inputInfo)
+        }
+        for output in tx.outputs {
+            let outputInfo = TransactionOutputInfo.create(output)
+            txInfo.outputs.append(outputInfo)
+        }
+        
+        return txInfo
+    }
 }

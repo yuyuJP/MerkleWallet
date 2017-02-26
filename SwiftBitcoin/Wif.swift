@@ -46,6 +46,7 @@ public class Wif {
             }
             wifBytes.removeLast()
             _isCompressedPubKey = true
+        
         //Wif corresponding to an uncompreesed public key
         } else if wifBytes.count == 37 {
             _isCompressedPubKey = false
