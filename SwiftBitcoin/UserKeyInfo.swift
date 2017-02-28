@@ -19,8 +19,7 @@ class UserKeyInfo: Object {
     dynamic var publicKeyHash = ""
     dynamic var isCompressedPublicKey: Bool = false
     
-    //dynamic var txoutputs = RLMArray(objectClassName: TransactionOutputInfo.className())
-    var txs = List<TransactionInfo>()
+    var UTXOs = List<TransactionOutputInfo>()
     
     public var publicKey: String {
         if isCompressedPublicKey {
@@ -34,7 +33,7 @@ class UserKeyInfo: Object {
         return "id"
     }
     
-    static func create(key: CoinKey) -> UserKeyInfo {
+    public static func create(key: CoinKey) -> UserKeyInfo {
         let userKeyInfo = UserKeyInfo()
         userKeyInfo.id = lastId()
         userKeyInfo.privateKey = key.privateKeyHexString
@@ -46,7 +45,7 @@ class UserKeyInfo: Object {
         return userKeyInfo
     }
     
-    static func loadAll() -> [UserKeyInfo] {
+    public static func loadAll() -> [UserKeyInfo] {
         let userKeyInfos = realm.objects(UserKeyInfo.self).sorted(byProperty: "id")
         var ret: [UserKeyInfo] = []
         for userKeyInfo in userKeyInfos {
@@ -55,7 +54,7 @@ class UserKeyInfo: Object {
         return ret
     }
     
-    static func lastId() -> Int {
+    public static func lastId() -> Int {
         if let userKeyInfo = realm.objects(UserKeyInfo.self).last {
             return userKeyInfo.id + 1
         } else {
@@ -63,13 +62,13 @@ class UserKeyInfo: Object {
         }
     }
     
-    func save() {
+    public func save() {
         try! UserKeyInfo.realm.write {
             UserKeyInfo.realm.add(self)
         }
     }
     
-    func update(_ method: (() -> Void)) {
+    public func update(_ method: (() -> Void)) {
         try! UserKeyInfo.realm.write {
             method()
         }

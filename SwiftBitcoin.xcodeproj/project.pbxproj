@@ -328,7 +328,6 @@
 				E102D7C51DB202DD0078E4C4 /* TestVersionMessage.swift */,
 				E102D7CB1DB260480078E4C4 /* ByteConverter.swift */,
 				E1C7AD421DBA159F003C8A80 /* MessagePrinter.swift */,
-				E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */,
 				E193B97D1E5AD8D000777236 /* Local-DB */,
 				E1AACD271DF6618F005EC11C /* BloomFilter */,
 				E10BDB3E1DC9DA6400220665 /* Messages */,
@@ -495,6 +494,7 @@
 		E193B97D1E5AD8D000777236 /* Local-DB */ = {
 			isa = PBXGroup;
 			children = (
+				E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */,
 				E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */,
 				E193B9771E5ACE5100777236 /* TransactionInfo.swift */,
 				E193B9791E5ACF1500777236 /* TransactionInputInfo.swift */,
