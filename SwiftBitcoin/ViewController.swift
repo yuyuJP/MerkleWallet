@@ -20,18 +20,15 @@ class ViewController: UIViewController {
         
         if let userKey = UserKeyInfo.loadAll().first {
             for txInfo in TransactionInfo.loadAll() {
-                //let output = txInfo.outputs[0]
-                //print(output.inverse_tx ?? "no value")
+                let output = txInfo.outputs[0]
+                print(output.inverse_tx ?? "no value")
             }
             
-            key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
-            //print(key.publicAddress)
-            //print(key.publicKeyHashHex)
-            
-        
+            key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
+            print(key.publicKeyHashHex)
         } else {
             print("No user info. Generating a new key.")
-            key = BitcoinTestnet()
+            key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
             let newUserKeyInfo = UserKeyInfo.create(key: key)
             newUserKeyInfo.save()
         }

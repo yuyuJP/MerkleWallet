@@ -35,6 +35,10 @@ class TransactionInfo: Object {
         return txInfo
     }
     
+    public static func filter(txHash: String) -> TransactionInfo? {
+        return realm.objects(TransactionInfo.self).filter("txHash == %@", txHash).first
+    }
+    
     public static func loadAll() -> [TransactionInfo] {
         let txInfos = realm.objects(TransactionInfo.self)
         var ret: [TransactionInfo] = []

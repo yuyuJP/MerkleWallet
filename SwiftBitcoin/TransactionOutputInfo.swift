@@ -10,6 +10,8 @@ import Foundation
 import RealmSwift
 
 class TransactionOutputInfo: Object {
+    static let realm = try! Realm()
+    
     dynamic var pubKeyHash = ""
     dynamic var value: Int64 = 0
     dynamic var isSpent = false
@@ -22,5 +24,20 @@ class TransactionOutputInfo: Object {
         outputInfo.pubKeyHash = output.script.hash160.bitcoinData.toHexString()
         outputInfo.value = output.value
         return outputInfo
+    }
+    
+    public static func loadAll() -> [TransactionOutputInfo] {
+        let txOutputInfos = realm.objects(TransactionOutputInfo.self)
+        var ret: [TransactionOutputInfo] = []
+        for txOutputInfo in txOutputInfos {
+            ret.append(txOutputInfo)
+        }
+        return ret
+    }
+    
+    public func update(_ method: (() -> Void)) {
+        try! TransactionOutputInfo.realm.write {
+            method()
+        }
     }
 }
