@@ -13,19 +13,25 @@ public class TransactionDataStoreManager {
     public static func add(tx: Transaction) {
         //Check if received transaction is related to mine. Bloomfiltered tx is sometimes not mine.
         let (isInputRelevant, isOutputRelevant) = isTransactionRelevant(tx)
-        if !isInputRelevant && !isOutputRelevant {
+        
+        //print("inputs are \(isInputRelevant), outputs are \(isOutputRelevant)")
+        
+        if !(isInputRelevant || isOutputRelevant) {
             print("Received Transaction is irrelevant to my addresses")
             return
         }
-        
-        print("inputs are \(isInputRelevant), outputs are \(isOutputRelevant)")
         
         //If at least one of the received transaction inputs is relevant, there must be at least one output which you've already spent for and it must be already stored in the app's local DB. This method is supposed to find one, otherwise balance calculation may fail.
         if isInputRelevant {
             for input in tx.inputs {
                 let txHash = input.outPoint.transactionHash.data.toHexString()
                 guard let outpointTx = TransactionInfo.filter(txHash: txHash) else {
-                    print("Unable to find tx \(txHash) which is used for input")
+                    //FOR DEBUG: Check if it is really irrelevant one.
+                    for key in UserKeyInfo.loadAll() {
+                        if key.publicKey == input.scriptSignatureDetail!.publicKey.toHexString() {
+                            assert(false, "Unable to find tx \(txHash) which is used for input")
+                        }
+                    }
                     continue
                 }
                 
@@ -40,7 +46,6 @@ public class TransactionDataStoreManager {
         
         let txInfo = TransactionInfo.create(tx)
         txInfo.save()
-        print("tx successfully saved")
     }
     
     private static func isTransactionRelevant(_ tx: Transaction) -> (Bool, Bool) {
