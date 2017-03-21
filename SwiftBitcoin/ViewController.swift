@@ -19,10 +19,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         if let userKey = UserKeyInfo.loadAll().first {
-            for txInfo in TransactionInfo.loadAll() {
+            /*for txInfo in TransactionInfo.loadAll() {
                 let output = txInfo.outputs[0]
                 print(output.inverse_tx ?? "no value")
-            }
+            }*/
             
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
             print(key.publicKeyHashHex)

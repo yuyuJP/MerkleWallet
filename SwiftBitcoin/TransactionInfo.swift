@@ -35,7 +35,7 @@ class TransactionInfo: Object {
         return txInfo
     }
     
-    public static func filter(txHash: String) -> TransactionInfo? {
+    public static func fetch(txHash: String) -> TransactionInfo? {
         return realm.objects(TransactionInfo.self).filter("txHash == %@", txHash).first
     }
     

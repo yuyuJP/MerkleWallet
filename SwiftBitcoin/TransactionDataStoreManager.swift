@@ -25,7 +25,7 @@ public class TransactionDataStoreManager {
         if isInputRelevant {
             for input in tx.inputs {
                 let txHash = input.outPoint.transactionHash.data.toHexString()
-                guard let outpointTx = TransactionInfo.filter(txHash: txHash) else {
+                guard let outpointTx = TransactionInfo.fetch(txHash: txHash) else {
                     //FOR DEBUG: Check if it is really irrelevant one.
                     for key in UserKeyInfo.loadAll() {
                         if key.publicKey == input.scriptSignatureDetail!.publicKey.toHexString() {

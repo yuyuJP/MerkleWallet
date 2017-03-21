@@ -225,8 +225,4 @@ public class Murmurhash3 {
         var a = key
         return doHash128(key: &a, maxBytes: a.count, seed: seed)
     }
-
-    
-    
-    
 }

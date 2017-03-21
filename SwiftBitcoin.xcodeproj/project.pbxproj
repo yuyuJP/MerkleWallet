@@ -65,7 +65,7 @@
 		E159FD711DED175E005856FB /* RIPEMD+Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD701DED175E005856FB /* RIPEMD+Block.swift */; };
 		E159FD731DED1766005856FB /* UInt32+CircularShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD721DED1766005856FB /* UInt32+CircularShift.swift */; };
 		E159FD781DED1802005856FB /* CoinKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD771DED1802005856FB /* CoinKey.swift */; };
-		E159FD7A1DED18FC005856FB /* Base58Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD791DED18FC005856FB /* Base58Extension.swift */; };
+		E159FD7A1DED18FC005856FB /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD791DED18FC005856FB /* StringExtension.swift */; };
 		E159FD7D1DED1A55005856FB /* Hash256.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD7C1DED1A55005856FB /* Hash256.swift */; };
 		E159FD7F1DED30B0005856FB /* Hash160.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD7E1DED30B0005856FB /* Hash160.swift */; };
 		E160A31C1DFFA02C00915C94 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160A31B1DFFA02C00915C94 /* Transaction.swift */; };
@@ -201,7 +201,7 @@
 		E159FD701DED175E005856FB /* RIPEMD+Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RIPEMD+Block.swift"; sourceTree = "<group>"; };
 		E159FD721DED1766005856FB /* UInt32+CircularShift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UInt32+CircularShift.swift"; sourceTree = "<group>"; };
 		E159FD771DED1802005856FB /* CoinKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinKey.swift; sourceTree = "<group>"; };
-		E159FD791DED18FC005856FB /* Base58Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base58Extension.swift; sourceTree = "<group>"; };
+		E159FD791DED18FC005856FB /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E159FD7C1DED1A55005856FB /* Hash256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash256.swift; sourceTree = "<group>"; };
 		E159FD7E1DED30B0005856FB /* Hash160.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash160.swift; sourceTree = "<group>"; };
 		E160A31B1DFFA02C00915C94 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 				E159FD7E1DED30B0005856FB /* Hash160.swift */,
 				E1A9F2291DCF011900D373B3 /* SHA256Hash.swift */,
 				E15723351E0E1ADC00BB2523 /* RIPEMD160Hash.swift */,
-				E159FD791DED18FC005856FB /* Base58Extension.swift */,
+				E159FD791DED18FC005856FB /* StringExtension.swift */,
 				E159FD761DED17E9005856FB /* CoinKey */,
 				E159FD751DED178C005856FB /* SHA256 */,
 				E159FD741DED176D005856FB /* RIPEMD160 */,
@@ -833,7 +833,7 @@
 				E1AACD2B1DF661A6005EC11C /* BloomFilter.swift in Sources */,
 				E11454B71DC88F66002122DA /* BitcoinSerializable.swift in Sources */,
 				E1D4EC371DC3474A00C15A89 /* IPAddress.swift in Sources */,
-				E159FD7A1DED18FC005856FB /* Base58Extension.swift in Sources */,
+				E159FD7A1DED18FC005856FB /* StringExtension.swift in Sources */,
 				E159FD681DED16DA005856FB /* ECDomain.swift in Sources */,
 				E102D7CF1DB34ABB0078E4C4 /* CFConnection.swift in Sources */,
 				E1A92CEE1E14ECE000811E4C /* TransactionBuilder.swift in Sources */,

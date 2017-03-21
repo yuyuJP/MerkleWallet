@@ -94,15 +94,15 @@ public class CFController: CFConnectionDelegate {
                 self.connection?.sendMessageWithPayload(memPoolMessage)
             
                 
-                let blkHash = SHA256Hash("000000000000078f485100093262727622be656835fbdfb410ff6b4b5ca484aa".hexStringToNSData())
+                //let blkHash = SHA256Hash("000000000000078f485100093262727622be656835fbdfb410ff6b4b5ca484aa".hexStringToNSData())
                 
                 //let blkHash = SHA256Hash("000000000000029afcb87730710e29b95bc574af01af4c4953ea317abda93516".hexStringToNSData())
                 
             
-                let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)
+                //let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)
                 
-                let msg = GetDataMessage(inventoryVectors: [inv])
-                self.connection?.sendMessageWithPayload(msg)
+                //let msg = GetDataMessage(inventoryVectors: [inv])
+                //self.connection?.sendMessageWithPayload(msg)
                 
                 
                 /*print("Sending getHeaders Message")
@@ -111,10 +111,10 @@ public class CFController: CFConnectionDelegate {
                 let getHeadersMessage = GetHeadersMessage(protocolVersion: 70002, blockLocatorHashes: [self.genesisBlockHash])
                 self.connection?.sendMessageWithPayload(getHeadersMessage)
                 */
-                /*let blkHash = SHA256Hash("000000000000041b35fe70f155301d729a9256610c35dc5d75557a191b545009".hexStringToNSData())
+                let blkHash = SHA256Hash("00000000b1b60d6a1a62a9495ebdec018335b3b6a81aab5ed44fbee101d5683d".hexStringToNSData())
                 let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
+                print("Sending GetBlockMessage...")
                 self.connection?.sendMessageWithPayload(getBlocksMsg)
-                */
                 
             } else {
                 assert(false, "No filter looaded")
@@ -189,26 +189,31 @@ public class CFController: CFConnectionDelegate {
         case let .InventoryMessage(inventoryMessage):
            
             queue.addOperation {
+                self.blockHashesDownloaded += inventoryMessage.inventoryVectors
                 self.blockHashesCountDownloaded += inventoryMessage.inventoryVectors.count
                 print("\(self.blockHashesCountDownloaded) block hashes received / \(self.peerVersion!.blockStartHeight)")
-                //if inventoryMessage.inventoryVectors.count == 500 {
+                
+                if inventoryMessage.inventoryVectors.count == 500 {
                     let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
-                    print(lastBlockHash)
-                //let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
-                    //self.connection?.sendMessageWithPayload(getBlocksMsg)
-                //}
+                    //print(lastBlockHash)
+                    let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
+                    self.connection?.sendMessageWithPayload(getBlocksMsg)
+                } else if inventoryMessage.inventoryVectors.count == 1 {
+                    print("new blk: \(inventoryMessage.inventoryVectors.last!.hash.data.toHexString())")
+                } else {
+                    print("last blk: \(inventoryMessage.inventoryVectors.last!.hash.data.toHexString())")
+                    self.sendGetData(inventoryVecs: self.blockHashesDownloaded)
+                }
             }
-            
-            //self.sendGetData(inventoryVecs: inventoryMessage.inventoryVectors)
-            
             
         case let .MerkleBlockMessage(merkleBlockMessage):
             print("Received merkle block")
-            print(merkleBlockMessage)
+            //print(merkleBlockMessage)
             
         case let .TransactionMessage(transactionMessage):
             //TODO: Add tx to Local-DB after validating merkle block and received tx
-            TransactionDataStoreManager.add(tx: transactionMessage)
+            //TransactionDataStoreManager.add(tx: transactionMessage)
+            print("Received tx message  in \(transactionMessage.inputs) \n out \(transactionMessage.outputs)")
             
         case let .GetDataMessage(getDataMessage):
             print("received getDataMessage \(getDataMessage)")
