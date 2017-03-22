@@ -110,6 +110,12 @@ class ViewController: UIViewController {
         //}
     }
     
+    
+    @IBAction func calculateBalance(_ sender: Any) {
+        let balance = TransactionDataStoreManager.calculateBalance()
+        print(balance)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -111,7 +111,7 @@ public class CFController: CFConnectionDelegate {
                 let getHeadersMessage = GetHeadersMessage(protocolVersion: 70002, blockLocatorHashes: [self.genesisBlockHash])
                 self.connection?.sendMessageWithPayload(getHeadersMessage)
                 */
-                let blkHash = SHA256Hash("00000000b1b60d6a1a62a9495ebdec018335b3b6a81aab5ed44fbee101d5683d".hexStringToNSData())
+                let blkHash = SHA256Hash("0000000056d6902f334fbf4f6e56244415958727d69483d04b70c7af08085cca".hexStringToNSData())
                 let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
                 print("Sending GetBlockMessage...")
                 self.connection?.sendMessageWithPayload(getBlocksMsg)
@@ -206,17 +206,19 @@ public class CFController: CFConnectionDelegate {
                 }
             }
             
-        case let .MerkleBlockMessage(merkleBlockMessage):
-            print("Received merkle block")
+        case let .MerkleBlockMessage(merkleBlockMessage): break
+            //print("Received merkle block")
             //print(merkleBlockMessage)
             
         case let .TransactionMessage(transactionMessage):
             //TODO: Add tx to Local-DB after validating merkle block and received tx
-            //TransactionDataStoreManager.add(tx: transactionMessage)
-            print("Received tx message  in \(transactionMessage.inputs) \n out \(transactionMessage.outputs)")
+            print("Received tx msg\n \(transactionMessage)")
+            TransactionDataStoreManager.add(tx: transactionMessage)
+            //print("Received tx message  in \(transactionMessage.inputs) \n out \(transactionMessage.outputs)")
             
         case let .GetDataMessage(getDataMessage):
             print("received getDataMessage \(getDataMessage)")
+            //Broadcast pending transactions after receiving GetDataMessage from node.
             for inv in getDataMessage.inventoryVectors {
                 for i in 0 ..< pendingTransactions.count {
                     if inv.hash == pendingTransactions[i].hash {

@@ -21,6 +21,14 @@ class UserKeyInfo: Object {
     
     var UTXOs = List<TransactionOutputInfo>()
     
+    public var balance: Int64 {
+        var balance: Int64 = 0
+        for utxo in UTXOs {
+            balance += utxo.value
+        }
+        return balance
+    }
+    
     public var publicKey: String {
         if isCompressedPublicKey {
             return compressedPublicKey

@@ -21,7 +21,7 @@ public class TransactionDataStoreManager {
             return
         }
         
-        //If at least one of the received transaction inputs is relevant, there must be at least one output which you've already spent for and it must be already stored in the app's local DB. This method is supposed to find one, otherwise balance calculation may fail.
+        //If at least one of the received transaction inputs is relevant, there must be at least one output which you've already spent and it must be already stored in the app's local DB. This method is supposed to find one, otherwise balance calculation may fail.
         if isInputRelevant {
             for input in tx.inputs {
                 let txHash = input.outPoint.transactionHash.data.toHexString()
@@ -46,6 +46,42 @@ public class TransactionDataStoreManager {
         
         let txInfo = TransactionInfo.create(tx)
         txInfo.save()
+    }
+    
+    public static func calculateBalance() -> Int64 {
+        //Must call this method before balance calculation.
+        markOutputRelevence()
+        
+        var balance: Int64 = 0
+        
+        for userkey in UserKeyInfo.loadAll() {
+            balance += userkey.balance
+        }
+        
+        return balance
+    }
+    
+    //Form relationships with UTXOs to a certain address
+    private static func markOutputRelevence() {
+        let transactions = TransactionInfo.loadAll()
+        for tx in transactions {
+            for output in tx.outputs {
+                //Check if it is my output and if it is not spent yet, add to UTXOs corresponding to one of my addresses.
+                for userKey in UserKeyInfo.loadAll() {
+                    //Delete old UTXOs before register all UTXOs
+                    userKey.update {
+                        userKey.UTXOs.removeAll()
+                    }
+                    
+                    if userKey.publicKeyHash == output.pubKeyHash && !output.isSpent {
+                        userKey.update {
+                            userKey.UTXOs.append(output)
+                        }
+                    }
+                    
+                }
+            }
+        }
     }
     
     private static func isTransactionRelevant(_ tx: Transaction) -> (Bool, Bool) {
