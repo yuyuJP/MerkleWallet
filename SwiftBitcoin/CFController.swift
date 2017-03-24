@@ -200,6 +200,7 @@ public class CFController: CFConnectionDelegate {
                     self.connection?.sendMessageWithPayload(getBlocksMsg)
                 } else if inventoryMessage.inventoryVectors.count == 1 {
                     print("new blk: \(inventoryMessage.inventoryVectors.last!.hash.data.toHexString())")
+                    
                 } else {
                     print("last blk: \(inventoryMessage.inventoryVectors.last!.hash.data.toHexString())")
                     self.sendGetData(inventoryVecs: self.blockHashesDownloaded)

@@ -81,18 +81,22 @@ public class TransactionDataStoreManager {
     //TODO: Only P2PKH script supported. Other types of script must be supported in the near future.
     private static func extractRelevantInputs(_ tx: Transaction) -> [Transaction.Input] {
         var inputs_res: [Transaction.Input] = []
+    
         for key in UserKeyInfo.loadAll() {
             
             for input in tx.inputs {
-                if key.publicKey == input.scriptSignatureDetail!.publicKey.toHexString() {
-                    inputs_res.append(input)
-                }
+                if let extractedKey = input.scriptSignatureDetail?.publicKey.toHexString() {
+                    if key.publicKey == extractedKey {
+                        inputs_res.append(input)
+                    }
+                } 
             }
         }
         
         return inputs_res
     }
     
+    /*
     private static func extractRelevantOutputs(_ tx: Transaction) -> [Transaction.Output] {
         var outputs_res: [Transaction.Output] = []
         for key in UserKeyInfo.loadAll() {
@@ -110,4 +114,5 @@ public class TransactionDataStoreManager {
         
         return (extractRelevantInputs(tx), extractRelevantOutputs(tx))
     }
+    */
 }

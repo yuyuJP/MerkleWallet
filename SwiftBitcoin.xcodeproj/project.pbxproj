@@ -213,7 +213,7 @@
 		E17431101DC8BE8B0002BBFD /* CFController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFController.swift; sourceTree = "<group>"; };
 		E18D547E1E015441009D2715 /* GetBlocksMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBlocksMessage.swift; sourceTree = "<group>"; };
 		E18D54801E0158DC009D2715 /* InventoryMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryMessage.swift; sourceTree = "<group>"; };
-		E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDataStoreManager.swift; sourceTree = "<group>"; };
+		E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDataStoreManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E193B9771E5ACE5100777236 /* TransactionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInfo.swift; sourceTree = "<group>"; };
 		E193B9791E5ACF1500777236 /* TransactionInputInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInputInfo.swift; sourceTree = "<group>"; };
 		E193B97B1E5AD27200777236 /* TransactionOutPointInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOutPointInfo.swift; sourceTree = "<group>"; };

@@ -68,6 +68,15 @@ extension Transaction.Input: BitcoinSerializable {
             return nil
         }
         
+        if scriptSignatureLength == 0 {
+            guard let sequence = stream.readUInt32() else {
+                print("Failed to parse sequence in Transaction.Input")
+                return nil
+            }
+            
+            return Transaction.Input(outPoint: outPoint, scriptSignature: NSData(), sequence: sequence)
+        }
+        
         guard let scriptSignatureData = stream.readData(Int(scriptSignatureLength)) else {
             print("Failed to parse scriptSignature in Transaction.Input")
             return nil
