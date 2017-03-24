@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TCPClientTest
+//@testable import TCPClientTest
 
 class TCPClientTestTests: XCTestCase {
     

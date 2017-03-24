@@ -16,8 +16,6 @@ class TransactionInfo: Object {
     var outputs = List<TransactionOutputInfo>()
     
     dynamic var txHash = ""
-    //private let keyInfos = LinkingObjects(fromType: UserKeyInfo.self, property: "txs")
-    //var inverse_keyInfo: UserKeyInfo? { return keyInfos.first }
     
     public static func create(_ tx: Transaction) -> TransactionInfo {
         let txInfo = TransactionInfo()

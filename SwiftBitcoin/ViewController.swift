@@ -25,7 +25,8 @@ class ViewController: UIViewController {
             }*/
             
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
-            print(key.publicKeyHashHex)
+            print(key.publicAddress)
+        
         } else {
             print("No user info. Generating a new key.")
             key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
@@ -112,8 +113,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func calculateBalance(_ sender: Any) {
-        let balance = TransactionDataStoreManager.calculateBalance()
-        print(balance)
+        //let balance = TransactionDataStoreManager.calculateBalance()
+        //print(balance)
     }
     
     override func didReceiveMemoryWarning() {

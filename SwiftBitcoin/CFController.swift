@@ -212,8 +212,11 @@ public class CFController: CFConnectionDelegate {
             
         case let .TransactionMessage(transactionMessage):
             //TODO: Add tx to Local-DB after validating merkle block and received tx
-            print("Received tx msg\n \(transactionMessage)")
-            TransactionDataStoreManager.add(tx: transactionMessage)
+            //print("Received tx msg")
+            queue.addOperation {
+                TransactionDataStoreManager.add(tx: transactionMessage)
+            }
+            
             //print("Received tx message  in \(transactionMessage.inputs) \n out \(transactionMessage.outputs)")
             
         case let .GetDataMessage(getDataMessage):

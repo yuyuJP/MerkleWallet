@@ -85,6 +85,7 @@ public class Murmurhash3 {
     
     
     //MurmurHash3 128 bits
+    //DO NOT use this method for bloomfiltering!!!
     public static func doHash128(key: UnsafePointer<UInt8>, maxBytes: Int, seed: UInt64 = 0) -> (h1: UInt64, h2: UInt64) {
         let c1: UInt64 = 0x87c37b91114253d5
         let c2: UInt64 = 0x4cf5ad432745937f
