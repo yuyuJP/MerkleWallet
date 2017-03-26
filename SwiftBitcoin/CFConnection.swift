@@ -259,11 +259,8 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
                     let message = PeerConnectionMessage.TransactionMessage(transactionMessage)
                     self.delegate?.cfConnection(peerConnection: self, didReceiveMessage: message)
                 }
-            } else {
-                print("Transaction message paring failed.")
-                print("Raw data: \(message.payload.toHexString())")
             }
-        
+            
         case .GetBlocks:
             print(message)
             

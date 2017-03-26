@@ -75,6 +75,8 @@
 		E160A3241DFFA69300915C94 /* TransactionLockTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160A3231DFFA69300915C94 /* TransactionLockTime.swift */; };
 		E16A499B1E01A9EA00BCF175 /* GetDataMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A499A1E01A9EA00BCF175 /* GetDataMessage.swift */; };
 		E17431111DC8BE8B0002BBFD /* CFController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17431101DC8BE8B0002BBFD /* CFController.swift */; };
+		E175C1F81E8537EE00126D3F /* PartialMerkleTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E175C1F71E8537EE00126D3F /* PartialMerkleTree.swift */; };
+		E175C1FA1E8539E000126D3F /* MerkleTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E175C1F91E8539E000126D3F /* MerkleTreeNode.swift */; };
 		E18D547F1E015441009D2715 /* GetBlocksMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D547E1E015441009D2715 /* GetBlocksMessage.swift */; };
 		E18D54811E0158DC009D2715 /* InventoryMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D54801E0158DC009D2715 /* InventoryMessage.swift */; };
 		E193B9761E5ACC0400777236 /* TransactionDataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */; };
@@ -211,6 +213,8 @@
 		E160A3231DFFA69300915C94 /* TransactionLockTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionLockTime.swift; sourceTree = "<group>"; };
 		E16A499A1E01A9EA00BCF175 /* GetDataMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDataMessage.swift; sourceTree = "<group>"; };
 		E17431101DC8BE8B0002BBFD /* CFController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFController.swift; sourceTree = "<group>"; };
+		E175C1F71E8537EE00126D3F /* PartialMerkleTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialMerkleTree.swift; sourceTree = "<group>"; };
+		E175C1F91E8539E000126D3F /* MerkleTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerkleTreeNode.swift; sourceTree = "<group>"; };
 		E18D547E1E015441009D2715 /* GetBlocksMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBlocksMessage.swift; sourceTree = "<group>"; };
 		E18D54801E0158DC009D2715 /* InventoryMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryMessage.swift; sourceTree = "<group>"; };
 		E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDataStoreManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -319,6 +323,8 @@
 				E17431101DC8BE8B0002BBFD /* CFController.swift */,
 				E1D130CE1DBD01670028651C /* MessageParser.swift */,
 				E102D7D01DB34AC70078E4C4 /* Thread.swift */,
+				E175C1F71E8537EE00126D3F /* PartialMerkleTree.swift */,
+				E175C1F91E8539E000126D3F /* MerkleTreeNode.swift */,
 				E102D7C91DB2594E0078E4C4 /* BitcoinMessage.swift */,
 				E1D130D61DBD152D0028651C /* InputStreamExtension.swift */,
 				E1CE76D01DC34DD4006B6F6E /* NSMutableData+BitcoinEncoding.swift */,
@@ -866,6 +872,7 @@
 				E15723341E0E13EE00BB2523 /* OutputScript.swift in Sources */,
 				E11454B01DC88F66002122DA /* BigUInt Prime Test.swift in Sources */,
 				E1D130D11DBD03940028651C /* NetworkMagicBytes.swift in Sources */,
+				E175C1FA1E8539E000126D3F /* MerkleTreeNode.swift in Sources */,
 				E160A3221DFFA43100915C94 /* TransactionInput.swift in Sources */,
 				E1CE76D11DC34DD4006B6F6E /* NSMutableData+BitcoinEncoding.swift in Sources */,
 				E193B97C1E5AD27200777236 /* TransactionOutPointInfo.swift in Sources */,
@@ -881,6 +888,7 @@
 				E13C83A51DC5B7B5004E35EE /* PeerServices.swift in Sources */,
 				E159FD661DED16D5005856FB /* ECurve.swift in Sources */,
 				E160A31C1DFFA02C00915C94 /* Transaction.swift in Sources */,
+				E175C1F81E8537EE00126D3F /* PartialMerkleTree.swift in Sources */,
 				E15723361E0E1ADC00BB2523 /* RIPEMD160Hash.swift in Sources */,
 				E102D7D11DB34AC70078E4C4 /* Thread.swift in Sources */,
 				E11454AE1DC88F66002122DA /* BigUInt Hashing.swift in Sources */,
