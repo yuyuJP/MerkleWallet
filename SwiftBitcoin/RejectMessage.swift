@@ -52,7 +52,7 @@ extension RejectMessage: MessagePayload {
         data.appendUInt8(code.rawValue)
         data.appendVarString(reason)
         if let hash = self.hash  {
-            data.append(hash.bitcoinData as Data)
+            data.appendNSData(hash.bitcoinData)
         }
         return data
     }

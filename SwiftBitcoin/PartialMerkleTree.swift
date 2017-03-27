@@ -39,6 +39,7 @@ public struct PartialMerkleTree: Equatable{
                                                                        hashIndex: &hashIndex) {
             self.rootHash = merkleRoot.hash
             self.matchingHashes = matchingHashes
+                        
             // Fail if there are any unused hashes.
             if hashIndex < hashes.count {
                 return nil
@@ -99,6 +100,7 @@ public struct PartialMerkleTree: Equatable{
             if flag == 0 {
                 nodeHash = hashes[hashIndex]
                 hashIndex += 1
+                
             } else {
                 leftNode = merkleTreeNodeWithHeight(height - 1,
                                                     hashes: hashes,
@@ -126,7 +128,7 @@ public struct PartialMerkleTree: Equatable{
     
     private static func flagBitAtIndex(_ index: Int, flags: [UInt8]) -> UInt8 {
         precondition(index < flags.count * 8)
-        let flagByte = flags[flags.count - Int(index / 8) - 1]
+        let flagByte = flags[Int(index / 8)]
         return (flagByte >> UInt8(index % 8)) & 1
     }
 }
@@ -137,7 +139,7 @@ extension PartialMerkleTree: BitcoinSerializable {
         data.appendUInt32(totalLeafNodes)
         data.appendVarInt(hashes.count)
         for hash in hashes {
-            data.append(hash.bitcoinData as Data)
+            data.appendNSData(hash.bitcoinData)
         }
         data.appendVarInt(flags.count)
         for flag in flags {
@@ -147,6 +149,7 @@ extension PartialMerkleTree: BitcoinSerializable {
     }
     
     public static func fromBitcoinStream(_ stream: InputStream) -> PartialMerkleTree? {
+        
         guard let totalLeafNodes = stream.readUInt32() else {
             print("Failed to parse totalLeafNodes from PartialMerkleTree")
             return nil
@@ -156,6 +159,7 @@ extension PartialMerkleTree: BitcoinSerializable {
             print("Failed to parse hashesCount from PartialMerkleTree")
             return nil
         }
+        
         var hashes: [SHA256Hash] = []
         for i in 0 ..< hashesCount {
             guard let hash = SHA256Hash.fromBitcoinStream(stream) else {
@@ -164,6 +168,7 @@ extension PartialMerkleTree: BitcoinSerializable {
             }
             hashes.append(hash)
         }
+        
         guard let flagBytesCount = stream.readVarInt() else {
             print("Failed to parse flagBytesCount from PartialMerkleTree")
             return nil
@@ -177,6 +182,7 @@ extension PartialMerkleTree: BitcoinSerializable {
             }
             flags.append(flagByte)
         }
+        
         return PartialMerkleTree(totalLeafNodes: totalLeafNodes, hashes: hashes, flags: flags)
     }
 }

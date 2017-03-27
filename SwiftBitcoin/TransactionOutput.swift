@@ -35,7 +35,7 @@ extension Transaction.Output: BitcoinSerializable {
         let data = NSMutableData()
         data.appendInt64(value)
         data.appendVarInt(script.bitcoinData.length)
-        data.append(script.bitcoinData as Data)
+        data.appendNSData(script.bitcoinData)
         return data
     }
     

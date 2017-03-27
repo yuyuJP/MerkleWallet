@@ -51,9 +51,9 @@ extension Transaction.Input: BitcoinSerializable {
     
     public var bitcoinData: NSData {
         let data = NSMutableData()
-        data.append(outPoint.bitcoinData as Data)
+        data.appendNSData(outPoint.bitcoinData)
         data.appendVarInt(scriptSignature.length)
-        data.append(scriptSignature as Data)
+        data.appendNSData(scriptSignature)
         data.appendUInt32(sequence)
         return data
     }

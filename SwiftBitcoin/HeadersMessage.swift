@@ -31,7 +31,7 @@ extension HeadersMessage: MessagePayload {
         let data = NSMutableData()
         data.appendVarInt(headers.count)
         for header in headers {
-            data.append(header.bitcoinData as Data)
+            data.appendNSData(header.bitcoinData)
         }
         return data
     }

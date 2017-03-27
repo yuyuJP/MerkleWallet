@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "512042973.832938"
+            timestampString = "512213179.886213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "transactionTest(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -128,22 +128,6 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "incomingInputCheck(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftBitcoin/PartialMerkleTree.swift"
-            timestampString = "512099017.32787"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "init(totalLeafNodes:hashes:flags:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

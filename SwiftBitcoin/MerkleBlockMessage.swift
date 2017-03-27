@@ -48,7 +48,7 @@ extension MerkleBlockMessage: MessagePayload {
     
     public var bitcoinData: NSData {
         let data = NSMutableData()
-        data.append(header.bitcoinData as Data)
+        data.appendNSData(header.bitcoinData)
         
         /*data.appendUInt32(totalTransactions)
         for hash in hashes {
@@ -58,7 +58,7 @@ extension MerkleBlockMessage: MessagePayload {
             data.appendUInt8(flag)
         }*/
         
-        data.append(partialMerkleTree.bitcoinData as Data)
+        data.appendNSData(partialMerkleTree.bitcoinData)
         
         return data
     }
@@ -116,7 +116,7 @@ extension MerkleBlockMessage: MessagePayload {
         return MerkleBlockMessage(blockHeader: blockHeader, totalTransactions: totalTransactions, hashes: hashes, flags: flags)
         */
         guard let partialMerkleTree = PartialMerkleTree.fromBitcoinStream(stream) else {
-            print("Failed to parse partialMerkleTree from FilteredBlock")
+            print("Failed to parse partialMerkleTree from MerkleBlockMessage")
             return nil
         }
         let merkleBlock = MerkleBlockMessage(header: header, partialMerkleTree: partialMerkleTree)

@@ -30,7 +30,7 @@ extension InventoryVector: BitcoinSerializable {
     public var bitcoinData: NSData {
         let data = NSMutableData()
         data.appendUInt32(type.rawValue)
-        data.append(hash.bitcoinData as Data)
+        data.appendNSData(hash.bitcoinData)
         return data
     }
     

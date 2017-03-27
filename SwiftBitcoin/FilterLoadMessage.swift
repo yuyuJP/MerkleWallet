@@ -41,7 +41,7 @@ extension FilterLoadMessage: MessagePayload {
     public var bitcoinData: NSData {
         let data = NSMutableData()
         data.appendVarInt(filter.length)
-        data.append(filter as Data)
+        data.appendNSData(filter)
         data.appendUInt32(numHashFunctions)
         data.appendUInt32(tweak)
         data.appendUInt8(flags)

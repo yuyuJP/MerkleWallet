@@ -27,9 +27,9 @@ extension TransactionInputScriptSignature: BitcoinSerializable {
     public var bitcoinData: NSData {
         let data = NSMutableData()
         data.appendUInt8(UInt8(derSignature.length))
-        data.append(derSignature as Data)
+        data.appendNSData(derSignature)
         data.appendUInt8(UInt8(publicKey.length))
-        data.append(publicKey as Data)
+        data.appendNSData(publicKey)
         return data
     }
     

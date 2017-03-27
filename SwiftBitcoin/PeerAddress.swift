@@ -42,7 +42,7 @@ extension PeerAddress {
             }
         }
         data.appendUInt64(services.rawValue)
-        data.append(IP.bitcoinData as Data)
+        data.appendNSData(IP.bitcoinData)
         data.appendUInt16(port, endianness: .BigEndian)
         return data
     }

@@ -32,13 +32,13 @@ public class TransactionBuilder {
         let signature = produceDERSignature()
         let data = NSMutableData()
         data.appendUInt8(UInt8(signature.length + 1))
-        data.append(signature as Data)
+        data.appendNSData(signature)
         data.appendUInt8(0x01) //SIGHASH
         
         //let publicKey = key.publicKeyPoint.toData
         let publicKey = key.publicKeyHexString.hexStringToNSData()
         data.appendUInt8(UInt8(publicKey.length))
-        data.append(publicKey as Data)
+        data.appendNSData(publicKey)
         //print(data)
         return data
     }

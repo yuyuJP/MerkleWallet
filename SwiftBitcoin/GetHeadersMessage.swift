@@ -37,12 +37,12 @@ extension GetHeadersMessage: MessagePayload {
         data.appendUInt32(protocolVersion)
         data.appendVarInt(blockLocatorHashes.count)
         for blockLocatorHash in blockLocatorHashes {
-            data.append(blockLocatorHash.bitcoinData as Data)
+            data.appendNSData(blockLocatorHash.bitcoinData)
         }
         if let hashStop = blockHashStop {
-            data.append(hashStop.bitcoinData as Data)
+            data.appendNSData(hashStop.bitcoinData)
         } else {
-            data.append(SHA256Hash().bitcoinData as Data)
+            data.appendNSData(SHA256Hash().bitcoinData)
         }
         return data
     }

@@ -41,6 +41,10 @@ extension NSMutableData {
         self.append(bytes, length: bytes.count)
     }
     
+    public func appendNSData(_ data: NSData) {
+        self.append(data as Data)
+    }
+    
     public func appendVarInt(_ value: UInt64, endiasness: Endianness = .LittleEndian) {
         let varInt = VarInt(value)
         self.append(varInt.bytes, length: varInt.bytes.count)

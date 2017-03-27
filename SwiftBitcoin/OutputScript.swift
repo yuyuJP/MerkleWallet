@@ -32,7 +32,7 @@ extension OutputScript.P2PKHScript: BitcoinSerializable {
         data.appendOPCode(OPCode.OP_DUP)
         data.appendOPCode(OPCode.OP_HASH160)
         data.appendUInt8(0x14) //length
-        data.append(hash160.bitcoinData as Data)
+        data.appendNSData(hash160.bitcoinData)
         data.appendOPCode(OPCode.OP_EQUALVERIFY)
         data.appendOPCode(OPCode.OP_CHECKSIG)
         return data

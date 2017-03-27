@@ -29,11 +29,11 @@ public struct TransactionMessage {
         data.appendUInt32(version)
         data.appendVarInt(inputs.count)
         for input in inputs {
-            data.append(input.bitcoinData as Data)
+            data.appendNSData(input.bitcoinData)
         }
         data.appendVarInt(outputs.count)
         for output in outputs {
-            data.append(output.bitcoinData as Data)
+            data.appendNSData(output.bitcoinData)
         }
         data.appendUInt32(lockTime.rawValue)
         

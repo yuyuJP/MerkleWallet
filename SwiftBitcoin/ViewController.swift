@@ -78,6 +78,7 @@ class ViewController: UIViewController {
         }*/
     }
     
+        
     func transactionMessageConstructTest() -> TransactionMessage {
         
         let txHash = SHA256Hash("0112728a4a1ef8052e75ac4d0d4f1804077c9554c5d1f8a728a1d3f57d48741e".hexStringToNSData())

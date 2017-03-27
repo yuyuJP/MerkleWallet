@@ -66,8 +66,8 @@ extension BlockHeader: BitcoinSerializable {
     public var bitcoinData: NSData {
         let data = NSMutableData()
         data.appendUInt32(version)
-        data.append(previousBlockHash.bitcoinData as Data)
-        data.append(merkleRoot.bitcoinData as Data)
+        data.appendNSData(previousBlockHash.bitcoinData)
+        data.appendNSData(merkleRoot.bitcoinData)
         data.appendDateAs32BitUnixTimestamp(timestamp)
         data.appendUInt32(compactDifficulty)
         data.appendUInt32(nonce)

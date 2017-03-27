@@ -98,7 +98,7 @@ public struct Message {
 extension Message: BitcoinSerializable {
     public var bitcoinData: NSData {
         let data = NSMutableData(data: header.bitcoinData as Data)
-        data.append(payload as Data)
+        data.appendNSData(payload)
         return data
     }
     
