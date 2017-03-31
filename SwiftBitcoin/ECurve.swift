@@ -271,7 +271,7 @@ public func * (lhs: BigUInt, rhs: ECPoint) -> ECPoint {
     
     //print(lhs)
     
-    let lhsBitLength = lhs.highestBit()
+    let lhsBitLength = lhs.highestBitOfUInt256()
     
     //print(lhsBitLength)
     

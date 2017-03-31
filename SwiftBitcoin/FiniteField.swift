@@ -77,7 +77,7 @@ extension BigUInt {
         return t.abs
     }
     
-    internal func highestBit() -> Int {
+    internal func highestBitOfUInt256() -> Int {
         var bitLength: UInt32 = 256
         let e = Int(self[3].high)
         

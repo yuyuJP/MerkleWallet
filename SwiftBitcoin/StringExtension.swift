@@ -42,11 +42,16 @@ extension String {
         return leadingOnes + base58Encoding(bigNum)
     }
     
-    func base58StringToNSData() -> NSData {
+    func base58StringToNSData() -> NSData? {
         var decimal = BigUInt(0)
         
         for c in self.characters {
             let temp_c = c
+            
+            if !ALPHABET.characters.contains(c) {
+                print("Invalid character:\(c) contains.")
+                return nil
+            }
             
             var indexNum = 0
             for (i, letter) in ALPHABET.characters.enumerated() {
@@ -79,6 +84,52 @@ extension String {
         data.append(BigUInt(self, radix: 16)!.serialize())
         
         return data as NSData
+    }
+    
+    func publicAddressToPubKeyHash(_ pubKeyPrefix: UInt8) -> String? {
+        guard let decodedStr = self.base58StringToNSData()?.toHexString() else {
+            return nil
+        }
+        
+        let startIndex = decodedStr.startIndex
+        let endIndex = decodedStr.endIndex
+        
+        let prefixEnd = decodedStr.index(startIndex, offsetBy: 2)
+        let prefixRange = startIndex ..< prefixEnd
+        
+        guard let prefix = UInt8(decodedStr.substring(with: prefixRange), radix: 16) else {
+            print("Failed to decode prefix from Decoded Public Address.")
+            return nil
+        }
+        
+        if prefix != pubKeyPrefix {
+            print("Failed to decode Public Address. Invalid prefix(\(prefix). It should be \(pubKeyPrefix).")
+            return nil
+        }
+        
+        let checksumStart = decodedStr.index(endIndex, offsetBy: -8)
+        let checksumRange = checksumStart ..< endIndex
+        let checksumStr = decodedStr.substring(with: checksumRange)
+    
+        let pubKeyHashRange = prefixEnd ..< checksumStart
+        let extractedPubKeyHash = decodedStr.substring(with: pubKeyHashRange)
+        
+        //Public Key Hash with public key prefix
+        let extendedPubKeyHash = decodedStr.substring(with: startIndex ..< checksumStart)
+        
+        let hash256Str = Hash256.digestHexString(extendedPubKeyHash.hexStringToNSData())
+        
+        let checksumCandidateStart = hash256Str.startIndex
+        let checksumCandidateEnd = hash256Str.index(startIndex, offsetBy: 8)
+        let checksumCandidateRange = checksumCandidateStart ..< checksumCandidateEnd
+        let checksumCandidate = hash256Str.substring(with: checksumCandidateRange)
+        
+        if checksumStr != checksumCandidate {
+            print("Failed to decode Public Address. Invalid checksum.")
+            return nil
+        }
+        
+        return extractedPubKeyHash
     }
 }
 

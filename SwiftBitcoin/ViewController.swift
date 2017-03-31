@@ -35,9 +35,15 @@ class ViewController: UIViewController {
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        establishConnection()
+        //establishConnection()
         
         //dbTest()
+        
+        
+        guard let pubkeyHashCandidate = "mkA77hqf4KVQzLKbJhoD4LtxsiVcG1PsaK".publicAddressToPubKeyHash(key.publicKeyPrefix) else {
+            return
+        }
+        print(pubkeyHashCandidate)
     }
     
     func bloomFilterSet(publicKeyHex: String, publicKeyHashHex: String) {

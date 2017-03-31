@@ -57,6 +57,7 @@ public struct PartialMerkleTree: Equatable{
                     return nil
                 }
             }
+            
         } else {
             self.rootHash = SHA256Hash()
             self.matchingHashes = []
@@ -118,8 +119,8 @@ public struct PartialMerkleTree: Equatable{
                     return nil
                 }
                 let hashData = NSMutableData()
-                hashData.append(leftNode.hash.data.reversedData as Data)
-                hashData.append(rightNode.hash.data.reversedData as Data)
+                hashData.appendNSData(leftNode.hash.data.reversedData)
+                hashData.appendNSData(rightNode.hash.data.reversedData)
                 nodeHash = SHA256Hash(Hash256.digest(hashData).reversedData)
             }
         }

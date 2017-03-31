@@ -33,7 +33,11 @@ public class Wif {
             return false
         }
         
-        var wifBytes = wif.base58StringToNSData().toBytes()
+        guard let wifBytes_ = wif.base58StringToNSData()?.toBytes() else {
+            return false
+        }
+        
+        var wifBytes = wifBytes_
         
         if privateKeyPrefix != wifBytes[0] {
             return false
