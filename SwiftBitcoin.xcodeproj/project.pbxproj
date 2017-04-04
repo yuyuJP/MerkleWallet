@@ -111,7 +111,7 @@
 		E1D130D91DBDB6050028651C /* Endianness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D130D81DBDB6050028651C /* Endianness.swift */; };
 		E1D4EC351DC33FDA00C15A89 /* VersionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4EC341DC33FDA00C15A89 /* VersionMessage.swift */; };
 		E1D4EC371DC3474A00C15A89 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4EC361DC3474A00C15A89 /* IPAddress.swift */; };
-		E1E8F0241E9350D700119EDB /* TransactionOutputScriptType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8F0231E9350D700119EDB /* TransactionOutputScriptType.swift */; };
+		E1E8F0241E9350D700119EDB /* OutputScriptType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8F0231E9350D700119EDB /* OutputScriptType.swift */; };
 		EC13FC0411979E52CCD3B801 /* Pods_SwiftBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E039D25D00BBFEB3901F0A /* Pods_SwiftBitcoin.framework */; };
 		F2DBFCDE21FDFF9624D4590E /* Pods_SwiftBitcoinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC88D0FA2427FCEBC1FD012B /* Pods_SwiftBitcoinUITests.framework */; };
 /* End PBXBuildFile section */
@@ -252,7 +252,7 @@
 		E1D130D81DBDB6050028651C /* Endianness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endianness.swift; sourceTree = "<group>"; };
 		E1D4EC341DC33FDA00C15A89 /* VersionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionMessage.swift; sourceTree = "<group>"; };
 		E1D4EC361DC3474A00C15A89 /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
-		E1E8F0231E9350D700119EDB /* TransactionOutputScriptType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOutputScriptType.swift; sourceTree = "<group>"; };
+		E1E8F0231E9350D700119EDB /* OutputScriptType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputScriptType.swift; sourceTree = "<group>"; };
 		FC88D0FA2427FCEBC1FD012B /* Pods_SwiftBitcoinUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBitcoinUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -394,7 +394,6 @@
 				E150E4991DBA88720066B533 /* VarInt.swift */,
 				E150E49B1DBB97850066B533 /* VarString.swift */,
 				E1A819EB1DFDA5B700219B10 /* InventoryVector.swift */,
-				E1E8F0231E9350D700119EDB /* TransactionOutputScriptType.swift */,
 				E160A31B1DFFA02C00915C94 /* Transaction.swift */,
 				E160A31F1DFFA26100915C94 /* TransactionOutput.swift */,
 				E160A3211DFFA43100915C94 /* TransactionInput.swift */,
@@ -404,6 +403,7 @@
 				E1A92CED1E14ECE000811E4C /* TransactionBuilder.swift */,
 				E1A92CEF1E14FED500811E4C /* TransactionMessage.swift */,
 				E15723331E0E13EE00BB2523 /* OutputScript.swift */,
+				E1E8F0231E9350D700119EDB /* OutputScriptType.swift */,
 				E12DAA361E935D6E000763C6 /* P2PKH_OutputScript.swift */,
 				E12DAA381E935E92000763C6 /* P2SH_OutputScript.swift */,
 				E1A92CEB1E14E27100811E4C /* OPCode.swift */,
@@ -885,7 +885,7 @@
 				E1D130D11DBD03940028651C /* NetworkMagicBytes.swift in Sources */,
 				E175C1FA1E8539E000126D3F /* MerkleTreeNode.swift in Sources */,
 				E160A3221DFFA43100915C94 /* TransactionInput.swift in Sources */,
-				E1E8F0241E9350D700119EDB /* TransactionOutputScriptType.swift in Sources */,
+				E1E8F0241E9350D700119EDB /* OutputScriptType.swift in Sources */,
 				E1CE76D11DC34DD4006B6F6E /* NSMutableData+BitcoinEncoding.swift in Sources */,
 				E193B97C1E5AD27200777236 /* TransactionOutPointInfo.swift in Sources */,
 				E102D7961DB1C4A00078E4C4 /* AppDelegate.swift in Sources */,

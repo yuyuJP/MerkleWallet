@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public struct P2PKH_OutputScript {
     
     public let hash160: RIPEMD160HASH

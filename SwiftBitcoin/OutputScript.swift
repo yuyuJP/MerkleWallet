@@ -8,72 +8,51 @@
 
 import Foundation
 
-/*
-public func == (left: OutputScript.P2PKHScript, right: OutputScript.P2PKHScript) -> Bool {
-    return left.hash160 == right.hash160
-}
 
 public struct OutputScript {
     
-    //P2PKH outputScript only!!
-    //Need to support other script formats
-    public struct P2PKHScript: Equatable {
+    public let type: OutputScriptType
+    public let P2PKH_script: P2PKH_OutputScript?
+    public let P2SH_script: P2SH_OutputScript?
+    
+    public init(P2PKH_script: P2PKH_OutputScript?, P2SH_script: P2SH_OutputScript?, type: OutputScriptType) {
+        self.P2PKH_script = P2PKH_script
+        self.P2SH_script = P2SH_script
+        self.type = type
+    }
+    
+    public init?(data: NSData) {
+        let stream = InputStream(data: data as Data)
+        stream.open()
+        let P2PKH_script = P2PKH_OutputScript.fromBitcoinStream(stream)
+        stream.close()
         
-        public let hash160 : RIPEMD160HASH
-        
-        public init(hash160: RIPEMD160HASH) {
-            self.hash160 = hash160
+        if P2PKH_script != nil {
+            self.P2PKH_script = P2PKH_script
+            self.P2SH_script = nil
+            self.type = .P2PKH
+        } else {
+            let stream_ = InputStream(data: data as Data)
+            stream_.open()
+            let P2SH_script = P2SH_OutputScript.fromBitcoinStream(stream_)
+            stream_.close()
+            
+            if P2SH_script != nil {
+                self.P2PKH_script = nil
+                self.P2SH_script = P2SH_script
+                self.type = .P2SH
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    public var hash160: RIPEMD160HASH {
+        switch type {
+        case .P2PKH:
+            return P2PKH_script!.hash160
+        case .P2SH:
+            return P2SH_script!.hash160
         }
     }
 }
-
-extension OutputScript.P2PKHScript: BitcoinSerializable {
-    public var bitcoinData: NSData {
-        let data = NSMutableData()
-        data.appendOPCode(OPCode.OP_DUP)
-        data.appendOPCode(OPCode.OP_HASH160)
-        data.appendUInt8(0x14) //length
-        data.appendNSData(hash160.bitcoinData)
-        data.appendOPCode(OPCode.OP_EQUALVERIFY)
-        data.appendOPCode(OPCode.OP_CHECKSIG)
-        return data
-    }
-    
-    public static func fromBitcoinStream(_ stream: InputStream) -> OutputScript.P2PKHScript? {
-        
-        if stream.readOPCode() != OPCode.OP_DUP {
-            print("Not OP_DUP")
-            return nil
-        }
-        
-        if stream.readOPCode() != OPCode.OP_HASH160 {
-            print("Not OP_HASH160")
-            return nil
-        }
-        
-        if stream.readUInt8() != 0x14 {
-            print("Not length")
-            return nil
-        }
-        
-        guard let hash160 = RIPEMD160HASH.fromBitcoinStream(stream) else {
-            print("Failed to parse RIPEMD160HASH")
-            return nil
-        }
-        
-        if stream.readOPCode() != OPCode.OP_EQUALVERIFY {
-            print("Not OP_EQUALVERIFY")
-            return nil
-        }
-        
-        
-        if stream.readOPCode() != OPCode.OP_CHECKSIG {
-            print("Not OP_CHECKSIG")
-            return nil
-        }
-        
-        return OutputScript.P2PKHScript(hash160: hash160)
-    }
-    
-}
-  */ 
