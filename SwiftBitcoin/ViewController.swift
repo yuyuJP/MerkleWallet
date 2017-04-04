@@ -38,12 +38,6 @@ class ViewController: UIViewController {
         //establishConnection()
         
         //dbTest()
-        
-        
-        guard let pubkeyHashCandidate = "mkA77hqf4KVQzLKbJhoD4LtxsiVcG1PsaK".publicAddressToPubKeyHash(key.publicKeyPrefix) else {
-            return
-        }
-        print(pubkeyHashCandidate)
     }
     
     func bloomFilterSet(publicKeyHex: String, publicKeyHashHex: String) {
@@ -92,14 +86,14 @@ class ViewController: UIViewController {
         let testInputScript = "76a91432e741f1bf3264643ea5821ff9b01cad4074ab0d88ac".hexStringToNSData()
         let testOutputScriptData1 = "007a3dba76e82373a9bc545f8951863c28f84221".hexStringToNSData().reversedData
         let testOutputScriptData2 = "90b2e2241ff5ee6b60a65ec5729a773eefa3ad5f".hexStringToNSData().reversedData
-        let testOutputScript1 = OutputScript.P2PKHScript(hash160: RIPEMD160HASH(testOutputScriptData1))
-        let testOutputScript2 = OutputScript.P2PKHScript(hash160: RIPEMD160HASH(testOutputScriptData2))
+        let testOutputScript1 = P2PKH_OutputScript(hash160: RIPEMD160HASH(testOutputScriptData1))
+        let testOutputScript2 = P2PKH_OutputScript(hash160: RIPEMD160HASH(testOutputScriptData2))
         
         
         let outpoint = Transaction.OutPoint(transactionHash: txHash, index: 0x01)
         let input = Transaction.Input(outPoint: outpoint, scriptSignature: testInputScript, sequence: 0xffffffff)
-        let output1 = Transaction.Output(value: 90000000, script: testOutputScript1)
-        let output2 = Transaction.Output(value: 9991801, script: testOutputScript2)
+        let output1 = Transaction.Output(value: 90000000, script: testOutputScript1.bitcoinData)
+        let output2 = Transaction.Output(value: 9991801, script: testOutputScript2.bitcoinData)
         
         let transactionMessage = TransactionMessage(version: 0x01, inputs: [input], outputs: [output1, output2], lockTime: Transaction.LockTime.AlwaysLocked, sigHash: 0x01)
         

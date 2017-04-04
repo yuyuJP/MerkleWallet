@@ -19,13 +19,32 @@ public extension Transaction {
         
         public let value: Int64
         
-        public let script: OutputScript.P2PKHScript
+        //public let script: OutputScript.P2PKHScript
+        public let script: NSData
         
-        public init(value: Int64, script: OutputScript.P2PKHScript) {
+        public init(value: Int64, script: NSData) {
             // TODO: Validate script!!!!!!!!!
-            
             self.value = value
             self.script = script
+        }
+        
+        public var hash160: RIPEMD160HASH? {
+            let stream = InputStream(data: script as Data)
+            stream.open()
+            
+            //Extract hash160 from output script.
+            if let P2PKH_script = P2PKH_OutputScript.fromBitcoinStream(stream) {
+                return P2PKH_script.hash160
+            }
+            
+            let stream_ = InputStream(data: script as Data)
+            stream_.open()
+            
+            if let P2SH_script = P2SH_OutputScript.fromBitcoinStream(stream_) {
+                return P2SH_script.hash160
+            }
+            
+            return nil
         }
     }
 }
@@ -34,8 +53,8 @@ extension Transaction.Output: BitcoinSerializable {
     public var bitcoinData: NSData {
         let data = NSMutableData()
         data.appendInt64(value)
-        data.appendVarInt(script.bitcoinData.length)
-        data.appendNSData(script.bitcoinData)
+        data.appendVarInt(script.length)
+        data.appendNSData(script)
         return data
     }
     
@@ -50,21 +69,24 @@ extension Transaction.Output: BitcoinSerializable {
             return nil
         }
         
+        /*
         if scriptLength != 25 {
             print("Not Supported Script. Script Length must be 25. P2PKH Script is currently only supported")
             return nil
         }
+        */
         
-        
-        /*guard let script = stream.readData(Int(scriptLength)) else {
+        guard let script = stream.readData(Int(scriptLength)) else {
             print("Failed to parse scriptLength from Transaction.Output")
             return nil
-        }*/
+        }
         
+        /*
         guard let script = OutputScript.P2PKHScript.fromBitcoinStream(stream) else {
             print("Failed to parse P2PKH Script from Transaction.Output")
             return nil
         }
+         */
         
         return Transaction.Output(value: value, script: script)
         

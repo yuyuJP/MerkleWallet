@@ -211,7 +211,7 @@ open class Object: RLMObjectBase {
      :nodoc:
      */
     public func dynamicList(_ propertyName: String) -> List<DynamicObject> {
-        return unsafeBitCast(RLMDynamicGetByName(self, propertyName, true) as! RLMListBase,
+        return unsafeDowncast(RLMDynamicGetByName(self, propertyName, true) as! RLMListBase,
                              to: List<DynamicObject>.self)
     }
 

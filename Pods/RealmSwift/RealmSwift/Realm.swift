@@ -263,7 +263,7 @@ public final class Realm {
         if update && schema[typeName]?.primaryKeyProperty == nil {
             throwRealmException("'\(typeName)' does not have a primary key and can not be updated")
         }
-        return unsafeBitCast(RLMCreateObjectInRealmWithValue(rlmRealm, typeName, value, update), to: T.self)
+        return unsafeDowncast(RLMCreateObjectInRealmWithValue(rlmRealm, typeName, value, update), to: T.self)
     }
 
     /**
@@ -301,7 +301,7 @@ public final class Realm {
         if update && schema[typeName]?.primaryKeyProperty == nil {
             throwRealmException("'\(typeName)' does not have a primary key and can not be updated")
         }
-        return unsafeBitCast(RLMCreateObjectInRealmWithValue(rlmRealm, typeName, value, update), to: DynamicObject.self)
+        return unsafeDowncast(RLMCreateObjectInRealmWithValue(rlmRealm, typeName, value, update), to: DynamicObject.self)
     }
 
     // MARK: Deleting objects

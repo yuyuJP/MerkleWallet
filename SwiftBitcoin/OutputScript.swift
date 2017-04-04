@@ -8,6 +8,7 @@
 
 import Foundation
 
+/*
 public func == (left: OutputScript.P2PKHScript, right: OutputScript.P2PKHScript) -> Bool {
     return left.hash160 == right.hash160
 }
@@ -75,4 +76,4 @@ extension OutputScript.P2PKHScript: BitcoinSerializable {
     }
     
 }
-   
+  */ 

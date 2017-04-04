@@ -21,8 +21,11 @@ class TransactionOutputInfo: Object {
     
     public static func create(_ output: Transaction.Output) -> TransactionOutputInfo {
         let outputInfo = TransactionOutputInfo()
-        outputInfo.pubKeyHash = output.script.hash160.bitcoinData.toHexString()
+        if let hash160 = output.hash160?.bitcoinData.toHexString() {
+            outputInfo.pubKeyHash = hash160
+        }
         outputInfo.value = output.value
+        
         return outputInfo
     }
     
