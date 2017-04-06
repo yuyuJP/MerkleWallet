@@ -10,9 +10,9 @@ import Foundation
 
 public enum OPCode: UInt8 {
     case OP_0 = 0x00
-    case PUSHDATA1 = 0x4c
-    case PUSHDATA2 = 0x4d
-    case PUSHDATA4 = 0x4e
+    case OP_PUSHDATA1 = 0x4c
+    case OP_PUSHDATA2 = 0x4d
+    case OP_PUSHDATA4 = 0x4e
     case OP_1 = 0x51
     case OP_2 = 0x52
     case OP_3 = 0x53
@@ -38,4 +38,18 @@ public enum OPCode: UInt8 {
     case OP_CHECKSIGVERIFY = 0xad
     case OP_CHECKMULTISIG = 0xae
     case OP_CHECKMULTISIGVERIFY = 0xaf
+}
+
+extension OPCode {
+    func OP_N_to_UInt8() -> UInt8 {
+        assert(self.rawValue >= 0x51 && self.rawValue <= 0x60, "ERROR: Invalid OPCode. ONLY OP_1 ~ OP_16 accepted.")
+        return self.rawValue - 0x50
+    }
+}
+
+extension UInt8 {
+    func toOPCode() -> OPCode {
+        assert(self >= 1 && self <= 16, "ERROR: OP_N, N must be between 1 and 16.")
+        return OPCode(rawValue: self + 0x50)!
+    }
 }

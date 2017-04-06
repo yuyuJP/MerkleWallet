@@ -54,6 +54,11 @@
 		E150E49A1DBA88720066B533 /* VarInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150E4991DBA88720066B533 /* VarInt.swift */; };
 		E150E49C1DBB97850066B533 /* VarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150E49B1DBB97850066B533 /* VarString.swift */; };
 		E15160321E1CEB0600D14267 /* RejectMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15160311E1CEB0600D14267 /* RejectMessage.swift */; };
+		E155896C1E95E4E5008B3F36 /* InputScriptSig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155896B1E95E4E5008B3F36 /* InputScriptSig.swift */; };
+		E155896E1E95E551008B3F36 /* InputScriptSigType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155896D1E95E551008B3F36 /* InputScriptSigType.swift */; };
+		E15589701E95FE79008B3F36 /* P2PKH_InputScriptSig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155896F1E95FE79008B3F36 /* P2PKH_InputScriptSig.swift */; };
+		E15589721E96007C008B3F36 /* P2SH_InputScriptSig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15589711E96007C008B3F36 /* P2SH_InputScriptSig.swift */; };
+		E15589741E960837008B3F36 /* RedeemScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15589731E960837008B3F36 /* RedeemScript.swift */; };
 		E15723341E0E13EE00BB2523 /* OutputScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15723331E0E13EE00BB2523 /* OutputScript.swift */; };
 		E15723361E0E1ADC00BB2523 /* RIPEMD160Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15723351E0E1ADC00BB2523 /* RIPEMD160Hash.swift */; };
 		E159FD5F1DED161E005856FB /* FiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD5E1DED161E005856FB /* FiniteField.swift */; };
@@ -195,6 +200,11 @@
 		E150E4991DBA88720066B533 /* VarInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarInt.swift; sourceTree = "<group>"; };
 		E150E49B1DBB97850066B533 /* VarString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarString.swift; sourceTree = "<group>"; };
 		E15160311E1CEB0600D14267 /* RejectMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RejectMessage.swift; sourceTree = "<group>"; };
+		E155896B1E95E4E5008B3F36 /* InputScriptSig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputScriptSig.swift; sourceTree = "<group>"; };
+		E155896D1E95E551008B3F36 /* InputScriptSigType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputScriptSigType.swift; sourceTree = "<group>"; };
+		E155896F1E95FE79008B3F36 /* P2PKH_InputScriptSig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2PKH_InputScriptSig.swift; sourceTree = "<group>"; };
+		E15589711E96007C008B3F36 /* P2SH_InputScriptSig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2SH_InputScriptSig.swift; sourceTree = "<group>"; };
+		E15589731E960837008B3F36 /* RedeemScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemScript.swift; sourceTree = "<group>"; };
 		E15723331E0E13EE00BB2523 /* OutputScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputScript.swift; sourceTree = "<group>"; };
 		E15723351E0E1ADC00BB2523 /* RIPEMD160Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RIPEMD160Hash.swift; sourceTree = "<group>"; };
 		E159FD5E1DED161E005856FB /* FiniteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiniteField.swift; sourceTree = "<group>"; };
@@ -406,6 +416,11 @@
 				E1E8F0231E9350D700119EDB /* OutputScriptType.swift */,
 				E12DAA361E935D6E000763C6 /* P2PKH_OutputScript.swift */,
 				E12DAA381E935E92000763C6 /* P2SH_OutputScript.swift */,
+				E155896B1E95E4E5008B3F36 /* InputScriptSig.swift */,
+				E155896D1E95E551008B3F36 /* InputScriptSigType.swift */,
+				E155896F1E95FE79008B3F36 /* P2PKH_InputScriptSig.swift */,
+				E15589711E96007C008B3F36 /* P2SH_InputScriptSig.swift */,
+				E15589731E960837008B3F36 /* RedeemScript.swift */,
 				E1A92CEB1E14E27100811E4C /* OPCode.swift */,
 			);
 			name = Messages;
@@ -853,11 +868,13 @@
 				E159FD681DED16DA005856FB /* ECDomain.swift in Sources */,
 				E102D7CF1DB34ABB0078E4C4 /* CFConnection.swift in Sources */,
 				E1A92CEE1E14ECE000811E4C /* TransactionBuilder.swift in Sources */,
+				E15589721E96007C008B3F36 /* P2SH_InputScriptSig.swift in Sources */,
 				E159FD731DED1766005856FB /* UInt32+CircularShift.swift in Sources */,
 				E11454A71DC88F66002122DA /* BigUInt Addition.swift in Sources */,
 				E11454AB1DC88F66002122DA /* BigUInt Division.swift in Sources */,
 				E17431111DC8BE8B0002BBFD /* CFController.swift in Sources */,
 				E159FD6A1DED16DF005856FB /* ECPoint.swift in Sources */,
+				E155896E1E95E551008B3F36 /* InputScriptSigType.swift in Sources */,
 				E159FD611DED1623005856FB /* FiniteFieldInteger.swift in Sources */,
 				E11454A91DC88F66002122DA /* BigUInt Comparison.swift in Sources */,
 				E11454B61DC88F66002122DA /* BigUInt.swift in Sources */,
@@ -887,6 +904,7 @@
 				E160A3221DFFA43100915C94 /* TransactionInput.swift in Sources */,
 				E1E8F0241E9350D700119EDB /* OutputScriptType.swift in Sources */,
 				E1CE76D11DC34DD4006B6F6E /* NSMutableData+BitcoinEncoding.swift in Sources */,
+				E155896C1E95E4E5008B3F36 /* InputScriptSig.swift in Sources */,
 				E193B97C1E5AD27200777236 /* TransactionOutPointInfo.swift in Sources */,
 				E102D7961DB1C4A00078E4C4 /* AppDelegate.swift in Sources */,
 				E11454AF1DC88F66002122DA /* BigUInt Multiplication.swift in Sources */,
@@ -899,7 +917,9 @@
 				E159FD6F1DED175A005856FB /* NSData+HexString.swift in Sources */,
 				E13C83A51DC5B7B5004E35EE /* PeerServices.swift in Sources */,
 				E159FD661DED16D5005856FB /* ECurve.swift in Sources */,
+				E15589701E95FE79008B3F36 /* P2PKH_InputScriptSig.swift in Sources */,
 				E160A31C1DFFA02C00915C94 /* Transaction.swift in Sources */,
+				E15589741E960837008B3F36 /* RedeemScript.swift in Sources */,
 				E175C1F81E8537EE00126D3F /* PartialMerkleTree.swift in Sources */,
 				E15723361E0E1ADC00BB2523 /* RIPEMD160Hash.swift in Sources */,
 				E102D7D11DB34AC70078E4C4 /* Thread.swift in Sources */,
