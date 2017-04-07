@@ -12,7 +12,8 @@ import RealmSwift
 public class TransactionDataStoreManager {
     //This method must be called after validaing Merkle Block and confirming the tx is really mine.
     public static func add(tx: Transaction) {
-
+        
+        //print("tx id: \(tx.hash)")
         let txInfo = TransactionInfo.create(tx)
         txInfo.save()
         
@@ -77,19 +78,17 @@ public class TransactionDataStoreManager {
         }
     }
     
-    
-    //TODO: Only P2PKH script supported. Other types of script must be supported in the near future.
     private static func extractRelevantInputs(_ tx: Transaction) -> [Transaction.Input] {
         var inputs_res: [Transaction.Input] = []
     
         for key in UserKeyInfo.loadAll() {
             
             for input in tx.inputs {
-                if let extractedKey = input.scriptSignatureDetail?.publicKey.toHexString() {
-                    if key.publicKey == extractedKey {
+                if let extractedKeyHash = input.parsedScript?.hash160.data.toHexString() {
+                    if key.publicKeyHash == extractedKeyHash {
                         inputs_res.append(input)
                     }
-                } 
+                }
             }
         }
         

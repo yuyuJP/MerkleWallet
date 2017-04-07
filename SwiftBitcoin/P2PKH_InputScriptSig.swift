@@ -17,6 +17,11 @@ public struct P2PKH_InputScriptSig {
         self.derSignature = derSignature
         self.publicKey = publicKey
     }
+    
+    var pubKeyHash: RIPEMD160HASH {
+        let ripemd = Hash160.digest(publicKey)
+        return RIPEMD160HASH(ripemd)
+    }
 }
 
 extension P2PKH_InputScriptSig: BitcoinSerializable {
@@ -31,22 +36,22 @@ extension P2PKH_InputScriptSig: BitcoinSerializable {
     
     public static func fromBitcoinStream(_ stream: InputStream) -> P2PKH_InputScriptSig? {
         guard let derSignatureLength = stream.readUInt8() else {
-            print("Failed to parse derSignatureLength in TransactionInputScriptSignature")
+            print("Failed to parse derSignatureLength in P2PKH_InputScriptSig")
             return nil
         }
         
         guard let derSignature = stream.readData(Int(derSignatureLength)) else {
-            print("Failed to parse derSignature in TransactionInputScriptSignature")
+            print("Failed to parse derSignature in P2PKH_InputScriptSig")
             return nil
         }
         
         guard let publicKeyLength = stream.readUInt8() else {
-            print("Failed to parse publicKeyLength in TransactionInputScriptSignature")
+            print("Failed to parse publicKeyLength in P2PKH_InputScriptSig")
             return nil
         }
         
         guard let publicKey = stream.readData(Int(publicKeyLength)) else {
-            print("Failed to parse publicKey in TransactionInputScriptSignature")
+            print("Failed to parse publicKey in P2PKH_InputScriptSig")
             return nil
         }
         

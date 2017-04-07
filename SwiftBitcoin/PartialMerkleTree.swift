@@ -27,6 +27,7 @@ public struct PartialMerkleTree: Equatable{
         self.totalLeafNodes = totalLeafNodes
         self.hashes = hashes
         self.flags = flags
+        
         let height = PartialMerkleTree.treeHeightWithtotalLeafNodes(totalLeafNodes)
         var matchingHashes: [SHA256Hash] = []
         var flagBitIndex = 0
@@ -39,7 +40,7 @@ public struct PartialMerkleTree: Equatable{
                                                                        hashIndex: &hashIndex) {
             self.rootHash = merkleRoot.hash
             self.matchingHashes = matchingHashes
-                        
+            
             // Fail if there are any unused hashes.
             if hashIndex < hashes.count {
                 return nil
@@ -75,6 +76,7 @@ public struct PartialMerkleTree: Equatable{
                                                  matchingHashes: inout [SHA256Hash],
                                                  flagBitIndex: inout Int,
                                                  hashIndex: inout Int) -> MerkleTreeNode? {
+        
         if hashIndex >= hashes.count {
             //We have run out of hashes without successfully building the tree.
             return nil
@@ -115,9 +117,11 @@ public struct PartialMerkleTree: Equatable{
                                                      matchingHashes: &matchingHashes,
                                                      flagBitIndex: &flagBitIndex,
                                                      hashIndex: &hashIndex)
-                if leftNode == nil || rightNode == nil {
-                    return nil
+                
+                if rightNode == nil {
+                    rightNode = leftNode
                 }
+                
                 let hashData = NSMutableData()
                 hashData.appendNSData(leftNode.hash.data.reversedData)
                 hashData.appendNSData(rightNode.hash.data.reversedData)

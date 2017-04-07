@@ -32,6 +32,15 @@ public extension Transaction {
             self.sequence = sequence
         }
         
+        public var parsedScript: InputScriptSig? {
+            if let scriptSig = InputScriptSig(data: scriptSignature) {
+                return scriptSig
+            } else {
+                return nil
+            }
+        }
+        
+        /*
         public var scriptSignatureDetail: TransactionInputScriptSignature? {
             let scriptSigStream = InputStream(data: scriptSignature as Data)
             scriptSigStream.open()
@@ -44,6 +53,7 @@ public extension Transaction {
             
             return scriptSignature
         }
+         */
     }
 }
 

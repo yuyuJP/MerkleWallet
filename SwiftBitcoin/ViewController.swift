@@ -36,6 +36,8 @@ class ViewController: UIViewController {
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
         establishConnection()
+
+        //merkleRootTest()
         
         //dbTest()
     }
@@ -76,6 +78,29 @@ class ViewController: UIViewController {
         } else {
             print("no key")
         }*/
+    }
+    
+    func merkleRootTest() {
+        //Root(big-endian)
+        //9d4bda28 b9160197 54055884 189b5ba4 bd961117 452cc5f8 e431bd49 3f91bcc2
+        
+        let hash1 = "2ec59292703087dd8c10497c791be624e1b7420571b27af743658317971bd0a6".hexStringToNSData()
+        let hash2 = "47db129551fb82de7fa5f85b2c98a3b6213f041cfffeb1fdd68bef7a1b89cf94".hexStringToNSData()
+        
+        let hash3 = "9cb1ff23e8f48fcd64b08b83b06b47dffebe19389ba1933744d0cbbfa44678dd".hexStringToNSData()
+        
+        let hashdata1 = NSMutableData()
+        hashdata1.appendNSData(hash3)
+        hashdata1.appendNSData(hash2)
+        
+        let nodehash1: NSData = Hash256.digest(hashdata1)
+        
+        let hashdata2 = NSMutableData()
+        hashdata2.appendNSData(nodehash1)
+        hashdata2.appendNSData(hash1)
+        
+        let nodehash2: NSData = Hash256.digest(hashdata2)
+        print(nodehash2)
     }
     
         

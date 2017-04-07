@@ -26,6 +26,11 @@ public struct P2SH_InputScriptSig {
         stream.close()
         return redeemScript
     }
+    
+    public var redeemScriptHash: RIPEMD160HASH {
+        let ripemd = Hash160.digest(redeemScriptData)
+        return RIPEMD160HASH(ripemd)
+    }
 }
 
 extension P2SH_InputScriptSig: BitcoinSerializable {

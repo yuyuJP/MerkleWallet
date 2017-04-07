@@ -94,19 +94,22 @@ public class CFController: CFConnectionDelegate {
                 self.connection?.sendMessageWithPayload(memPoolMessage)
             
                 
-                //let blkHash = SHA256Hash("000000000000078f485100093262727622be656835fbdfb410ff6b4b5ca484aa".hexStringToNSData())
+                //let blkHash = SHA256Hash("00000000000000d5faf1452a883e621b0aa652922da86d180a2224584436eda2".hexStringToNSData())
                 
-                let blkHash = SHA256Hash("00000000b1b60d6a1a62a9495ebdec018335b3b6a81aab5ed44fbee101d5683d".hexStringToNSData())
-                let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)
+                //let blkHash = SHA256Hash("00000000000001f0a782cb053dd4155a1136add7e4cb479e9692458373db8742".hexStringToNSData())
+                //let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)
                 
-                let msg = GetDataMessage(inventoryVectors: [inv])
-                self.connection?.sendMessageWithPayload(msg)
+                //let msg = GetDataMessage(inventoryVectors: [inv])
+                //self.connection?.sendMessageWithPayload(msg)
                 
                 //Use when balance calculation check is needed.
-                /*let blkHash = SHA256Hash("0000000056d6902f334fbf4f6e56244415958727d69483d04b70c7af08085cca".hexStringToNSData())
+                
+                let blkHash = SHA256Hash("0000000056d6902f334fbf4f6e56244415958727d69483d04b70c7af08085cca".hexStringToNSData())
+                //let blkHash = SHA256Hash("0000000056d6902f334fbf4f6e56244415958727d69483d04b70c7af08085cca".hexStringToNSData())
                 let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
                 print("Sending GetBlockMessage...")
-                self.connection?.sendMessageWithPayload(getBlocksMsg)*/
+                self.connection?.sendMessageWithPayload(getBlocksMsg)
+                
                 
             } else {
                 assert(false, "No filter looaded")
@@ -199,9 +202,9 @@ public class CFController: CFConnectionDelegate {
                 }
             }
             
-        case let .MerkleBlockMessage(merkleBlockMessage):
-            print("Received merkle block")
-            print(merkleBlockMessage)
+        case let .MerkleBlockMessage(merkleBlockMessage): break
+            //print("Received merkle block")
+            //print(merkleBlockMessage)
             
         case let .TransactionMessage(transactionMessage):
             //TODO: Add tx to Local-DB after validating merkle block and received tx
