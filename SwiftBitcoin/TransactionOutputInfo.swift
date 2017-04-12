@@ -44,4 +44,17 @@ class TransactionOutputInfo: Object {
             method()
         }
     }
+    
+    public func getIndex() -> Int {
+        if let parent_tx = inverse_tx {
+            for (i, output) in parent_tx.outputs.enumerated() {
+                if output == self {
+                    return i
+                }
+            }
+        }
+        
+        //When error occurs, return -1.
+        return -1
+    }
 }

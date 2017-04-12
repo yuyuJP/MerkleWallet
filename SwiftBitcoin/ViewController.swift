@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             }*/
             
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
-            print(key.publicAddress)
+            print(key.publicKeyHashHex)
         
         } else {
             print("No user info. Generating a new key.")
@@ -35,11 +35,8 @@ class ViewController: UIViewController {
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        establishConnection()
-
-        //merkleRootTest()
-        
-        //dbTest()
+        //establishConnection()
+        txGenerateFromLocalDBTest()
     }
     
     func bloomFilterSet(publicKeyHex: String, publicKeyHashHex: String) {
@@ -60,50 +57,14 @@ class ViewController: UIViewController {
         con.start()
     }
     
-    func dbTest() {
-        /*if let userKey = UserKeyInfo.loadAll().first {
-            let realm = UserKeyInfo.realm
-            realm.beginWrite()
-            
-            let testTxoutput = TransactionOutputInfo()
-            //let txInfo : [String : Any] = ["txHash" : "", "value" : 100000000, "index" : 1]
-            testTxoutput.txHash = "0112728a4a1ef8052e75ac4d0d4f1804077c9554c5d1f8a728a1d3f57d48741e"
-            testTxoutput.value = 100000000
-            testTxoutput.index = 1
-            
-            userKey.txoutputs.add(testTxoutput)
-            
-            try! realm.commitWrite()
-            
-        } else {
-            print("no key")
-        }*/
+    func txGenerateFromLocalDBTest() {
+        if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
+            let txConstructor = TransactionDBConstructor(key: key, sendAmount: 90000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 9000)
+            print(txConstructor.transaction?.bitcoinData.toHexString())
+        }
+        
     }
     
-    func merkleRootTest() {
-        //Root(big-endian)
-        //9d4bda28 b9160197 54055884 189b5ba4 bd961117 452cc5f8 e431bd49 3f91bcc2
-        
-        let hash1 = "2ec59292703087dd8c10497c791be624e1b7420571b27af743658317971bd0a6".hexStringToNSData()
-        let hash2 = "47db129551fb82de7fa5f85b2c98a3b6213f041cfffeb1fdd68bef7a1b89cf94".hexStringToNSData()
-        
-        let hash3 = "9cb1ff23e8f48fcd64b08b83b06b47dffebe19389ba1933744d0cbbfa44678dd".hexStringToNSData()
-        
-        let hashdata1 = NSMutableData()
-        hashdata1.appendNSData(hash3)
-        hashdata1.appendNSData(hash2)
-        
-        let nodehash1: NSData = Hash256.digest(hashdata1)
-        
-        let hashdata2 = NSMutableData()
-        hashdata2.appendNSData(nodehash1)
-        hashdata2.appendNSData(hash1)
-        
-        let nodehash2: NSData = Hash256.digest(hashdata2)
-        print(nodehash2)
-    }
-    
-        
     func transactionMessageConstructTest() -> TransactionMessage {
         
         let txHash = SHA256Hash("0112728a4a1ef8052e75ac4d0d4f1804077c9554c5d1f8a728a1d3f57d48741e".hexStringToNSData())

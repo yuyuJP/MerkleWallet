@@ -94,24 +94,4 @@ public class TransactionDataStoreManager {
         
         return inputs_res
     }
-    
-    /*
-    private static func extractRelevantOutputs(_ tx: Transaction) -> [Transaction.Output] {
-        var outputs_res: [Transaction.Output] = []
-        for key in UserKeyInfo.loadAll() {
-            for output in tx.outputs {
-                if key.publicKeyHash == output.script.hash160.bitcoinData.toHexString() {
-                    outputs_res.append(output)
-                }
-            }
-        }
-        
-        return outputs_res
-    }
-    
-    private static func extractRelevantInputsAndOutputs(_ tx: Transaction) -> ([Transaction.Input], [Transaction.Output]) {
-        
-        return (extractRelevantInputs(tx), extractRelevantOutputs(tx))
-    }
-    */
 }
