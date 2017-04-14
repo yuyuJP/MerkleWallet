@@ -39,7 +39,6 @@ public class TransactionBuilder {
         let publicKey = key.publicKeyHexString.hexStringToNSData()
         data.appendUInt8(UInt8(publicKey.length))
         data.appendNSData(publicKey)
-        //print(data)
         return data
     }
     
