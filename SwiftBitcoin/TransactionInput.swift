@@ -32,6 +32,7 @@ public extension Transaction {
             self.sequence = sequence
         }
         
+        //Use this instance for tx inputs that you received.
         public var parsedScript: InputScriptSig? {
             if let scriptSig = InputScriptSig(data: scriptSignature) {
                 return scriptSig
@@ -39,6 +40,8 @@ public extension Transaction {
                 return nil
             }
         }
+        
+        public var userKey: CoinKey? = nil
         
         /*
         public var scriptSignatureDetail: TransactionInputScriptSignature? {

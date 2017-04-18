@@ -11,7 +11,10 @@ import Foundation
 
 public class TransactionDBConstructor {
     
-    private let key: CoinKey
+    //private let key: CoinKey
+    private let privateKeyPrefix: UInt8
+    
+    private let publicKeyPrefix: UInt8
     
     private let sendAmount: Int64
     
@@ -20,8 +23,10 @@ public class TransactionDBConstructor {
 
     private let fee: Int64
     
-    public init(key: CoinKey, sendAmount: Int64, to: RIPEMD160HASH, fee: Int64 = 0) {
-        self.key = key
+    public init(privateKeyPrefix: UInt8, publicKeyPrefix: UInt8, sendAmount: Int64, to: RIPEMD160HASH, fee: Int64 = 0) {
+        //self.key = key
+        self.privateKeyPrefix = privateKeyPrefix
+        self.publicKeyPrefix = publicKeyPrefix
         self.sendAmount = sendAmount
         self.addressHash160 = to
         self.fee = fee
@@ -31,7 +36,7 @@ public class TransactionDBConstructor {
         guard let txMessage = generateTransactionMessage(amount: self.sendAmount, fee: self.fee) else {
             return nil
         }
-        let txBuilder = TransactionBuilder(transactionMessage: txMessage, key: key)
+        let txBuilder = TransactionBuilder(transactionMessage: txMessage)
         
         return txBuilder.transaction
     }
@@ -85,7 +90,12 @@ public class TransactionDBConstructor {
                 let inputScript = P2PKH_OutputScript(hash160: userHash160)
             
                 let outpoint = Transaction.OutPoint(transactionHash: txHash, index: UInt32(index))
-                let input = Transaction.Input(outPoint: outpoint, scriptSignature: inputScript.bitcoinData, sequence: 0xffffffff)
+                var input = Transaction.Input(outPoint: outpoint, scriptSignature: inputScript.bitcoinData, sequence: 0xffffffff)
+                
+                let userKeyForSig = CoinKey(privateKeyHex: userkey.privateKey, publicKeyHex: userkey.uncompressedPublicKey, privateKeyPrefix: privateKeyPrefix, publicKeyPrefix: publicKeyPrefix)
+                
+                input.userKey = userKeyForSig
+                
                 inputs.append(input)
                 
                 sum += utxo.value

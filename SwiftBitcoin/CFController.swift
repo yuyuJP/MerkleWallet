@@ -104,7 +104,7 @@ public class CFController: CFConnectionDelegate {
                 
                 //Use when balance calculation check is needed.
                 
-                let blkHash = SHA256Hash("0000000056d6902f334fbf4f6e56244415958727d69483d04b70c7af08085cca".hexStringToNSData())
+                let blkHash = SHA256Hash("000000000000000dda503f5219132d9880979b488dfbc945a62388fc354f99a3".hexStringToNSData())
                 //let blkHash = SHA256Hash("0000000056d6902f334fbf4f6e56244415958727d69483d04b70c7af08085cca".hexStringToNSData())
                 let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
                 print("Sending GetBlockMessage...")

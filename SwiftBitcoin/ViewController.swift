@@ -24,14 +24,18 @@ class ViewController: UIViewController {
             }*/
             
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
-            print(key.publicKeyHashHex)
+            //print(key.publicKeyHashHex)
         
         } else {
             print("No user info. Generating a new key.")
-            key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
+            //key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
+            key = BitcoinTestnet()
+            
             let newUserKeyInfo = UserKeyInfo.create(key: key)
             newUserKeyInfo.save()
         }
+        
+        print(key.publicAddress)
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
@@ -59,7 +63,7 @@ class ViewController: UIViewController {
     
     func txGenerateFromLocalDBTest() {
         if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
-            let txConstructor = TransactionDBConstructor(key: key, sendAmount: 90000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 9000)
+            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 50000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 9000)
             print(txConstructor.transaction?.bitcoinData.toHexString())
         }
         
@@ -90,7 +94,7 @@ class ViewController: UIViewController {
     @IBAction func transactionTest(_ sender: Any) {
         //if czon.connectionStatus() == .Connected {
             
-            let transactionBulider = TransactionBuilder(transactionMessage: transactionMessageConstructTest(), key: key)
+            let transactionBulider = TransactionBuilder(transactionMessage: transactionMessageConstructTest())
             //print(transactionBulider.transactionMessageHash)
             print(transactionBulider.transaction.bitcoinData.toHexString())
             //con.sendTransaction(transaction: transactionBulider.transaction)
