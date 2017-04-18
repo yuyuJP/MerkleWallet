@@ -39,8 +39,8 @@ class ViewController: UIViewController {
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        //establishConnection()
-        txGenerateFromLocalDBTest()
+        establishConnection()
+        //txGenerateFromLocalDBTest()
     }
     
     func bloomFilterSet(publicKeyHex: String, publicKeyHashHex: String) {
@@ -69,36 +69,9 @@ class ViewController: UIViewController {
         
     }
     
-    func transactionMessageConstructTest() -> TransactionMessage {
-        
-        let txHash = SHA256Hash("0112728a4a1ef8052e75ac4d0d4f1804077c9554c5d1f8a728a1d3f57d48741e".hexStringToNSData())
-    
-        let testInputScript = "76a91432e741f1bf3264643ea5821ff9b01cad4074ab0d88ac".hexStringToNSData()
-        let testOutputScriptData1 = "007a3dba76e82373a9bc545f8951863c28f84221".hexStringToNSData().reversedData
-        let testOutputScriptData2 = "90b2e2241ff5ee6b60a65ec5729a773eefa3ad5f".hexStringToNSData().reversedData
-        let testOutputScript1 = P2PKH_OutputScript(hash160: RIPEMD160HASH(testOutputScriptData1))
-        let testOutputScript2 = P2PKH_OutputScript(hash160: RIPEMD160HASH(testOutputScriptData2))
-        
-        
-        let outpoint = Transaction.OutPoint(transactionHash: txHash, index: 0x01)
-        let input = Transaction.Input(outPoint: outpoint, scriptSignature: testInputScript, sequence: 0xffffffff)
-        let output1 = Transaction.Output(value: 90000000, script: testOutputScript1.bitcoinData)
-        let output2 = Transaction.Output(value: 9991801, script: testOutputScript2.bitcoinData)
-        
-        let transactionMessage = TransactionMessage(version: 0x01, inputs: [input], outputs: [output1, output2], lockTime: Transaction.LockTime.AlwaysLocked, sigHash: 0x01)
-        
-        return transactionMessage
-    }
-    
     
     @IBAction func transactionTest(_ sender: Any) {
-        //if czon.connectionStatus() == .Connected {
-            
-            let transactionBulider = TransactionBuilder(transactionMessage: transactionMessageConstructTest())
-            //print(transactionBulider.transactionMessageHash)
-            print(transactionBulider.transaction.bitcoinData.toHexString())
-            //con.sendTransaction(transaction: transactionBulider.transaction)
-        //}
+        
     }
     
     
