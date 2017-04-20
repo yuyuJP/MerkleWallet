@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 public class TransactionDataStoreManager {
-    //This method must be called after validaing Merkle Block and confirming the tx is really mine.
+    //This method must be called after validaing Merkle Block.
     public static func add(tx: Transaction) {
         
         //Check if the tx is already received and stored in the local-DB.

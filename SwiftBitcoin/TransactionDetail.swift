@@ -25,8 +25,31 @@ public class TransactionDetail {
         }
         
         self.fromAddresses = fromAddr
-        self.toAddresses = ["Empty address"]
-        self.amount = 0
+        
+        let outputs = TransactionDetail.extractOutputs(tx, isSpentTx: self.isSpentTransaction)
+        
+        var toAddr: [String] = []
+        
+        var calculatedAmount: Int64 = 0
+        
+        for output in outputs {
+            toAddr.append(output.pubKeyHash.publicKeyHashToPublicAddress(pubKeyPrefix))
+            calculatedAmount += output.value
+        }
+        
+        self.toAddresses = toAddr
+        
+        //Calculate fee
+        if isSpentTransaction {
+            if let fee = tx.fee {
+                calculatedAmount += fee
+                print(fee)
+            } else {
+                print("Failed to calculate fee in TransactionDetail.swift")
+            }
+        }
+        
+        self.amount = calculatedAmount
         self.txId = tx.txHash
     }
     
@@ -40,6 +63,29 @@ public class TransactionDetail {
                 }
             }
         }
+        
         return false
+    }
+    
+    private static func extractOutputs(_ tx: TransactionInfo, isSpentTx: Bool) -> [TransactionOutputInfo] {
+        var myOutputs: [TransactionOutputInfo] = []
+        var othersOutputs: [TransactionOutputInfo] = []
+        
+        for key in UserKeyInfo.loadAll() {
+            
+            for output in tx.outputs {
+                if key.publicKeyHash == output.pubKeyHash {
+                    myOutputs.append(output)
+                } else {
+                    othersOutputs.append(output)
+                }
+            }
+        }
+        
+        if isSpentTx {
+            return othersOutputs
+        } else {
+            return myOutputs
+        }
     }
 }

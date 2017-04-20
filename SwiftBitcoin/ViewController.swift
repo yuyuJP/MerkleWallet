@@ -37,6 +37,12 @@ class ViewController: UIViewController {
         
         print(key.publicAddress)
         
+        for tx in TransactionInfo.loadAll() {
+            let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: 0x6f)
+            print("From: \(txDetail.fromAddresses) To: \(txDetail.toAddresses) Amount: \(txDetail.amount)")
+        }
+        
+        
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
         //establishConnection()
