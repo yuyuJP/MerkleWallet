@@ -42,7 +42,7 @@ public class TransactionDataStoreManager {
         return balance
     }
     
-    //Set relevent UTXO's isSpent flag to true and update UTXO info.
+    //Set relevant UTXO's isSpent flag to true and update UTXO info.
     private static func incomingInputCheck(_ inputs: [Transaction.Input]) {
         for input in inputs {
             
@@ -98,4 +98,6 @@ public class TransactionDataStoreManager {
         
         return inputs_res
     }
+    
+    
 }

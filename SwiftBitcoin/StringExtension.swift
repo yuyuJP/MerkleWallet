@@ -86,6 +86,26 @@ extension String {
         return data as NSData
     }
     
+        
+    func publicKeyHashToPublicAddress(_ pubKeyPrefix: UInt8) -> String {
+        
+        let ripemd = self.hexStringToNSData()
+        let extendedRipemd = NSMutableData()
+        
+        extendedRipemd.appendUInt8(pubKeyPrefix)
+        extendedRipemd.appendNSData(ripemd)
+        
+        let doubleSHA: String = Hash256.digestHexString(extendedRipemd)
+        
+        let checkSum: String = (doubleSHA as NSString).substring(with: NSMakeRange(0, 8))
+        let hexAddress = extendedRipemd.toHexString() + checkSum
+        
+        let base58 = hexAddress.hexStringToBase58Encoding()
+        
+        return base58
+        
+    }
+    
     func publicAddressToPubKeyHash(_ pubKeyPrefix: UInt8) -> String? {
         guard let decodedStr = self.base58StringToNSData()?.toHexString() else {
             return nil

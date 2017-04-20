@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        establishConnection()
+        //establishConnection()
         //txGenerateFromLocalDBTest()
     }
     

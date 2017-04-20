@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class TransactionInfo: Object {
+public class TransactionInfo: Object {
     static let realm = try! Realm()
     
     var inputs = List<TransactionInputInfo>()

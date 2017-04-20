@@ -115,6 +115,7 @@
 		E1D4EC351DC33FDA00C15A89 /* VersionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4EC341DC33FDA00C15A89 /* VersionMessage.swift */; };
 		E1D4EC371DC3474A00C15A89 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4EC361DC3474A00C15A89 /* IPAddress.swift */; };
 		E1E8F0241E9350D700119EDB /* OutputScriptType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8F0231E9350D700119EDB /* OutputScriptType.swift */; };
+		E1ECF0BD1EA71151007BC2E2 /* TransactionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ECF0BC1EA71151007BC2E2 /* TransactionDetail.swift */; };
 		E1FA9E361E9E60DA00B73A74 /* TransactionDBConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA9E351E9E60DA00B73A74 /* TransactionDBConstructor.swift */; };
 		EC13FC0411979E52CCD3B801 /* Pods_SwiftBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E039D25D00BBFEB3901F0A /* Pods_SwiftBitcoin.framework */; };
 		F2DBFCDE21FDFF9624D4590E /* Pods_SwiftBitcoinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC88D0FA2427FCEBC1FD012B /* Pods_SwiftBitcoinUITests.framework */; };
@@ -260,6 +261,7 @@
 		E1D4EC341DC33FDA00C15A89 /* VersionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionMessage.swift; sourceTree = "<group>"; };
 		E1D4EC361DC3474A00C15A89 /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		E1E8F0231E9350D700119EDB /* OutputScriptType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputScriptType.swift; sourceTree = "<group>"; };
+		E1ECF0BC1EA71151007BC2E2 /* TransactionDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDetail.swift; sourceTree = "<group>"; };
 		E1FA9E351E9E60DA00B73A74 /* TransactionDBConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDBConstructor.swift; sourceTree = "<group>"; };
 		FC88D0FA2427FCEBC1FD012B /* Pods_SwiftBitcoinUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBitcoinUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -522,6 +524,7 @@
 			children = (
 				E1FA9E351E9E60DA00B73A74 /* TransactionDBConstructor.swift */,
 				E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */,
+				E1ECF0BC1EA71151007BC2E2 /* TransactionDetail.swift */,
 				E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */,
 				E193B9771E5ACE5100777236 /* TransactionInfo.swift */,
 				E193B9791E5ACF1500777236 /* TransactionInputInfo.swift */,
@@ -909,6 +912,7 @@
 				E11454B11DC88F66002122DA /* BigUInt Radix Conversion.swift in Sources */,
 				E12247911E58AB4300E2DA02 /* TransactionInputScriptSignature.swift in Sources */,
 				E1D4EC351DC33FDA00C15A89 /* VersionMessage.swift in Sources */,
+				E1ECF0BD1EA71151007BC2E2 /* TransactionDetail.swift in Sources */,
 				E150E49C1DBB97850066B533 /* VarString.swift in Sources */,
 				E159FD6F1DED175A005856FB /* NSData+HexString.swift in Sources */,
 				E13C83A51DC5B7B5004E35EE /* PeerServices.swift in Sources */,
