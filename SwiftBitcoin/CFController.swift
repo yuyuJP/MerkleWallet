@@ -23,6 +23,8 @@ public class CFController: CFConnectionDelegate {
     
     private var pendingTransactions: [Transaction] = []
     
+    private var lastBlockHash: InventoryVector = InventoryVector(type: .Error, hash: SHA256Hash())
+    
     public init(hostname: String, port: UInt16, network: [UInt8]) {
         self.hostname = hostname
         self.port = port
@@ -104,8 +106,8 @@ public class CFController: CFConnectionDelegate {
                 
                 //Use when balance calculation check is needed.
                 
-                let blkHash = SHA256Hash("000000000000000dda503f5219132d9880979b488dfbc945a62388fc354f99a3".hexStringToNSData())
-                //let blkHash = SHA256Hash("0000000056d6902f334fbf4f6e56244415958727d69483d04b70c7af08085cca".hexStringToNSData())
+                //let blkHash = SHA256Hash("000000000000000dda503f5219132d9880979b488dfbc945a62388fc354f99a3".hexStringToNSData())
+                let blkHash = SHA256Hash("0000000056d6902f334fbf4f6e56244415958727d69483d04b70c7af08085cca".hexStringToNSData())
                 let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
                 print("Sending GetBlockMessage...")
                 self.connection?.sendMessageWithPayload(getBlocksMsg)
@@ -184,23 +186,31 @@ public class CFController: CFConnectionDelegate {
         case let .InventoryMessage(inventoryMessage):
            
             queue.addOperation {
-                self.blockHashesDownloaded += inventoryMessage.inventoryVectors
+                //self.blockHashesDownloaded += inventoryMessage.inventoryVectors
+                
+                
+                if inventoryMessage.inventoryVectors.count == 1 && self.lastBlockHash == inventoryMessage.inventoryVectors[0] {
+                    return
+                }
+                
+                if inventoryMessage.inventoryVectors.count == 1 {
+                    self.lastBlockHash = inventoryMessage.inventoryVectors[0]
+                }
+                
                 self.blockHashesCountDownloaded += inventoryMessage.inventoryVectors.count
                 print("\(self.blockHashesCountDownloaded) block hashes received / \(self.peerVersion!.blockStartHeight)")
                 
+                
+                if inventoryMessage.inventoryVectors.count > 0 {
+                    self.sendGetData(inventoryVecs: inventoryMessage.inventoryVectors)
+                }
+                
                 if inventoryMessage.inventoryVectors.count == 500 {
                     let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
-                    //print(lastBlockHash)
                     let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
                     self.connection?.sendMessageWithPayload(getBlocksMsg)
-                } else if inventoryMessage.inventoryVectors.count == 1 {
-                    print("new blk: \(inventoryMessage.inventoryVectors.last!.hash.data.toHexString())")
-                    
-                } else {
-                    print("last blk: \(inventoryMessage.inventoryVectors.last!.hash.data.toHexString())")
-                    self.sendGetData(inventoryVecs: self.blockHashesDownloaded)
                 }
-            }
+        }
             
         case let .MerkleBlockMessage(merkleBlockMessage): break
             //print("Received merkle block")

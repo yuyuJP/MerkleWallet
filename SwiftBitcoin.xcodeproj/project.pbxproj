@@ -115,6 +115,23 @@
 		E1D4EC351DC33FDA00C15A89 /* VersionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4EC341DC33FDA00C15A89 /* VersionMessage.swift */; };
 		E1D4EC371DC3474A00C15A89 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4EC361DC3474A00C15A89 /* IPAddress.swift */; };
 		E1E8F0241E9350D700119EDB /* OutputScriptType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8F0231E9350D700119EDB /* OutputScriptType.swift */; };
+		E1E98D1D1F07D86C009A8260 /* BITransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D1C1F07D86C009A8260 /* BITransactionDetailViewController.swift */; };
+		E1E98D1F1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D1E1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift */; };
+		E1E98D211F07D923009A8260 /* UIColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D201F07D923009A8260 /* UIColorExtention.swift */; };
+		E1E98D241F07D961009A8260 /* UIButtonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D231F07D961009A8260 /* UIButtonExtention.swift */; };
+		E1E98D261F07D9DD009A8260 /* BIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D251F07D9DD009A8260 /* BIScrollView.swift */; };
+		E1E98D281F07DA03009A8260 /* BITopStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D271F07DA03009A8260 /* BITopStatusView.swift */; };
+		E1E98D2A1F07DA4D009A8260 /* BITransactionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D291F07DA4D009A8260 /* BITransactionHistoryView.swift */; };
+		E1E98D2C1F07DA80009A8260 /* TransactionHistoryDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D2B1F07DA80009A8260 /* TransactionHistoryDisplayTableViewCell.swift */; };
+		E1E98D2E1F07DABA009A8260 /* BISettingsTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D2D1F07DABA009A8260 /* BISettingsTopView.swift */; };
+		E1E98D301F07DB01009A8260 /* BISendTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D2F1F07DB01009A8260 /* BISendTopView.swift */; };
+		E1E98D321F07DB1C009A8260 /* BIReceiveTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D311F07DB1C009A8260 /* BIReceiveTopView.swift */; };
+		E1E98D341F07DB57009A8260 /* BIQRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D331F07DB57009A8260 /* BIQRCodeGenerator.swift */; };
+		E1E98D361F07DB7D009A8260 /* BIAddressInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D351F07DB7D009A8260 /* BIAddressInputView.swift */; };
+		E1E98D381F07E521009A8260 /* settingsIcon_thicker.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E98D371F07E521009A8260 /* settingsIcon_thicker.png */; };
+		E1E98D3A1F07E7F2009A8260 /* BIQRCodeReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D391F07E7F2009A8260 /* BIQRCodeReadViewController.swift */; };
+		E1E98D3C1F07E822009A8260 /* BIPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D3B1F07E822009A8260 /* BIPayViewController.swift */; };
+		E1E98D3E1F07E9A5009A8260 /* BIQRCodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D3D1F07E9A5009A8260 /* BIQRCodeParser.swift */; };
 		E1ECF0BD1EA71151007BC2E2 /* TransactionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ECF0BC1EA71151007BC2E2 /* TransactionDetail.swift */; };
 		E1FA9E361E9E60DA00B73A74 /* TransactionDBConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA9E351E9E60DA00B73A74 /* TransactionDBConstructor.swift */; };
 		EC13FC0411979E52CCD3B801 /* Pods_SwiftBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E039D25D00BBFEB3901F0A /* Pods_SwiftBitcoin.framework */; };
@@ -261,6 +278,23 @@
 		E1D4EC341DC33FDA00C15A89 /* VersionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionMessage.swift; sourceTree = "<group>"; };
 		E1D4EC361DC3474A00C15A89 /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		E1E8F0231E9350D700119EDB /* OutputScriptType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputScriptType.swift; sourceTree = "<group>"; };
+		E1E98D1C1F07D86C009A8260 /* BITransactionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BITransactionDetailViewController.swift; sourceTree = "<group>"; };
+		E1E98D1E1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E1E98D201F07D923009A8260 /* UIColorExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtention.swift; sourceTree = "<group>"; };
+		E1E98D231F07D961009A8260 /* UIButtonExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtention.swift; sourceTree = "<group>"; };
+		E1E98D251F07D9DD009A8260 /* BIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIScrollView.swift; sourceTree = "<group>"; };
+		E1E98D271F07DA03009A8260 /* BITopStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BITopStatusView.swift; sourceTree = "<group>"; };
+		E1E98D291F07DA4D009A8260 /* BITransactionHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BITransactionHistoryView.swift; sourceTree = "<group>"; };
+		E1E98D2B1F07DA80009A8260 /* TransactionHistoryDisplayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionHistoryDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		E1E98D2D1F07DABA009A8260 /* BISettingsTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BISettingsTopView.swift; sourceTree = "<group>"; };
+		E1E98D2F1F07DB01009A8260 /* BISendTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BISendTopView.swift; sourceTree = "<group>"; };
+		E1E98D311F07DB1C009A8260 /* BIReceiveTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIReceiveTopView.swift; sourceTree = "<group>"; };
+		E1E98D331F07DB57009A8260 /* BIQRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIQRCodeGenerator.swift; sourceTree = "<group>"; };
+		E1E98D351F07DB7D009A8260 /* BIAddressInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIAddressInputView.swift; sourceTree = "<group>"; };
+		E1E98D371F07E521009A8260 /* settingsIcon_thicker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon_thicker.png; sourceTree = "<group>"; };
+		E1E98D391F07E7F2009A8260 /* BIQRCodeReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIQRCodeReadViewController.swift; sourceTree = "<group>"; };
+		E1E98D3B1F07E822009A8260 /* BIPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIPayViewController.swift; sourceTree = "<group>"; };
+		E1E98D3D1F07E9A5009A8260 /* BIQRCodeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIQRCodeParser.swift; sourceTree = "<group>"; };
 		E1ECF0BC1EA71151007BC2E2 /* TransactionDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDetail.swift; sourceTree = "<group>"; };
 		E1FA9E351E9E60DA00B73A74 /* TransactionDBConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDBConstructor.swift; sourceTree = "<group>"; };
 		FC88D0FA2427FCEBC1FD012B /* Pods_SwiftBitcoinUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBitcoinUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -348,6 +382,7 @@
 				E1D130D01DBD03940028651C /* NetworkMagicBytes.swift */,
 				E102D7CB1DB260480078E4C4 /* ByteConverter.swift */,
 				E1C7AD421DBA159F003C8A80 /* MessagePrinter.swift */,
+				E1E98D1B1F07C6ED009A8260 /* UI */,
 				E193B97D1E5AD8D000777236 /* Local-DB */,
 				E1AACD271DF6618F005EC11C /* BloomFilter */,
 				E10BDB3E1DC9DA6400220665 /* Messages */,
@@ -543,6 +578,38 @@
 			name = BloomFilter;
 			sourceTree = "<group>";
 		};
+		E1E98D1B1F07C6ED009A8260 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E1E98D251F07D9DD009A8260 /* BIScrollView.swift */,
+				E1E98D2F1F07DB01009A8260 /* BISendTopView.swift */,
+				E1E98D311F07DB1C009A8260 /* BIReceiveTopView.swift */,
+				E1E98D271F07DA03009A8260 /* BITopStatusView.swift */,
+				E1E98D291F07DA4D009A8260 /* BITransactionHistoryView.swift */,
+				E1E98D2D1F07DABA009A8260 /* BISettingsTopView.swift */,
+				E1E98D1C1F07D86C009A8260 /* BITransactionDetailViewController.swift */,
+				E1E98D391F07E7F2009A8260 /* BIQRCodeReadViewController.swift */,
+				E1E98D3B1F07E822009A8260 /* BIPayViewController.swift */,
+				E1E98D3D1F07E9A5009A8260 /* BIQRCodeParser.swift */,
+				E1E98D331F07DB57009A8260 /* BIQRCodeGenerator.swift */,
+				E1E98D351F07DB7D009A8260 /* BIAddressInputView.swift */,
+				E1E98D1E1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift */,
+				E1E98D2B1F07DA80009A8260 /* TransactionHistoryDisplayTableViewCell.swift */,
+				E1E98D371F07E521009A8260 /* settingsIcon_thicker.png */,
+				E1E98D221F07D94F009A8260 /* Extentions */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		E1E98D221F07D94F009A8260 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				E1E98D201F07D923009A8260 /* UIColorExtention.swift */,
+				E1E98D231F07D961009A8260 /* UIButtonExtention.swift */,
+			);
+			name = Extentions;
+			sourceTree = "<group>";
+		};
 		FDC57348E39749F15B3D1CF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -671,6 +738,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E102D7A01DB1C4A00078E4C4 /* LaunchScreen.storyboard in Resources */,
+				E1E98D381F07E521009A8260 /* settingsIcon_thicker.png in Resources */,
 				E1AACD2F1DF6AA62005EC11C /* Secp256k1BasePointDoublings.plist in Resources */,
 				E102D79D1DB1C4A00078E4C4 /* Assets.xcassets in Resources */,
 				E102D79B1DB1C4A00078E4C4 /* Main.storyboard in Resources */,
@@ -843,10 +911,13 @@
 				E159FD7F1DED30B0005856FB /* Hash160.swift in Sources */,
 				E159FD6D1DED1755005856FB /* RIPEMD.swift in Sources */,
 				E1D130D71DBD152D0028651C /* InputStreamExtension.swift in Sources */,
+				E1E98D241F07D961009A8260 /* UIButtonExtention.swift in Sources */,
+				E1E98D301F07DB01009A8260 /* BISendTopView.swift in Sources */,
 				E15160321E1CEB0600D14267 /* RejectMessage.swift in Sources */,
 				E102D7CC1DB260480078E4C4 /* ByteConverter.swift in Sources */,
 				E1D130D91DBDB6050028651C /* Endianness.swift in Sources */,
 				E16A499B1E01A9EA00BCF175 /* GetDataMessage.swift in Sources */,
+				E1E98D3E1F07E9A5009A8260 /* BIQRCodeParser.swift in Sources */,
 				E11454AD1DC88F66002122DA /* BigUInt GCD.swift in Sources */,
 				E1AACD391DF87A04005EC11C /* BitcoinTestnet.swift in Sources */,
 				E160A3241DFFA69300915C94 /* TransactionLockTime.swift in Sources */,
@@ -864,20 +935,24 @@
 				E1AACD2B1DF661A6005EC11C /* BloomFilter.swift in Sources */,
 				E11454B71DC88F66002122DA /* BitcoinSerializable.swift in Sources */,
 				E1D4EC371DC3474A00C15A89 /* IPAddress.swift in Sources */,
+				E1E98D2A1F07DA4D009A8260 /* BITransactionHistoryView.swift in Sources */,
 				E159FD7A1DED18FC005856FB /* StringExtension.swift in Sources */,
 				E159FD681DED16DA005856FB /* ECDomain.swift in Sources */,
 				E102D7CF1DB34ABB0078E4C4 /* CFConnection.swift in Sources */,
 				E1A92CEE1E14ECE000811E4C /* TransactionBuilder.swift in Sources */,
 				E15589721E96007C008B3F36 /* P2SH_InputScriptSig.swift in Sources */,
 				E1FA9E361E9E60DA00B73A74 /* TransactionDBConstructor.swift in Sources */,
+				E1E98D211F07D923009A8260 /* UIColorExtention.swift in Sources */,
 				E159FD731DED1766005856FB /* UInt32+CircularShift.swift in Sources */,
 				E11454A71DC88F66002122DA /* BigUInt Addition.swift in Sources */,
 				E11454AB1DC88F66002122DA /* BigUInt Division.swift in Sources */,
+				E1E98D1F1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift in Sources */,
 				E17431111DC8BE8B0002BBFD /* CFController.swift in Sources */,
 				E159FD6A1DED16DF005856FB /* ECPoint.swift in Sources */,
 				E155896E1E95E551008B3F36 /* InputScriptSigType.swift in Sources */,
 				E159FD611DED1623005856FB /* FiniteFieldInteger.swift in Sources */,
 				E11454A91DC88F66002122DA /* BigUInt Comparison.swift in Sources */,
+				E1E98D281F07DA03009A8260 /* BITopStatusView.swift in Sources */,
 				E11454B61DC88F66002122DA /* BigUInt.swift in Sources */,
 				E193B97A1E5ACF1500777236 /* TransactionInputInfo.swift in Sources */,
 				E150E49A1DBA88720066B533 /* VarInt.swift in Sources */,
@@ -885,12 +960,14 @@
 				E11454B41DC88F66002122DA /* BigUInt Square Root.swift in Sources */,
 				E1D130D31DBD0B280028651C /* MessageHeader.swift in Sources */,
 				E159FD5F1DED161E005856FB /* FiniteField.swift in Sources */,
+				E1E98D361F07DB7D009A8260 /* BIAddressInputView.swift in Sources */,
 				E13C83A31DC5B70E004E35EE /* PeerAddress.swift in Sources */,
 				E193B9761E5ACC0400777236 /* TransactionDataStoreManager.swift in Sources */,
 				E1D130CF1DBD01670028651C /* MessageParser.swift in Sources */,
 				E1AACD2D1DF6A23C005EC11C /* FilterLoadMessage.swift in Sources */,
 				E193B9781E5ACE5100777236 /* TransactionInfo.swift in Sources */,
 				E1BA98AF1DD1B7DC00C1B17B /* BlockHeader.swift in Sources */,
+				E1E98D3C1F07E822009A8260 /* BIPayViewController.swift in Sources */,
 				E11454AC1DC88F66002122DA /* BigUInt Exponentiation.swift in Sources */,
 				E159FD711DED175E005856FB /* RIPEMD+Block.swift in Sources */,
 				E12DAA391E935E92000763C6 /* P2SH_OutputScript.swift in Sources */,
@@ -903,8 +980,12 @@
 				E160A3221DFFA43100915C94 /* TransactionInput.swift in Sources */,
 				E1E8F0241E9350D700119EDB /* OutputScriptType.swift in Sources */,
 				E1CE76D11DC34DD4006B6F6E /* NSMutableData+BitcoinEncoding.swift in Sources */,
+				E1E98D341F07DB57009A8260 /* BIQRCodeGenerator.swift in Sources */,
+				E1E98D321F07DB1C009A8260 /* BIReceiveTopView.swift in Sources */,
 				E155896C1E95E4E5008B3F36 /* InputScriptSig.swift in Sources */,
 				E193B97C1E5AD27200777236 /* TransactionOutPointInfo.swift in Sources */,
+				E1E98D2C1F07DA80009A8260 /* TransactionHistoryDisplayTableViewCell.swift in Sources */,
+				E1E98D1D1F07D86C009A8260 /* BITransactionDetailViewController.swift in Sources */,
 				E102D7961DB1C4A00078E4C4 /* AppDelegate.swift in Sources */,
 				E11454AF1DC88F66002122DA /* BigUInt Multiplication.swift in Sources */,
 				E11454B21DC88F66002122DA /* BigUInt Random.swift in Sources */,
@@ -915,17 +996,20 @@
 				E1ECF0BD1EA71151007BC2E2 /* TransactionDetail.swift in Sources */,
 				E150E49C1DBB97850066B533 /* VarString.swift in Sources */,
 				E159FD6F1DED175A005856FB /* NSData+HexString.swift in Sources */,
+				E1E98D3A1F07E7F2009A8260 /* BIQRCodeReadViewController.swift in Sources */,
 				E13C83A51DC5B7B5004E35EE /* PeerServices.swift in Sources */,
 				E159FD661DED16D5005856FB /* ECurve.swift in Sources */,
 				E15589701E95FE79008B3F36 /* P2PKH_InputScriptSig.swift in Sources */,
 				E160A31C1DFFA02C00915C94 /* Transaction.swift in Sources */,
 				E15589741E960837008B3F36 /* RedeemScript.swift in Sources */,
 				E175C1F81E8537EE00126D3F /* PartialMerkleTree.swift in Sources */,
+				E1E98D2E1F07DABA009A8260 /* BISettingsTopView.swift in Sources */,
 				E15723361E0E1ADC00BB2523 /* RIPEMD160Hash.swift in Sources */,
 				E102D7D11DB34AC70078E4C4 /* Thread.swift in Sources */,
 				E11454AE1DC88F66002122DA /* BigUInt Hashing.swift in Sources */,
 				E122478F1E582E0500E2DA02 /* TransactionOutputInfo.swift in Sources */,
 				E18D547F1E015441009D2715 /* GetBlocksMessage.swift in Sources */,
+				E1E98D261F07D9DD009A8260 /* BIScrollView.swift in Sources */,
 				E11454A61DC88F66002122DA /* BigIntAddition.swift in Sources */,
 				E11454A81DC88F66002122DA /* BigUInt Bitwise Ops.swift in Sources */,
 				E1BA98AD1DD1B72D00C1B17B /* HeadersMessage.swift in Sources */,

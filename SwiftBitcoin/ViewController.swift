@@ -9,15 +9,23 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISendTopViewDelegate, UIScrollViewDelegate {
 
     private var con : CFController!
     private var key : BitcoinTestnet!
     
+    
+    var scrollView: BIScrollView!
+    var topStatusView: BITopStatusView!
+    var txHistoryView: BITransactionHistoryView!
+    
+    
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let userKey = UserKeyInfo.loadAll().first {
+        /*if let userKey = UserKeyInfo.loadAll().first {
             /*for txInfo in TransactionInfo.loadAll() {
                 let output = txInfo.outputs[0]
                 print(output.inverse_tx ?? "no value")
@@ -46,7 +54,14 @@ class ViewController: UIViewController {
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
         //establishConnection()
+
         //txGenerateFromLocalDBTest()
+        */
+        
+        self.view.backgroundColor = UIColor.backgroundWhite()
+        pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
+        
+        setupContentView()
     }
     
     func bloomFilterSet(publicKeyHex: String, publicKeyHashHex: String) {
@@ -61,30 +76,115 @@ class ViewController: UIViewController {
     
     func establishConnection() {
         //con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
-        con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
-        //con = CFController(hostname: "192.168.0.12", port: 18333, network: NetworkMagicBytes.magicBytes())
+        //con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
+        con = CFController(hostname: "192.168.10.11", port: 10000, network: NetworkMagicBytes.magicBytes())
         
         con.start()
     }
     
     func txGenerateFromLocalDBTest() {
         if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
-            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 50000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 9000)
-            print(txConstructor.transaction?.bitcoinData.toHexString())
+            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 4000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 0)
+            print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
         }
         
     }
     
-    
-    @IBAction func transactionTest(_ sender: Any) {
+    func setupContentView() {
+        
+        scrollView = BIScrollView(frame: self.view.frame)
+        scrollView.isPagingEnabled = true
+        scrollView.delaysContentTouches = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.delegate = self
+        self.view.addSubview(scrollView)
+        
+        let size = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
+        let contentRect = CGRect(x: 0, y: 0, width: size.width * 3, height: size.height)
+        let contentView = UIView(frame: contentRect)
+        
+        txHistoryView = BITransactionHistoryView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        txHistoryView.delegate = self
+        txHistoryView.backgroundColor = UIColor.backgroundWhite()
+        txHistoryView.setTransactionHistoryTable()
+        contentView.addSubview(txHistoryView)
+        
+        
+        let sendTopView = BISendTopView(frame: CGRect(x: size.width, y: 0, width: size.width, height: size.height))
+        sendTopView.delegate = self
+        sendTopView.backgroundColor = .clear
+        contentView.addSubview(sendTopView)
+        
+        let receiveTopView = BIReceiveTopView(frame: CGRect(x: size.width * 2, y: 0, width: size.width, height: size.height))
+        receiveTopView.backgroundColor = UIColor.backgroundWhite()
+        
+        contentView.addSubview(receiveTopView)
+        
+        let statusViewHeight = size.height / 4
+        
+        topStatusView = BITopStatusView(frame: CGRect(x: size.width, y: 0, width: size.width, height: statusViewHeight))
+        topStatusView.backgroundColor = .white
+        topStatusView.setupStatusLabel(text: "3.0tBTC")
+        
+        contentView.addSubview(topStatusView)
+        
+        sendTopView.setupSendLabel(statusViewHeight)
+        receiveTopView.setupReceiveLabel(statusViewHeight)
+        receiveTopView.setupAddresLabel()
+ 
+        
+        scrollView.addSubview(contentView)
+        scrollView.contentSize = contentView.frame.size
+        scrollView.contentOffset = CGPoint(x: size.width, y: 0)
+        
+        pageControl.currentPage = 1
+        
+        self.view.bringSubview(toFront: pageControl)
         
     }
     
     
-    @IBAction func calculateBalance(_ sender: Any) {
-        //let balance = TransactionDataStoreManager.calculateBalance()
-        //print(balance)
+    //MARK:- UIScrollViewDelegate
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let diff = scrollView.frame.width - scrollView.contentOffset.x
+        if diff <= 0 {
+            topStatusView.frame.origin.x = scrollView.contentOffset.x
+        } else {
+            let halfWidth = scrollView.frame.width / 2.0
+            if diff < halfWidth {
+                let alpha = (halfWidth - diff) / halfWidth
+                topStatusView.alpha = alpha
+                pageControl.alpha = alpha
+                
+            } else {
+                topStatusView.alpha = 0.0
+                pageControl.alpha = 0.0
+            }
+        }
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int((scrollView.contentOffset.x + scrollView.frame.size.width / 2) / scrollView.frame.size.width)
+    }
+
+
+    
+    
+    //MARK:- BITransactionHistoryViewDelegate
+    func cellDidSelectAt(_ indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "txDetail", sender: nil)
+    }
+    
+    //MARK:- BISendTopViewDelegate
+    func qrScanButtonTapped() {
+        self.performSegue(withIdentifier: "scanQR", sender: nil)
+    }
+    
+    func enterAddressButtonTapped() {
+        self.performSegue(withIdentifier: "pay", sender: nil)
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
