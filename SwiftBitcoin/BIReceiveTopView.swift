@@ -10,22 +10,13 @@ import UIKit
 
 class BIReceiveTopView: UIView {
     
-    public var myAddress: String = "mrAsyQH7fpShVb7MRKxAddXMbPatX8Ldjr"
+    //public var myAddress: String = ""
     
     private let offsetY: CGFloat = 54.0
     
     //private var imageSize: CGFloat = 0
     
     override func draw(_ rect: CGRect) {
-        
-        let imageSize = self.frame.width / 1.5
-        
-        if let qrCodeImage = BIQRCodeGenerator(code: myAddress, imageSize: imageSize).qrCodeImage {
-            let viewSize = self.frame.size
-            let imageView = UIImageView(image: qrCodeImage)
-            imageView.frame = CGRect(x: (viewSize.width - imageSize) / 2.0, y: (viewSize.height - offsetY) / 2.0 - 10.0, width: imageSize, height: imageSize)
-            self.addSubview(imageView)
-        }
         
     }
     
@@ -43,20 +34,32 @@ class BIReceiveTopView: UIView {
         
     }
     
-    public func setupAddresLabel() {
+    public func setupAddresLabel(_ address: String) {
         let viewSize = self.frame.size
         let imageSize = self.frame.width / 1.5
         let yOffset: CGFloat = 25.0
         
         let yAxis: CGFloat = (viewSize.height - offsetY) / 2.0 - 10.0 + imageSize + yOffset
         
-        let addressLabel = UILabel(frame: CGRect(x: 0.0, y: yAxis, width: self.frame.size.width, height: 18.0))
-        addressLabel.text = "my3TE7S7ou4UxYLj5HXcLVsiTt32th4qeN"
+        let addressLabel = UILabel(frame: CGRect(x: 0.0, y: yAxis, width: self.frame.size.width, height: 25.0))
+        addressLabel.text = address
         addressLabel.textAlignment = .center
         addressLabel.textColor = .gray
         addressLabel.font = UIFont.systemFont(ofSize: 18.0)
         addressLabel.backgroundColor = .clear
         self.addSubview(addressLabel)
+    }
+    
+    public func setupAddressQRCode(_ address: String) {
+        let imageSize = self.frame.width / 1.5
+        
+        if let qrCodeImage = BIQRCodeGenerator(code: address, imageSize: imageSize).qrCodeImage {
+            let viewSize = self.frame.size
+            let imageView = UIImageView(image: qrCodeImage)
+            imageView.frame = CGRect(x: (viewSize.width - imageSize) / 2.0, y: (viewSize.height - offsetY) / 2.0 - 20.0, width: imageSize, height: imageSize)
+            self.addSubview(imageView)
+        }
+
     }
     
 }

@@ -8,6 +8,10 @@
 
 import Foundation
 
+public protocol CFControllerDelegate {
+    func newTransactionReceived()
+}
+
 public class CFController: CFConnectionDelegate {
     private let hostname: String
     private let port: UInt16
@@ -24,6 +28,8 @@ public class CFController: CFConnectionDelegate {
     private var pendingTransactions: [Transaction] = []
     
     private var lastBlockHash: InventoryVector = InventoryVector(type: .Error, hash: SHA256Hash())
+    
+    public var delegate: CFControllerDelegate? = nil
     
     public init(hostname: String, port: UInt16, network: [UInt8]) {
         self.hostname = hostname
@@ -107,7 +113,7 @@ public class CFController: CFConnectionDelegate {
                 //Use when balance calculation check is needed.
                 
                 //let blkHash = SHA256Hash("000000000000000dda503f5219132d9880979b488dfbc945a62388fc354f99a3".hexStringToNSData())
-                let blkHash = SHA256Hash("0000000056d6902f334fbf4f6e56244415958727d69483d04b70c7af08085cca".hexStringToNSData())
+                let blkHash = SHA256Hash("00000000000006ac666d321a00802e171265004847316e5accff04c9d5c178b7".hexStringToNSData())
                 let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
                 print("Sending GetBlockMessage...")
                 self.connection?.sendMessageWithPayload(getBlocksMsg)
@@ -220,6 +226,7 @@ public class CFController: CFConnectionDelegate {
             //TODO: Add tx to Local-DB after validating merkle block and received tx
             queue.addOperation {
                 TransactionDataStoreManager.add(tx: transactionMessage)
+                self.delegate?.newTransactionReceived()
             }
             
         case let .GetDataMessage(getDataMessage):

@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISendTopViewDelegate, UIScrollViewDelegate {
+class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISendTopViewDelegate, UIScrollViewDelegate, CFControllerDelegate {
 
     private var con : CFController!
     private var key : BitcoinTestnet!
@@ -25,15 +25,11 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*if let userKey = UserKeyInfo.loadAll().first {
-            /*for txInfo in TransactionInfo.loadAll() {
-                let output = txInfo.outputs[0]
-                print(output.inverse_tx ?? "no value")
-            }*/
+        if let userKey = UserKeyInfo.loadAll().first {
             
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
-            //print(key.publicKeyHashHex)
-        
+            //print(key.privateKeyHexString)
+            
         } else {
             print("No user info. Generating a new key.")
             //key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
@@ -43,7 +39,6 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             newUserKeyInfo.save()
         }
         
-        print(key.publicAddress)
         
         for tx in TransactionInfo.loadAll() {
             let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: 0x6f)
@@ -55,8 +50,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         //establishConnection()
 
-        //txGenerateFromLocalDBTest()
-        */
+        txGenerateFromLocalDBTest()
+ 
         
         self.view.backgroundColor = UIColor.backgroundWhite()
         pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
@@ -76,15 +71,16 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     
     func establishConnection() {
         //con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
-        //con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
-        con = CFController(hostname: "192.168.10.11", port: 10000, network: NetworkMagicBytes.magicBytes())
         
+        con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
+        //con = CFController(hostname: "192.168.10.11", port: 10000, network: NetworkMagicBytes.magicBytes())
+        con.delegate = self
         con.start()
     }
     
     func txGenerateFromLocalDBTest() {
         if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
-            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 4000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 0)
+            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 2000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 0)
             print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
         }
         
@@ -124,15 +120,16 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         topStatusView = BITopStatusView(frame: CGRect(x: size.width, y: 0, width: size.width, height: statusViewHeight))
         topStatusView.backgroundColor = .white
-        topStatusView.setupStatusLabel(text: "3.0tBTC")
+        topStatusView.setupStatusLabel(text: "0.0tBTC")
         
         contentView.addSubview(topStatusView)
         
         sendTopView.setupSendLabel(statusViewHeight)
         receiveTopView.setupReceiveLabel(statusViewHeight)
-        receiveTopView.setupAddresLabel()
- 
         
+        receiveTopView.setupAddressQRCode(key.publicAddress)
+        receiveTopView.setupAddresLabel(key.publicAddress)
+ 
         scrollView.addSubview(contentView)
         scrollView.contentSize = contentView.frame.size
         scrollView.contentOffset = CGPoint(x: size.width, y: 0)
@@ -169,7 +166,13 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
 
 
-    
+    //MARK:- CFControllerDelegate
+    func newTransactionReceived() {
+        let balance = TransactionDataStoreManager.calculateBalance()
+        let balanceInBTC: Double = Double(balance) / 100000000
+        topStatusView.changeStatusLabel(text: String(balanceInBTC) + "tBTC")
+        
+    }
     
     //MARK:- BITransactionHistoryViewDelegate
     func cellDidSelectAt(_ indexPath: IndexPath) {

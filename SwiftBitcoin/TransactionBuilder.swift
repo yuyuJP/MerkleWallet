@@ -63,6 +63,7 @@ public class TransactionBuilder {
     }
     
     private func produceDERSignature(key: CoinKey) -> NSData {
+        
         let hash = self.transactionMessageHash
         let digest = BigUInt(hash.data as Data)
         let (r, s) = key.sign(digest)

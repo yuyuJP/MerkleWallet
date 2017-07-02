@@ -41,4 +41,8 @@ class BITopStatusView: UIView {
         self.addSubview(statusLabel)
         
     }
+    
+    public func changeStatusLabel(text: String) {
+        statusLabel.text = text
+    }
 }
