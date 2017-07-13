@@ -11,7 +11,7 @@ import Foundation
 
 public struct TransactionMessage {
     public let version: UInt32
-    public let inputs: [Transaction.Input]
+    public var inputs: [Transaction.Input]
     public let outputs: [Transaction.Output]
     public let lockTime: Transaction.LockTime //= .AlwaysLocked
     public let sigHash: UInt32 //= 0x01 

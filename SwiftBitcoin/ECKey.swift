@@ -126,7 +126,7 @@ public class ECKey {
                 }
             }
             
-            s = (1 / field.int(k)) * (e + privateKey * r)
+            s = (1 / field.int(k)) * (e +  r * privateKey)
         }
         
         return (r.value, s.value)

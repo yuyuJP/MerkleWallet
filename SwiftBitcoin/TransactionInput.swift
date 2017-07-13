@@ -21,7 +21,7 @@ public extension Transaction {
         
         public let outPoint: OutPoint
         
-        public let scriptSignature: NSData
+        public var scriptSignature: NSData
         //public let scriptSignature: TransactionInputScriptSignature
         
         public let sequence: UInt32

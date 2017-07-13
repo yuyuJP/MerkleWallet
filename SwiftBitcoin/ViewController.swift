@@ -28,7 +28,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         if let userKey = UserKeyInfo.loadAll().first {
             
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
-            //print(key.privateKeyHexString)
+            //key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
+            print(key.publicAddress)
             
         } else {
             print("No user info. Generating a new key.")
@@ -42,7 +43,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         for tx in TransactionInfo.loadAll() {
             let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: 0x6f)
-            print("From: \(txDetail.fromAddresses) To: \(txDetail.toAddresses) Amount: \(txDetail.amount)")
+            print("From: \(txDetail.fromAddresses) To: \(txDetail.toAddresses) Amount: \(txDetail.amount) TXID: \(tx.txHash)")
         }
         
         
@@ -50,7 +51,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         //establishConnection()
 
-        txGenerateFromLocalDBTest()
+        //txGenerateFromLocalDBTest()
  
         
         self.view.backgroundColor = UIColor.backgroundWhite()
@@ -70,17 +71,17 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func establishConnection() {
-        //con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
+        con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
         
-        con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
-        //con = CFController(hostname: "192.168.10.11", port: 10000, network: NetworkMagicBytes.magicBytes())
+        //con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
+        //con = CFController(hostname: "192.168.0.10", port: 10000, network: NetworkMagicBytes.magicBytes())
         con.delegate = self
         con.start()
     }
     
     func txGenerateFromLocalDBTest() {
         if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
-            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 2000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 0)
+            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 3000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 9000)
             print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
         }
         
@@ -185,7 +186,15 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func enterAddressButtonTapped() {
-        self.performSegue(withIdentifier: "pay", sender: nil)
+        //self.performSegue(withIdentifier: "pay", sender: nil)
+        if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
+            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 1000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 90000)
+            //print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
+            print(txConstructor.transaction?.bitcoinData.toHexString())
+            //con.sendTransaction(transaction: txConstructor.transaction!)
+        }
+
+    
     }
 
     
