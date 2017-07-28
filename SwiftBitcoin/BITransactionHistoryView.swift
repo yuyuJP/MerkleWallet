@@ -9,7 +9,7 @@
 import UIKit
 
 //Temporary struct
-public struct TMP_TransactionDetail {
+/*public struct TMP_TransactionDetail {
     
     public let isSpentTransaction: Bool
     public let fromAddresses: [String]
@@ -27,7 +27,7 @@ public struct TMP_TransactionDetail {
         self.txId = "transactionID"
     }
 }
-
+*/
 
 public protocol BITransactionHistoryViewDelegate {
     func cellDidSelectAt(_ indexPath: IndexPath)
@@ -38,7 +38,7 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
     
     private var sectionTitles = ["Transaction History"]
     
-    private var txDetails: [TMP_TransactionDetail] = []
+    private var txDetails: [TransactionDetail] = []
     
     private var tableView: UITableView!
     
@@ -54,17 +54,13 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
     }
     
     public func setTransactionHistoryTable() {
-        let txDetail = TMP_TransactionDetail()
-        txDetails.append(txDetail)
-        txDetails.append(txDetail)
         
-        
-        /*
-         for _ in 0 ..< 20 {
+        for tx in TransactionInfo.loadAll().reversed() {
+            let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: 0x6f)
+            //print("From: \(txDetail.fromAddresses) To: \(txDetail.toAddresses) Amount: \(txDetail.amount) TXID: \(tx.txHash)")
             txDetails.append(txDetail)
         }
-        */
-        
+
         
         let contentViewRect = CGRect(x: 0.0, y: 0.0, width: self.frame.size.width, height: contentViewHeight)
         let tableViewRect = CGRect(x: 0.0, y: 0.0, width: self.frame.size.width, height: self.frame.size.height)
@@ -117,10 +113,20 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
         //cell.backgroundColor = UIColor.backgroundWhite()
         cell.backgroundColor = UIColor.backgroundWhite()
         
-        cell.txActionLabel.text = "Sent"
-        cell.txActionLabel.textColor = UIColor.sentRed()
-        cell.timeLabel.text = "5/20"
-        cell.amountLabel.text = "-1.5tBTC"
+        
+        let tx = txDetails[indexPath.row]
+        
+        if tx.isSpentTransaction {
+            cell.txActionLabel.text = "Sent"
+            cell.txActionLabel.textColor = UIColor.sentRed()
+        } else {
+            cell.txActionLabel.text = "Received"
+            cell.txActionLabel.textColor = UIColor.receivedGreen()
+        }
+        
+        
+        cell.timeLabel.text = "-/--"
+        cell.amountLabel.text = String(Double(tx.amount) / 100000000) + " BTC"
         
         return cell
     }

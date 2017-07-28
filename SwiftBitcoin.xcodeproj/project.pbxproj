@@ -42,6 +42,8 @@
 		E11454B81DC88F66002122DA /* Bitwise Hacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454A41DC88F66002122DA /* Bitwise Hacks.swift */; };
 		E11454BA1DC894EC002122DA /* ShiftOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454B91DC894EC002122DA /* ShiftOperations.swift */; };
 		E114A63C1E057DA500A34669 /* MerkleBlockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */; };
+		E1151F081F2B1C750040988A /* BitcoinPrefixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1151F071F2B1C750040988A /* BitcoinPrefixes.swift */; };
+		E1151F0A1F2B1CDA0040988A /* NetworkFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1151F091F2B1CDA0040988A /* NetworkFlag.swift */; };
 		E122478D1E56E26D00E2DA02 /* UserKeyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */; };
 		E122478F1E582E0500E2DA02 /* TransactionOutputInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */; };
 		E12247911E58AB4300E2DA02 /* TransactionInputScriptSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12247901E58AB4300E2DA02 /* TransactionInputScriptSignature.swift */; };
@@ -205,6 +207,8 @@
 		E11454A41DC88F66002122DA /* Bitwise Hacks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bitwise Hacks.swift"; sourceTree = "<group>"; };
 		E11454B91DC894EC002122DA /* ShiftOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftOperations.swift; sourceTree = "<group>"; };
 		E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerkleBlockMessage.swift; sourceTree = "<group>"; };
+		E1151F071F2B1C750040988A /* BitcoinPrefixes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinPrefixes.swift; sourceTree = "<group>"; };
+		E1151F091F2B1CDA0040988A /* NetworkFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlag.swift; sourceTree = "<group>"; };
 		E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserKeyInfo.swift; sourceTree = "<group>"; };
 		E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOutputInfo.swift; sourceTree = "<group>"; };
 		E12247901E58AB4300E2DA02 /* TransactionInputScriptSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInputScriptSignature.swift; sourceTree = "<group>"; };
@@ -380,6 +384,8 @@
 				E11454A31DC88F66002122DA /* BitcoinSerializable.swift */,
 				E1D130D81DBDB6050028651C /* Endianness.swift */,
 				E1D130D01DBD03940028651C /* NetworkMagicBytes.swift */,
+				E1151F071F2B1C750040988A /* BitcoinPrefixes.swift */,
+				E1151F091F2B1CDA0040988A /* NetworkFlag.swift */,
 				E102D7CB1DB260480078E4C4 /* ByteConverter.swift */,
 				E1C7AD421DBA159F003C8A80 /* MessagePrinter.swift */,
 				E1E98D1B1F07C6ED009A8260 /* UI */,
@@ -958,6 +964,7 @@
 				E150E49A1DBA88720066B533 /* VarInt.swift in Sources */,
 				E160A3201DFFA26100915C94 /* TransactionOutput.swift in Sources */,
 				E11454B41DC88F66002122DA /* BigUInt Square Root.swift in Sources */,
+				E1151F081F2B1C750040988A /* BitcoinPrefixes.swift in Sources */,
 				E1D130D31DBD0B280028651C /* MessageHeader.swift in Sources */,
 				E159FD5F1DED161E005856FB /* FiniteField.swift in Sources */,
 				E1E98D361F07DB7D009A8260 /* BIAddressInputView.swift in Sources */,
@@ -1007,6 +1014,7 @@
 				E15723361E0E1ADC00BB2523 /* RIPEMD160Hash.swift in Sources */,
 				E102D7D11DB34AC70078E4C4 /* Thread.swift in Sources */,
 				E11454AE1DC88F66002122DA /* BigUInt Hashing.swift in Sources */,
+				E1151F0A1F2B1CDA0040988A /* NetworkFlag.swift in Sources */,
 				E122478F1E582E0500E2DA02 /* TransactionOutputInfo.swift in Sources */,
 				E18D547F1E015441009D2715 /* GetBlocksMessage.swift in Sources */,
 				E1E98D261F07D9DD009A8260 /* BIScrollView.swift in Sources */,

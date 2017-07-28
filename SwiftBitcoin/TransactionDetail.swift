@@ -14,6 +14,7 @@ public class TransactionDetail {
     public let fromAddresses: [String]
     public let toAddresses: [String]
     public let amount: Int64
+    public let fee: Int64
     public let txId: String
     
     
@@ -39,17 +40,21 @@ public class TransactionDetail {
         
         self.toAddresses = toAddr
         
+        
+        var calculatedFee: Int64 = 0
         //Calculate fee
         if isSpentTransaction {
-            if let fee = tx.fee {
-                calculatedAmount += fee
-                print(fee)
+            if let fee_ = tx.fee {
+                calculatedAmount += fee_
+                calculatedFee += fee_
+                //print(fee)
             } else {
                 print("Failed to calculate fee in TransactionDetail.swift")
             }
         }
         
         self.amount = calculatedAmount
+        self.fee = calculatedFee
         self.txId = tx.txHash
     }
     

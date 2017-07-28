@@ -41,10 +41,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         }
         
         
-        for tx in TransactionInfo.loadAll() {
-            let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: 0x6f)
+        /*for tx in TransactionInfo.loadAll() {
+            let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: BitcoinPrefixes.pubKeyPrefix)
             print("From: \(txDetail.fromAddresses) To: \(txDetail.toAddresses) Amount: \(txDetail.amount) TXID: \(tx.txHash)")
-        }
+        }*/
         
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
@@ -121,7 +121,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         topStatusView = BITopStatusView(frame: CGRect(x: size.width, y: 0, width: size.width, height: statusViewHeight))
         topStatusView.backgroundColor = .white
-        topStatusView.setupStatusLabel(text: "0.0tBTC")
+        
+        let balance = TransactionDataStoreManager.calculateBalance()
+        let balanceInBTC: Double = Double(balance) / 100000000
+        topStatusView.setupStatusLabel(text: String(balanceInBTC) + "tBTC")
         
         contentView.addSubview(topStatusView)
         
@@ -186,13 +189,13 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func enterAddressButtonTapped() {
-        //self.performSegue(withIdentifier: "pay", sender: nil)
-        if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
+        self.performSegue(withIdentifier: "pay", sender: nil)
+        /*if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
             let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 1000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 90000)
             //print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
             print(txConstructor.transaction?.bitcoinData.toHexString())
             //con.sendTransaction(transaction: txConstructor.transaction!)
-        }
+        }*/
 
     
     }
