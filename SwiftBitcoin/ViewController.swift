@@ -19,6 +19,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     var topStatusView: BITopStatusView!
     var txHistoryView: BITransactionHistoryView!
     
+    var displayTxDetail: TransactionDetail? = nil
     
     @IBOutlet weak var pageControl: UIPageControl!
     
@@ -179,8 +180,11 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     //MARK:- BITransactionHistoryViewDelegate
-    func cellDidSelectAt(_ indexPath: IndexPath) {
+    func cellDidSelectAt(_ tx: TransactionDetail) {
+        self.displayTxDetail = tx
         self.performSegue(withIdentifier: "txDetail", sender: nil)
+        
+        self.displayTxDetail = nil
     }
     
     //MARK:- BISendTopViewDelegate
@@ -199,6 +203,16 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
 
     
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "txDetail" {
+            let txDetailViewController = segue.destination as! BITransactionDetailViewController
+            txDetailViewController.txDetail = displayTxDetail
+            
+            
+        }
+    }
+
 
     
     override func didReceiveMemoryWarning() {

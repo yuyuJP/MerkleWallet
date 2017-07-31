@@ -40,7 +40,6 @@ public class TransactionDetail {
         
         self.toAddresses = toAddr
         
-        
         var calculatedFee: Int64 = 0
         //Calculate fee
         if isSpentTransaction {

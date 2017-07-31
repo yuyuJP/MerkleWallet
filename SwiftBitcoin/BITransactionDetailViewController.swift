@@ -12,15 +12,33 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
     
     private var tableTitle = ["", "TO:", "FROM:", ""]
     private let generalContents = ["ID", "Dete", "Fee", "Confirmations"]
-    private var toContents: [String] = ["my3TE7S7ou4UxYLj5HXcLVsiTt32th4qeN"]
-    private var fromContents: [String] = ["my3TE7S7ou4UxYLj5HXcLVsiTt32th4qeN"]
+    private var toContents: [String] = []
+    private var fromContents: [String] = []
     private var isSpentTransaction = true
+    private var txIdStr = ""
+    private var dateStr = "--/-"
+    private var feeStr = ""
+    private var comfStr = ""
     
     @IBOutlet weak var tableView: UITableView!
+    
+    public var txDetail: TransactionDetail? = nil
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let txDetail = txDetail {
+            toContents = txDetail.toAddresses
+            fromContents = txDetail.fromAddresses
+            isSpentTransaction = txDetail.isSpentTransaction
+            txIdStr = txDetail.txId
+            feeStr = String(Double(txDetail.fee) / 100000000)
+            
+        } else {
+            print("Tx detail is nil. Make sure you pass the value.")
+        }
+        
         tableView.register(TransactionDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.backgroundColor = UIColor.backgroundWhite()
     }
@@ -39,26 +57,43 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
             let textColor = isSpentTransaction ? UIColor.sentRed() : UIColor.receivedGreen()
             cell.titleLabel.text = action
             cell.titleLabel.textColor = textColor
+            cell.infoLabel.text = ""
+            cell.textLabel?.text = ""
             
         case 1:
+            cell.titleLabel.text = ""
+            cell.infoLabel.text = ""
             cell.textLabel?.text = toContents[indexPath.row]
             cell.textLabel?.textColor = .gray
             
         case 2:
+            cell.titleLabel.text = ""
+            cell.infoLabel.text = ""
             cell.textLabel?.text = fromContents[indexPath.row]
             cell.textLabel?.textColor = .gray
-            
             
         case 3:
             cell.titleLabel.text = generalContents[indexPath.row]
             cell.titleLabel.textColor = .gray
+            cell.textLabel?.text = ""
+            
+            if indexPath.row == 0 {
+                cell.infoLabel.text = txIdStr
+            } else if indexPath.row == 1 {
+                cell.infoLabel.text = dateStr
+            } else if indexPath.row == 2 {
+                cell.infoLabel.text = feeStr
+            } else if indexPath.row == 3 {
+                cell.infoLabel.text = comfStr
+            }
             
         default: break
             
         }
         
         return cell
-    }
+        
+}
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return tableTitle[section]

@@ -30,7 +30,7 @@ import UIKit
 */
 
 public protocol BITransactionHistoryViewDelegate {
-    func cellDidSelectAt(_ indexPath: IndexPath)
+    func cellDidSelectAt(_ tx: TransactionDetail)
 }
 
 
@@ -56,7 +56,7 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
     public func setTransactionHistoryTable() {
         
         for tx in TransactionInfo.loadAll().reversed() {
-            let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: 0x6f)
+            let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: BitcoinPrefixes.pubKeyPrefix)
             //print("From: \(txDetail.fromAddresses) To: \(txDetail.toAddresses) Amount: \(txDetail.amount) TXID: \(tx.txHash)")
             txDetails.append(txDetail)
         }
@@ -133,7 +133,7 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.cellDidSelectAt(indexPath)
+        delegate?.cellDidSelectAt(txDetails[indexPath.row])
     }
     
     /*
