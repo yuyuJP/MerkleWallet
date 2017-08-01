@@ -19,7 +19,53 @@ public class TransactionDetail {
     
     
     public init(tx: TransactionInfo, pubKeyPrefix: UInt8) {
-        self.isSpentTransaction = TransactionDetail.isSpentCheck(tx)
+        
+        let (relevantInputs, relevantOutputs) = TransactionDetail.extractRelevantInputsAndOutputs(tx)
+        if relevantInputs.count != 0 && relevantOutputs.count == 0 {
+            self.isSpentTransaction = true
+            
+            var inputValue: Int64 = 0
+            for input in relevantInputs {
+                if let outpointTx = TransactionInfo.fetch(txHash: input.outPoint!.txHash) {
+                    let spentOutput = outpointTx.outputs[input.outPoint!.index]
+                    inputValue += spentOutput.value
+                }
+            }
+            self.amount = inputValue
+            
+        } else if relevantInputs.count == 0 && relevantOutputs.count != 0 {
+            self.isSpentTransaction = false
+            
+            var outputVaue: Int64 = 0
+            for output in relevantOutputs {
+                outputVaue += output.value
+            }
+            self.amount = outputVaue
+            
+        } else {
+            var inputValue: Int64 = 0
+            for input in relevantInputs {
+                if let outpointTx = TransactionInfo.fetch(txHash: input.outPoint!.txHash) {
+                    let spentOutput = outpointTx.outputs[input.outPoint!.index]
+                    inputValue += spentOutput.value
+                }
+            }
+            
+            var outputVaue: Int64 = 0
+            for output in relevantOutputs {
+                outputVaue += output.value
+            }
+            
+            let diff = inputValue - outputVaue
+            self.isSpentTransaction = diff > 0
+            
+            if self.isSpentTransaction {
+                self.amount = diff
+            } else {
+                self.amount = -diff
+            }
+        }
+        
         var fromAddr: [String] = []
         for input in tx.inputs {
             fromAddr.append(input.hash160.publicKeyHashToPublicAddress(pubKeyPrefix))
@@ -27,34 +73,32 @@ public class TransactionDetail {
         
         self.fromAddresses = fromAddr
         
-        let outputs = TransactionDetail.extractOutputs(tx, isSpentTx: self.isSpentTransaction)
-        
         var toAddr: [String] = []
-        
-        var calculatedAmount: Int64 = 0
-        
+        let outputs = TransactionDetail.extractOutputs(tx, isSpentTx: self.isSpentTransaction)
+
         for output in outputs {
             toAddr.append(output.pubKeyHash.publicKeyHashToPublicAddress(pubKeyPrefix))
-            calculatedAmount += output.value
         }
         
         self.toAddresses = toAddr
         
-        var calculatedFee: Int64 = 0
         //Calculate fee
+        var calculatedFee: Int64 = 0
         if isSpentTransaction {
             if let fee_ = tx.fee {
-                calculatedAmount += fee_
                 calculatedFee += fee_
-                //print(fee)
+                
             } else {
                 print("Failed to calculate fee in TransactionDetail.swift")
+                calculatedFee = -1
             }
+        } else {
+            calculatedFee = -1
         }
-        
-        self.amount = calculatedAmount
+
         self.fee = calculatedFee
         self.txId = tx.txHash
+
     }
     
     private static func isSpentCheck(_ tx: TransactionInfo) -> Bool {
@@ -69,6 +113,29 @@ public class TransactionDetail {
         }
         
         return false
+    }
+    
+    
+    private static func extractRelevantInputsAndOutputs(_ tx: TransactionInfo) -> ([TransactionInputInfo], [TransactionOutputInfo]) {
+        var inputs: [TransactionInputInfo] = []
+        var outputs: [TransactionOutputInfo] = []
+        
+        for key in UserKeyInfo.loadAll() {
+            
+            for input in tx.inputs {
+                if key.publicKeyHash == input.hash160 {
+                    inputs.append(input)
+                }
+            }
+            
+            for output in tx.outputs {
+                if key.publicKeyHash == output.pubKeyHash {
+                    outputs.append(output)
+                }
+            }
+        }
+        
+        return(inputs, outputs)
     }
     
     private static func extractOutputs(_ tx: TransactionInfo, isSpentTx: Bool) -> [TransactionOutputInfo] {
