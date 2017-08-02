@@ -20,15 +20,18 @@ public class TransactionDBConstructor {
     
     //Hash160 of public address.
     private let addressHash160: RIPEMD160HASH
+    
+    private let type: OutputScriptType
 
     private let fee: Int64
     
-    public init(privateKeyPrefix: UInt8, publicKeyPrefix: UInt8, sendAmount: Int64, to: RIPEMD160HASH, fee: Int64 = 0) {
+    public init(privateKeyPrefix: UInt8, publicKeyPrefix: UInt8, sendAmount: Int64, to: RIPEMD160HASH, type: OutputScriptType,fee: Int64 = 0) {
         //self.key = key
         self.privateKeyPrefix = privateKeyPrefix
         self.publicKeyPrefix = publicKeyPrefix
         self.sendAmount = sendAmount
         self.addressHash160 = to
+        self.type = type
         self.fee = fee
     }
     
@@ -65,7 +68,7 @@ public class TransactionDBConstructor {
         return transactionMessage
     }
     
-    //Generate inputs for building "signature" transaction(TransactionMessage) and sum amount of inputs for change calculation
+    //Generate inputs for building "signature" transaction(TransactionMessage) and sum amount of inputs for calculating change
     private func inputOfTransactionMessage(_ amount: Int64, fee: Int64) -> ([Transaction.Input], Int64)?  {
         
         var inputs: [Transaction.Input] = []
@@ -117,9 +120,18 @@ public class TransactionDBConstructor {
         
         var outputs: [Transaction.Output] = []
         
-        let outputScript = P2PKH_OutputScript(hash160: addressHash160)
-        let output = Transaction.Output(value: amount, script: outputScript.bitcoinData)
-        outputs.append(output)
+        switch type {
+        
+        case .P2PKH:
+            let outputScript = P2PKH_OutputScript(hash160: addressHash160)
+            let output = Transaction.Output(value: amount, script: outputScript.bitcoinData)
+            outputs.append(output)
+            
+        case .P2SH:
+            let outputScript = P2SH_OutputScript(hash160: addressHash160)
+            let output = Transaction.Output(value: amount, script: outputScript.bitcoinData)
+            outputs.append(output)
+        }
         
         if change > 0 {
             if let userKey = UserKeyInfo.loadAll().first {

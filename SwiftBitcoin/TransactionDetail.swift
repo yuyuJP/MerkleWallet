@@ -18,7 +18,7 @@ public class TransactionDetail {
     public let txId: String
     
     
-    public init(tx: TransactionInfo, pubKeyPrefix: UInt8) {
+    public init(tx: TransactionInfo, pubKeyPrefix: UInt8, scriptHashPrefix: UInt8) {
         
         let (relevantInputs, relevantOutputs) = TransactionDetail.extractRelevantInputsAndOutputs(tx)
         if relevantInputs.count != 0 && relevantOutputs.count == 0 {
@@ -68,7 +68,13 @@ public class TransactionDetail {
         
         var fromAddr: [String] = []
         for input in tx.inputs {
-            fromAddr.append(input.hash160.publicKeyHashToPublicAddress(pubKeyPrefix))
+            if input.type == "P2PKH" {
+                fromAddr.append(input.hash160.publicKeyHashToPublicAddress(pubKeyPrefix))
+            } else if input.type == "P2SH"{
+                fromAddr.append(input.hash160.publicKeyHashToPublicAddress(scriptHashPrefix))
+            }
+            
+            
         }
         
         self.fromAddresses = fromAddr
@@ -77,7 +83,13 @@ public class TransactionDetail {
         let outputs = TransactionDetail.extractOutputs(tx, isSpentTx: self.isSpentTransaction)
 
         for output in outputs {
-            toAddr.append(output.pubKeyHash.publicKeyHashToPublicAddress(pubKeyPrefix))
+            if output.type == "P2PKH" {
+                toAddr.append(output.pubKeyHash.publicKeyHashToPublicAddress(pubKeyPrefix))
+            } else if output.type == "P2SH" {
+                toAddr.append(output.pubKeyHash.publicKeyHashToPublicAddress(scriptHashPrefix))
+            }
+            
+            
         }
         
         self.toAddresses = toAddr

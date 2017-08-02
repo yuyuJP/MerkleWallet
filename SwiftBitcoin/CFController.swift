@@ -113,7 +113,7 @@ public class CFController: CFConnectionDelegate {
                 //Use when balance calculation check is needed.
                 
                 //let blkHash = SHA256Hash("000000000000000dda503f5219132d9880979b488dfbc945a62388fc354f99a3".hexStringToNSData())
-                let blkHash = SHA256Hash("000000000000017ea2adce700debdd9c369c83dcf21082c73f123550ccd042a9".hexStringToNSData())
+                let blkHash = SHA256Hash("00000000000004e9cde591385383454507f3fe815ce6b200fd1525b5ded87c75".hexStringToNSData())
                 let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
                 print("Sending GetBlockMessage...")
                 self.connection?.sendMessageWithPayload(getBlocksMsg)
@@ -212,9 +212,9 @@ public class CFController: CFConnectionDelegate {
                 }
                 
                 if inventoryMessage.inventoryVectors.count == 500 {
-                    let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
-                    let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
-                    self.connection?.sendMessageWithPayload(getBlocksMsg)
+                    //let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
+                    //let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
+                    //self.connection?.sendMessageWithPayload(getBlocksMsg)
                 }
         }
             

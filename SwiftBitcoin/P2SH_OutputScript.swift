@@ -9,7 +9,6 @@
 import Foundation
 
 
-//TODO: P2SH script not tested yet!!
 public struct P2SH_OutputScript {
     
     public let hash160: RIPEMD160HASH

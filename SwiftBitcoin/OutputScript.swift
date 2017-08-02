@@ -55,4 +55,14 @@ public struct OutputScript {
             return P2SH_script!.hash160
         }
     }
+    
+    public var typeString: String {
+        switch type {
+        case .P2PKH:
+            return "P2PKH"
+        case .P2SH:
+            return "P2SH"
+        }
+    }
+
 }

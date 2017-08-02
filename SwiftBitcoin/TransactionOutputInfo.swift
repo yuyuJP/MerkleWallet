@@ -13,6 +13,7 @@ class TransactionOutputInfo: Object {
     static let realm = try! Realm()
     
     dynamic var pubKeyHash = ""
+    dynamic var type = ""
     dynamic var value: Int64 = 0
     dynamic var isSpent = false
     
@@ -21,8 +22,15 @@ class TransactionOutputInfo: Object {
     
     public static func create(_ output: Transaction.Output) -> TransactionOutputInfo {
         let outputInfo = TransactionOutputInfo()
-        if let hash160 = output.parsedScript?.hash160.bitcoinData.toHexString() {
+        
+        let parsedScript = output.parsedScript
+        
+        if let hash160 = parsedScript?.hash160.bitcoinData.toHexString() {
             outputInfo.pubKeyHash = hash160
+        }
+        
+        if let type = parsedScript?.typeString {
+            outputInfo.type = type
         }
         
         outputInfo.value = output.value

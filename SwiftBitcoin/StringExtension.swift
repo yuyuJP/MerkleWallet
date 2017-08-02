@@ -151,6 +151,31 @@ extension String {
         
         return extractedPubKeyHash
     }
+    
+    func determinOutputScriptTypeWithAddress() -> OutputScriptType? {
+        guard let decodedStr = self.base58StringToNSData()?.toHexString() else {
+            return nil
+        }
+        
+        let startIndex = decodedStr.startIndex
+        let prefixEnd = decodedStr.index(startIndex, offsetBy: 2)
+        
+        let prefixRange = startIndex ..< prefixEnd
+        
+        guard let prefix = UInt8(decodedStr.substring(with: prefixRange), radix: 16) else {
+            print("Failed to decode prefix from Decoded Public Address.")
+            return nil
+        }
+        
+        if prefix == BitcoinPrefixes.pubKeyPrefix {
+            return OutputScriptType.P2PKH
+        } else if prefix == BitcoinPrefixes.scriptHashPrefix {
+            return OutputScriptType.P2SH
+        } else {
+            return nil  
+        }
+
+    }
 }
 
 

@@ -34,18 +34,19 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             
         } else {
             print("No user info. Generating a new key.")
-            //key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
-            key = BitcoinTestnet()
+            key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
+            //key = BitcoinTestnet()
             
             let newUserKeyInfo = UserKeyInfo.create(key: key)
             newUserKeyInfo.save()
         }
         
         
-        /*for tx in TransactionInfo.loadAll() {
-            let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: BitcoinPrefixes.pubKeyPrefix)
-            print("From: \(txDetail.fromAddresses) To: \(txDetail.toAddresses) Amount: \(txDetail.amount) TXID: \(tx.txHash)")
-        }*/
+        //for tx in TransactionInfo.loadAll() {
+            //if tx.inputs.count > 15 {
+        //        print(tx.inputs)
+            //}
+        //}
         
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
@@ -81,8 +82,24 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func txGenerateFromLocalDBTest() {
-        if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
-            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 3000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 9000)
+        
+        let sendAddress = "2N54g5fR3wvVgynFTxnCuwxxrKsMnTMjmJ6"
+        //mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq
+        //2N54g5fR3wvVgynFTxnCuwxxrKsMnTMjmJ6
+        guard let type = sendAddress.determinOutputScriptTypeWithAddress() else {
+            print("Could not determin address type")
+            return
+        }
+        
+        var prefix = BitcoinPrefixes.pubKeyPrefix
+        
+        if type == .P2SH {
+            prefix = BitcoinPrefixes.scriptHashPrefix
+        }
+        
+        if let addressHash160 = sendAddress.publicAddressToPubKeyHash(prefix) {
+            
+            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: BitcoinPrefixes.pubKeyPrefix, sendAmount: 3000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), type: type, fee: 90000)
             print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
         }
         
@@ -193,7 +210,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func enterAddressButtonTapped() {
-        self.performSegue(withIdentifier: "pay", sender: nil)
+        txGenerateFromLocalDBTest()
+        //self.performSegue(withIdentifier: "pay", sender: nil)
         /*if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
             let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 1000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 90000)
             //print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")

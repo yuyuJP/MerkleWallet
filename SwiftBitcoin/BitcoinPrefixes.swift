@@ -18,4 +18,12 @@ public class BitcoinPrefixes {
         }
     }
     
+    public static var scriptHashPrefix: UInt8 {
+        if isBitcoinMainNet {
+            return 0x05
+        } else {
+            return 0xc4
+        }
+    }
+    
 }
