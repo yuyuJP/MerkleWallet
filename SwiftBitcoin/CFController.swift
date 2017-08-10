@@ -18,6 +18,7 @@ public class CFController: CFConnectionDelegate {
     private let network: [UInt8]
     private let queue: OperationQueue
     
+    
     private var connection: CFConnection?
     private var peerVersion: VersionMessage?
     private var headersDownloaded = 0
@@ -113,7 +114,7 @@ public class CFController: CFConnectionDelegate {
                 //Use when balance calculation check is needed.
                 
                 //let blkHash = SHA256Hash("000000000000000dda503f5219132d9880979b488dfbc945a62388fc354f99a3".hexStringToNSData())
-                let blkHash = SHA256Hash("00000000000004e9cde591385383454507f3fe815ce6b200fd1525b5ded87c75".hexStringToNSData())
+                let blkHash = SHA256Hash(startingBlockHash.hexStringToNSData())
                 let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
                 print("Sending GetBlockMessage...")
                 self.connection?.sendMessageWithPayload(getBlocksMsg)
@@ -218,16 +219,16 @@ public class CFController: CFConnectionDelegate {
                 }
         }
             
-        case let .MerkleBlockMessage(merkleBlockMessage): break
-            //print("Received merkle block")
-            //print(merkleBlockMessage)
-            
-        case let .TransactionMessage(transactionMessage):
-            //TODO: Add tx to Local-DB after validating merkle block and received tx
-            queue.addOperation {
-                TransactionDataStoreManager.add(tx: transactionMessage)
-                self.delegate?.newTransactionReceived()
+        case let .MerkleBlockMessage(merkleBlockMessage):
+            DispatchQueue.main.async {
+                BlockDataStoreManager.add(merkleBlockMsg: merkleBlockMessage)
             }
+            
+        case let .TransactionMessage(transactionMessage):break
+            //queue.addOperation {
+            //    TransactionDataStoreManager.add(tx: transactionMessage)
+            //    self.delegate?.newTransactionReceived()
+            //}
             
         case let .GetDataMessage(getDataMessage):
             print("received getDataMessage \(getDataMessage)")

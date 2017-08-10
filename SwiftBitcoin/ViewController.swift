@@ -41,15 +41,20 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             newUserKeyInfo.save()
         }
         
-        
-        //for tx in TransactionInfo.loadAll() {
-            //if tx.inputs.count > 15 {
-        //        print(tx.inputs)
-            //}
-        //}
-        
+        if let blkChainInfo = BlockChainInfo.loadItem() {
+            print("blk chain info: \(blkChainInfo)")
+        } else {
+            let blkInfo = BlockInfo.genesisCreate(startingBlockHash, with: startingBlockHeight)
+            blkInfo.save()
+        }
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
+        
+        
+        let blks = BlockInfo.loadAll()
+        for blk in blks {
+            print("hash: \(blk.blockHash) height: \(blk.height)")
+        }
         
         //establishConnection()
 

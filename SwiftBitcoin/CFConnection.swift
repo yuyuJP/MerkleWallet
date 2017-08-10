@@ -185,7 +185,7 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
         case Stream.Event.errorOccurred:
             print("Error occurred!!!")
         case Stream.Event.endEncountered:
-            print("End endEncountered?? what??")
+            print("End endEncountered")
         default:
             assert(false, "what is happening??")
         }
@@ -219,7 +219,7 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
             }
         case .VersionAck:
             if status != .Connecting {
-                print("Ingnoring VersionAck Message bacause not in .Connecting state")
+                print("Ingnoring VersionAck Message bacause it is not in .Connecting state")
                 break
             }
             receivedVersionAck = true

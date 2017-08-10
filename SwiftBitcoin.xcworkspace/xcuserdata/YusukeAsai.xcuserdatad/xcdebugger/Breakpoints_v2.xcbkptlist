@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/CFController.swift"
-            timestampString = "520697002.206103"
+            timestampString = "524073717.465318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "cfConnection(peerConnection:didReceiveMessage:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -232,11 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/CFController.swift"
-            timestampString = "520697002.206103"
+            timestampString = "524074851.851424"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "cfConnection(peerConnection:didReceiveMessage:)"
             landmarkType = "7">
             <Locations>
@@ -280,11 +280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/CFController.swift"
-            timestampString = "520697002.206103"
+            timestampString = "524074851.851424"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "cfConnection(peerConnection:didReceiveMessage:)"
             landmarkType = "7">
             <Locations>
@@ -296,12 +296,12 @@
                   moduleName = "SwiftBitcoin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YusukeAsai/Desktop/Git%20Repo/SwiftBitcoin/SwiftBitcoin/CFController.swift"
-                  timestampString = "514455043.905689"
+                  timestampString = "524042487.850307"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "221"
-                  endingLineNumber = "221"
-                  offsetFromSymbolStart = "1700">
+                  startingLineNumber = "229"
+                  endingLineNumber = "229"
+                  offsetFromSymbolStart = "1308">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -311,12 +311,12 @@
                   moduleName = "SwiftBitcoin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YusukeAsai/Desktop/Git%20Repo/SwiftBitcoin/SwiftBitcoin/CFController.swift"
-                  timestampString = "514455043.908106"
+                  timestampString = "524042487.852876"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "222"
-                  endingLineNumber = "222"
-                  offsetFromSymbolStart = "48">
+                  startingLineNumber = "230"
+                  endingLineNumber = "230"
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -328,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "setupContentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -344,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "setupContentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -360,11 +360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "setupContentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -376,11 +376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "setupContentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -392,11 +392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "setupContentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -408,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "setupContentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -424,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "setupContentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -440,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "scrollViewDidEndDecelerating(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -456,39 +456,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "scrollViewDidScroll(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "scrollViewDidScroll(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -504,7 +472,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
@@ -520,7 +488,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
@@ -536,7 +504,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
@@ -552,11 +520,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
-            timestampString = "523380467.608304"
+            timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
             endingLineNumber = "183"
+            landmarkName = "scrollViewDidScroll(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftBitcoin/ViewController.swift"
+            timestampString = "524074984.232188"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "scrollViewDidScroll(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftBitcoin/ViewController.swift"
+            timestampString = "524074984.232188"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -782,6 +782,22 @@
             startingLineNumber = "39"
             endingLineNumber = "39"
             landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftBitcoin/RealmExtention.swift"
+            timestampString = "524073404.213107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "writeBackground(block:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
