@@ -56,7 +56,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             print("hash: \(blk.blockHash) height: \(blk.height)")
         }
         
-        establishConnection()
+        //establishConnection()
 
         //txGenerateFromLocalDBTest()
  

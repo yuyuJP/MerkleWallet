@@ -29,13 +29,14 @@ class TransactionInputInfo: Object {
         if let hash160 = parsedScript?.hash160 {
             txInput.hash160 = hash160.data.toHexString()
         } else {
-            print("Failed to register hash160 data in TransactionInputInfo.swift")
+            //print("Failed to register hash160 data in TransactionInputInfo.swift")
         }
         
         if let type = parsedScript?.typeString {
             txInput.type = type
         } else {
-            print("Failed to register input type data in TransactionInputInfo.swift")
+            txInput.type = "unknown"
+            //print("Failed to register input type data in TransactionInputInfo.swift")
         }
         
         let txOutPoint = TransactionOutPointInfo.create(input.outPoint)

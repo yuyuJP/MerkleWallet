@@ -72,6 +72,8 @@ public class TransactionDetail {
                 fromAddr.append(input.hash160.publicKeyHashToPublicAddress(pubKeyPrefix))
             } else if input.type == "P2SH"{
                 fromAddr.append(input.hash160.publicKeyHashToPublicAddress(scriptHashPrefix))
+            } else {
+                fromAddr.append("")
             }
             
             
@@ -87,6 +89,8 @@ public class TransactionDetail {
                 toAddr.append(output.pubKeyHash.publicKeyHashToPublicAddress(pubKeyPrefix))
             } else if output.type == "P2SH" {
                 toAddr.append(output.pubKeyHash.publicKeyHashToPublicAddress(scriptHashPrefix))
+            } else {
+                toAddr.append("")
             }
             
             

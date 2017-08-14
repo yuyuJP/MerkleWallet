@@ -229,13 +229,9 @@ public class CFController: CFConnectionDelegate {
             }
             
         case let .TransactionMessage(transactionMessage):
-            queue.addOperation {
+            DispatchQueue.main.async {
                 TransactionDataStoreManager.add(tx: transactionMessage)
             }
-            /*queue.addOperation {
-                self.delegate?.newTransactionReceived()
-            }*/
-            
             
         case let .GetDataMessage(getDataMessage):
             print("received getDataMessage \(getDataMessage)")
