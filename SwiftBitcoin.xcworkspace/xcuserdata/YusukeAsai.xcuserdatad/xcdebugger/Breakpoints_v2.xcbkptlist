@@ -215,118 +215,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftBitcoin/CFController.swift"
-            timestampString = "524073717.465318"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "cfConnection(peerConnection:didReceiveMessage:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftBitcoin/CFController.swift"
-            timestampString = "524074851.851424"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "cfConnection(peerConnection:didReceiveMessage:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwiftBitcoin.CFController.cfConnection (peerConnection : SwiftBitcoin.CFConnection, didReceiveMessage : SwiftBitcoin.PeerConnectionMessage) -&gt; ()"
-                  moduleName = "SwiftBitcoin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YusukeAsai/Desktop/Git%20Repo/SwiftBitcoin/SwiftBitcoin/CFController.swift"
-                  timestampString = "514454828.400005"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "221"
-                  endingLineNumber = "221"
-                  offsetFromSymbolStart = "1700">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwiftBitcoin.CFController.(cfConnection (peerConnection : SwiftBitcoin.CFConnection, didReceiveMessage : SwiftBitcoin.PeerConnectionMessage) -&gt; ()).(closure #3)"
-                  moduleName = "SwiftBitcoin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YusukeAsai/Desktop/Git%20Repo/SwiftBitcoin/SwiftBitcoin/CFController.swift"
-                  timestampString = "514454828.402153"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "222"
-                  endingLineNumber = "222"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftBitcoin/CFController.swift"
-            timestampString = "524074851.851424"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "cfConnection(peerConnection:didReceiveMessage:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwiftBitcoin.CFController.cfConnection (peerConnection : SwiftBitcoin.CFConnection, didReceiveMessage : SwiftBitcoin.PeerConnectionMessage) -&gt; ()"
-                  moduleName = "SwiftBitcoin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YusukeAsai/Desktop/Git%20Repo/SwiftBitcoin/SwiftBitcoin/CFController.swift"
-                  timestampString = "524042487.850307"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "229"
-                  endingLineNumber = "229"
-                  offsetFromSymbolStart = "1308">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwiftBitcoin.CFController.(cfConnection (peerConnection : SwiftBitcoin.CFConnection, didReceiveMessage : SwiftBitcoin.PeerConnectionMessage) -&gt; ()).(closure #3)"
-                  moduleName = "SwiftBitcoin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YusukeAsai/Desktop/Git%20Repo/SwiftBitcoin/SwiftBitcoin/CFController.swift"
-                  timestampString = "524042487.852876"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "230"
-                  endingLineNumber = "230"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SwiftBitcoin/ViewController.swift"
             timestampString = "524074984.232188"
             startingColumnNumber = "9223372036854775807"
@@ -798,6 +686,38 @@
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "writeBackground(block:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftBitcoin/TransactionDataStoreManager.swift"
+            timestampString = "524382116.605958"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "calculateBalance()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftBitcoin/CFController.swift"
+            timestampString = "524386570.281979"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "sendGetData(inventoryVecs:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

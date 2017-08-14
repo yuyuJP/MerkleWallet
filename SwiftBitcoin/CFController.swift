@@ -150,15 +150,21 @@ public class CFController: CFConnectionDelegate {
         var vecs : [InventoryVector] = []
         for vec in inventoryVecs {
             if vec.type == .Block {
-                let merckeVec = InventoryVector(type: .FilteredBlock, hash: vec.hash)
-                vecs.append(merckeVec)
+                if BlockInfo.fetch(vec.hash.data.toHexString()) != nil {
+                    continue
+                }
+                
+                let merkleVec = InventoryVector(type: .FilteredBlock, hash: vec.hash)
+                vecs.append(merkleVec)
             } else {
                 vecs.append(vec)
             }
         }
         
-        let getDataMessage = GetDataMessage(inventoryVectors: vecs)
-        self.connection?.sendMessageWithPayload(getDataMessage)
+        if vecs.count > 0 {
+            let getDataMessage = GetDataMessage(inventoryVectors: vecs)
+            self.connection?.sendMessageWithPayload(getDataMessage)
+        }
     }
     
     public func sendTransaction(transaction: Transaction) {
@@ -193,8 +199,6 @@ public class CFController: CFConnectionDelegate {
         case let .InventoryMessage(inventoryMessage):
            
             queue.addOperation {
-                //self.blockHashesDownloaded += inventoryMessage.inventoryVectors
-                
                 
                 if inventoryMessage.inventoryVectors.count == 1 && self.lastBlockHash == inventoryMessage.inventoryVectors[0] {
                     return
@@ -205,7 +209,7 @@ public class CFController: CFConnectionDelegate {
                 }
                 
                 self.blockHashesCountDownloaded += inventoryMessage.inventoryVectors.count
-                print("\(self.blockHashesCountDownloaded) block hashes received / \(self.peerVersion!.blockStartHeight)")
+                print("\(self.blockHashesCountDownloaded + startingBlockHeight) block hashes received / \(self.peerVersion!.blockStartHeight + Int32(startingBlockHeight))")
                 
                 
                 if inventoryMessage.inventoryVectors.count > 0 {
@@ -217,18 +221,21 @@ public class CFController: CFConnectionDelegate {
                     //let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
                     //self.connection?.sendMessageWithPayload(getBlocksMsg)
                 }
-        }
+            }
             
         case let .MerkleBlockMessage(merkleBlockMessage):
             DispatchQueue.main.async {
                 BlockDataStoreManager.add(merkleBlockMsg: merkleBlockMessage)
             }
             
-        case let .TransactionMessage(transactionMessage):break
-            //queue.addOperation {
-            //    TransactionDataStoreManager.add(tx: transactionMessage)
-            //    self.delegate?.newTransactionReceived()
-            //}
+        case let .TransactionMessage(transactionMessage):
+            queue.addOperation {
+                TransactionDataStoreManager.add(tx: transactionMessage)
+            }
+            /*queue.addOperation {
+                self.delegate?.newTransactionReceived()
+            }*/
+            
             
         case let .GetDataMessage(getDataMessage):
             print("received getDataMessage \(getDataMessage)")

@@ -56,7 +56,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             print("hash: \(blk.blockHash) height: \(blk.height)")
         }
         
-        //establishConnection()
+        establishConnection()
 
         //txGenerateFromLocalDBTest()
  
@@ -225,6 +225,16 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         }*/
 
     
+    }
+    
+    @IBAction func pageControlTapped(_ sender: Any) {
+        let page = self.pageControl.currentPage
+        
+        var bounds = self.scrollView.bounds
+        bounds.origin.x = bounds.width * CGFloat(page)
+        bounds.origin.y = 0
+        
+        self.scrollView.scrollRectToVisible(bounds, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
