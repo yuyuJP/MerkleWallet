@@ -51,10 +51,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
         
-        let blks = BlockInfo.loadAll()
+        /*let blks = BlockInfo.loadAll()
         for blk in blks {
             print("hash: \(blk.blockHash) height: \(blk.height)")
-        }
+        }*/
         
         //establishConnection()
 
@@ -88,7 +88,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     
     func txGenerateFromLocalDBTest() {
         
-        let sendAddress = "2N54g5fR3wvVgynFTxnCuwxxrKsMnTMjmJ6"
+        let sendAddress = "mgyE5ZU2TTbEcnZFs7TZKb8dGVarc4E3mE"
         //mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq
         //2N54g5fR3wvVgynFTxnCuwxxrKsMnTMjmJ6
         guard let type = sendAddress.determinOutputScriptTypeWithAddress() else {
@@ -104,8 +104,9 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         if let addressHash160 = sendAddress.publicAddressToPubKeyHash(prefix) {
             
-            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: BitcoinPrefixes.pubKeyPrefix, sendAmount: 3000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), type: type, fee: 90000)
-            print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
+            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: BitcoinPrefixes.pubKeyPrefix, sendAmount: 10000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), type: type, fee: 90000)
+            print(txConstructor.transaction ?? "no val")
+            //print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
         }
         
     }
@@ -201,6 +202,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
     }
     
+    func transactionSendRejected(message: String) {
+        print("tx rejected REASON: \(message)")
+    }
+    
     //MARK:- BITransactionHistoryViewDelegate
     func cellDidSelectAt(_ tx: TransactionDetail) {
         self.displayTxDetail = tx
@@ -215,8 +220,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func enterAddressButtonTapped() {
-        txGenerateFromLocalDBTest()
-        //self.performSegue(withIdentifier: "pay", sender: nil)
+        //txGenerateFromLocalDBTest()
+        self.performSegue(withIdentifier: "pay", sender: nil)
         /*if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
             let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 1000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 90000)
             //print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
@@ -245,8 +250,6 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             
         }
     }
-
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

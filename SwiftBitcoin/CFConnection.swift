@@ -23,6 +23,7 @@ public enum PeerConnectionMessage {
     case MerkleBlockMessage(MerkleBlockMessage)
     case TransactionMessage(Transaction)
     case GetDataMessage(GetDataMessage)
+    case RejectMessage(RejectMessage)
     
 }
 
@@ -288,7 +289,10 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
             }
         case .Reject:
             if let rejectMessage = RejectMessage.fromBitcoinStream(payloadStream) {
-                print(rejectMessage)
+                self.delegateQueue.addOperation {
+                    let message = PeerConnectionMessage.RejectMessage(rejectMessage)
+                    self.delegate?.cfConnection(peerConnection: self, didReceiveMessage: message)
+                }
             }
         }
     }
@@ -320,8 +324,8 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
 
     
     func connectionTimerDidTimeout(_ timer: Timer) {
-        //connectionTimeoutTimer?.invalidate()
-        //connectionTimeoutTimer = nil
+        connectionTimeoutTimer?.invalidate()
+        connectionTimeoutTimer = nil
         print("Error : connection did time out")
     }
 

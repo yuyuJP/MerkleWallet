@@ -47,7 +47,56 @@ class BIPayViewController: UIViewController {
     }
     
     @IBAction func send(_ sender: Any) {
-        //Do send action here!!
+        
+        let privatePrefix = BitcoinPrefixes.privatePrefix
+        let pubkeyPrefix = BitcoinPrefixes.pubKeyPrefix
+        let minimumAmount: Int64 = 547
+        
+        guard let addressStr = addressTextField.text else {
+            print("Address is nil")
+            return
+        }
+        
+        guard let amountStr = amountTextField.text else {
+            print("Amount is nil")
+            return
+        }
+        
+        guard let type = addressStr.determinOutputScriptTypeWithAddress() else {
+            print("Could not determin address type")
+            return
+        }
+        
+        var prefix = pubkeyPrefix
+        
+        if type == .P2SH {
+            prefix = BitcoinPrefixes.scriptHashPrefix
+        }
+        
+        if let pubkeyHash = addressStr.publicAddressToPubKeyHash(prefix) {
+            
+            if let amount = Double(amountStr) {
+                let convertedInBtc = Int64(amount * 100000000)
+                if convertedInBtc > minimumAmount {
+                    let txConstructor = TransactionDBConstructor(privateKeyPrefix: privatePrefix, publicKeyPrefix: pubkeyPrefix, sendAmount: convertedInBtc, to: RIPEMD160HASH(pubkeyHash.hexStringToNSData().reversedData), type: type, fee: 90000)
+                    
+                    print("Amount : \(convertedInBtc)")
+                    //print(txConstructor.transaction ?? "no tx")
+                    print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
+
+                } else {
+                    print("Entered amount is nil. Miminum amount is \(minimumAmount) satoshi.")
+                }
+                
+            } else {
+                print("Failed to converted amount properly")
+                return
+            }
+            
+        } else {
+            print("Invalid address")
+            return
+        }
         
         if qrCodeReadViewController != nil {
             let presentingViewController: UIViewController! = self.presentingViewController
