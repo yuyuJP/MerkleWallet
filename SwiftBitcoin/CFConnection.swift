@@ -66,7 +66,7 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
         messageParser.delegate = self
     }
 
-    public func connectWithVersionMessage(_ versionMessage: VersionMessage, timeout: TimeInterval = 5) {
+    public func connectWithVersionMessage(_ versionMessage: VersionMessage, timeout: TimeInterval = 10) {
         
         setStatus(.Connecting)
         

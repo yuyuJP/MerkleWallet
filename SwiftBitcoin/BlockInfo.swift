@@ -37,7 +37,7 @@ public class BlockInfo: Object {
         if let previousBlk = fetch(merkleBlock.header.previousBlockHash.data.toHexString()){
             blockInfo.height = previousBlk.height + 1
         } else {
-            print("Failed to make a relation with previous block in BlockInfo.swift")
+            print("Failed to make a relation with a previous block in BlockInfo.swift")
         }
         
         for matchingTxHash in merkleBlock.partialMerkleTree.matchingHashes {

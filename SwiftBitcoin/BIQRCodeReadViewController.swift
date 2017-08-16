@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+public protocol BIQRCodeReadViewControllerDelegate {
+    func propagateTransaction(tx: Transaction)
+}
+
 class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BIPayViewControllerDelegate {
     
     private let videoCaptureDevice: AVCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -25,6 +29,8 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
     
     private var addressStr: String? = nil
     private var amountStr: String? = nil
+    
+    public var delegate: BIQRCodeReadViewControllerDelegate? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,6 +164,11 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
     //MARK:- BIPayViewControllerDelegate
     func paymentCanceled() {
         previousCode = ""
+    }
+    
+    func broadcastTransaction(tx: Transaction) {
+        //broadcast tx
+        delegate?.propagateTransaction(tx: tx)
     }
     
     override func didReceiveMemoryWarning() {

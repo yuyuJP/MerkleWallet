@@ -10,6 +10,7 @@ import UIKit
 
 public protocol BIPayViewControllerDelegate {
     func paymentCanceled()
+    func broadcastTransaction(tx: Transaction)
 }
 
 class BIPayViewController: UIViewController {
@@ -23,6 +24,8 @@ class BIPayViewController: UIViewController {
     
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    
+    private var txSentTimer: Timer? = nil
     
     public var delegate: BIPayViewControllerDelegate? = nil
     
@@ -76,16 +79,16 @@ class BIPayViewController: UIViewController {
         if let pubkeyHash = addressStr.publicAddressToPubKeyHash(prefix) {
             
             if let amount = Double(amountStr) {
+                
                 let convertedInBtc = Int64(amount * 100000000)
+                
                 if convertedInBtc > minimumAmount {
                     let txConstructor = TransactionDBConstructor(privateKeyPrefix: privatePrefix, publicKeyPrefix: pubkeyPrefix, sendAmount: convertedInBtc, to: RIPEMD160HASH(pubkeyHash.hexStringToNSData().reversedData), type: type, fee: 90000)
                     
-                    print("Amount : \(convertedInBtc)")
-                    //print(txConstructor.transaction ?? "no tx")
-                    print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
+                    self.propagateTx(txConstructor: txConstructor)
 
                 } else {
-                    print("Entered amount is nil. Miminum amount is \(minimumAmount) satoshi.")
+                    print("Entered amount is insufficient. Miminum amount is \(minimumAmount) satoshi.")
                 }
                 
             } else {
@@ -97,6 +100,10 @@ class BIPayViewController: UIViewController {
             print("Invalid address")
             return
         }
+        
+    }
+    
+    private func dismissViewControllers() {
         
         if qrCodeReadViewController != nil {
             let presentingViewController: UIViewController! = self.presentingViewController
@@ -110,5 +117,15 @@ class BIPayViewController: UIViewController {
         }
     }
     
+    private func propagateTx(txConstructor: TransactionDBConstructor) {
+        if let tx = txConstructor.transaction {
+            delegate?.broadcastTransaction(tx: tx)
+            dismissViewControllers()
+            
+        } else {
+            print("Failed to build transaction.")
+        }
+    }
+
 }
 

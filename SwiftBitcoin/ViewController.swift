@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISendTopViewDelegate, UIScrollViewDelegate, CFControllerDelegate {
+class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISendTopViewDelegate, BIQRCodeReadViewControllerDelegate, BIPayViewControllerDelegate, UIScrollViewDelegate, CFControllerDelegate {
 
     private var con : CFController!
     private var key : BitcoinTestnet!
@@ -20,6 +20,9 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     var txHistoryView: BITransactionHistoryView!
     
     var displayTxDetail: TransactionDetail? = nil
+    
+    var txSentTimer: Timer? = nil
+    var activityIndicatorView: UIActivityIndicatorView!
     
     @IBOutlet weak var pageControl: UIPageControl!
     
@@ -56,15 +59,13 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             print("hash: \(blk.blockHash) height: \(blk.height)")
         }*/
         
-        //establishConnection()
+        establishConnection()
 
-        //txGenerateFromLocalDBTest()
- 
-        
         self.view.backgroundColor = UIColor.backgroundWhite()
         pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
         
         setupContentView()
+        setupIndicatorView()
     }
     
     func bloomFilterSet(publicKeyHex: String, publicKeyHashHex: String) {
@@ -168,6 +169,15 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
     }
     
+    func setupIndicatorView() {
+        
+        activityIndicatorView = UIActivityIndicatorView(frame: self.view.frame)
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.activityIndicatorViewStyle = .gray
+        
+        self.view.addSubview(activityIndicatorView)
+    }
+    
     
     //MARK:- UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -204,6 +214,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     
     func transactionSendRejected(message: String) {
         print("tx rejected REASON: \(message)")
+        
+        txSentTimer?.invalidate()
+        txSentTimer = nil
+        activityIndicatorView.stopAnimating()
     }
     
     //MARK:- BITransactionHistoryViewDelegate
@@ -220,16 +234,45 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func enterAddressButtonTapped() {
-        //txGenerateFromLocalDBTest()
         self.performSegue(withIdentifier: "pay", sender: nil)
-        /*if let addressHash160 = "mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq".publicAddressToPubKeyHash(key.publicKeyPrefix) {
-            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: 0x6f, sendAmount: 1000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), fee: 90000)
-            //print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
-            print(txConstructor.transaction?.bitcoinData.toHexString())
-            //con.sendTransaction(transaction: txConstructor.transaction!)
-        }*/
-
+    }
     
+    //MARK:- BIPayViewControllerDelegate
+    func paymentCanceled() {
+        //Do nothing here.
+    }
+    
+    func broadcastTransaction(tx: Transaction) {
+        //broadcast tx
+        sendTransactionToNode(tx: tx)
+    }
+    
+    //MARK:- BIQRCodeReadViewControllerDelegate
+    func propagateTransaction(tx: Transaction) {
+        //broadcast tx
+        sendTransactionToNode(tx: tx)
+    }
+    
+    //
+    
+    func sendTransactionToNode(tx: Transaction) {
+        let timeout: TimeInterval = 10
+        txSentTimer = Timer.scheduledTimer(timeInterval: timeout, target: self, selector: #selector(ViewController.txSuccessfullySent(_:)), userInfo: nil, repeats: false)
+        
+        activityIndicatorView.startAnimating()
+        
+        print(tx.bitcoinData.toHexString())
+        
+        self.con.sendTransaction(transaction: tx)
+        
+    }
+    
+    func txSuccessfullySent(_ timer: Timer) {
+        print("tx successfully sent!!")
+        
+        txSentTimer?.invalidate()
+        txSentTimer = nil
+        activityIndicatorView.stopAnimating()
     }
     
     @IBAction func pageControlTapped(_ sender: Any) {
@@ -247,9 +290,15 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             let txDetailViewController = segue.destination as! BITransactionDetailViewController
             txDetailViewController.txDetail = displayTxDetail
             
+        } else if segue.identifier == "pay" {
+            let payViewController = segue.destination as! BIPayViewController
+            payViewController.delegate = self
             
+        } else if segue.identifier == "scanQR" {
+            let qrCodeReadViewController = segue.destination as! BIQRCodeReadViewController
+            qrCodeReadViewController.delegate = self
         }
-    }
+     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

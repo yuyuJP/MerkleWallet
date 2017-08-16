@@ -173,7 +173,10 @@ public class CFController: CFConnectionDelegate {
         let inv = InventoryVector(type: .Transaction, hash: transaction.hash)
         print("transaction hash: \(transaction.hash)")
         let invMessage = InventoryMessage(inventoryVectors: [inv])
-        self.connection?.sendMessageWithPayload(invMessage)
+        queue.addOperation {
+            self.connection?.sendMessageWithPayload(invMessage)
+        }
+        
     }
     
     public func cfConnection(peerConnection: CFConnection, didReceiveMessage message: PeerConnectionMessage) {
@@ -216,6 +219,9 @@ public class CFController: CFConnectionDelegate {
                 if inventoryMessage.inventoryVectors.count > 0 {
                     self.sendGetData(inventoryVecs: inventoryMessage.inventoryVectors)
                     
+                    if self.blockHashesCountDownloaded + startingBlockHeight >= Int(self.peerVersion!.blockStartHeight) {
+                        return
+                    }
                     let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
                     let getBlocksMsg = GetBlocksMessage(protocolVersion: 70012, blockLocatorHashes: [lastBlockHash])
                     self.connection?.sendMessageWithPayload(getBlocksMsg)
@@ -242,11 +248,13 @@ public class CFController: CFConnectionDelegate {
         case let .GetDataMessage(getDataMessage):
             print("received getDataMessage \(getDataMessage)")
             //Broadcast pending transactions after receiving GetDataMessage from node.
-            for inv in getDataMessage.inventoryVectors {
-                for i in 0 ..< pendingTransactions.count {
-                    if inv.hash == pendingTransactions[i].hash {
-                        self.connection?.sendMessageWithPayload(pendingTransactions[i])
-                        pendingTransactions.remove(at: i)
+            queue.addOperation {
+                for inv in getDataMessage.inventoryVectors {
+                    for i in 0 ..< self.pendingTransactions.count {
+                        if inv.hash == self.pendingTransactions[i].hash {
+                            self.connection?.sendMessageWithPayload(self.pendingTransactions[i])
+                            self.pendingTransactions.remove(at: i)
+                        }
                     }
                 }
             }
