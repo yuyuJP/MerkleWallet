@@ -16,7 +16,7 @@ public class TransactionDetail {
     public let amount: Int64
     public let fee: Int64
     public let txId: String
-    
+    public let comfirmation: Int
     
     public init(tx: TransactionInfo, pubKeyPrefix: UInt8, scriptHashPrefix: UInt8) {
         
@@ -75,8 +75,6 @@ public class TransactionDetail {
             } else {
                 fromAddr.append("")
             }
-            
-            
         }
         
         self.fromAddresses = fromAddr
@@ -92,8 +90,6 @@ public class TransactionDetail {
             } else {
                 toAddr.append("")
             }
-            
-            
         }
         
         self.toAddresses = toAddr
@@ -114,7 +110,8 @@ public class TransactionDetail {
 
         self.fee = calculatedFee
         self.txId = tx.txHash
-
+        self.comfirmation = MatchingTransactionHashInfo.comfirmations(tx.txHash)
+        
     }
     
     private static func isSpentCheck(_ tx: TransactionInfo) -> Bool {
@@ -127,7 +124,6 @@ public class TransactionDetail {
                 }
             }
         }
-        
         return false
     }
     

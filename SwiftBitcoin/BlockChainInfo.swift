@@ -15,6 +15,9 @@ public class BlockChainInfo: Object {
     
     dynamic var genesisCreated: Bool = false
     
+    dynamic var lastBlockHash = ""
+    dynamic var lastBlockHeight = 0
+    
     public static func loadItem() -> BlockChainInfo? {
         return realm.objects(BlockChainInfo.self).first
     }
@@ -22,6 +25,12 @@ public class BlockChainInfo: Object {
     public func save() {
         try! BlockChainInfo.realm.write {
             BlockChainInfo.realm.add(self)
+        }
+    }
+    
+    public func update(_ method: (() -> Void)) {
+        try! BlockChainInfo.realm.write {
+            method()
         }
     }
     

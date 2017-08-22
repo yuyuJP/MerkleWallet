@@ -34,6 +34,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
             isSpentTransaction = txDetail.isSpentTransaction
             txIdStr = txDetail.txId
             feeStr = String(Double(txDetail.fee) / 100000000)
+            comfStr = String(txDetail.comfirmation)
             
         } else {
             print("Tx detail is nil. Make sure you pass the value.")

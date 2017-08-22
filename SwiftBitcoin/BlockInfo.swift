@@ -13,15 +13,18 @@ public class BlockInfo: Object {
     static let realm = try! Realm()
     
     dynamic var blockHash = ""
+    dynamic var previousBlockHash = ""
     
     //Height ZERO means the value is not properly set yet.
     dynamic var height = 0
 
-    var matchingTxs = List<MatchingBlockHashInfo>()
+    var matchingTxs = List<MatchingTransactionHashInfo>()
     
     public static func genesisCreate(_ hash: String, with height: Int) -> BlockInfo {
         let blockChainInfo = BlockChainInfo()
         blockChainInfo.genesisCreated = true
+        blockChainInfo.lastBlockHash = startingBlockHash
+        blockChainInfo.lastBlockHeight = startingBlockHeight
         blockChainInfo.save()
         
         let blockInfo = BlockInfo()
@@ -34,7 +37,11 @@ public class BlockInfo: Object {
     public static func create(_ merkleBlock: MerkleBlockMessage) -> BlockInfo {
         let blockInfo = BlockInfo()
         blockInfo.blockHash = merkleBlock.header.hash.data.toHexString()
-        if let previousBlk = fetch(merkleBlock.header.previousBlockHash.data.toHexString()){
+        
+        let prevBlkHash = merkleBlock.header.previousBlockHash.data.toHexString()
+        blockInfo.previousBlockHash = prevBlkHash
+        
+        if let previousBlk = fetch(prevBlkHash){
             blockInfo.height = previousBlk.height + 1
         } else {
             print("Failed to make a relation with a previous block in BlockInfo.swift")
@@ -42,7 +49,7 @@ public class BlockInfo: Object {
         
         for matchingTxHash in merkleBlock.partialMerkleTree.matchingHashes {
             let matchingTxHashStr = matchingTxHash.data.toHexString()
-            let matchingBlockHashInfo = MatchingBlockHashInfo.create(matchingTxHashStr)
+            let matchingBlockHashInfo = MatchingTransactionHashInfo.create(matchingTxHashStr)
             blockInfo.matchingTxs.append(matchingBlockHashInfo)
         }
         
@@ -72,6 +79,14 @@ public class BlockInfo: Object {
     
     public static func fetch(_ hash: String) -> BlockInfo? {
         return realm.objects(BlockInfo.self).filter("blockHash == %@", hash).first
+    }
+    
+    public static func fetchOrphans() -> [BlockInfo] {
+        var res: [BlockInfo] = []
+         for blk in realm.objects(BlockInfo.self).filter("height == %@", 0) {
+            res.append(blk)
+        }
+        return res
     }
 
 }

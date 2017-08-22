@@ -11,6 +11,7 @@ import Foundation
 public protocol CFControllerDelegate {
     func newTransactionReceived()
     func transactionSendRejected(message: String)
+    func transactionPassedToNode() 
 }
 
 public class CFController: CFConnectionDelegate {
@@ -62,7 +63,7 @@ public class CFController: CFConnectionDelegate {
     private func createVersion() -> VersionMessage {
         let senderPeerAddress = PeerAddress(services: PeerServices.None, IP: IPAddress.IPV4(0x00000000), port: 0)
         let receiverAddress = PeerAddress(services: PeerServices.None, IP: IPAddress.IPV4(0x00000000), port: 0)
-        return VersionMessage(protocolVersion: 70012, services: PeerServices.None, date: NSDate(), senderAddress: senderPeerAddress, receiverAddress: receiverAddress, nonce: 0x5e9e17ca3e515405, userAgent: "/Bitcoin-Swift:0.0.1/", blockStartHeight: 0, announceRelayedTransactions: false)
+        return VersionMessage(protocolVersion: 70002, services: PeerServices.None, date: NSDate(), senderAddress: senderPeerAddress, receiverAddress: receiverAddress, nonce: 0x5e9e17ca3e515405, userAgent: "/Bitcoin-Swift:0.0.1/", blockStartHeight: 0, announceRelayedTransactions: false)
         
     }
     
@@ -103,20 +104,8 @@ public class CFController: CFConnectionDelegate {
                 let memPoolMessage = MemPoolMessage()
                 self.connection?.sendMessageWithPayload(memPoolMessage)
             
-                
-                //let blkHash = SHA256Hash("00000000000000d5faf1452a883e621b0aa652922da86d180a2224584436eda2".hexStringToNSData())
-                
-                //let blkHash = SHA256Hash("00000000000001f0a782cb053dd4155a1136add7e4cb479e9692458373db8742".hexStringToNSData())
-                //let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)
-                
-                //let msg = GetDataMessage(inventoryVectors: [inv])
-                //self.connection?.sendMessageWithPayload(msg)
-                
-                //Use when balance calculation check is needed.
-                
-                //let blkHash = SHA256Hash("000000000000000dda503f5219132d9880979b488dfbc945a62388fc354f99a3".hexStringToNSData())
-                let blkHash = SHA256Hash(startingBlockHash.hexStringToNSData())
-                let getBlocksMsg = GetBlocksMessage(protocolVersion: 70012, blockLocatorHashes: [blkHash])
+                let blkHash = SHA256Hash(latestBlockHash.hexStringToNSData())
+                let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
                 print("Sending GetBlockMessage...")
                 self.connection?.sendMessageWithPayload(getBlocksMsg)
                 
@@ -175,6 +164,7 @@ public class CFController: CFConnectionDelegate {
         let invMessage = InventoryMessage(inventoryVectors: [inv])
         queue.addOperation {
             self.connection?.sendMessageWithPayload(invMessage)
+            self.delegate?.transactionPassedToNode()
         }
         
     }
@@ -193,7 +183,7 @@ public class CFController: CFConnectionDelegate {
                     print("Received \(headersMessage.headers.count) block headers - "+"\(Int(percentComplete))% complete")
                     let lastHeaderHash = headersMessage.headers.last!.hash
                     print(lastHeaderHash)
-                    let getHeadersMessage = GetHeadersMessage(protocolVersion: 70012, blockLocatorHashes: [lastHeaderHash])
+                    let getHeadersMessage = GetHeadersMessage(protocolVersion: 70002, blockLocatorHashes: [lastHeaderHash])
                     self.connection?.sendMessageWithPayload(getHeadersMessage)
                 } else {
                     print("Header sync complete!!!")
@@ -223,7 +213,7 @@ public class CFController: CFConnectionDelegate {
                         return
                     }
                     let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
-                    let getBlocksMsg = GetBlocksMessage(protocolVersion: 70012, blockLocatorHashes: [lastBlockHash])
+                    let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
                     self.connection?.sendMessageWithPayload(getBlocksMsg)
                 }
                 

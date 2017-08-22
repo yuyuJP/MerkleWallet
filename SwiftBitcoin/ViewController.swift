@@ -24,6 +24,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     var txSentTimer: Timer? = nil
     var activityIndicatorView: UIActivityIndicatorView!
     
+    var pendingTx: Transaction? = nil
+    
     @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
@@ -53,13 +55,12 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        
         /*let blks = BlockInfo.loadAll()
         for blk in blks {
             print("hash: \(blk.blockHash) height: \(blk.height)")
         }*/
         
-        establishConnection()
+        //establishConnection()
 
         self.view.backgroundColor = UIColor.backgroundWhite()
         pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
@@ -85,31 +86,6 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         //con = CFController(hostname: "192.168.0.10", port: 10000, network: NetworkMagicBytes.magicBytes())
         con.delegate = self
         con.start()
-    }
-    
-    func txGenerateFromLocalDBTest() {
-        
-        let sendAddress = "mgyE5ZU2TTbEcnZFs7TZKb8dGVarc4E3mE"
-        //mfZUjWuPJ4j7PvnNKSPvVuq5NWNUoPx3Pq
-        //2N54g5fR3wvVgynFTxnCuwxxrKsMnTMjmJ6
-        guard let type = sendAddress.determinOutputScriptTypeWithAddress() else {
-            print("Could not determin address type")
-            return
-        }
-        
-        var prefix = BitcoinPrefixes.pubKeyPrefix
-        
-        if type == .P2SH {
-            prefix = BitcoinPrefixes.scriptHashPrefix
-        }
-        
-        if let addressHash160 = sendAddress.publicAddressToPubKeyHash(prefix) {
-            
-            let txConstructor = TransactionDBConstructor(privateKeyPrefix: 0xef, publicKeyPrefix: BitcoinPrefixes.pubKeyPrefix, sendAmount: 10000000, to: RIPEMD160HASH(addressHash160.hexStringToNSData().reversedData), type: type, fee: 90000)
-            print(txConstructor.transaction ?? "no val")
-            //print(txConstructor.transaction?.bitcoinData.toHexString() ?? "no val")
-        }
-        
     }
     
     func setupContentView() {
@@ -172,12 +148,13 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     func setupIndicatorView() {
         
         activityIndicatorView = UIActivityIndicatorView(frame: self.view.frame)
+        activityIndicatorView.backgroundColor = .black
+        activityIndicatorView.alpha = 0.3
         activityIndicatorView.hidesWhenStopped = true
-        activityIndicatorView.activityIndicatorViewStyle = .gray
+        activityIndicatorView.activityIndicatorViewStyle = .whiteLarge
         
         self.view.addSubview(activityIndicatorView)
     }
-    
     
     //MARK:- UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -203,21 +180,26 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         pageControl.currentPage = Int((scrollView.contentOffset.x + scrollView.frame.size.width / 2) / scrollView.frame.size.width)
     }
 
-
     //MARK:- CFControllerDelegate
     func newTransactionReceived() {
         let balance = TransactionDataStoreManager.calculateBalance()
         let balanceInBTC: Double = Double(balance) / 100000000
         topStatusView.changeStatusLabel(text: String(balanceInBTC) + "tBTC")
-        
     }
     
     func transactionSendRejected(message: String) {
         print("tx rejected REASON: \(message)")
         
+        pendingTx = nil
+        
         txSentTimer?.invalidate()
         txSentTimer = nil
         activityIndicatorView.stopAnimating()
+    }
+    
+    func transactionPassedToNode() {
+        let timeout: TimeInterval = 5
+        txSentTimer = Timer.scheduledTimer(timeInterval: timeout, target: self, selector: #selector(ViewController.txSuccessfullySent(_:)), userInfo: nil, repeats: false)
     }
     
     //MARK:- BITransactionHistoryViewDelegate
@@ -244,6 +226,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     
     func broadcastTransaction(tx: Transaction) {
         //broadcast tx
+        //print(tx.bitcoinData.toHexString())
         sendTransactionToNode(tx: tx)
     }
     
@@ -256,19 +239,18 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     //
     
     func sendTransactionToNode(tx: Transaction) {
-        let timeout: TimeInterval = 10
-        txSentTimer = Timer.scheduledTimer(timeInterval: timeout, target: self, selector: #selector(ViewController.txSuccessfullySent(_:)), userInfo: nil, repeats: false)
-        
         activityIndicatorView.startAnimating()
-        
-        print(tx.bitcoinData.toHexString())
+        pendingTx = tx
         
         self.con.sendTransaction(transaction: tx)
-        
     }
-    
+
     func txSuccessfullySent(_ timer: Timer) {
         print("tx successfully sent!!")
+        
+        if let tx = pendingTx {
+            TransactionDataStoreManager.add(tx: tx)
+        }
         
         txSentTimer?.invalidate()
         txSentTimer = nil

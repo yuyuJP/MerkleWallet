@@ -106,6 +106,8 @@ public class ECKey {
         var k: BigUInt = 0
         var r = zero
         
+        var isLowS = true
+        
         while s == field.int(0) {
             
             while r == zero {
@@ -127,9 +129,22 @@ public class ECKey {
             }
             
             s = (1 / field.int(k)) * (e +  r * privateKey)
+            
+            let maximum = BigUInt("7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0", radix: 16)!
+            if s.value > maximum {
+                isLowS = false
+            }
+            
         }
         
-        return (r.value, s.value)
+        var s_ = s.value
+        
+        if !isLowS {
+            let n = BigUInt("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", radix: 16)!
+            s_ = n - s_
+        }
+        
+        return (r.value, s_)
     }
     
     public class func verifySignature(_ digest: BigUInt, r: BigUInt, s: BigUInt, publicKey: ECPoint) -> Bool {
