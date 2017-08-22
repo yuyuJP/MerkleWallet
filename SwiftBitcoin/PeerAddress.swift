@@ -8,7 +8,14 @@
 
 import Foundation
 
-public struct PeerAddress {
+public func == (left: PeerAddress, right: PeerAddress) -> Bool {
+    return left.services == right.services &&
+        left.IP == right.IP &&
+        left.port == right.port &&
+        left.timestamp == right.timestamp
+}
+
+public struct PeerAddress: Equatable {
     public let services: PeerServices
     public let IP: IPAddress
     public let port: UInt16

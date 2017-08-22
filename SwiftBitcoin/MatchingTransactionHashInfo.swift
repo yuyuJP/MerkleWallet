@@ -35,7 +35,7 @@ class MatchingTransactionHashInfo: Object {
                 return latestBlockHeight - height + 1
             }
         }
-        //If error occurs, return -1.
+        //If a transaction is yet unconfirmed, return -1.
         return -1
     }
 }

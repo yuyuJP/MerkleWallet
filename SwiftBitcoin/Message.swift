@@ -18,8 +18,8 @@ public struct Message {
         
         case Version = "version"
         case VersionAck = "verack"
+        case Address = "addr"
         case Ping = "ping"
-        case Addr = "addr"
         case GetHeaders = "getheaders"
         case Headers = "headers"
         case FilterLoad = "filterload"
@@ -30,6 +30,7 @@ public struct Message {
         case GetData = "getdata"
         case MerkleBlock = "merkleblock"
         case Reject = "reject"
+        case GetAddress = "getaddr"
         
         public static let encodedLength = 12
         

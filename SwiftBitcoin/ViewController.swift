@@ -179,12 +179,16 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int((scrollView.contentOffset.x + scrollView.frame.size.width / 2) / scrollView.frame.size.width)
     }
+    
+    func updateBlanceLabel() {
+        let balance = TransactionDataStoreManager.calculateBalance()
+        let balanceInBTC: Double = Double(balance) / 100000000
+        self.topStatusView.changeStatusLabel(text: String(balanceInBTC) + "tBTC")
+    }
 
     //MARK:- CFControllerDelegate
     func newTransactionReceived() {
-        let balance = TransactionDataStoreManager.calculateBalance()
-        let balanceInBTC: Double = Double(balance) / 100000000
-        topStatusView.changeStatusLabel(text: String(balanceInBTC) + "tBTC")
+        self.updateBlanceLabel()
     }
     
     func transactionSendRejected(message: String) {
@@ -255,6 +259,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         txSentTimer?.invalidate()
         txSentTimer = nil
         activityIndicatorView.stopAnimating()
+        
+        DispatchQueue.main.async {
+            self.updateBlanceLabel()
+        }
     }
     
     @IBAction func pageControlTapped(_ sender: Any) {

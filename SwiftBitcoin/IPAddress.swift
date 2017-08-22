@@ -8,7 +8,23 @@
 
 import Foundation
 
-public enum IPAddress {
+public func == (left: IPAddress, right: IPAddress) -> Bool {
+    switch (left, right) {
+    case (let .IPV4(leftWord), let .IPV4(rightWord)):
+        return leftWord == rightWord
+    case (let .IPV6(leftWord0, leftWord1, leftWord2, leftWord3),
+          let .IPV6(rightWord0, rightWord1, rightWord2, rightWord3)):
+        return leftWord0 == rightWord0 &&
+            leftWord1 == rightWord1 &&
+            leftWord2 == rightWord2 &&
+            leftWord3 == rightWord3
+    default:
+        return false
+    }
+}
+
+
+public enum IPAddress: Equatable {
     case IPV4(UInt32)
     case IPV6(UInt32, UInt32, UInt32, UInt32)
 }

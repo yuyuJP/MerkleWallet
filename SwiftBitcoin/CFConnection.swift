@@ -231,7 +231,7 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
         case .Ping:
             print(message)
             
-        case .Addr:
+        case .Address:
             print(message)
             
         case .GetHeaders:
@@ -294,6 +294,8 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
                     self.delegate?.cfConnection(peerConnection: self, didReceiveMessage: message)
                 }
             }
+        case .GetAddress:
+            print(message)
         }
     }
     

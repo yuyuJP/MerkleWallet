@@ -8,8 +8,13 @@
 
 import Foundation
 
-public struct PeerServices {
-    private let value: UInt64
+public func == (left: PeerServices, right: PeerServices) -> Bool {
+    return left.value == right.value
+}
+
+
+public struct PeerServices: Equatable {
+    public let value: UInt64
     
     public init(rawValue value: UInt64) { self.value = value }
     public init(_ nilLiteral: ()) { value = 0 }
