@@ -20,7 +20,7 @@ public class BlockInfo: Object {
 
     var matchingTxs = List<MatchingTransactionHashInfo>()
     
-    public static func genesisCreate(_ hash: String, with height: Int) -> BlockInfo {
+    public static func createGenesis(_ hash: String, with height: Int) -> BlockInfo {
         let blockChainInfo = BlockChainInfo()
         blockChainInfo.genesisCreated = true
         blockChainInfo.lastBlockHash = startingBlockHash

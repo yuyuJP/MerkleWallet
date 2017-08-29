@@ -46,19 +46,18 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             newUserKeyInfo.save()
         }
         
-        if let blkChainInfo = BlockChainInfo.loadItem() {
-            print("blk chain info: \(blkChainInfo)")
+        if let _ = BlockChainInfo.loadItem() {
+            //print("blk chain info: \(blkChainInfo)")
         } else {
-            let blkInfo = BlockInfo.genesisCreate(startingBlockHash, with: startingBlockHeight)
+            let blkInfo = BlockInfo.createGenesis(startingBlockHash, with: startingBlockHeight)
             blkInfo.save()
         }
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        /*let blks = BlockInfo.loadAll()
-        for blk in blks {
-            print("hash: \(blk.blockHash) height: \(blk.height)")
-        }*/
+        if let blkChainInfo = BlockChainInfo.loadItem() {
+            print("hash: \(blkChainInfo.lastBlockHash), height: \(blkChainInfo.lastBlockHeight)")
+        }
         
         //establishConnection()
 
@@ -80,10 +79,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func establishConnection() {
-        con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
+        //con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
         
         //con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
-        //con = CFController(hostname: "192.168.0.10", port: 10000, network: NetworkMagicBytes.magicBytes())
+        con = CFController(hostname: "testnet-seed.bitcoin.jonasschnelli.ch", port: 18333, network: NetworkMagicBytes.magicBytes())
         con.delegate = self
         con.start()
     }

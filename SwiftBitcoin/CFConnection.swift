@@ -24,6 +24,7 @@ public enum PeerConnectionMessage {
     case TransactionMessage(Transaction)
     case GetDataMessage(GetDataMessage)
     case RejectMessage(RejectMessage)
+    case AddressMessage(PeerAddressMessage)
     
 }
 
@@ -232,7 +233,12 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
             print(message)
             
         case .Address:
-            print(message)
+            if let addressMsg = PeerAddressMessage.fromBitcoinStream(payloadStream) {
+                self.delegateQueue.addOperation {
+                    let message = PeerConnectionMessage.AddressMessage(addressMsg)
+                    self.delegate?.cfConnection(peerConnection: self, didReceiveMessage: message)
+                }
+            }
             
         case .GetHeaders:
             if let getHeadersMessage = GetHeadersMessage.fromBitcoinStream(payloadStream) {

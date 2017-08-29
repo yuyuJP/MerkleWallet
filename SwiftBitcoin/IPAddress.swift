@@ -27,6 +27,23 @@ public func == (left: IPAddress, right: IPAddress) -> Bool {
 public enum IPAddress: Equatable {
     case IPV4(UInt32)
     case IPV6(UInt32, UInt32, UInt32, UInt32)
+    
+    public var addressString: String? {
+        switch self {
+        case let .IPV4(word):
+            let ip = word
+            
+            let byte1 = UInt8(ip & 0xff)
+            let byte2 = UInt8((ip >> 8) & 0xff)
+            let byte3 = UInt8((ip >> 16) & 0xff)
+            let byte4 = UInt8((ip >> 24) & 0xff)
+            
+            return "\(byte1).\(byte2).\(byte3).\(byte4)"
+            
+        default:
+            return nil
+        }
+    }
 }
 
 extension IPAddress {

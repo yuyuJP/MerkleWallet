@@ -13,12 +13,20 @@ public class NodeInfo: Object {
     static let realm = try! Realm()
     
     dynamic var node = ""
+    //Port ZERO means the value is not properly set yet.
+    dynamic var port = 0
     
-    public static func create(_ node: String) -> NodeInfo {
+    public static func create(_ node: String, _ port: Int) -> NodeInfo {
         let nodeInfo = NodeInfo()
         nodeInfo.node = node
-        
+        nodeInfo.port = port
         return nodeInfo
+    }
+    
+    public func save() {
+        try! NodeInfo.realm.write {
+            NodeInfo.realm.add(self)
+        }
     }
     
     public static func loadAll() -> [NodeInfo] {

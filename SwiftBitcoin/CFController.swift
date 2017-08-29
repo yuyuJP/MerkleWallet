@@ -114,25 +114,7 @@ public class CFController: CFConnectionDelegate {
                 assert(false, "No filter looaded")
                 return
             }
-            
-            
-            /*let getHeadersMessage = GetHeadersMessage(protocolVersion: 70002, blockLocatorHashes: [self.genesisBlockHash])
-            self.connection?.sendMessageWithPayload(getHeadersMessage)
-            */
-            
-            /* //let genInvVec = InventoryVector(type: .FilteredBlock, hash: genesisBlockHash_testnet)
-             let blkHash = SHA256Hash("0000000053be966d2beb2aa8f87b2cba790422b3efc096f6e1aa36a69a048335".hexStringToNSData())
-             let inv = InventoryVector(type: .FilteredBlock, hash: blkHash)*/
         }
-        
-        
-        /*queue.addOperation {
-         self.peerVersion = peerVersion
-         let getHeadersMessage = GetHeadersMessage(protocolVersion: 70002, blockLocatorHashes: [self.genesisBlockHash])
-         self.connection?.sendMessageWithPayload(getHeadersMessage)
-        }*/
-        
-        
     }
     
     private func sendGetData(inventoryVecs: [InventoryVector]) {
@@ -160,13 +142,19 @@ public class CFController: CFConnectionDelegate {
     public func sendTransaction(transaction: Transaction) {
         self.pendingTransactions.append(transaction)
         let inv = InventoryVector(type: .Transaction, hash: transaction.hash)
-        print("transaction hash: \(transaction.hash)")
         let invMessage = InventoryMessage(inventoryVectors: [inv])
         queue.addOperation {
             self.connection?.sendMessageWithPayload(invMessage)
             self.delegate?.transactionPassedToNode()
         }
         
+    }
+    
+    public func sendGetAddressMessage() {
+        let getAddrMsg = GetPeerAddressMessage()
+        queue.addOperation {
+            self.connection?.sendMessageWithPayload(getAddrMsg)
+        }
     }
     
     public func cfConnection(peerConnection: CFConnection, didReceiveMessage message: PeerConnectionMessage) {
@@ -203,7 +191,7 @@ public class CFController: CFConnectionDelegate {
                 }
                 
                 self.blockHashesCountDownloaded += inventoryMessage.inventoryVectors.count
-                print("\(self.blockHashesCountDownloaded + startingBlockHeight) block hashes received / \(self.peerVersion!.blockStartHeight)")
+                print("\(self.blockHashesCountDownloaded + latestBlockHeight) block hashes received / \(self.peerVersion!.blockStartHeight)")
                 
                 
                 if inventoryMessage.inventoryVectors.count > 0 {
@@ -217,12 +205,7 @@ public class CFController: CFConnectionDelegate {
                     self.connection?.sendMessageWithPayload(getBlocksMsg)
                 }
                 
-                //if inventoryMessage.inventoryVectors.count == 500 {
-                    //let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
-                    //let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
-                    //self.connection?.sendMessageWithPayload(getBlocksMsg)
-                //}
-            }
+        }
             
         case let .MerkleBlockMessage(merkleBlockMessage):
             DispatchQueue.main.async {
@@ -252,6 +235,11 @@ public class CFController: CFConnectionDelegate {
         case let .RejectMessage(rejectMessage):
             queue.addOperation {
                 self.delegate?.transactionSendRejected(message: rejectMessage.reason)
+            }
+            
+        case let .AddressMessage(addrMsg):
+            DispatchQueue.main.async {
+                PeerAddressDataStoreManager.add(peerAddressMessage: addrMsg)
             }
             
         default:
