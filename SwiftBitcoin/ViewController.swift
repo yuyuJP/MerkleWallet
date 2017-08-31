@@ -59,7 +59,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             print("hash: \(blkChainInfo.lastBlockHash), height: \(blkChainInfo.lastBlockHeight)")
         }
         
-        //establishConnection()
+        establishConnection()
 
         self.view.backgroundColor = UIColor.backgroundWhite()
         pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
@@ -79,10 +79,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func establishConnection() {
-        //con = CFController(hostname: "testnet-seed.bitcoin.schildbach.de", port: 18333, network: NetworkMagicBytes.magicBytes())
         
-        //con = CFController(hostname: "seed.tbtc.petertodd.org", port: 18333, network: NetworkMagicBytes.magicBytes())
-        con = CFController(hostname: "testnet-seed.bitcoin.jonasschnelli.ch", port: 18333, network: NetworkMagicBytes.magicBytes())
+        let nodeAddress = BitcoinTestnetNodes.randomNode
+        
+        con = CFController(hostname: nodeAddress, port: 18333, network: NetworkMagicBytes.magicBytes())
         con.delegate = self
         con.start()
     }
@@ -203,6 +203,14 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     func transactionPassedToNode() {
         let timeout: TimeInterval = 5
         txSentTimer = Timer.scheduledTimer(timeInterval: timeout, target: self, selector: #selector(ViewController.txSuccessfullySent(_:)), userInfo: nil, repeats: false)
+    }
+    
+    func blockSyncStarted() {
+        print("Block sync started")
+    }
+    
+    func blockSyncCompleted() {
+        print("Block sync completed")
     }
     
     //MARK:- BITransactionHistoryViewDelegate

@@ -51,9 +51,10 @@ class BIPayViewController: UIViewController {
     
     @IBAction func send(_ sender: Any) {
         
-        let privatePrefix = BitcoinPrefixes.privatePrefix
-        let pubkeyPrefix = BitcoinPrefixes.pubKeyPrefix
-        let minimumAmount: Int64 = 547
+        if addressTextField.text == "" || amountTextField.text == "" {
+            print("Address or amount is empty.")
+            return
+        }
         
         guard let addressStr = addressTextField.text else {
             print("Address is nil")
@@ -69,6 +70,10 @@ class BIPayViewController: UIViewController {
             print("Could not determin address type")
             return
         }
+        
+        let privatePrefix = BitcoinPrefixes.privatePrefix
+        let pubkeyPrefix = BitcoinPrefixes.pubKeyPrefix
+        let minimumAmount: Int64 = 547
         
         var prefix = pubkeyPrefix
         

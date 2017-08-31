@@ -11,7 +11,9 @@ import Foundation
 public protocol CFControllerDelegate {
     func newTransactionReceived()
     func transactionSendRejected(message: String)
-    func transactionPassedToNode() 
+    func transactionPassedToNode()
+    func blockSyncCompleted()
+    func blockSyncStarted()
 }
 
 public class CFController: CFConnectionDelegate {
@@ -27,6 +29,7 @@ public class CFController: CFConnectionDelegate {
     
     private var blockHashesDownloaded : [InventoryVector] = []
     private var blockHashesCountDownloaded = 0
+    private var syncStartBlockHeight = 0
     
     private var pendingTransactions: [Transaction] = []
     
@@ -63,7 +66,7 @@ public class CFController: CFConnectionDelegate {
     private func createVersion() -> VersionMessage {
         let senderPeerAddress = PeerAddress(services: PeerServices.None, IP: IPAddress.IPV4(0x00000000), port: 0)
         let receiverAddress = PeerAddress(services: PeerServices.None, IP: IPAddress.IPV4(0x00000000), port: 0)
-        return VersionMessage(protocolVersion: 70002, services: PeerServices.None, date: NSDate(), senderAddress: senderPeerAddress, receiverAddress: receiverAddress, nonce: 0x5e9e17ca3e515405, userAgent: "/Bitcoin-Swift:0.0.1/", blockStartHeight: 0, announceRelayedTransactions: false)
+        return VersionMessage(protocolVersion: 70002, services: PeerServices.None, date: NSDate(), senderAddress: senderPeerAddress, receiverAddress: receiverAddress, nonce: 0x5e9e17ca3e515405, userAgent: "/Swift-Bitcoin:0.0.1/", blockStartHeight: 0, announceRelayedTransactions: false)
         
     }
     
@@ -96,25 +99,29 @@ public class CFController: CFConnectionDelegate {
             
             if let filter = BloomFilter.sharedFilter {
                 
-                print("Sending filterLoad Message")
                 let filterLoadMessage = FilterLoadMessage(filter: filter.filterData, numHashFunctions: filter.hash_funcs, tweak: filter.tweak, flags: 1)
                 self.connection?.sendMessageWithPayload(filterLoadMessage)
                 
-                print("Sending memPool Message")
                 let memPoolMessage = MemPoolMessage()
                 self.connection?.sendMessageWithPayload(memPoolMessage)
-            
-                let blkHash = SHA256Hash(latestBlockHash.hexStringToNSData())
-                let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
-                print("Sending GetBlockMessage...")
-                self.connection?.sendMessageWithPayload(getBlocksMsg)
                 
+                if latestBlockHeight < Int(self.peerVersion!.blockStartHeight) {
+                    
+                    self.syncStartBlockHeight = latestBlockHeight
+                    
+                    let blkHash = SHA256Hash(latestBlockHash.hexStringToNSData())
+                    let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
+                    
+                    self.delegate?.blockSyncStarted()
+                    self.connection?.sendMessageWithPayload(getBlocksMsg)
+                }
                 
             } else {
                 assert(false, "No filter looaded")
                 return
             }
         }
+        
     }
     
     private func sendGetData(inventoryVecs: [InventoryVector]) {
@@ -147,7 +154,6 @@ public class CFController: CFConnectionDelegate {
             self.connection?.sendMessageWithPayload(invMessage)
             self.delegate?.transactionPassedToNode()
         }
-        
     }
     
     public func sendGetAddressMessage() {
@@ -158,93 +164,92 @@ public class CFController: CFConnectionDelegate {
     }
     
     public func cfConnection(peerConnection: CFConnection, didReceiveMessage message: PeerConnectionMessage) {
+        
         switch message {
         
-        case let .HeadersMessage(headersMessage):
-            queue.addOperation {
-                self.headersDownloaded += headersMessage.headers.count
-                print("\(self.headersDownloaded) blocks received / \(self.peerVersion!.blockStartHeight)")
+            case let .HeadersMessage(headersMessage):
+                queue.addOperation {
+                    self.headersDownloaded += headersMessage.headers.count
+                    print("\(self.headersDownloaded) blocks received / \(self.peerVersion!.blockStartHeight)")
                 
-                if headersMessage.headers.count == 2000 {
-                    let percentComplete = Double(self.headersDownloaded) /
-                        Double(self.peerVersion!.blockStartHeight) * 100
-                    print("Received \(headersMessage.headers.count) block headers - "+"\(Int(percentComplete))% complete")
-                    let lastHeaderHash = headersMessage.headers.last!.hash
-                    print(lastHeaderHash)
-                    let getHeadersMessage = GetHeadersMessage(protocolVersion: 70002, blockLocatorHashes: [lastHeaderHash])
-                    self.connection?.sendMessageWithPayload(getHeadersMessage)
-                } else {
-                    print("Header sync complete!!!")
+                    if headersMessage.headers.count == 2000 {
+                        let percentComplete = Double(self.headersDownloaded) / Double(self.peerVersion!.blockStartHeight) * 100
+                        print("Received \(headersMessage.headers.count) block headers - "+"\(Int(percentComplete))% complete")
+                        let lastHeaderHash = headersMessage.headers.last!.hash
+                        print(lastHeaderHash)
+                        let getHeadersMessage = GetHeadersMessage(protocolVersion: 70002, blockLocatorHashes: [lastHeaderHash])
+                        self.connection?.sendMessageWithPayload(getHeadersMessage)
+                    } else {
+                        print("Header sync complete!!!")
+                    }
                 }
-            }
             
-        case let .InventoryMessage(inventoryMessage):
+            case let .InventoryMessage(inventoryMessage):
            
-            queue.addOperation {
+                queue.addOperation {
                 
-                if inventoryMessage.inventoryVectors.count == 1 && self.lastBlockHash == inventoryMessage.inventoryVectors[0] {
-                    return
-                }
-                
-                if inventoryMessage.inventoryVectors.count == 1 {
-                    self.lastBlockHash = inventoryMessage.inventoryVectors[0]
-                }
-                
-                self.blockHashesCountDownloaded += inventoryMessage.inventoryVectors.count
-                print("\(self.blockHashesCountDownloaded + latestBlockHeight) block hashes received / \(self.peerVersion!.blockStartHeight)")
-                
-                
-                if inventoryMessage.inventoryVectors.count > 0 {
-                    self.sendGetData(inventoryVecs: inventoryMessage.inventoryVectors)
-                    
-                    if self.blockHashesCountDownloaded + startingBlockHeight >= Int(self.peerVersion!.blockStartHeight) {
+                    if inventoryMessage.inventoryVectors.count == 1 && self.lastBlockHash == inventoryMessage.inventoryVectors[0] {
                         return
                     }
-                    let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
-                    let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
-                    self.connection?.sendMessageWithPayload(getBlocksMsg)
-                }
                 
-        }
+                    if inventoryMessage.inventoryVectors.count == 1 {
+                        self.lastBlockHash = inventoryMessage.inventoryVectors[0]
+                    }
+                
+                    self.blockHashesCountDownloaded += inventoryMessage.inventoryVectors.count
+                    print("\(self.blockHashesCountDownloaded + self.syncStartBlockHeight) block hashes received / \(self.peerVersion!.blockStartHeight)")
+                
+                
+                    if inventoryMessage.inventoryVectors.count > 0 {
+                        self.sendGetData(inventoryVecs: inventoryMessage.inventoryVectors)
+                    
+                        if self.blockHashesCountDownloaded + self.syncStartBlockHeight >= Int(self.peerVersion!.blockStartHeight) {
+                            self.delegate?.blockSyncCompleted()
+                            return
+                        }
+                        let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
+                        let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
+                        self.connection?.sendMessageWithPayload(getBlocksMsg)
+                    }
+                }
             
-        case let .MerkleBlockMessage(merkleBlockMessage):
-            DispatchQueue.main.async {
-                BlockDataStoreManager.add(merkleBlockMsg: merkleBlockMessage)
-            }
+            case let .MerkleBlockMessage(merkleBlockMessage):
+                DispatchQueue.main.async {
+                    BlockDataStoreManager.add(merkleBlockMsg: merkleBlockMessage)
+                }
             
-        case let .TransactionMessage(transactionMessage):
-            DispatchQueue.main.async {
-                TransactionDataStoreManager.add(tx: transactionMessage)
-                self.delegate?.newTransactionReceived()
-            }
+            case let .TransactionMessage(transactionMessage):
+                DispatchQueue.main.async {
+                    TransactionDataStoreManager.add(tx: transactionMessage)
+                    self.delegate?.newTransactionReceived()
+                }
             
-        case let .GetDataMessage(getDataMessage):
-            print("received getDataMessage \(getDataMessage)")
-            //Broadcast pending transactions after receiving GetDataMessage from node.
-            queue.addOperation {
-                for inv in getDataMessage.inventoryVectors {
-                    for i in 0 ..< self.pendingTransactions.count {
-                        if inv.hash == self.pendingTransactions[i].hash {
-                            self.connection?.sendMessageWithPayload(self.pendingTransactions[i])
-                            self.pendingTransactions.remove(at: i)
+            case let .GetDataMessage(getDataMessage):
+                //Broadcast pending transactions after receiving GetDataMessage from node.
+                queue.addOperation {
+                    for inv in getDataMessage.inventoryVectors {
+                        for i in 0 ..< self.pendingTransactions.count {
+                            if inv.hash == self.pendingTransactions[i].hash {
+                                self.connection?.sendMessageWithPayload(self.pendingTransactions[i])
+                                self.pendingTransactions.remove(at: i)
+                            }
                         }
                     }
                 }
-            }
             
-        case let .RejectMessage(rejectMessage):
-            queue.addOperation {
-                self.delegate?.transactionSendRejected(message: rejectMessage.reason)
-            }
+            case let .RejectMessage(rejectMessage):
+                queue.addOperation {
+                    self.delegate?.transactionSendRejected(message: rejectMessage.reason)
+                }
             
-        case let .AddressMessage(addrMsg):
-            DispatchQueue.main.async {
-                PeerAddressDataStoreManager.add(peerAddressMessage: addrMsg)
-            }
+            case let .AddressMessage(_): break
+                /*DispatchQueue.main.async {
+                    PeerAddressDataStoreManager.add(peerAddressMessage: addrMsg)
+             }*/
             
-        default:
-            print(message)
-            break
+            default:
+                print(message)
+                break
         }
     }
 }

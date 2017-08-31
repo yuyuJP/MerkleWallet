@@ -16,7 +16,7 @@ public class TransactionDetail {
     public let amount: Int64
     public let fee: Int64
     public let txId: String
-    public let comfirmation: Int
+    public let confirmation: Int
     
     public init(tx: TransactionInfo, pubKeyPrefix: UInt8, scriptHashPrefix: UInt8) {
         
@@ -110,7 +110,7 @@ public class TransactionDetail {
 
         self.fee = calculatedFee
         self.txId = tx.txHash
-        self.comfirmation = MatchingTransactionHashInfo.comfirmations(tx.txHash)
+        self.confirmation = MatchingTransactionHashInfo.comfirmations(tx.txHash)
         
     }
     
