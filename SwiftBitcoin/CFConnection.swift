@@ -14,6 +14,8 @@ public protocol CFConnectionDelegate {
     //func CFConnection(peerConnection: CFConnection, didDisconnectWithError error: NSError?)
     
     func cfConnection(peerConnection: CFConnection, didReceiveMessage message: PeerConnectionMessage)
+    
+    func cfConnectionConnectionError()
 }
 
 public enum PeerConnectionMessage {
@@ -186,8 +188,10 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
             self.send()
         case Stream.Event.errorOccurred:
             print("Error occurred!!!")
+            delegate?.cfConnectionConnectionError()
         case Stream.Event.endEncountered:
             print("End endEncountered")
+            delegate?.cfConnectionConnectionError()
         default:
             assert(false, "what is happening??")
         }
@@ -334,6 +338,7 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
     func connectionTimerDidTimeout(_ timer: Timer) {
         connectionTimeoutTimer?.invalidate()
         connectionTimeoutTimer = nil
+        delegate?.cfConnectionConnectionError()
         print("Error : connection did time out")
     }
 

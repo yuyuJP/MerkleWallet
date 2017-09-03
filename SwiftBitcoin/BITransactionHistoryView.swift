@@ -53,6 +53,18 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    public func reloadTxHistoryView() {
+        txDetails = []
+    
+        for tx in TransactionInfo.loadAll().reversed() {
+            let txDetail = TransactionDetail(tx: tx, pubKeyPrefix: BitcoinPrefixes.pubKeyPrefix, scriptHashPrefix: BitcoinPrefixes.scriptHashPrefix)
+            //print("From: \(txDetail.fromAddresses) To: \(txDetail.toAddresses) Amount: \(txDetail.amount) TXID: \(tx.txHash)")
+            txDetails.append(txDetail)
+        }
+        
+        self.tableView.reloadData()
+    }
+    
     public func setTransactionHistoryTable() {
         
         for tx in TransactionInfo.loadAll().reversed() {

@@ -14,6 +14,7 @@ public protocol CFControllerDelegate {
     func transactionPassedToNode()
     func blockSyncCompleted()
     func blockSyncStarted()
+    func connectionError()
 }
 
 public class CFController: CFConnectionDelegate {
@@ -251,5 +252,9 @@ public class CFController: CFConnectionDelegate {
                 print(message)
                 break
         }
+    }
+    
+    public func cfConnectionConnectionError() {
+        delegate?.connectionError()
     }
 }

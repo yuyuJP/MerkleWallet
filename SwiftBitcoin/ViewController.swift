@@ -33,6 +33,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         if let userKey = UserKeyInfo.loadAll().first {
             
+            print(userKey.UTXOs)
+            
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
             //key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
             print(key.publicAddress)
@@ -46,6 +48,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             newUserKeyInfo.save()
         }
         
+        
         if let _ = BlockChainInfo.loadItem() {
             //print("blk chain info: \(blkChainInfo)")
         } else {
@@ -55,11 +58,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        if let blkChainInfo = BlockChainInfo.loadItem() {
-            print("hash: \(blkChainInfo.lastBlockHash), height: \(blkChainInfo.lastBlockHeight)")
-        }
-        
-        establishConnection()
+        //establishConnection()
 
         self.view.backgroundColor = UIColor.backgroundWhite()
         pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
@@ -81,6 +80,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     func establishConnection() {
         
         let nodeAddress = BitcoinTestnetNodes.randomNode
+
+        if con != nil {
+            con = nil
+        }
         
         con = CFController(hostname: nodeAddress, port: 18333, network: NetworkMagicBytes.magicBytes())
         con.delegate = self
@@ -188,6 +191,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     //MARK:- CFControllerDelegate
     func newTransactionReceived() {
         self.updateBlanceLabel()
+        self.txHistoryView.reloadTxHistoryView()
     }
     
     func transactionSendRejected(message: String) {
@@ -211,6 +215,11 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     
     func blockSyncCompleted() {
         print("Block sync completed")
+    }
+    
+    func connectionError() {
+        self.con = nil
+        establishConnection()
     }
     
     //MARK:- BITransactionHistoryViewDelegate
@@ -269,6 +278,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         DispatchQueue.main.async {
             self.updateBlanceLabel()
+            self.txHistoryView.reloadTxHistoryView()
         }
     }
     

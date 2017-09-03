@@ -15,7 +15,7 @@ public class BlockDataStoreManager {
         let blockInfo = BlockInfo.create(merkleBlockMsg)
         blockInfo.save()
         
-        if blockInfo.height != 0 {
+        if blockInfo.height != 0 && blockInfo.height > startingBlockHeight {
             let blockChainInfo = BlockChainInfo.loadItem()!
             blockInfo.update {
                 blockChainInfo.lastBlockHash = blockInfo.blockHash
@@ -29,6 +29,17 @@ public class BlockDataStoreManager {
                     orphanBlk.height = previousBlk.height + 1
                 }
             }
+            
+            if orphanBlk.height > latestBlockHeight {
+                if blockInfo.height != 0 && blockInfo.height > startingBlockHeight {
+                    let blockChainInfo = BlockChainInfo.loadItem()!
+                    blockInfo.update {
+                        blockChainInfo.lastBlockHash = blockInfo.blockHash
+                        blockChainInfo.lastBlockHeight = blockInfo.height
+                    }
+                }
+            }
+            
         }
         
     }

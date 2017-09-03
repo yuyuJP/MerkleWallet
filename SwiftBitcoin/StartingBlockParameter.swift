@@ -8,8 +8,8 @@
 
 import Foundation
 
-let startingBlockHash: String = "0000000000000470cede44606cfcc010b784d45193cc88696bf5f515eedfdd7a"
-let startingBlockHeight: Int = 1178246
+let startingBlockHash: String = "000000007d9d710d666a904ff06411228df4b909f3399861acfcb7433bd21e56"
+let startingBlockHeight: Int = 1180928
 
 var latestBlockHash: String {
     let blockChainInfo = BlockChainInfo.loadItem()!

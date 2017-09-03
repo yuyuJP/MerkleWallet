@@ -21,6 +21,8 @@ public class TransactionDataStoreManager {
         let txInfo = TransactionInfo.create(tx)
         txInfo.save()
         
+        print(txInfo)
+        
         let extractedInputs = extractRelevantInputs(tx)
         if extractedInputs.count != 0 {
             incomingInputCheck(extractedInputs)
