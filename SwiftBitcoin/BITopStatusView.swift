@@ -30,14 +30,14 @@ class BITopStatusView: UIView {
     }
     
     public func setupStatusLabel(text: String) {
+        let height: CGFloat = 50.0
+        
         statusLabel = UILabel()
+        statusLabel.frame = CGRect(x: 0.0, y: (self.frame.size.height - height) / 2, width: self.frame.size.width, height: height)
         statusLabel.font = UIFont.systemFont(ofSize: 30.0)
         statusLabel.textColor = UIColor.themeColor()
         statusLabel.text = text
         statusLabel.textAlignment = .center
-        statusLabel.sizeToFit()
-        statusLabel.center = CGPoint(x: self.frame.size.width / 2.0, y: self.frame.size.height / 2.0)
-        
         self.addSubview(statusLabel)
         
     }

@@ -16,7 +16,7 @@ import UIKit
     public let toAddresses: [String]
     public let amount: Int64
     public let fee: Int64
-    public let txId: String
+    public var txId: String
     
     public init() {
         self.isSpentTransaction = false
@@ -145,7 +145,11 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.cellDidSelectAt(txDetails[indexPath.row])
+        
+        let txDetail = txDetails[indexPath.row]
+        txDetail.confirmation = MatchingTransactionHashInfo.comfirmations(txDetail.txId)
+        
+        delegate?.cellDidSelectAt(txDetail)
     }
     
     /*

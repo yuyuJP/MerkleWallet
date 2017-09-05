@@ -16,7 +16,10 @@ public class TransactionDetail {
     public let amount: Int64
     public let fee: Int64
     public let txId: String
-    public let confirmation: Int
+    public let timestamp: NSDate?
+    
+    //Set this value later when displaying transaction detail.
+    public var confirmation: Int
     
     public init(tx: TransactionInfo, pubKeyPrefix: UInt8, scriptHashPrefix: UInt8) {
         
@@ -110,7 +113,8 @@ public class TransactionDetail {
 
         self.fee = calculatedFee
         self.txId = tx.txHash
-        self.confirmation = MatchingTransactionHashInfo.comfirmations(tx.txHash)
+        self.timestamp = MatchingTransactionHashInfo.timestamp(txId)
+        self.confirmation = 0
         
     }
     

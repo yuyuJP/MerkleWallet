@@ -34,6 +34,14 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
             isSpentTransaction = txDetail.isSpentTransaction
             txIdStr = txDetail.txId
             feeStr = String(Double(txDetail.fee) / 100000000)
+            
+            if let timestamp = txDetail.timestamp {
+                let formatter = DateFormatter()
+                formatter.dateStyle = .medium
+                formatter.timeStyle = .short
+                dateStr = formatter.string(from: timestamp as Date)
+            }
+            
             comfStr = String(txDetail.confirmation)
             
         } else {

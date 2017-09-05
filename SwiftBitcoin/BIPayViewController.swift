@@ -46,6 +46,7 @@ class BIPayViewController: UIViewController {
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         delegate?.paymentCanceled()
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -109,6 +110,8 @@ class BIPayViewController: UIViewController {
     }
     
     private func dismissViewControllers() {
+        
+        self.view.endEditing(true)
         
         if qrCodeReadViewController != nil {
             let presentingViewController: UIViewController! = self.presentingViewController

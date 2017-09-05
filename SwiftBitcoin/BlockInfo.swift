@@ -17,6 +17,8 @@ public class BlockInfo: Object {
     
     //Height ZERO means the value is not properly set yet.
     dynamic var height = 0
+    
+    dynamic var timestamp = NSDate()
 
     var matchingTxs = List<MatchingTransactionHashInfo>()
     
@@ -46,6 +48,8 @@ public class BlockInfo: Object {
         } else {
             print("Failed to make a relation with a previous block in BlockInfo.swift")
         }
+        
+        blockInfo.timestamp = merkleBlock.header.timestamp
         
         for matchingTxHash in merkleBlock.partialMerkleTree.matchingHashes {
             let matchingTxHashStr = matchingTxHash.data.toHexString()
@@ -88,5 +92,4 @@ public class BlockInfo: Object {
         }
         return res
     }
-
 }

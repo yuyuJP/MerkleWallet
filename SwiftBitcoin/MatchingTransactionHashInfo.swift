@@ -38,4 +38,14 @@ class MatchingTransactionHashInfo: Object {
         //If a transaction is yet unconfirmed, return 0.
         return 0
     }
+    
+    public static func timestamp(_ hash: String) -> NSDate? {
+        if let obj = fetch(hash) {
+            if let timestamp = obj.inverse_block?.timestamp {
+                return timestamp
+            }
+        }
+        
+        return nil
+    }
 }

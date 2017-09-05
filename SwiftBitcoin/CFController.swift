@@ -92,6 +92,7 @@ public class CFController: CFConnectionDelegate {
     //MARK: CFConnectionDelegate
     public func cfConnection(peerConnection: CFConnection, didConnectWithPeerVersion peerVersion: VersionMessage) {
         print("Hand Shake Done!! with node version \(peerVersion)")
+        self.syncStartBlockHeight = latestBlockHeight
         
         //Send Bloom Filter just after the connection is established
         queue.addOperation {
@@ -107,8 +108,6 @@ public class CFController: CFConnectionDelegate {
                 self.connection?.sendMessageWithPayload(memPoolMessage)
                 
                 if latestBlockHeight < Int(self.peerVersion!.blockStartHeight) {
-                    
-                    self.syncStartBlockHeight = latestBlockHeight
                     
                     let blkHash = SHA256Hash(latestBlockHash.hexStringToNSData())
                     let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
@@ -194,6 +193,9 @@ public class CFController: CFConnectionDelegate {
                     }
                 
                     if inventoryMessage.inventoryVectors.count == 1 {
+                        if inventoryMessage.inventoryVectors[0].type != .Block {
+                            return
+                        }
                         self.lastBlockHash = inventoryMessage.inventoryVectors[0]
                     }
                 
@@ -206,7 +208,7 @@ public class CFController: CFConnectionDelegate {
                     
                         if self.blockHashesCountDownloaded + self.syncStartBlockHeight >= Int(self.peerVersion!.blockStartHeight) {
                             self.delegate?.blockSyncCompleted()
-                            return
+                            //return
                         }
                         let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
                         let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])

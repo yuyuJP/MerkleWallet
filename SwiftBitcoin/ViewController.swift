@@ -32,12 +32,9 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         super.viewDidLoad()
         
         if let userKey = UserKeyInfo.loadAll().first {
-            
-            print(userKey.UTXOs)
-            
+        
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
-            //key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
-            print(key.publicAddress)
+            //print(key.publicAddress)
             
         } else {
             print("No user info. Generating a new key.")
@@ -58,7 +55,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        //establishConnection()
+        establishConnection()
 
         self.view.backgroundColor = UIColor.backgroundWhite()
         pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
@@ -270,6 +267,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         if let tx = pendingTx {
             TransactionDataStoreManager.add(tx: tx)
+        } else {
+            assert(false, "Pending tx is nil.")
         }
         
         txSentTimer?.invalidate()
