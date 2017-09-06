@@ -184,6 +184,16 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         let balanceInBTC: Double = Double(balance) / 100000000
         self.topStatusView.changeStatusLabel(text: String(balanceInBTC) + "tBTC")
     }
+    
+    func displayAlert(title: String?, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            (result : UIAlertAction) -> Void in
+            //Called, when AlertController is dismissed.
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
 
     //MARK:- CFControllerDelegate
     func newTransactionReceived() {
@@ -199,6 +209,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         txSentTimer?.invalidate()
         txSentTimer = nil
         activityIndicatorView.stopAnimating()
+        
+        displayAlert(title: "Transaction Rejected", message: message)
     }
     
     func transactionPassedToNode() {

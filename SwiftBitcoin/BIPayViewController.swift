@@ -53,22 +53,26 @@ class BIPayViewController: UIViewController {
     @IBAction func send(_ sender: Any) {
         
         if addressTextField.text == "" || amountTextField.text == "" {
-            print("Address or amount is empty.")
+            self.displayAlert(title: "Invalid Input", message: "Address or/and Amount is empty.")
+            //print("Address or amount is empty.")
             return
         }
         
         guard let addressStr = addressTextField.text else {
-            print("Address is nil")
+            self.displayAlert(title: nil, message: "Invalid input.")
+            //print("Address is nil")
             return
         }
         
         guard let amountStr = amountTextField.text else {
-            print("Amount is nil")
+            self.displayAlert(title: nil, message: "Invalid input.")
+            //print("Amount is nil")
             return
         }
         
         guard let type = addressStr.determinOutputScriptTypeWithAddress() else {
-            print("Could not determin address type")
+            self.displayAlert(title: nil, message: "Unable to determin address type.")
+            //print("Could not determin address type")
             return
         }
         
@@ -94,16 +98,20 @@ class BIPayViewController: UIViewController {
                     self.propagateTx(txConstructor: txConstructor)
 
                 } else {
-                    print("Entered amount is insufficient. Miminum amount is \(minimumAmount) satoshi.")
+                    self.displayAlert(title: "Invalid Amount", message: "Entered amount is insufficient. Miminum amount is \(minimumAmount) satoshi.")
+
+                    //print("Entered amount is insufficient. Miminum amount is \(minimumAmount) satoshi.")
                 }
                 
             } else {
-                print("Failed to converted amount properly")
+                self.displayAlert(title: nil, message: "Invalid input of amount.")
+                //print("Failed to converted amount properly")
                 return
             }
             
         } else {
-            print("Invalid address")
+            self.displayAlert(title: nil, message: "Invalid address.")
+            //print("Invalid address")
             return
         }
         
@@ -131,9 +139,19 @@ class BIPayViewController: UIViewController {
             dismissViewControllers()
             
         } else {
-            print("Failed to build transaction.")
+            self.displayAlert(title: "Error", message: "Failed to build a transaction.")
         }
     }
+    
+    private func displayAlert(title: String?, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            (result : UIAlertAction) -> Void in
+            //Called, when AlertController is dismissed.
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 
 }
 
