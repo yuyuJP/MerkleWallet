@@ -53,7 +53,7 @@ class BIPayViewController: UIViewController {
     @IBAction func send(_ sender: Any) {
         
         if addressTextField.text == "" || amountTextField.text == "" {
-            self.displayAlert(title: "Invalid Input", message: "Address or/and Amount is empty.")
+            self.displayAlert(title: "Invalid Input", message: "Address or/and Amount are empty.")
             //print("Address or amount is empty.")
             return
         }
@@ -71,7 +71,7 @@ class BIPayViewController: UIViewController {
         }
         
         guard let type = addressStr.determinOutputScriptTypeWithAddress() else {
-            self.displayAlert(title: nil, message: "Unable to determin address type.")
+            self.displayAlert(title: nil, message: "Unable to determine address type.")
             //print("Could not determin address type")
             return
         }
@@ -98,7 +98,7 @@ class BIPayViewController: UIViewController {
                     self.propagateTx(txConstructor: txConstructor)
 
                 } else {
-                    self.displayAlert(title: "Invalid Amount", message: "Entered amount is insufficient. Miminum amount is \(minimumAmount) satoshi.")
+                    self.displayAlert(title: "Invalid Amount", message: "Entered amount is lower than minimum. Minimum amount is \(minimumAmount) satoshi.")
 
                     //print("Entered amount is insufficient. Miminum amount is \(minimumAmount) satoshi.")
                 }

@@ -64,6 +64,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
         case 0:
             let action = isSpentTransaction ? "Sent" : "Received"
             let textColor = isSpentTransaction ? UIColor.sentRed() : UIColor.receivedGreen()
+            cell.selectionStyle = .none
             cell.titleLabel.text = action
             cell.titleLabel.textColor = textColor
             cell.infoLabel.text = ""
@@ -89,10 +90,13 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
             if indexPath.row == 0 {
                 cell.infoLabel.text = txIdStr
             } else if indexPath.row == 1 {
+                cell.selectionStyle = .none
                 cell.infoLabel.text = dateStr
             } else if indexPath.row == 2 {
+                cell.selectionStyle = .none
                 cell.infoLabel.text = feeStr
             } else if indexPath.row == 3 {
+                cell.selectionStyle = .none
                 cell.infoLabel.text = comfStr
             }
             
@@ -134,6 +138,44 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case 1:
+            showActionSheetWithCopyMessage(copyString: toContents[indexPath.row])
+        case 2:
+            showActionSheetWithCopyMessage(copyString: fromContents[indexPath.row])
+        case 3:
+            if indexPath.row == 0 {
+                showActionSheetWithCopyMessage(copyString: txIdStr)
+            }
+        default:
+            break
+        }
+    
+    }
+    
+    func showActionSheetWithCopyMessage(copyString: String) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let copyAction = UIAlertAction(title: "Copy to clipboard", style: .default, handler: {
+            (result : UIAlertAction) -> Void in
+            let board = UIPasteboard.general
+            board.setValue(copyString, forPasteboardType: "public.text")
+            //print("copy \(copyString) to clipboard.")
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (result : UIAlertAction) -> Void in
+            
+        })
+        
+        alert.addAction(copyAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
     
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
