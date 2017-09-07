@@ -13,6 +13,7 @@ public protocol CFControllerDelegate {
     func transactionSendRejected(message: String)
     func transactionPassedToNode()
     func blockSyncCompleted()
+    func blockSyncProgressChanged(progress: Float)
     func blockSyncStarted()
     func connectionError()
 }
@@ -31,6 +32,7 @@ public class CFController: CFConnectionDelegate {
     private var blockHashesDownloaded : [InventoryVector] = []
     private var blockHashesCountDownloaded = 0
     private var syncStartBlockHeight = 0
+    private var blockSyncCompleted = false
     
     private var pendingTransactions: [Transaction] = []
     
@@ -114,6 +116,8 @@ public class CFController: CFConnectionDelegate {
                     
                     self.delegate?.blockSyncStarted()
                     self.connection?.sendMessageWithPayload(getBlocksMsg)
+                } else {
+                    self.blockSyncCompleted = true
                 }
                 
             } else {
@@ -207,9 +211,17 @@ public class CFController: CFConnectionDelegate {
                         self.sendGetData(inventoryVecs: inventoryMessage.inventoryVectors)
                     
                         if self.blockHashesCountDownloaded + self.syncStartBlockHeight >= Int(self.peerVersion!.blockStartHeight) {
+                            self.blockSyncCompleted = true
                             self.delegate?.blockSyncCompleted()
-                            //return
+                            
+                        } else {
+                            if !self.blockSyncCompleted {
+                                let sub = Float(self.peerVersion!.blockStartHeight - Int32(self.syncStartBlockHeight))
+                                let progress = Float(self.blockHashesCountDownloaded) / sub
+                                self.delegate?.blockSyncProgressChanged(progress: progress)
+                            }
                         }
+                        
                         let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
                         let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
                         self.connection?.sendMessageWithPayload(getBlocksMsg)

@@ -125,6 +125,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         let balance = TransactionDataStoreManager.calculateBalance()
         let balanceInBTC: Double = Double(balance) / 100000000
         topStatusView.setupStatusLabel(text: String(balanceInBTC) + "tBTC")
+        topStatusView.setupProgressBar()
         
         contentView.addSubview(topStatusView)
         
@@ -197,7 +198,6 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
 
     //MARK:- CFControllerDelegate
     func newTransactionReceived() {
-        self.updateBlanceLabel()
         self.txHistoryView.reloadTxHistoryView()
     }
     
@@ -219,11 +219,24 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func blockSyncStarted() {
-        print("Block sync started")
+        DispatchQueue.main.async {
+            self.topStatusView.changeStatusLabel(text: "Syncing...")
+        }
+    }
+    
+    func blockSyncProgressChanged(progress: Float) {
+        DispatchQueue.main.async {
+            print("progress \(progress)")
+            self.topStatusView.changeProgressBar(CGFloat(progress))
+        }
     }
     
     func blockSyncCompleted() {
-        print("Block sync completed")
+        DispatchQueue.main.async {
+            self.topStatusView.disposeProgressBar()
+            self.updateBlanceLabel()
+        }
+        
     }
     
     func connectionError() {
