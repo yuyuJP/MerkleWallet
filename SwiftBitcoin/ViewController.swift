@@ -26,6 +26,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     
     var pendingTx: Transaction? = nil
     
+    var transactionAdded = false
+    
     @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
@@ -200,7 +202,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
 
     //MARK:- CFControllerDelegate
     func newTransactionReceived() {
-        self.txHistoryView.reloadTxHistoryView()
+        //self.txHistoryView.reloadTxHistoryView()
+        self.transactionAdded = true
     }
     
     func transactionSendRejected(message: String) {
@@ -228,7 +231,6 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     
     func blockSyncProgressChanged(progress: Float) {
         DispatchQueue.main.async {
-            print("progress \(progress)")
             self.topStatusView.changeProgressBar(CGFloat(progress))
         }
     }
@@ -237,6 +239,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         DispatchQueue.main.async {
             self.topStatusView.disposeProgressBar()
             self.updateBlanceLabel()
+            if self.transactionAdded {
+                self.txHistoryView.reloadTxHistoryView()
+                self.transactionAdded = false
+            }
         }
         
     }
