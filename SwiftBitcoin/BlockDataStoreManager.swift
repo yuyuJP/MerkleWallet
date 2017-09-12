@@ -25,6 +25,9 @@ public class BlockDataStoreManager {
         
         for orphanBlk in BlockInfo.fetchOrphans() {
             if let previousBlk = BlockInfo.fetch(orphanBlk.previousBlockHash){
+                if previousBlk.height == 0 {
+                    continue
+                }
                 orphanBlk.update {
                     orphanBlk.height = previousBlk.height + 1
                 }

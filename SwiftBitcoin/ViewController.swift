@@ -45,8 +45,6 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             newUserKeyInfo.save()
         }
         
-        print("latest block height: \(latestBlockHeight), hash: \(latestBlockHash)")
-        
         if let _ = BlockChainInfo.loadItem() {
             //print("blk chain info: \(blkChainInfo)")
         } else {
@@ -54,9 +52,12 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             blkInfo.save()
         }
         
+        print("latest block height: \(latestBlockHeight), hash: \(latestBlockHash)")
+
+        
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
-        //establishConnection()
+        establishConnection()
 
         self.view.backgroundColor = UIColor.backgroundWhite()
         pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
