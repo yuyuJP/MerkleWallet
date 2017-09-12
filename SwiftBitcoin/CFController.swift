@@ -271,4 +271,8 @@ public class CFController: CFConnectionDelegate {
     public func cfConnectionConnectionError() {
         delegate?.connectionError()
     }
+    
+    public func disconnect() {
+        self.connection?.disconnect()
+    }
 }

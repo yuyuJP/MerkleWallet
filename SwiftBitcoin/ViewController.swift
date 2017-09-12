@@ -51,9 +51,6 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             blkInfo.save()
         }
         
-        //print("latest block height: \(latestBlockHeight), hash: \(latestBlockHash)")
-
-        
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
         establishConnection()
@@ -76,12 +73,13 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func establishConnection() {
-        
-        let nodeAddress = BitcoinTestnetNodes.randomNode
 
         if con != nil {
+            con.disconnect()
             con = nil
         }
+        
+        let nodeAddress = BitcoinTestnetNodes.randomNode
         
         con = CFController(hostname: nodeAddress, port: 18333, network: NetworkMagicBytes.magicBytes())
         con.delegate = self
@@ -246,7 +244,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     }
     
     func connectionError() {
-        self.con = nil
+        //self.con = nil
         establishConnection()
     }
     
@@ -288,6 +286,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     func addressLabelTapped() {
         showActionSheetWithCopyMessage(copyString: key.publicAddress)
     }
+    
+    //
     
     func showActionSheetWithCopyMessage(copyString: String) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)

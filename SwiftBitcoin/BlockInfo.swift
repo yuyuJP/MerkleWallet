@@ -44,7 +44,9 @@ public class BlockInfo: Object {
         blockInfo.previousBlockHash = prevBlkHash
         
         if let previousBlk = fetch(prevBlkHash){
-            blockInfo.height = previousBlk.height + 1
+            if previousBlk.height != 0 {
+                blockInfo.height = previousBlk.height + 1
+            }
         } else {
             print("Failed to make a relation with a previous block in BlockInfo.swift")
         }

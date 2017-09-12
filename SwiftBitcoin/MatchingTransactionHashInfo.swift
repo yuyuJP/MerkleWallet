@@ -32,6 +32,9 @@ class MatchingTransactionHashInfo: Object {
     public static func comfirmations(_ hash: String) -> Int {
         if let obj = fetch(hash) {
             if let height = obj.inverse_block?.height {
+                if height == 0 {
+                    return 0
+                }
                 return latestBlockHeight - height + 1
             }
         }

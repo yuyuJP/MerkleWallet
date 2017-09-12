@@ -18,7 +18,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
     private var txIdStr = ""
     private var dateStr = "--/-"
     private var feeStr = ""
-    private var comfStr = ""
+    private var confStr = ""
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -33,7 +33,12 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
             fromContents = txDetail.fromAddresses
             isSpentTransaction = txDetail.isSpentTransaction
             txIdStr = txDetail.txId
-            feeStr = String(Double(txDetail.fee) / 100000000)
+            if txDetail.fee == -1 {
+                feeStr = "--"
+            } else {
+                feeStr = String(Double(txDetail.fee) / 100000000)
+            }
+            
             
             if let timestamp = txDetail.timestamp {
                 let formatter = DateFormatter()
@@ -42,7 +47,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
                 dateStr = formatter.string(from: timestamp as Date)
             }
             
-            comfStr = String(txDetail.confirmation)
+            confStr = String(txDetail.confirmation)
             
         } else {
             print("Tx detail is nil. Make sure you pass the value.")
@@ -97,7 +102,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
                 cell.infoLabel.text = feeStr
             } else if indexPath.row == 3 {
                 cell.selectionStyle = .none
-                cell.infoLabel.text = comfStr
+                cell.infoLabel.text = confStr
             }
             
         default: break

@@ -341,5 +341,11 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
         delegate?.cfConnectionConnectionError()
         print("Error : connection did time out")
     }
+    
+    public func disconnect() {
+        self.delegate = nil
+        self.inputStream.close()
+        self.outputStream.close()
+    }
 
 }
