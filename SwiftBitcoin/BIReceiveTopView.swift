@@ -8,13 +8,15 @@
 
 import UIKit
 
+public protocol BIReceiveTopViewDelegate {
+    func addressLabelTapped()
+}
+
 class BIReceiveTopView: UIView {
-    
-    //public var myAddress: String = ""
     
     private let offsetY: CGFloat = 54.0
     
-    //private var imageSize: CGFloat = 0
+    public var delegate: BIReceiveTopViewDelegate? = nil
     
     override func draw(_ rect: CGRect) {
         
@@ -47,6 +49,11 @@ class BIReceiveTopView: UIView {
         addressLabel.textColor = .gray
         addressLabel.font = UIFont.systemFont(ofSize: 18.0)
         addressLabel.backgroundColor = .clear
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.addressLabelTapped(_:)))
+        addressLabel.isUserInteractionEnabled = true
+        addressLabel.addGestureRecognizer(gesture)
+        
         self.addSubview(addressLabel)
     }
     
@@ -60,6 +67,10 @@ class BIReceiveTopView: UIView {
             self.addSubview(imageView)
         }
 
+    }
+    
+    func addressLabelTapped(_ gestureRecognizer: UITapGestureRecognizer) {
+        delegate?.addressLabelTapped()
     }
     
 }

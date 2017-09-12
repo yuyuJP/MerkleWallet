@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISendTopViewDelegate, BIQRCodeReadViewControllerDelegate, BIPayViewControllerDelegate, UIScrollViewDelegate, CFControllerDelegate {
+class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISendTopViewDelegate, BIQRCodeReadViewControllerDelegate, BIPayViewControllerDelegate, UIScrollViewDelegate, CFControllerDelegate, BIReceiveTopViewDelegate {
 
     private var con : CFController!
     private var key : BitcoinTestnet!
@@ -36,12 +36,9 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         if let userKey = UserKeyInfo.loadAll().first {
         
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
-            //print(key.publicAddress)
             
         } else {
-            print("No user info. Generating a new key.")
-            key = BitcoinTestnet(privateKeyHex: "33260783e40b16731673622ac8a5b045fc3ea4af70f727f3f9e92bdd3a1ddc42")
-            //key = BitcoinTestnet()
+            key = BitcoinTestnet()
             
             let newUserKeyInfo = UserKeyInfo.create(key: key)
             newUserKeyInfo.save()
@@ -54,7 +51,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             blkInfo.save()
         }
         
-        print("latest block height: \(latestBlockHeight), hash: \(latestBlockHash)")
+        //print("latest block height: \(latestBlockHeight), hash: \(latestBlockHash)")
 
         
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
@@ -117,6 +114,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         contentView.addSubview(sendTopView)
         
         let receiveTopView = BIReceiveTopView(frame: CGRect(x: size.width * 2, y: 0, width: size.width, height: size.height))
+        receiveTopView.delegate = self
         receiveTopView.backgroundColor = UIColor.backgroundWhite()
         
         contentView.addSubview(receiveTopView)
@@ -285,6 +283,31 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         //broadcast tx
         sendTransactionToNode(tx: tx)
     }
+    
+    //MARK:- BIReceieveTopViewDelegate
+    func addressLabelTapped() {
+        showActionSheetWithCopyMessage(copyString: key.publicAddress)
+    }
+    
+    func showActionSheetWithCopyMessage(copyString: String) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let copyAction = UIAlertAction(title: "Copy address to clipboard", style: .default, handler: {
+            (result : UIAlertAction) -> Void in
+            let board = UIPasteboard.general
+            board.setValue(copyString, forPasteboardType: "public.text")
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (result : UIAlertAction) -> Void in
+            
+        })
+        
+        alert.addAction(copyAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
     
     //
     
