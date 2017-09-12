@@ -14,14 +14,53 @@ public class BIQRCodeParser {
     
     public init(string: String) {
         self.qrcodeString = string
-        print(qrcodeString)
     }
     
     public var address: String? {
-        let address = extractWithRegx(self.qrcodeString, regx: "bitcoin:(.*)\\?.*")
-        //TODO: Check the extracted address's validity before passing the value
         
-        return address
+        if validAddressString(addressStr: self.qrcodeString) {
+            
+            return self.qrcodeString
+            
+        } else {
+            
+            if let dir_address = extractWithRegx(self.qrcodeString, regx: "bitcoin:*") {
+                
+                if validAddressString(addressStr: dir_address) {
+                    return dir_address
+                }
+                
+            } else {
+                
+                if let address = extractWithRegx(self.qrcodeString, regx: "bitcoin:(.*)\\?.*") {
+                    if validAddressString(addressStr: address) {
+                        return address
+                    }
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    private func validAddressString(addressStr: String) -> Bool {
+        
+        guard let type = addressStr.determinOutputScriptTypeWithAddress() else {
+            return false
+        }
+            
+        let pubkeyPrefix = BitcoinPrefixes.pubKeyPrefix
+        var prefix = pubkeyPrefix
+            
+        if type == .P2SH {
+            prefix = BitcoinPrefixes.scriptHashPrefix
+        }
+            
+        guard let _ = addressStr.publicAddressToPubKeyHash(prefix) else {
+            return false
+        }
+            
+        return true
     }
     
     public var amount: String? {
@@ -45,6 +84,7 @@ public class BIQRCodeParser {
     
     private func extractWithRegx(_ string: String, regx: String) -> String? {
         let result = string.replacingOccurrences(of: regx, with: "$1", options: .regularExpression, range: string.startIndex ..< string.endIndex)
+        
         if result == string {
             return nil
         }

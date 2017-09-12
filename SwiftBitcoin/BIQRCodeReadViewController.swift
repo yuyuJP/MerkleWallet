@@ -139,6 +139,7 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
                     
                     
                 } else {
+                    print(qrCodeParser.amount)
                     print("Read QR Code is invalid")
                 }
             }
