@@ -8,27 +8,6 @@
 
 import UIKit
 
-//Temporary struct
-/*public struct TMP_TransactionDetail {
-    
-    public let isSpentTransaction: Bool
-    public let fromAddresses: [String]
-    public let toAddresses: [String]
-    public let amount: Int64
-    public let fee: Int64
-    public var txId: String
-    
-    public init() {
-        self.isSpentTransaction = false
-        self.fromAddresses = ["from-address1", "from-address2"]
-        self.toAddresses = ["to-address1", "to-address2"]
-        self.amount = 100000000
-        self.fee = 9000
-        self.txId = "transactionID"
-    }
-}
-*/
-
 public protocol BITransactionHistoryViewDelegate {
     func cellDidSelectAt(_ tx: TransactionDetail)
 }
@@ -44,7 +23,7 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
     
     public var contentView: BISettingsTopView!
     
-    private let contentViewHeight: CGFloat = 99.0
+    private let contentViewHeight: CGFloat = 64.0
     private var firstOffset: CGFloat = 0.0
     
     public var delegate: BITransactionHistoryViewDelegate? = nil
@@ -86,8 +65,6 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
         
         contentView = BISettingsTopView(frame: contentViewRect)
         contentView.backgroundColor = UIColor.backgroundWhite()
-        //contentView.backgroundColor = UIColor.themeColor()
-        //contentView.alpha = 0.9
         
         var inset: UIEdgeInsets = tableView.contentInset
         inset.top = contentViewHeight
@@ -136,8 +113,16 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
             cell.txActionLabel.textColor = UIColor.receivedGreen()
         }
         
+        if let timestamp = tx.timestamp {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.timeStyle = .short
+            cell.timeLabel.text = formatter.string(from: timestamp as Date)
+            
+        } else {
+            cell.timeLabel.text = "--/--"
+        }
         
-        cell.timeLabel.text = "-/--"
         cell.amountLabel.text = String(Double(tx.amount) / 100000000) + " BTC"
         
         return cell

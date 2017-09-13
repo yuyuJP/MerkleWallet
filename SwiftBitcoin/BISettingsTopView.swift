@@ -23,7 +23,7 @@ class BISettingsTopView: UIView {
         boarder.lineWidth = thickness
         boarder.stroke()
         
-        placeSettingsButton(self.frame.size)
+        //placeSettingsButton(self.frame.size)
     }
     
     func placeSettingsButton(_ viewSize: CGSize) {

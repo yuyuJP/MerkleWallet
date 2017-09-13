@@ -93,7 +93,7 @@ public class CFController: CFConnectionDelegate {
     
     //MARK: CFConnectionDelegate
     public func cfConnection(peerConnection: CFConnection, didConnectWithPeerVersion peerVersion: VersionMessage) {
-        print("Hand Shake Done!! with node version \(peerVersion)")
+        //print("Hand Shake Done!! with node version \(peerVersion)")
         self.syncStartBlockHeight = latestBlockHeight
         
         //Send Bloom Filter just after the connection is established

@@ -16,7 +16,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
     private var fromContents: [String] = []
     private var isSpentTransaction = true
     private var txIdStr = ""
-    private var dateStr = "--/-"
+    private var dateStr = "--/--"
     private var feeStr = ""
     private var confStr = ""
     
@@ -54,7 +54,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
         }
         
         tableView.register(TransactionDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
-        tableView.backgroundColor = UIColor.backgroundWhite()
+        //tableView.backgroundColor = UIColor.backgroundWhite()
     }
 
     override func didReceiveMemoryWarning() {
