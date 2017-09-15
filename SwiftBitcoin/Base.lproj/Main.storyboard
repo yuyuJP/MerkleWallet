@@ -45,11 +45,52 @@
                         <segue destination="44r-SF-5eT" kind="presentation" identifier="txDetail" id="Em6-tq-Ef7"/>
                         <segue destination="gbf-pP-7hZ" kind="presentation" identifier="pay" id="d1o-uK-38c"/>
                         <segue destination="HjX-hX-m9d" kind="presentation" identifier="scanQR" id="y3b-4W-oSE"/>
+                        <segue destination="O3h-5l-r4o" kind="presentation" identifier="showWif" id="V03-2C-C0a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-862" y="181"/>
+        </scene>
+        <!--Wif Display View Controller-->
+        <scene sceneID="nmO-Hs-dYT">
+            <objects>
+                <viewController id="O3h-5l-r4o" customClass="BIWifDisplayViewController" customModule="SwiftBitcoin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dhu-6Q-KHA"/>
+                        <viewControllerLayoutGuide type="bottom" id="8g8-qZ-Xhf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kxY-0C-goI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCx-O8-qOA">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="RXv-KS-SOm"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Private Key" id="8XN-pO-AEa">
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="5tX-2u-Paz">
+                                            <connections>
+                                                <action selector="dismissView:" destination="O3h-5l-r4o" id="Tfw-ff-rEq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gCx-O8-qOA" firstAttribute="top" secondItem="dhu-6Q-KHA" secondAttribute="bottom" id="0Fa-JO-F7c"/>
+                            <constraint firstItem="gCx-O8-qOA" firstAttribute="leading" secondItem="kxY-0C-goI" secondAttribute="leading" id="QXy-G6-BoD"/>
+                            <constraint firstAttribute="trailing" secondItem="gCx-O8-qOA" secondAttribute="trailing" id="uRp-NU-x3C"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8vt-mt-6h2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-225" y="-537"/>
         </scene>
         <!--Transaction Detail View Controller-->
         <scene sceneID="JYs-CF-ZPV">
@@ -319,6 +360,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3gv-6w-agX"/>
+        <segue reference="d1o-uK-38c"/>
     </inferredMetricsTieBreakers>
 </document>

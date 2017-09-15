@@ -8,7 +8,13 @@
 
 import UIKit
 
+public protocol BISettingsTopViewDelegate {
+    func showPrivateKeyButtonTapped()
+}
+
 class BISettingsTopView: UIView {
+    
+    public var delegate: BISettingsTopViewDelegate? = nil
     
     override func draw(_ rect: CGRect) {
         let thickness: CGFloat = 1.0
@@ -23,7 +29,7 @@ class BISettingsTopView: UIView {
         boarder.lineWidth = thickness
         boarder.stroke()
         
-        //placeSettingsButton(self.frame.size)
+        placeSettingsButton(self.frame.size)
     }
     
     func placeSettingsButton(_ viewSize: CGSize) {
@@ -41,5 +47,6 @@ class BISettingsTopView: UIView {
     
     func settingsButtonTapped() {
         print("settings button tapped")
+        delegate?.showPrivateKeyButtonTapped()
     }
 }

@@ -256,6 +256,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         self.displayTxDetail = nil
     }
     
+    func showWifButtonTapped() {
+        self.performSegue(withIdentifier: "showWif", sender: nil)
+    }
+    
     //MARK:- BISendTopViewDelegate
     func qrScanButtonTapped() {
         self.performSegue(withIdentifier: "scanQR", sender: nil)
@@ -286,6 +290,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     func addressLabelTapped() {
         showActionSheetWithCopyMessage(copyString: key.publicAddress)
     }
+
     
     //
     
@@ -359,8 +364,11 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         } else if segue.identifier == "scanQR" {
             let qrCodeReadViewController = segue.destination as! BIQRCodeReadViewController
             qrCodeReadViewController.delegate = self
+        } else if segue.identifier == "showWif" {
+            let wifDisplayViewController = segue.destination as! BIWifDisplayViewController
+            wifDisplayViewController.WIF = key.wif
         }
-     }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -10,10 +10,11 @@ import UIKit
 
 public protocol BITransactionHistoryViewDelegate {
     func cellDidSelectAt(_ tx: TransactionDetail)
+    func showWifButtonTapped()
 }
 
 
-class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSource {
+class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSource, BISettingsTopViewDelegate {
     
     private var sectionTitles = ["Transaction History"]
     
@@ -64,6 +65,7 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         
         contentView = BISettingsTopView(frame: contentViewRect)
+        contentView.delegate = self
         contentView.backgroundColor = UIColor.backgroundWhite()
         
         var inset: UIEdgeInsets = tableView.contentInset
@@ -135,6 +137,11 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
         txDetail.confirmation = MatchingTransactionHashInfo.comfirmations(txDetail.txId)
         
         delegate?.cellDidSelectAt(txDetail)
+    }
+    
+    //MARK:- BISettingsTopViewDelegate 
+    func showPrivateKeyButtonTapped() {
+        delegate?.showWifButtonTapped()
     }
     
     /*
