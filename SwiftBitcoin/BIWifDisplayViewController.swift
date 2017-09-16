@@ -18,7 +18,6 @@ class BIWifDisplayViewController: UIViewController {
         super.viewDidLoad()
         
         if let wif = WIF {
-            print(wif)
             setupWifLabel(wif)
             setupWifQRCode(wif)
         }

@@ -34,11 +34,14 @@ class BISettingsTopView: UIView {
     
     func placeSettingsButton(_ viewSize: CGSize) {
         let topMargin: CGFloat = 5.0
-        let btnWidth = viewSize.height / 2.0 - topMargin
-        let btnHeight = btnWidth
         
-        let settingsBtn = UIButton(frame: CGRect(x: 20.0, y: viewSize.height / 2 - btnHeight / 2 + topMargin, width: btnWidth, height: btnHeight))
-        let settingImg = UIImage(named: "settingsIcon_thicker.png")
+        let statusBarSize: CGFloat = 20.0
+        
+        let btnHeight = viewSize.height - statusBarSize - topMargin
+        let btnWidth = btnHeight * 2
+        
+        let settingsBtn = UIButton(frame: CGRect(x: 10.0, y: statusBarSize, width: btnWidth, height: btnHeight))
+        let settingImg = UIImage(named: "key.png")
         settingsBtn.setImage(settingImg!, for: .normal)
         settingsBtn.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         //settingsBtn.backgroundColor = .red
@@ -46,7 +49,6 @@ class BISettingsTopView: UIView {
     }
     
     func settingsButtonTapped() {
-        print("settings button tapped")
         delegate?.showPrivateKeyButtonTapped()
     }
 }
