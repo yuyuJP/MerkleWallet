@@ -323,7 +323,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         self.con.sendTransaction(transaction: tx)
     }
 
-    func txSuccessfullySent(_ timer: Timer) {
+    @objc func txSuccessfullySent(_ timer: Timer) {
         print("tx successfully sent!!")
         
         if let tx = pendingTx {

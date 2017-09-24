@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BigInt
 
 extension NSData {
     internal func toHexString() -> String {

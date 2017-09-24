@@ -13,10 +13,10 @@ import RealmSwift
 public class BlockChainInfo: Object {
     static let realm = try! Realm()
     
-    dynamic var genesisCreated: Bool = false
+    @objc dynamic var genesisCreated: Bool = false
     
-    dynamic var lastBlockHash = ""
-    dynamic var lastBlockHeight = 0
+    @objc dynamic var lastBlockHash = ""
+    @objc dynamic var lastBlockHeight = 0
     
     public static func loadItem() -> BlockChainInfo? {
         return realm.objects(BlockChainInfo.self).first

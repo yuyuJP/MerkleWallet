@@ -33,7 +33,7 @@ public class BIQRCodeGenerator {
             
             let transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
             
-            if let output = filter.outputImage?.applying(transform) {
+            if let output = filter.outputImage?.transformed(by: transform) {
                 return UIImage(ciImage: output)
             }
         }

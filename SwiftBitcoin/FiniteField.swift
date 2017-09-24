@@ -6,6 +6,8 @@
 //  Copyright © 2016年 Yusuke Asai. All rights reserved.
 //
 
+import BigInt
+
 public enum FiniteField : CustomStringConvertible {
     case PrimeField(p : BigUInt)
     
@@ -48,7 +50,6 @@ private func powDouble(n: Int) -> UInt64 {
     //return UInt64(pow(Double(2), Double(n)))
 }
 
-
 extension BigUInt {
     internal func modInverse(_ m: BigUInt) -> BigUInt {
         assert(m > 0, "Modulo 0 makes no sense")
@@ -74,12 +75,12 @@ extension BigUInt {
             t += b
         }
         
-        return t.abs
+        return t.magnitude
     }
     
     internal func highestBitOfUInt256() -> Int {
         var bitLength: UInt32 = 256
-        let e = Int(self[3].high)
+        let e = Int(self.storage[3] >> 32)
         
         if e == 0 { bitLength -= 32} else {
             for i in 0 ..< 31 {

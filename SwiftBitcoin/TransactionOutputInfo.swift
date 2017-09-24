@@ -12,10 +12,10 @@ import RealmSwift
 class TransactionOutputInfo: Object {
     static let realm = try! Realm()
     
-    dynamic var pubKeyHash = ""
-    dynamic var type = ""
-    dynamic var value: Int64 = 0
-    dynamic var isSpent = false
+    @objc dynamic var pubKeyHash = ""
+    @objc dynamic var type = ""
+    @objc dynamic var value: Int64 = 0
+    @objc dynamic var isSpent = false
     
     private let txs = LinkingObjects(fromType: TransactionInfo.self, property: "outputs")
     var inverse_tx: TransactionInfo? { return txs.first }

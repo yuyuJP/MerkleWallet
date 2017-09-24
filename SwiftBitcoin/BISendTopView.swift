@@ -54,11 +54,11 @@ class BISendTopView: UIView {
         self.addSubview(payFromAdrBtn)
     }
     
-    func scanButtonTapped() {
+    @objc func scanButtonTapped() {
         delegate?.qrScanButtonTapped()
     }
     
-    func enterButtonTapped() {
+    @objc func enterButtonTapped() {
         delegate?.enterAddressButtonTapped()
     }
     

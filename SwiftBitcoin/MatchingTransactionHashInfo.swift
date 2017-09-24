@@ -12,7 +12,7 @@ import RealmSwift
 class MatchingTransactionHashInfo: Object {
     static let realm = try! Realm()
     
-    dynamic var txHash = ""
+    @objc dynamic var txHash = ""
     
     private let blocks = LinkingObjects(fromType: BlockInfo.self, property: "matchingTxs")
     var inverse_block: BlockInfo? { return blocks.first }

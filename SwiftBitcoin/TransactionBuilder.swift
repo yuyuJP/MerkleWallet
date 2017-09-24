@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import BigInt
 
 public class TransactionBuilder {
     public let transactionMessage: TransactionMessage

@@ -335,7 +335,7 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
     }
 
     
-    func connectionTimerDidTimeout(_ timer: Timer) {
+    @objc func connectionTimerDidTimeout(_ timer: Timer) {
         connectionTimeoutTimer?.invalidate()
         connectionTimeoutTimer = nil
         delegate?.cfConnectionConnectionError()

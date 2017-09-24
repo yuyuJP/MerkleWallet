@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BigInt
 
 public func == (left: BlockHeader, right: BlockHeader) -> Bool {
     return left.version == right.version &&

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BigInt
 
 public class CoinKey : ECKey {
     let privateKeyPrefix: UInt8

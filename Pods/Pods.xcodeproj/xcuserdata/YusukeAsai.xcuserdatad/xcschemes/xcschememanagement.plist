@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BigInt.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SwiftBitcoin.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,34 +34,13 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SipHash.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>12A77E543543C47FFF0C6F4B8045D187</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3DDDC12827311B694E21E98C4C22FF62</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>440397C2238F80573FA997D0C4DFF4E5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B47AE51C34FF7BBBB2FB3729CA7B384B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B8F0A843467EC3C6F52FC367133B26F0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

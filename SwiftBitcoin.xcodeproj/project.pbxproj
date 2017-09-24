@@ -19,28 +19,8 @@
 		E102D7CF1DB34ABB0078E4C4 /* CFConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7CE1DB34ABB0078E4C4 /* CFConnection.swift */; };
 		E102D7D11DB34AC70078E4C4 /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7D01DB34AC70078E4C4 /* Thread.swift */; };
 		E1078AAD1E54AC39008AE18B /* Wif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1078AAC1E54AC39008AE18B /* Wif.swift */; };
-		E114548F1DC88F48002122DA /* BigDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114548E1DC88F48002122DA /* BigDigit.swift */; };
-		E11454A51DC88F66002122DA /* BigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454911DC88F66002122DA /* BigInt.swift */; };
-		E11454A61DC88F66002122DA /* BigIntAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454921DC88F66002122DA /* BigIntAddition.swift */; };
-		E11454A71DC88F66002122DA /* BigUInt Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454931DC88F66002122DA /* BigUInt Addition.swift */; };
-		E11454A81DC88F66002122DA /* BigUInt Bitwise Ops.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454941DC88F66002122DA /* BigUInt Bitwise Ops.swift */; };
-		E11454A91DC88F66002122DA /* BigUInt Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454951DC88F66002122DA /* BigUInt Comparison.swift */; };
-		E11454AA1DC88F66002122DA /* BigUInt Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454961DC88F66002122DA /* BigUInt Data.swift */; };
-		E11454AB1DC88F66002122DA /* BigUInt Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454971DC88F66002122DA /* BigUInt Division.swift */; };
-		E11454AC1DC88F66002122DA /* BigUInt Exponentiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454981DC88F66002122DA /* BigUInt Exponentiation.swift */; };
-		E11454AD1DC88F66002122DA /* BigUInt GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454991DC88F66002122DA /* BigUInt GCD.swift */; };
-		E11454AE1DC88F66002122DA /* BigUInt Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114549A1DC88F66002122DA /* BigUInt Hashing.swift */; };
-		E11454AF1DC88F66002122DA /* BigUInt Multiplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114549B1DC88F66002122DA /* BigUInt Multiplication.swift */; };
-		E11454B01DC88F66002122DA /* BigUInt Prime Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114549C1DC88F66002122DA /* BigUInt Prime Test.swift */; };
-		E11454B11DC88F66002122DA /* BigUInt Radix Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114549D1DC88F66002122DA /* BigUInt Radix Conversion.swift */; };
-		E11454B21DC88F66002122DA /* BigUInt Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114549E1DC88F66002122DA /* BigUInt Random.swift */; };
-		E11454B31DC88F66002122DA /* BigUInt Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114549F1DC88F66002122DA /* BigUInt Shifts.swift */; };
-		E11454B41DC88F66002122DA /* BigUInt Square Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454A01DC88F66002122DA /* BigUInt Square Root.swift */; };
-		E11454B51DC88F66002122DA /* BigUInt Subtraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454A11DC88F66002122DA /* BigUInt Subtraction.swift */; };
-		E11454B61DC88F66002122DA /* BigUInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454A21DC88F66002122DA /* BigUInt.swift */; };
+		E109B83F1F6B7A5A00CF6126 /* BIWifDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E109B83E1F6B7A5A00CF6126 /* BIWifDisplayViewController.swift */; };
 		E11454B71DC88F66002122DA /* BitcoinSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454A31DC88F66002122DA /* BitcoinSerializable.swift */; };
-		E11454B81DC88F66002122DA /* Bitwise Hacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454A41DC88F66002122DA /* Bitwise Hacks.swift */; };
-		E11454BA1DC894EC002122DA /* ShiftOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11454B91DC894EC002122DA /* ShiftOperations.swift */; };
 		E114A63C1E057DA500A34669 /* MerkleBlockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */; };
 		E1151F081F2B1C750040988A /* BitcoinPrefixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1151F071F2B1C750040988A /* BitcoinPrefixes.swift */; };
 		E1151F0A1F2B1CDA0040988A /* NetworkFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1151F091F2B1CDA0040988A /* NetworkFlag.swift */; };
@@ -49,13 +29,18 @@
 		E12247911E58AB4300E2DA02 /* TransactionInputScriptSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12247901E58AB4300E2DA02 /* TransactionInputScriptSignature.swift */; };
 		E12DAA371E935D6E000763C6 /* P2PKH_OutputScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12DAA361E935D6E000763C6 /* P2PKH_OutputScript.swift */; };
 		E12DAA391E935E92000763C6 /* P2SH_OutputScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12DAA381E935E92000763C6 /* P2SH_OutputScript.swift */; };
+		E13018B21F77A2FF00B9CA13 /* BigIntPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13018B11F77A2FF00B9CA13 /* BigIntPlus.swift */; };
 		E13C83A31DC5B70E004E35EE /* PeerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C83A21DC5B70E004E35EE /* PeerAddress.swift */; };
 		E13C83A51DC5B7B5004E35EE /* PeerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C83A41DC5B7B5004E35EE /* PeerServices.swift */; };
 		E14723DF1F3C402900A64C4A /* BlockChainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14723DE1F3C402900A64C4A /* BlockChainInfo.swift */; };
 		E14723E11F3C419500A64C4A /* BlockInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14723E01F3C419500A64C4A /* BlockInfo.swift */; };
-		E14723E31F3C43FE00A64C4A /* MatchingBlockHashInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14723E21F3C43FE00A64C4A /* MatchingBlockHashInfo.swift */; };
+		E14723E31F3C43FE00A64C4A /* MatchingTransactionHashInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14723E21F3C43FE00A64C4A /* MatchingTransactionHashInfo.swift */; };
 		E14723E51F3CA82A00A64C4A /* BlockDataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14723E41F3CA82A00A64C4A /* BlockDataStoreManager.swift */; };
 		E14723E71F3CA97200A64C4A /* StartingBlockParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14723E61F3CA97200A64C4A /* StartingBlockParameter.swift */; };
+		E14D20781F4C931400823FEF /* GetPeerAddressMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D20771F4C931400823FEF /* GetPeerAddressMessage.swift */; };
+		E14D207A1F4C950400823FEF /* PeerAddressMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D20791F4C950400823FEF /* PeerAddressMessage.swift */; };
+		E14D207C1F4C9D8600823FEF /* BitcoinTestnetNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D207B1F4C9D8600823FEF /* BitcoinTestnetNodes.swift */; };
+		E14D20801F4C9F8100823FEF /* NodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14D207F1F4C9F8100823FEF /* NodeInfo.swift */; };
 		E150E49A1DBA88720066B533 /* VarInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150E4991DBA88720066B533 /* VarInt.swift */; };
 		E150E49C1DBB97850066B533 /* VarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150E49B1DBB97850066B533 /* VarString.swift */; };
 		E15160321E1CEB0600D14267 /* RejectMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15160311E1CEB0600D14267 /* RejectMessage.swift */; };
@@ -89,6 +74,8 @@
 		E17431111DC8BE8B0002BBFD /* CFController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17431101DC8BE8B0002BBFD /* CFController.swift */; };
 		E175C1F81E8537EE00126D3F /* PartialMerkleTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E175C1F71E8537EE00126D3F /* PartialMerkleTree.swift */; };
 		E175C1FA1E8539E000126D3F /* MerkleTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E175C1F91E8539E000126D3F /* MerkleTreeNode.swift */; };
+		E17FD6611F55B19500043B99 /* PeerAddressDataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FD6601F55B19500043B99 /* PeerAddressDataStoreManager.swift */; };
+		E182084D1F6D309600B63AAF /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = E182084C1F6D309600B63AAF /* key.png */; };
 		E18D547F1E015441009D2715 /* GetBlocksMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D547E1E015441009D2715 /* GetBlocksMessage.swift */; };
 		E18D54811E0158DC009D2715 /* InventoryMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D54801E0158DC009D2715 /* InventoryMessage.swift */; };
 		E193B9761E5ACC0400777236 /* TransactionDataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */; };
@@ -111,7 +98,6 @@
 		E1AFC97D1DC88C1C0002419D /* SHA-256.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFC97C1DC88C1C0002419D /* SHA-256.swift */; };
 		E1BA98AD1DD1B72D00C1B17B /* HeadersMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BA98AC1DD1B72D00C1B17B /* HeadersMessage.swift */; };
 		E1BA98AF1DD1B7DC00C1B17B /* BlockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BA98AE1DD1B7DC00C1B17B /* BlockHeader.swift */; };
-		E1C7AD431DBA159F003C8A80 /* MessagePrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C7AD421DBA159F003C8A80 /* MessagePrinter.swift */; };
 		E1CE76D11DC34DD4006B6F6E /* NSMutableData+BitcoinEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CE76D01DC34DD4006B6F6E /* NSMutableData+BitcoinEncoding.swift */; };
 		E1D130CF1DBD01670028651C /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D130CE1DBD01670028651C /* MessageParser.swift */; };
 		E1D130D11DBD03940028651C /* NetworkMagicBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D130D01DBD03940028651C /* NetworkMagicBytes.swift */; };
@@ -135,7 +121,6 @@
 		E1E98D321F07DB1C009A8260 /* BIReceiveTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D311F07DB1C009A8260 /* BIReceiveTopView.swift */; };
 		E1E98D341F07DB57009A8260 /* BIQRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D331F07DB57009A8260 /* BIQRCodeGenerator.swift */; };
 		E1E98D361F07DB7D009A8260 /* BIAddressInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D351F07DB7D009A8260 /* BIAddressInputView.swift */; };
-		E1E98D381F07E521009A8260 /* settingsIcon_thicker.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E98D371F07E521009A8260 /* settingsIcon_thicker.png */; };
 		E1E98D3A1F07E7F2009A8260 /* BIQRCodeReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D391F07E7F2009A8260 /* BIQRCodeReadViewController.swift */; };
 		E1E98D3C1F07E822009A8260 /* BIPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D3B1F07E822009A8260 /* BIPayViewController.swift */; };
 		E1E98D3E1F07E9A5009A8260 /* BIQRCodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D3D1F07E9A5009A8260 /* BIQRCodeParser.swift */; };
@@ -189,28 +174,8 @@
 		E102D7CE1DB34ABB0078E4C4 /* CFConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFConnection.swift; sourceTree = "<group>"; };
 		E102D7D01DB34AC70078E4C4 /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
 		E1078AAC1E54AC39008AE18B /* Wif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wif.swift; sourceTree = "<group>"; };
-		E114548E1DC88F48002122DA /* BigDigit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigDigit.swift; sourceTree = "<group>"; };
-		E11454911DC88F66002122DA /* BigInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigInt.swift; sourceTree = "<group>"; };
-		E11454921DC88F66002122DA /* BigIntAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigIntAddition.swift; sourceTree = "<group>"; };
-		E11454931DC88F66002122DA /* BigUInt Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Addition.swift"; sourceTree = "<group>"; };
-		E11454941DC88F66002122DA /* BigUInt Bitwise Ops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Bitwise Ops.swift"; sourceTree = "<group>"; };
-		E11454951DC88F66002122DA /* BigUInt Comparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Comparison.swift"; sourceTree = "<group>"; };
-		E11454961DC88F66002122DA /* BigUInt Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Data.swift"; sourceTree = "<group>"; };
-		E11454971DC88F66002122DA /* BigUInt Division.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Division.swift"; sourceTree = "<group>"; };
-		E11454981DC88F66002122DA /* BigUInt Exponentiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Exponentiation.swift"; sourceTree = "<group>"; };
-		E11454991DC88F66002122DA /* BigUInt GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt GCD.swift"; sourceTree = "<group>"; };
-		E114549A1DC88F66002122DA /* BigUInt Hashing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Hashing.swift"; sourceTree = "<group>"; };
-		E114549B1DC88F66002122DA /* BigUInt Multiplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Multiplication.swift"; sourceTree = "<group>"; };
-		E114549C1DC88F66002122DA /* BigUInt Prime Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Prime Test.swift"; sourceTree = "<group>"; };
-		E114549D1DC88F66002122DA /* BigUInt Radix Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Radix Conversion.swift"; sourceTree = "<group>"; };
-		E114549E1DC88F66002122DA /* BigUInt Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Random.swift"; sourceTree = "<group>"; };
-		E114549F1DC88F66002122DA /* BigUInt Shifts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Shifts.swift"; sourceTree = "<group>"; };
-		E11454A01DC88F66002122DA /* BigUInt Square Root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Square Root.swift"; sourceTree = "<group>"; };
-		E11454A11DC88F66002122DA /* BigUInt Subtraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BigUInt Subtraction.swift"; sourceTree = "<group>"; };
-		E11454A21DC88F66002122DA /* BigUInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigUInt.swift; sourceTree = "<group>"; };
+		E109B83E1F6B7A5A00CF6126 /* BIWifDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIWifDisplayViewController.swift; sourceTree = "<group>"; };
 		E11454A31DC88F66002122DA /* BitcoinSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinSerializable.swift; sourceTree = "<group>"; };
-		E11454A41DC88F66002122DA /* Bitwise Hacks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bitwise Hacks.swift"; sourceTree = "<group>"; };
-		E11454B91DC894EC002122DA /* ShiftOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftOperations.swift; sourceTree = "<group>"; };
 		E114A63B1E057DA500A34669 /* MerkleBlockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerkleBlockMessage.swift; sourceTree = "<group>"; };
 		E1151F071F2B1C750040988A /* BitcoinPrefixes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinPrefixes.swift; sourceTree = "<group>"; };
 		E1151F091F2B1CDA0040988A /* NetworkFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlag.swift; sourceTree = "<group>"; };
@@ -219,13 +184,18 @@
 		E12247901E58AB4300E2DA02 /* TransactionInputScriptSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInputScriptSignature.swift; sourceTree = "<group>"; };
 		E12DAA361E935D6E000763C6 /* P2PKH_OutputScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2PKH_OutputScript.swift; sourceTree = "<group>"; };
 		E12DAA381E935E92000763C6 /* P2SH_OutputScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2SH_OutputScript.swift; sourceTree = "<group>"; };
+		E13018B11F77A2FF00B9CA13 /* BigIntPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigIntPlus.swift; sourceTree = "<group>"; };
 		E13C83A21DC5B70E004E35EE /* PeerAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerAddress.swift; sourceTree = "<group>"; };
 		E13C83A41DC5B7B5004E35EE /* PeerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerServices.swift; sourceTree = "<group>"; };
 		E14723DE1F3C402900A64C4A /* BlockChainInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockChainInfo.swift; sourceTree = "<group>"; };
 		E14723E01F3C419500A64C4A /* BlockInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockInfo.swift; sourceTree = "<group>"; };
-		E14723E21F3C43FE00A64C4A /* MatchingBlockHashInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingBlockHashInfo.swift; sourceTree = "<group>"; };
+		E14723E21F3C43FE00A64C4A /* MatchingTransactionHashInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingTransactionHashInfo.swift; sourceTree = "<group>"; };
 		E14723E41F3CA82A00A64C4A /* BlockDataStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDataStoreManager.swift; sourceTree = "<group>"; };
 		E14723E61F3CA97200A64C4A /* StartingBlockParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartingBlockParameter.swift; sourceTree = "<group>"; };
+		E14D20771F4C931400823FEF /* GetPeerAddressMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPeerAddressMessage.swift; sourceTree = "<group>"; };
+		E14D20791F4C950400823FEF /* PeerAddressMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerAddressMessage.swift; sourceTree = "<group>"; };
+		E14D207B1F4C9D8600823FEF /* BitcoinTestnetNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinTestnetNodes.swift; sourceTree = "<group>"; };
+		E14D207F1F4C9F8100823FEF /* NodeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
 		E150E4991DBA88720066B533 /* VarInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarInt.swift; sourceTree = "<group>"; };
 		E150E49B1DBB97850066B533 /* VarString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarString.swift; sourceTree = "<group>"; };
 		E15160311E1CEB0600D14267 /* RejectMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RejectMessage.swift; sourceTree = "<group>"; };
@@ -259,6 +229,8 @@
 		E17431101DC8BE8B0002BBFD /* CFController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFController.swift; sourceTree = "<group>"; };
 		E175C1F71E8537EE00126D3F /* PartialMerkleTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialMerkleTree.swift; sourceTree = "<group>"; };
 		E175C1F91E8539E000126D3F /* MerkleTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerkleTreeNode.swift; sourceTree = "<group>"; };
+		E17FD6601F55B19500043B99 /* PeerAddressDataStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerAddressDataStoreManager.swift; sourceTree = "<group>"; };
+		E182084C1F6D309600B63AAF /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
 		E18D547E1E015441009D2715 /* GetBlocksMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBlocksMessage.swift; sourceTree = "<group>"; };
 		E18D54801E0158DC009D2715 /* InventoryMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryMessage.swift; sourceTree = "<group>"; };
 		E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDataStoreManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -281,7 +253,6 @@
 		E1AFC97C1DC88C1C0002419D /* SHA-256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SHA-256.swift"; sourceTree = "<group>"; };
 		E1BA98AC1DD1B72D00C1B17B /* HeadersMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadersMessage.swift; sourceTree = "<group>"; };
 		E1BA98AE1DD1B7DC00C1B17B /* BlockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockHeader.swift; sourceTree = "<group>"; };
-		E1C7AD421DBA159F003C8A80 /* MessagePrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePrinter.swift; sourceTree = "<group>"; };
 		E1CE76D01DC34DD4006B6F6E /* NSMutableData+BitcoinEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableData+BitcoinEncoding.swift"; sourceTree = "<group>"; };
 		E1D130CE1DBD01670028651C /* MessageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
 		E1D130D01DBD03940028651C /* NetworkMagicBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMagicBytes.swift; sourceTree = "<group>"; };
@@ -305,7 +276,6 @@
 		E1E98D311F07DB1C009A8260 /* BIReceiveTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIReceiveTopView.swift; sourceTree = "<group>"; };
 		E1E98D331F07DB57009A8260 /* BIQRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIQRCodeGenerator.swift; sourceTree = "<group>"; };
 		E1E98D351F07DB7D009A8260 /* BIAddressInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIAddressInputView.swift; sourceTree = "<group>"; };
-		E1E98D371F07E521009A8260 /* settingsIcon_thicker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon_thicker.png; sourceTree = "<group>"; };
 		E1E98D391F07E7F2009A8260 /* BIQRCodeReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIQRCodeReadViewController.swift; sourceTree = "<group>"; };
 		E1E98D3B1F07E822009A8260 /* BIPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIPayViewController.swift; sourceTree = "<group>"; };
 		E1E98D3D1F07E9A5009A8260 /* BIQRCodeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIQRCodeParser.swift; sourceTree = "<group>"; };
@@ -395,8 +365,8 @@
 				E1151F071F2B1C750040988A /* BitcoinPrefixes.swift */,
 				E1151F091F2B1CDA0040988A /* NetworkFlag.swift */,
 				E14723E61F3CA97200A64C4A /* StartingBlockParameter.swift */,
+				E14D207B1F4C9D8600823FEF /* BitcoinTestnetNodes.swift */,
 				E102D7CB1DB260480078E4C4 /* ByteConverter.swift */,
-				E1C7AD421DBA159F003C8A80 /* MessagePrinter.swift */,
 				E1E98D1B1F07C6ED009A8260 /* UI */,
 				E193B97D1E5AD8D000777236 /* Local-DB */,
 				E1AACD271DF6618F005EC11C /* BloomFilter */,
@@ -448,6 +418,8 @@
 				E18D547E1E015441009D2715 /* GetBlocksMessage.swift */,
 				E16A499A1E01A9EA00BCF175 /* GetDataMessage.swift */,
 				E18D54801E0158DC009D2715 /* InventoryMessage.swift */,
+				E14D20771F4C931400823FEF /* GetPeerAddressMessage.swift */,
+				E14D20791F4C950400823FEF /* PeerAddressMessage.swift */,
 				E13C83A41DC5B7B5004E35EE /* PeerServices.swift */,
 				E13C83A21DC5B70E004E35EE /* PeerAddress.swift */,
 				E1D4EC361DC3474A00C15A89 /* IPAddress.swift */,
@@ -479,27 +451,7 @@
 		E11454901DC88F4E002122DA /* BigInt */ = {
 			isa = PBXGroup;
 			children = (
-				E11454B91DC894EC002122DA /* ShiftOperations.swift */,
-				E114548E1DC88F48002122DA /* BigDigit.swift */,
-				E11454911DC88F66002122DA /* BigInt.swift */,
-				E11454921DC88F66002122DA /* BigIntAddition.swift */,
-				E11454931DC88F66002122DA /* BigUInt Addition.swift */,
-				E11454941DC88F66002122DA /* BigUInt Bitwise Ops.swift */,
-				E11454951DC88F66002122DA /* BigUInt Comparison.swift */,
-				E11454961DC88F66002122DA /* BigUInt Data.swift */,
-				E11454971DC88F66002122DA /* BigUInt Division.swift */,
-				E11454981DC88F66002122DA /* BigUInt Exponentiation.swift */,
-				E11454991DC88F66002122DA /* BigUInt GCD.swift */,
-				E114549A1DC88F66002122DA /* BigUInt Hashing.swift */,
-				E114549B1DC88F66002122DA /* BigUInt Multiplication.swift */,
-				E114549C1DC88F66002122DA /* BigUInt Prime Test.swift */,
-				E114549D1DC88F66002122DA /* BigUInt Radix Conversion.swift */,
-				E114549E1DC88F66002122DA /* BigUInt Random.swift */,
-				E114549F1DC88F66002122DA /* BigUInt Shifts.swift */,
-				E11454A01DC88F66002122DA /* BigUInt Square Root.swift */,
-				E11454A11DC88F66002122DA /* BigUInt Subtraction.swift */,
-				E11454A21DC88F66002122DA /* BigUInt.swift */,
-				E11454A41DC88F66002122DA /* Bitwise Hacks.swift */,
+				E13018B11F77A2FF00B9CA13 /* BigIntPlus.swift */,
 			);
 			name = BigInt;
 			sourceTree = "<group>";
@@ -577,6 +529,7 @@
 				E1FA9E351E9E60DA00B73A74 /* TransactionDBConstructor.swift */,
 				E193B9751E5ACC0400777236 /* TransactionDataStoreManager.swift */,
 				E14723E41F3CA82A00A64C4A /* BlockDataStoreManager.swift */,
+				E17FD6601F55B19500043B99 /* PeerAddressDataStoreManager.swift */,
 				E1ECF0BC1EA71151007BC2E2 /* TransactionDetail.swift */,
 				E122478C1E56E26D00E2DA02 /* UserKeyInfo.swift */,
 				E193B9771E5ACE5100777236 /* TransactionInfo.swift */,
@@ -585,7 +538,8 @@
 				E122478E1E582E0500E2DA02 /* TransactionOutputInfo.swift */,
 				E14723DE1F3C402900A64C4A /* BlockChainInfo.swift */,
 				E14723E01F3C419500A64C4A /* BlockInfo.swift */,
-				E14723E21F3C43FE00A64C4A /* MatchingBlockHashInfo.swift */,
+				E14723E21F3C43FE00A64C4A /* MatchingTransactionHashInfo.swift */,
+				E14D207F1F4C9F8100823FEF /* NodeInfo.swift */,
 			);
 			name = "Local-DB";
 			sourceTree = "<group>";
@@ -614,9 +568,10 @@
 				E1E98D3D1F07E9A5009A8260 /* BIQRCodeParser.swift */,
 				E1E98D331F07DB57009A8260 /* BIQRCodeGenerator.swift */,
 				E1E98D351F07DB7D009A8260 /* BIAddressInputView.swift */,
+				E109B83E1F6B7A5A00CF6126 /* BIWifDisplayViewController.swift */,
 				E1E98D1E1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift */,
 				E1E98D2B1F07DA80009A8260 /* TransactionHistoryDisplayTableViewCell.swift */,
-				E1E98D371F07E521009A8260 /* settingsIcon_thicker.png */,
+				E182084C1F6D309600B63AAF /* key.png */,
 				E1E98D221F07D94F009A8260 /* Extentions */,
 			);
 			name = UI;
@@ -713,7 +668,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Yusuke Asai";
 				TargetAttributes = {
 					E102D7911DB1C4A00078E4C4 = {
@@ -759,9 +714,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E102D7A01DB1C4A00078E4C4 /* LaunchScreen.storyboard in Resources */,
-				E1E98D381F07E521009A8260 /* settingsIcon_thicker.png in Resources */,
 				E1AACD2F1DF6AA62005EC11C /* Secp256k1BasePointDoublings.plist in Resources */,
 				E102D79D1DB1C4A00078E4C4 /* Assets.xcassets in Resources */,
+				E182084D1F6D309600B63AAF /* key.png in Resources */,
 				E102D79B1DB1C4A00078E4C4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -926,21 +881,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E159FD641DED16D0005856FB /* ECKey.swift in Sources */,
-				E11454B81DC88F66002122DA /* Bitwise Hacks.swift in Sources */,
 				E1A92CF01E14FED500811E4C /* TransactionMessage.swift in Sources */,
-				E1C7AD431DBA159F003C8A80 /* MessagePrinter.swift in Sources */,
 				E159FD7F1DED30B0005856FB /* Hash160.swift in Sources */,
 				E159FD6D1DED1755005856FB /* RIPEMD.swift in Sources */,
 				E1D130D71DBD152D0028651C /* InputStreamExtension.swift in Sources */,
 				E1E98D241F07D961009A8260 /* UIButtonExtention.swift in Sources */,
+				E14D20801F4C9F8100823FEF /* NodeInfo.swift in Sources */,
 				E1E98D301F07DB01009A8260 /* BISendTopView.swift in Sources */,
 				E15160321E1CEB0600D14267 /* RejectMessage.swift in Sources */,
+				E14D207A1F4C950400823FEF /* PeerAddressMessage.swift in Sources */,
 				E102D7CC1DB260480078E4C4 /* ByteConverter.swift in Sources */,
 				E1D130D91DBDB6050028651C /* Endianness.swift in Sources */,
 				E16A499B1E01A9EA00BCF175 /* GetDataMessage.swift in Sources */,
 				E14723E51F3CA82A00A64C4A /* BlockDataStoreManager.swift in Sources */,
 				E1E98D3E1F07E9A5009A8260 /* BIQRCodeParser.swift in Sources */,
-				E11454AD1DC88F66002122DA /* BigUInt GCD.swift in Sources */,
 				E1AACD391DF87A04005EC11C /* BitcoinTestnet.swift in Sources */,
 				E160A3241DFFA69300915C94 /* TransactionLockTime.swift in Sources */,
 				E12DAA371E935D6E000763C6 /* P2PKH_OutputScript.swift in Sources */,
@@ -948,12 +902,12 @@
 				E159FD781DED1802005856FB /* CoinKey.swift in Sources */,
 				E102D7981DB1C4A00078E4C4 /* ViewController.swift in Sources */,
 				E1A819EC1DFDA5B700219B10 /* InventoryVector.swift in Sources */,
-				E11454BA1DC894EC002122DA /* ShiftOperations.swift in Sources */,
+				E109B83F1F6B7A5A00CF6126 /* BIWifDisplayViewController.swift in Sources */,
 				E1A9F22A1DCF011900D373B3 /* SHA256Hash.swift in Sources */,
 				E114A63C1E057DA500A34669 /* MerkleBlockMessage.swift in Sources */,
-				E11454B51DC88F66002122DA /* BigUInt Subtraction.swift in Sources */,
 				E1AACD291DF661A1005EC11C /* Murmurhash3.swift in Sources */,
 				E18D54811E0158DC009D2715 /* InventoryMessage.swift in Sources */,
+				E14D20781F4C931400823FEF /* GetPeerAddressMessage.swift in Sources */,
 				E1AACD2B1DF661A6005EC11C /* BloomFilter.swift in Sources */,
 				E11454B71DC88F66002122DA /* BitcoinSerializable.swift in Sources */,
 				E1D4EC371DC3474A00C15A89 /* IPAddress.swift in Sources */,
@@ -967,20 +921,15 @@
 				E1FA9E361E9E60DA00B73A74 /* TransactionDBConstructor.swift in Sources */,
 				E1E98D211F07D923009A8260 /* UIColorExtention.swift in Sources */,
 				E159FD731DED1766005856FB /* UInt32+CircularShift.swift in Sources */,
-				E11454A71DC88F66002122DA /* BigUInt Addition.swift in Sources */,
-				E11454AB1DC88F66002122DA /* BigUInt Division.swift in Sources */,
 				E1E98D1F1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift in Sources */,
 				E17431111DC8BE8B0002BBFD /* CFController.swift in Sources */,
 				E159FD6A1DED16DF005856FB /* ECPoint.swift in Sources */,
 				E155896E1E95E551008B3F36 /* InputScriptSigType.swift in Sources */,
 				E159FD611DED1623005856FB /* FiniteFieldInteger.swift in Sources */,
-				E11454A91DC88F66002122DA /* BigUInt Comparison.swift in Sources */,
 				E1E98D281F07DA03009A8260 /* BITopStatusView.swift in Sources */,
-				E11454B61DC88F66002122DA /* BigUInt.swift in Sources */,
 				E193B97A1E5ACF1500777236 /* TransactionInputInfo.swift in Sources */,
 				E150E49A1DBA88720066B533 /* VarInt.swift in Sources */,
 				E160A3201DFFA26100915C94 /* TransactionOutput.swift in Sources */,
-				E11454B41DC88F66002122DA /* BigUInt Square Root.swift in Sources */,
 				E1151F081F2B1C750040988A /* BitcoinPrefixes.swift in Sources */,
 				E1D130D31DBD0B280028651C /* MessageHeader.swift in Sources */,
 				E159FD5F1DED161E005856FB /* FiniteField.swift in Sources */,
@@ -992,13 +941,11 @@
 				E193B9781E5ACE5100777236 /* TransactionInfo.swift in Sources */,
 				E1BA98AF1DD1B7DC00C1B17B /* BlockHeader.swift in Sources */,
 				E1E98D3C1F07E822009A8260 /* BIPayViewController.swift in Sources */,
-				E11454AC1DC88F66002122DA /* BigUInt Exponentiation.swift in Sources */,
 				E159FD711DED175E005856FB /* RIPEMD+Block.swift in Sources */,
 				E12DAA391E935E92000763C6 /* P2SH_OutputScript.swift in Sources */,
 				E160A31E1DFFA08400915C94 /* TransactionOutPoint.swift in Sources */,
 				E1AFC97D1DC88C1C0002419D /* SHA-256.swift in Sources */,
 				E15723341E0E13EE00BB2523 /* OutputScript.swift in Sources */,
-				E11454B01DC88F66002122DA /* BigUInt Prime Test.swift in Sources */,
 				E1D130D11DBD03940028651C /* NetworkMagicBytes.swift in Sources */,
 				E175C1FA1E8539E000126D3F /* MerkleTreeNode.swift in Sources */,
 				E160A3221DFFA43100915C94 /* TransactionInput.swift in Sources */,
@@ -1008,18 +955,17 @@
 				E1E98D321F07DB1C009A8260 /* BIReceiveTopView.swift in Sources */,
 				E155896C1E95E4E5008B3F36 /* InputScriptSig.swift in Sources */,
 				E193B97C1E5AD27200777236 /* TransactionOutPointInfo.swift in Sources */,
+				E14D207C1F4C9D8600823FEF /* BitcoinTestnetNodes.swift in Sources */,
 				E1E98D2C1F07DA80009A8260 /* TransactionHistoryDisplayTableViewCell.swift in Sources */,
 				E1E98D1D1F07D86C009A8260 /* BITransactionDetailViewController.swift in Sources */,
 				E102D7961DB1C4A00078E4C4 /* AppDelegate.swift in Sources */,
-				E11454AF1DC88F66002122DA /* BigUInt Multiplication.swift in Sources */,
-				E11454B21DC88F66002122DA /* BigUInt Random.swift in Sources */,
 				E122478D1E56E26D00E2DA02 /* UserKeyInfo.swift in Sources */,
-				E11454B11DC88F66002122DA /* BigUInt Radix Conversion.swift in Sources */,
 				E12247911E58AB4300E2DA02 /* TransactionInputScriptSignature.swift in Sources */,
 				E1D4EC351DC33FDA00C15A89 /* VersionMessage.swift in Sources */,
+				E13018B21F77A2FF00B9CA13 /* BigIntPlus.swift in Sources */,
 				E1ECF0BD1EA71151007BC2E2 /* TransactionDetail.swift in Sources */,
 				E14723E71F3CA97200A64C4A /* StartingBlockParameter.swift in Sources */,
-				E14723E31F3C43FE00A64C4A /* MatchingBlockHashInfo.swift in Sources */,
+				E14723E31F3C43FE00A64C4A /* MatchingTransactionHashInfo.swift in Sources */,
 				E150E49C1DBB97850066B533 /* VarString.swift in Sources */,
 				E159FD6F1DED175A005856FB /* NSData+HexString.swift in Sources */,
 				E1E98D3A1F07E7F2009A8260 /* BIQRCodeReadViewController.swift in Sources */,
@@ -1032,22 +978,16 @@
 				E1E98D2E1F07DABA009A8260 /* BISettingsTopView.swift in Sources */,
 				E15723361E0E1ADC00BB2523 /* RIPEMD160Hash.swift in Sources */,
 				E102D7D11DB34AC70078E4C4 /* Thread.swift in Sources */,
-				E11454AE1DC88F66002122DA /* BigUInt Hashing.swift in Sources */,
 				E1151F0A1F2B1CDA0040988A /* NetworkFlag.swift in Sources */,
 				E122478F1E582E0500E2DA02 /* TransactionOutputInfo.swift in Sources */,
 				E18D547F1E015441009D2715 /* GetBlocksMessage.swift in Sources */,
 				E1E98D261F07D9DD009A8260 /* BIScrollView.swift in Sources */,
-				E11454A61DC88F66002122DA /* BigIntAddition.swift in Sources */,
-				E11454A81DC88F66002122DA /* BigUInt Bitwise Ops.swift in Sources */,
 				E1BA98AD1DD1B72D00C1B17B /* HeadersMessage.swift in Sources */,
 				E1A92CEC1E14E27100811E4C /* OPCode.swift in Sources */,
-				E11454B31DC88F66002122DA /* BigUInt Shifts.swift in Sources */,
 				E1A9F2281DCF006500D373B3 /* GetHeadersMessage.swift in Sources */,
-				E11454AA1DC88F66002122DA /* BigUInt Data.swift in Sources */,
-				E11454A51DC88F66002122DA /* BigInt.swift in Sources */,
-				E114548F1DC88F48002122DA /* BigDigit.swift in Sources */,
 				E14723DF1F3C402900A64C4A /* BlockChainInfo.swift in Sources */,
 				E1078AAD1E54AC39008AE18B /* Wif.swift in Sources */,
+				E17FD6611F55B19500043B99 /* PeerAddressDataStoreManager.swift in Sources */,
 				E159FD7D1DED1A55005856FB /* Hash256.swift in Sources */,
 				E1D130D51DBD0CB70028651C /* Message.swift in Sources */,
 				E1AFC97B1DC887250002419D /* VersionAckMessage.swift in Sources */,
@@ -1114,7 +1054,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1122,7 +1064,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1165,7 +1111,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1173,7 +1121,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1212,7 +1164,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.SwiftBitcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1228,7 +1180,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.SwiftBitcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

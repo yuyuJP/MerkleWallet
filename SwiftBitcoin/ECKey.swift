@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BigInt
 
 public class ECKey {
     public let privateKey: BigUInt

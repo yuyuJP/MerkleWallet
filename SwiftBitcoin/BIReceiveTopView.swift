@@ -69,7 +69,7 @@ class BIReceiveTopView: UIView {
 
     }
     
-    func addressLabelTapped(_ gestureRecognizer: UITapGestureRecognizer) {
+    @objc func addressLabelTapped(_ gestureRecognizer: UITapGestureRecognizer) {
         delegate?.addressLabelTapped()
     }
     

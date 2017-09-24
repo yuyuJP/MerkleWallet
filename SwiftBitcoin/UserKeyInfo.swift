@@ -12,12 +12,12 @@ import RealmSwift
 class UserKeyInfo: Object {
     static let realm = try! Realm()
     
-    dynamic private var id = 0
-    dynamic var privateKey = ""
-    dynamic var uncompressedPublicKey = ""
-    dynamic var compressedPublicKey = ""
-    dynamic var publicKeyHash = ""
-    dynamic var isCompressedPublicKey: Bool = false
+    @objc dynamic private var id = 0
+    @objc dynamic var privateKey = ""
+    @objc dynamic var uncompressedPublicKey = ""
+    @objc dynamic var compressedPublicKey = ""
+    @objc dynamic var publicKeyHash = ""
+    @objc dynamic var isCompressedPublicKey: Bool = false
     
     var UTXOs = List<TransactionOutputInfo>()
     

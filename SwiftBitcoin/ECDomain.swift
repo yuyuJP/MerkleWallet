@@ -6,6 +6,8 @@
 //  Copyright © 2016年 Yusuke Asai. All rights reserved.
 //
 
+import BigInt
+
 public enum EllipticCurveDomain {
     case Secp256k1
     

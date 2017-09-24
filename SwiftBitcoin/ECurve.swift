@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BigInt
 
 public struct ECurve {
     public let domain: EllipticCurveDomain?

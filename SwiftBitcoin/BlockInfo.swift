@@ -12,13 +12,13 @@ import RealmSwift
 public class BlockInfo: Object {
     static let realm = try! Realm()
     
-    dynamic var blockHash = ""
-    dynamic var previousBlockHash = ""
+    @objc dynamic var blockHash = ""
+    @objc dynamic var previousBlockHash = ""
     
     //Height ZERO means the value is not properly set yet.
-    dynamic var height = 0
+    @objc dynamic var height = 0
     
-    dynamic var timestamp = NSDate()
+    @objc dynamic var timestamp = NSDate()
 
     var matchingTxs = List<MatchingTransactionHashInfo>()
     

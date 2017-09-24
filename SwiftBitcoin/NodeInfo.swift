@@ -12,9 +12,9 @@ import RealmSwift
 public class NodeInfo: Object {
     static let realm = try! Realm()
     
-    dynamic var node = ""
+    @objc dynamic var node = ""
     //Port ZERO means the value is not properly set yet.
-    dynamic var port = 0
+    @objc dynamic var port = 0
     
     public static func create(_ node: String, _ port: Int) -> NodeInfo {
         let nodeInfo = NodeInfo()

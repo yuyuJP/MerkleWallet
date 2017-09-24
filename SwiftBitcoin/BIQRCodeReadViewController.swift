@@ -15,7 +15,7 @@ public protocol BIQRCodeReadViewControllerDelegate {
 
 class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BIPayViewControllerDelegate {
     
-    private let videoCaptureDevice: AVCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+    private let videoCaptureDevice: AVCaptureDevice = AVCaptureDevice.default(for: AVMediaType.video)!
     private let output = AVCaptureMetadataOutput()
     
     private var previewLayer: AVCaptureVideoPreviewLayer?
@@ -34,8 +34,8 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == AVAuthorizationStatus.notDetermined {
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (videoGranted: Bool) -> Void in
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == AVAuthorizationStatus.notDetermined {
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (videoGranted: Bool) -> Void in
                 
                 if (videoGranted) {
                     DispatchQueue.main.async {
@@ -52,17 +52,17 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
         
         let input = try? AVCaptureDeviceInput(device: videoCaptureDevice)
         
-        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         
         if status == .authorized {
             
-            if self.captureSession!.canAddInput(input) {
-                self.captureSession!.addInput(input)
+            if self.captureSession!.canAddInput(input!) {
+                self.captureSession!.addInput(input!)
             }
-            self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
             
             if let videoPreviewLayer = self.previewLayer {
-                videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
                 videoPreviewLayer.frame = self.cameraView.bounds
                 
                 self.cameraView.layer.addSublayer(videoPreviewLayer)
@@ -74,7 +74,7 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
                 self.captureSession!.addOutput(metaDataOutput)
                 
                 metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-                metaDataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+                metaDataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
             } else {
                 print("Could not add metadata output")
             }

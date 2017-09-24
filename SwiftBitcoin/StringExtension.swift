@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BigInt
 
 private let ALPHABET : String = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 

@@ -10,8 +10,8 @@ import Foundation
 import RealmSwift
 
 class TransactionOutPointInfo: Object {
-    dynamic var txHash = ""
-    dynamic var index: Int = 0
+    @objc dynamic var txHash = ""
+    @objc dynamic var index: Int = 0
     let inputs = LinkingObjects(fromType: TransactionInputInfo.self, property: "outPoint")
     var inverse_input: TransactionInputInfo? { return inputs.first }
     

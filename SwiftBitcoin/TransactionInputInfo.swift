@@ -10,10 +10,10 @@ import Foundation
 import RealmSwift
 
 class TransactionInputInfo: Object {
-    dynamic var outPoint : TransactionOutPointInfo?
+    @objc dynamic var outPoint : TransactionOutPointInfo?
     //dynamic var pubKey = ""
-    dynamic var hash160 = ""
-    dynamic var type = ""
+    @objc dynamic var hash160 = ""
+    @objc dynamic var type = ""
     
     private let txs = LinkingObjects(fromType: TransactionInfo.self, property: "inputs")
     var inverse_tx: TransactionInfo? { return txs.first }

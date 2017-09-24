@@ -15,7 +15,7 @@ public class TransactionInfo: Object {
     var inputs = List<TransactionInputInfo>()
     var outputs = List<TransactionOutputInfo>()
     
-    dynamic var txHash = ""
+    @objc dynamic var txHash = ""
     
     public var fee: Int64? {
         

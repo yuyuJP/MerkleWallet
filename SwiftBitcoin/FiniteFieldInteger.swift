@@ -6,6 +6,8 @@
 //  Copyright © 2016年 Yusuke Asai. All rights reserved.
 //
 
+import BigInt
+
 precedencegroup MultiplicationPrecedence {
     associativity: left
     higherThan: AdditionPrecedence

@@ -48,7 +48,7 @@ class BISettingsTopView: UIView {
         self.addSubview(settingsBtn)
     }
     
-    func settingsButtonTapped() {
+    @objc func settingsButtonTapped() {
         delegate?.showPrivateKeyButtonTapped()
     }
 }
