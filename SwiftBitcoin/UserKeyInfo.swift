@@ -54,7 +54,7 @@ class UserKeyInfo: Object {
     }
     
     public static func loadAll() -> [UserKeyInfo] {
-        let userKeyInfos = realm.objects(UserKeyInfo.self).sorted(byProperty: "id")
+        let userKeyInfos = realm.objects(UserKeyInfo.self).sorted(byKeyPath: "id")
         var ret: [UserKeyInfo] = []
         for userKeyInfo in userKeyInfos {
             ret.append(userKeyInfo)

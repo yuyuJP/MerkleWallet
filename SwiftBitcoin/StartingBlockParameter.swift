@@ -23,3 +23,14 @@ var latestBlockHeight: Int {
     let blockChainInfo = BlockChainInfo.loadItem()!
     return blockChainInfo.lastBlockHeight
 }
+
+
+var firstCreatedBlock: SHA256Hash {
+    
+    if isBitcoinMainNet {
+        return SHA256Hash("00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048".hexStringToNSData())
+    } else {
+        return SHA256Hash("00000000b873e79784647a6c82962c70d228557d24a747ea4d1b8bbe878e1206".hexStringToNSData())
+    }
+
+}

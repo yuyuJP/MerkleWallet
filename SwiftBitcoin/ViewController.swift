@@ -34,7 +34,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         super.viewDidLoad()
         
         if let userKey = UserKeyInfo.loadAll().first {
-        
+            
             key = BitcoinTestnet(privateKeyHex: userKey.privateKey, publicKeyHex: userKey.uncompressedPublicKey)
             
         } else {
@@ -44,8 +44,8 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
             newUserKeyInfo.save()
         }
         
-        if let _ = BlockChainInfo.loadItem() {
-            //print("blk chain info: \(blkChainInfo)")
+        if let blkChainInfo = BlockChainInfo.loadItem() {
+            print("blk chain info: \(blkChainInfo)")
         } else {
             let blkInfo = BlockInfo.createGenesis(startingBlockHash, with: startingBlockHeight)
             blkInfo.save()
@@ -54,6 +54,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         bloomFilterSet(publicKeyHex: key.publicKeyHexString, publicKeyHashHex: key.publicKeyHashHex)
         
         establishConnection()
+
 
         self.view.backgroundColor = UIColor.backgroundWhite()
         pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
@@ -200,6 +201,10 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     func newTransactionReceived() {
         //self.txHistoryView.reloadTxHistoryView()
         self.transactionAdded = true
+        
+        if con.blockSyncCompleted {
+            self.txHistoryView.reloadTxHistoryView()
+        }
     }
     
     func transactionSendRejected(message: String) {

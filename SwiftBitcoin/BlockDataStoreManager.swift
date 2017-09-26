@@ -17,7 +17,7 @@ public class BlockDataStoreManager {
         
         if blockInfo.height > latestBlockHeight {
             let blockChainInfo = BlockChainInfo.loadItem()!
-            blockInfo.update {
+            blockChainInfo.update {
                 blockChainInfo.lastBlockHash = blockInfo.blockHash
                 blockChainInfo.lastBlockHeight = blockInfo.height
             }

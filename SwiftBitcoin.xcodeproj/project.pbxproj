@@ -7,14 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		731AAAE0AD306BC250274C85 /* Pods_SwiftBitcoinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2661DDB47F76D7C52E105FEB /* Pods_SwiftBitcoinTests.framework */; };
 		E102D7961DB1C4A00078E4C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7951DB1C4A00078E4C4 /* AppDelegate.swift */; };
 		E102D7981DB1C4A00078E4C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7971DB1C4A00078E4C4 /* ViewController.swift */; };
 		E102D79B1DB1C4A00078E4C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E102D7991DB1C4A00078E4C4 /* Main.storyboard */; };
 		E102D79D1DB1C4A00078E4C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E102D79C1DB1C4A00078E4C4 /* Assets.xcassets */; };
 		E102D7A01DB1C4A00078E4C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E102D79E1DB1C4A00078E4C4 /* LaunchScreen.storyboard */; };
-		E102D7AB1DB1C4A00078E4C4 /* TCPClientTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7AA1DB1C4A00078E4C4 /* TCPClientTestTests.swift */; };
-		E102D7B61DB1C4A00078E4C4 /* TCPClientTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7B51DB1C4A00078E4C4 /* TCPClientTestUITests.swift */; };
 		E102D7CC1DB260480078E4C4 /* ByteConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7CB1DB260480078E4C4 /* ByteConverter.swift */; };
 		E102D7CF1DB34ABB0078E4C4 /* CFConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7CE1DB34ABB0078E4C4 /* CFConnection.swift */; };
 		E102D7D11DB34AC70078E4C4 /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7D01DB34AC70078E4C4 /* Thread.swift */; };
@@ -107,6 +104,7 @@
 		E1D130D91DBDB6050028651C /* Endianness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D130D81DBDB6050028651C /* Endianness.swift */; };
 		E1D4EC351DC33FDA00C15A89 /* VersionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4EC341DC33FDA00C15A89 /* VersionMessage.swift */; };
 		E1D4EC371DC3474A00C15A89 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4EC361DC3474A00C15A89 /* IPAddress.swift */; };
+		E1E70FB01F77E41300751FBC /* SwiftBitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E70FAF1F77E41300751FBC /* SwiftBitcoinTests.swift */; };
 		E1E8F0241E9350D700119EDB /* OutputScriptType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8F0231E9350D700119EDB /* OutputScriptType.swift */; };
 		E1E98D1D1F07D86C009A8260 /* BITransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D1C1F07D86C009A8260 /* BITransactionDetailViewController.swift */; };
 		E1E98D1F1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D1E1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift */; };
@@ -127,23 +125,15 @@
 		E1ECF0BD1EA71151007BC2E2 /* TransactionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ECF0BC1EA71151007BC2E2 /* TransactionDetail.swift */; };
 		E1FA9E361E9E60DA00B73A74 /* TransactionDBConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA9E351E9E60DA00B73A74 /* TransactionDBConstructor.swift */; };
 		EC13FC0411979E52CCD3B801 /* Pods_SwiftBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E039D25D00BBFEB3901F0A /* Pods_SwiftBitcoin.framework */; };
-		F2DBFCDE21FDFF9624D4590E /* Pods_SwiftBitcoinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC88D0FA2427FCEBC1FD012B /* Pods_SwiftBitcoinUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E102D7A71DB1C4A00078E4C4 /* PBXContainerItemProxy */ = {
+		E1E70FB21F77E41300751FBC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E102D78A1DB1C4A00078E4C4 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E102D7911DB1C4A00078E4C4;
-			remoteInfo = TCPClientTest;
-		};
-		E102D7B21DB1C4A00078E4C4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E102D78A1DB1C4A00078E4C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E102D7911DB1C4A00078E4C4;
-			remoteInfo = TCPClientTest;
+			remoteInfo = SwiftBitcoin;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -163,12 +153,6 @@
 		E102D79C1DB1C4A00078E4C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E102D79F1DB1C4A00078E4C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E102D7A11DB1C4A00078E4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E102D7A61DB1C4A00078E4C4 /* SwiftBitcoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBitcoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E102D7AA1DB1C4A00078E4C4 /* TCPClientTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPClientTestTests.swift; sourceTree = "<group>"; };
-		E102D7AC1DB1C4A00078E4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E102D7B11DB1C4A00078E4C4 /* SwiftBitcoinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBitcoinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E102D7B51DB1C4A00078E4C4 /* TCPClientTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPClientTestUITests.swift; sourceTree = "<group>"; };
-		E102D7B71DB1C4A00078E4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E102D7C71DB203040078E4C4 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E102D7CB1DB260480078E4C4 /* ByteConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByteConverter.swift; sourceTree = "<group>"; };
 		E102D7CE1DB34ABB0078E4C4 /* CFConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFConnection.swift; sourceTree = "<group>"; };
@@ -262,6 +246,9 @@
 		E1D130D81DBDB6050028651C /* Endianness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endianness.swift; sourceTree = "<group>"; };
 		E1D4EC341DC33FDA00C15A89 /* VersionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionMessage.swift; sourceTree = "<group>"; };
 		E1D4EC361DC3474A00C15A89 /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
+		E1E70FAD1F77E41300751FBC /* SwiftBitcoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBitcoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1E70FAF1F77E41300751FBC /* SwiftBitcoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBitcoinTests.swift; sourceTree = "<group>"; };
+		E1E70FB11F77E41300751FBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E8F0231E9350D700119EDB /* OutputScriptType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputScriptType.swift; sourceTree = "<group>"; };
 		E1E98D1C1F07D86C009A8260 /* BITransactionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BITransactionDetailViewController.swift; sourceTree = "<group>"; };
 		E1E98D1E1F07D8F7009A8260 /* TransactionDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -293,19 +280,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E102D7A31DB1C4A00078E4C4 /* Frameworks */ = {
+		E1E70FAA1F77E41300751FBC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				731AAAE0AD306BC250274C85 /* Pods_SwiftBitcoinTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E102D7AE1DB1C4A00078E4C4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F2DBFCDE21FDFF9624D4590E /* Pods_SwiftBitcoinUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,8 +308,7 @@
 			children = (
 				E102D7C71DB203040078E4C4 /* Bridging-Header.h */,
 				E102D7941DB1C4A00078E4C4 /* SwiftBitcoin */,
-				E102D7A91DB1C4A00078E4C4 /* SwiftBitcoinTests */,
-				E102D7B41DB1C4A00078E4C4 /* SwiftBitcoinUITests */,
+				E1E70FAE1F77E41300751FBC /* SwiftBitcoinTests */,
 				E102D7931DB1C4A00078E4C4 /* Products */,
 				8F90CEF7CC5D0AFA932FC134 /* Pods */,
 				FDC57348E39749F15B3D1CF6 /* Frameworks */,
@@ -342,8 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				E102D7921DB1C4A00078E4C4 /* SwiftBitcoin.app */,
-				E102D7A61DB1C4A00078E4C4 /* SwiftBitcoinTests.xctest */,
-				E102D7B11DB1C4A00078E4C4 /* SwiftBitcoinUITests.xctest */,
+				E1E70FAD1F77E41300751FBC /* SwiftBitcoinTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -379,24 +355,6 @@
 				E1AACD2E1DF6AA62005EC11C /* Secp256k1BasePointDoublings.plist */,
 			);
 			path = SwiftBitcoin;
-			sourceTree = "<group>";
-		};
-		E102D7A91DB1C4A00078E4C4 /* SwiftBitcoinTests */ = {
-			isa = PBXGroup;
-			children = (
-				E102D7AA1DB1C4A00078E4C4 /* TCPClientTestTests.swift */,
-				E102D7AC1DB1C4A00078E4C4 /* Info.plist */,
-			);
-			path = SwiftBitcoinTests;
-			sourceTree = "<group>";
-		};
-		E102D7B41DB1C4A00078E4C4 /* SwiftBitcoinUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E102D7B51DB1C4A00078E4C4 /* TCPClientTestUITests.swift */,
-				E102D7B71DB1C4A00078E4C4 /* Info.plist */,
-			);
-			path = SwiftBitcoinUITests;
 			sourceTree = "<group>";
 		};
 		E10BDB3E1DC9DA6400220665 /* Messages */ = {
@@ -553,6 +511,15 @@
 			name = BloomFilter;
 			sourceTree = "<group>";
 		};
+		E1E70FAE1F77E41300751FBC /* SwiftBitcoinTests */ = {
+			isa = PBXGroup;
+			children = (
+				E1E70FAF1F77E41300751FBC /* SwiftBitcoinTests.swift */,
+				E1E70FB11F77E41300751FBC /* Info.plist */,
+			);
+			path = SwiftBitcoinTests;
+			sourceTree = "<group>";
+		};
 		E1E98D1B1F07C6ED009A8260 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,47 +586,23 @@
 			productReference = E102D7921DB1C4A00078E4C4 /* SwiftBitcoin.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E102D7A51DB1C4A00078E4C4 /* SwiftBitcoinTests */ = {
+		E1E70FAC1F77E41300751FBC /* SwiftBitcoinTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E102D7BD1DB1C4A00078E4C4 /* Build configuration list for PBXNativeTarget "SwiftBitcoinTests" */;
+			buildConfigurationList = E1E70FB41F77E41300751FBC /* Build configuration list for PBXNativeTarget "SwiftBitcoinTests" */;
 			buildPhases = (
-				82B2B94AEE60BD563C5A41F7 /* [CP] Check Pods Manifest.lock */,
-				E102D7A21DB1C4A00078E4C4 /* Sources */,
-				E102D7A31DB1C4A00078E4C4 /* Frameworks */,
-				E102D7A41DB1C4A00078E4C4 /* Resources */,
-				3E62B98476B608DC6630FBF2 /* [CP] Embed Pods Frameworks */,
-				D2C67A120F3B8E3DB3CC6581 /* [CP] Copy Pods Resources */,
+				E1E70FA91F77E41300751FBC /* Sources */,
+				E1E70FAA1F77E41300751FBC /* Frameworks */,
+				E1E70FAB1F77E41300751FBC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E102D7A81DB1C4A00078E4C4 /* PBXTargetDependency */,
+				E1E70FB31F77E41300751FBC /* PBXTargetDependency */,
 			);
 			name = SwiftBitcoinTests;
-			productName = TCPClientTestTests;
-			productReference = E102D7A61DB1C4A00078E4C4 /* SwiftBitcoinTests.xctest */;
+			productName = SwiftBitcoinTests;
+			productReference = E1E70FAD1F77E41300751FBC /* SwiftBitcoinTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		E102D7B01DB1C4A00078E4C4 /* SwiftBitcoinUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E102D7C01DB1C4A00078E4C4 /* Build configuration list for PBXNativeTarget "SwiftBitcoinUITests" */;
-			buildPhases = (
-				B75262111AF0298757320083 /* [CP] Check Pods Manifest.lock */,
-				E102D7AD1DB1C4A00078E4C4 /* Sources */,
-				E102D7AE1DB1C4A00078E4C4 /* Frameworks */,
-				E102D7AF1DB1C4A00078E4C4 /* Resources */,
-				A3364007B336CC7B1D945CDE /* [CP] Embed Pods Frameworks */,
-				193A2E3D1AE0633CDE9A785B /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E102D7B31DB1C4A00078E4C4 /* PBXTargetDependency */,
-			);
-			name = SwiftBitcoinUITests;
-			productName = TCPClientTestUITests;
-			productReference = E102D7B11DB1C4A00078E4C4 /* SwiftBitcoinUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -667,7 +610,7 @@
 		E102D78A1DB1C4A00078E4C4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Yusuke Asai";
 				TargetAttributes = {
@@ -676,13 +619,9 @@
 						DevelopmentTeam = CE5KUY3N33;
 						ProvisioningStyle = Automatic;
 					};
-					E102D7A51DB1C4A00078E4C4 = {
-						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
-						TestTargetID = E102D7911DB1C4A00078E4C4;
-					};
-					E102D7B01DB1C4A00078E4C4 = {
-						CreatedOnToolsVersion = 8.0;
+					E1E70FAC1F77E41300751FBC = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = CE5KUY3N33;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E102D7911DB1C4A00078E4C4;
 					};
@@ -702,8 +641,7 @@
 			projectRoot = "";
 			targets = (
 				E102D7911DB1C4A00078E4C4 /* SwiftBitcoin */,
-				E102D7A51DB1C4A00078E4C4 /* SwiftBitcoinTests */,
-				E102D7B01DB1C4A00078E4C4 /* SwiftBitcoinUITests */,
+				E1E70FAC1F77E41300751FBC /* SwiftBitcoinTests */,
 			);
 		};
 /* End PBXProject section */
@@ -721,14 +659,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E102D7A41DB1C4A00078E4C4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E102D7AF1DB1C4A00078E4C4 /* Resources */ = {
+		E1E70FAB1F77E41300751FBC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -738,52 +669,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		193A2E3D1AE0633CDE9A785B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBitcoinUITests/Pods-SwiftBitcoinUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3E62B98476B608DC6630FBF2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBitcoinTests/Pods-SwiftBitcoinTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		764B00265D363B690D549E17 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		82B2B94AEE60BD563C5A41F7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -813,36 +699,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBitcoin/Pods-SwiftBitcoin-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A3364007B336CC7B1D945CDE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBitcoinUITests/Pods-SwiftBitcoinUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B75262111AF0298757320083 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		C1869B0E8C68D32460D92B9E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -856,21 +712,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBitcoin/Pods-SwiftBitcoin-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D2C67A120F3B8E3DB3CC6581 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBitcoinTests/Pods-SwiftBitcoinTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -994,34 +835,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E102D7A21DB1C4A00078E4C4 /* Sources */ = {
+		E1E70FA91F77E41300751FBC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E102D7AB1DB1C4A00078E4C4 /* TCPClientTestTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E102D7AD1DB1C4A00078E4C4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E102D7B61DB1C4A00078E4C4 /* TCPClientTestUITests.swift in Sources */,
+				E1E70FB01F77E41300751FBC /* SwiftBitcoinTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E102D7A81DB1C4A00078E4C4 /* PBXTargetDependency */ = {
+		E1E70FB31F77E41300751FBC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E102D7911DB1C4A00078E4C4 /* SwiftBitcoin */;
-			targetProxy = E102D7A71DB1C4A00078E4C4 /* PBXContainerItemProxy */;
-		};
-		E102D7B31DB1C4A00078E4C4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E102D7911DB1C4A00078E4C4 /* SwiftBitcoin */;
-			targetProxy = E102D7B21DB1C4A00078E4C4 /* PBXContainerItemProxy */;
+			targetProxy = E1E70FB21F77E41300751FBC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1159,12 +987,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CE5KUY3N33;
 				INFOPLIST_FILE = SwiftBitcoin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.SwiftBitcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1175,70 +1004,57 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CE5KUY3N33;
 				INFOPLIST_FILE = SwiftBitcoin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.SwiftBitcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
-		E102D7BE1DB1C4A00078E4C4 /* Debug */ = {
+		E1E70FB51F77E41300751FBC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B60F63D5ED8D557F100500D5 /* Pods-SwiftBitcoinTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = TCPClientTestTests/Info.plist;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CE5KUY3N33;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SwiftBitcoinTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.TCPClientTestTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.SwiftBitcoinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBitcoin.app/SwiftBitcoin";
 			};
 			name = Debug;
 		};
-		E102D7BF1DB1C4A00078E4C4 /* Release */ = {
+		E1E70FB61F77E41300751FBC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9821372F75F6C5EFCFEC0DCA /* Pods-SwiftBitcoinTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = TCPClientTestTests/Info.plist;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CE5KUY3N33;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SwiftBitcoinTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.TCPClientTestTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.SwiftBitcoinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBitcoin.app/SwiftBitcoin";
-			};
-			name = Release;
-		};
-		E102D7C11DB1C4A00078E4C4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28B5FD234D0BB4F748C40ECD /* Pods-SwiftBitcoinUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = TCPClientTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.TCPClientTestUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = TCPClientTest;
-			};
-			name = Debug;
-		};
-		E102D7C21DB1C4A00078E4C4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FA95BB94545BEEF3BE301E9 /* Pods-SwiftBitcoinUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = TCPClientTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.TCPClientTestUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = TCPClientTest;
 			};
 			name = Release;
 		};
@@ -1263,20 +1079,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E102D7BD1DB1C4A00078E4C4 /* Build configuration list for PBXNativeTarget "SwiftBitcoinTests" */ = {
+		E1E70FB41F77E41300751FBC /* Build configuration list for PBXNativeTarget "SwiftBitcoinTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E102D7BE1DB1C4A00078E4C4 /* Debug */,
-				E102D7BF1DB1C4A00078E4C4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E102D7C01DB1C4A00078E4C4 /* Build configuration list for PBXNativeTarget "SwiftBitcoinUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E102D7C11DB1C4A00078E4C4 /* Debug */,
-				E102D7C21DB1C4A00078E4C4 /* Release */,
+				E1E70FB51F77E41300751FBC /* Debug */,
+				E1E70FB61F77E41300751FBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

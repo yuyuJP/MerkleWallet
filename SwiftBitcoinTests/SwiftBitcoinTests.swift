@@ -1,15 +1,14 @@
 //
-//  TCPClientTestTests.swift
-//  TCPClientTestTests
+//  SwiftBitcoinTests.swift
+//  SwiftBitcoinTests
 //
-//  Created by Yusuke Asai on 2016/10/15.
-//  Copyright © 2016年 Yusuke Asai. All rights reserved.
+//  Created by Yusuke Asai on 2017/09/24.
+//  Copyright © 2017年 Yusuke Asai. All rights reserved.
 //
 
 import XCTest
-//@testable import TCPClientTest
 
-class TCPClientTestTests: XCTestCase {
+class SwiftBitcoinTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

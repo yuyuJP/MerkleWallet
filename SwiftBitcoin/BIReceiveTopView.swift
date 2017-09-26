@@ -49,6 +49,7 @@ class BIReceiveTopView: UIView {
         addressLabel.textColor = .gray
         addressLabel.font = UIFont.systemFont(ofSize: 18.0)
         addressLabel.backgroundColor = .clear
+        addressLabel.adjustsFontSizeToFitWidth = true
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.addressLabelTapped(_:)))
         addressLabel.isUserInteractionEnabled = true

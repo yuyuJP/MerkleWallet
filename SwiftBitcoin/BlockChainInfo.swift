@@ -33,6 +33,4 @@ public class BlockChainInfo: Object {
             method()
         }
     }
-    
-    
 }

@@ -44,6 +44,7 @@ public class BlockInfo: Object {
         blockInfo.previousBlockHash = prevBlkHash
         
         if let previousBlk = fetch(prevBlkHash){
+            
             if previousBlk.height != 0 {
                 blockInfo.height = previousBlk.height + 1
             }
@@ -63,7 +64,7 @@ public class BlockInfo: Object {
     }
     
     public static func loadAll() -> [BlockInfo] {
-        let blockInfos = realm.objects(BlockInfo.self).sorted(byProperty: "height")
+        let blockInfos = realm.objects(BlockInfo.self).sorted(byKeyPath: "height")
         var ret: [BlockInfo] = []
         for blockInfo in blockInfos {
             ret.append(blockInfo)

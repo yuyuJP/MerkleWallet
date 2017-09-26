@@ -32,7 +32,8 @@ public class CFController: CFConnectionDelegate {
     private var blockHashesDownloaded : [InventoryVector] = []
     private var blockHashesCountDownloaded = 0
     private var syncStartBlockHeight = 0
-    private var blockSyncCompleted = false
+    
+    public var blockSyncCompleted = false
     
     private var pendingTransactions: [Transaction] = []
     
@@ -91,6 +92,10 @@ public class CFController: CFConnectionDelegate {
         return SHA256Hash(bytes)
     }
     
+    /*private var firstCreatedBlock: SHA256Hash {
+        return SHA256Hash("00000000b873e79784647a6c82962c70d228557d24a747ea4d1b8bbe878e1206".hexStringToNSData())
+    }*/
+    
     //MARK: CFConnectionDelegate
     public func cfConnection(peerConnection: CFConnection, didConnectWithPeerVersion peerVersion: VersionMessage) {
         //print("Hand Shake Done!! with node version \(peerVersion)")
@@ -130,11 +135,31 @@ public class CFController: CFConnectionDelegate {
     
     private func sendGetData(inventoryVecs: [InventoryVector]) {
         
+        let latestBlockHeight_ = latestBlockHeight
+        let firstCreatedBlock_ = firstCreatedBlock
+        
         var vecs : [InventoryVector] = []
         for vec in inventoryVecs {
             if vec.type == .Block {
-                if BlockInfo.fetch(vec.hash.data.toHexString()) != nil {
+                let blkInfo = BlockInfo.fetch(vec.hash.data.toHexString())
+                
+                //When block is found or found block is orphan(whick has no connection with a block.)
+                if blkInfo != nil && blkInfo?.height != 0 {
                     continue
+                }
+                
+                if vec.hash == firstCreatedBlock_ && latestBlockHeight_ != 0 {
+                    if let currentBlock = BlockInfo.fetch(latestBlockHash) {
+                        let blockChainInfo = BlockChainInfo.loadItem()!
+                        blockChainInfo.update {
+                            blockChainInfo.lastBlockHash = currentBlock.previousBlockHash
+                            blockChainInfo.lastBlockHeight = currentBlock.height - 1
+                            let blkHash = SHA256Hash(currentBlock.previousBlockHash.hexStringToNSData())
+                            let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [blkHash])
+                            self.connection?.sendMessageWithPayload(getBlocksMsg)
+                        }
+                    }
+                    return
                 }
                 
                 let merkleVec = InventoryVector(type: .FilteredBlock, hash: vec.hash)
@@ -147,6 +172,10 @@ public class CFController: CFConnectionDelegate {
         if vecs.count > 0 {
             let getDataMessage = GetDataMessage(inventoryVectors: vecs)
             self.connection?.sendMessageWithPayload(getDataMessage)
+            
+            let lastBlockHash = vecs.last!.hash
+            let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
+            self.connection?.sendMessageWithPayload(getBlocksMsg)
         }
     }
     
@@ -189,7 +218,6 @@ public class CFController: CFConnectionDelegate {
                 }
             
             case let .InventoryMessage(inventoryMessage):
-           
                 queue.addOperation {
                 
                     if inventoryMessage.inventoryVectors.count == 1 && self.lastBlockHash == inventoryMessage.inventoryVectors[0] {
@@ -222,9 +250,9 @@ public class CFController: CFConnectionDelegate {
                             }
                         }
                         
-                        let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
+                       /* let lastBlockHash = inventoryMessage.inventoryVectors.last!.hash
                         let getBlocksMsg = GetBlocksMessage(protocolVersion: 70002, blockLocatorHashes: [lastBlockHash])
-                        self.connection?.sendMessageWithPayload(getBlocksMsg)
+                        self.connection?.sendMessageWithPayload(getBlocksMsg)*/
                     }
                 }
             
