@@ -24,7 +24,7 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
     
     public var contentView: BISettingsTopView!
     
-    private let contentViewHeight: CGFloat = 64.0
+    private let contentViewHeight: CGFloat = 96.0
     private var firstOffset: CGFloat = 0.0
     
     public var delegate: BITransactionHistoryViewDelegate? = nil
@@ -55,7 +55,7 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
 
         
         let contentViewRect = CGRect(x: 0.0, y: 0.0, width: self.frame.size.width, height: contentViewHeight)
-        let tableViewRect = CGRect(x: 0.0, y: 0.0, width: self.frame.size.width, height: self.frame.size.height)
+        let tableViewRect = CGRect(x: 0.0, y: contentViewHeight, width: self.frame.size.width, height: self.frame.size.height)
         
         tableView = UITableView(frame: tableViewRect)
         tableView.backgroundColor = .clear
@@ -68,7 +68,7 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
         contentView.delegate = self
         contentView.backgroundColor = UIColor.backgroundWhite()
         
-        var inset: UIEdgeInsets = tableView.contentInset
+        /*var inset: UIEdgeInsets = tableView.contentInset
         inset.top = contentViewHeight
         tableView.contentInset = inset
         
@@ -76,7 +76,7 @@ class BITransactionHistoryView: UIView, UITableViewDelegate, UITableViewDataSour
         indicatorInset.top = contentViewHeight
         tableView.scrollIndicatorInsets = indicatorInset
         
-        firstOffset = -contentViewHeight
+        firstOffset = -contentViewHeight*/
         
         self.addSubview(tableView)
         self.addSubview(contentView)

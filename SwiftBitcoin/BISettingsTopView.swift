@@ -37,10 +37,10 @@ class BISettingsTopView: UIView {
         
         let statusBarSize: CGFloat = 20.0
         
-        let btnHeight = viewSize.height - statusBarSize - topMargin
+        let btnHeight = 64.0 - statusBarSize - topMargin
         let btnWidth = btnHeight * 2
         
-        let settingsBtn = UIButton(frame: CGRect(x: 10.0, y: statusBarSize, width: btnWidth, height: btnHeight))
+        let settingsBtn = UIButton(frame: CGRect(x: 10.0, y: statusBarSize / 2 + viewSize.height / 2 - btnHeight / 2, width: btnWidth, height: btnHeight))
         let settingImg = UIImage(named: "key.png")
         settingsBtn.setImage(settingImg!, for: .normal)
         settingsBtn.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)

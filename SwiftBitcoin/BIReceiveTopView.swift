@@ -43,7 +43,9 @@ class BIReceiveTopView: UIView {
         
         let yAxis: CGFloat = (viewSize.height - offsetY) / 2.0 - 10.0 + imageSize + yOffset
         
-        let addressLabel = UILabel(frame: CGRect(x: 0.0, y: yAxis, width: self.frame.size.width, height: 25.0))
+        let gap: CGFloat = 20
+        
+        let addressLabel = UILabel(frame: CGRect(x: gap / 2, y: yAxis, width: self.frame.size.width - 20, height: 25.0))
         addressLabel.text = address
         addressLabel.textAlignment = .center
         addressLabel.textColor = .gray

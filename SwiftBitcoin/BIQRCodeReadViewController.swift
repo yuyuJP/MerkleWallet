@@ -50,14 +50,21 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
     
     private func setupCamera() {
         
-        let input = try? AVCaptureDeviceInput(device: videoCaptureDevice)
+        let input: AVCaptureInput
+        
+        do {
+            input = try AVCaptureDeviceInput(device: videoCaptureDevice)
+        } catch {
+            
+            return
+        }
         
         let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         
         if status == .authorized {
             
-            if self.captureSession!.canAddInput(input!) {
-                self.captureSession!.addInput(input!)
+            if self.captureSession!.canAddInput(input) {
+                self.captureSession!.addInput(input)
             }
             self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
             
@@ -73,8 +80,9 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
             if self.captureSession!.canAddOutput(metaDataOutput) {
                 self.captureSession!.addOutput(metaDataOutput)
                 
-                metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-                metaDataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+                metaDataOutput.setMetadataObjectsDelegate(self, queue: .main)
+                metaDataOutput.metadataObjectTypes = [.qr]
+                
             } else {
                 print("Could not add metadata output")
             }
@@ -117,7 +125,7 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
     }
     
     //MARK:- AVCaptureMetadataOutputObjectsDelegate
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         for metaData in metadataObjects {
             let readableObject = metaData as! AVMetadataMachineReadableCodeObject
@@ -137,18 +145,13 @@ class BIQRCodeReadViewController: UIViewController, AVCaptureMetadataOutputObjec
                     
                     self.performSegue(withIdentifier: "qrCodeParsed", sender: nil)
                     
-                    
                 } else {
-                    print(qrCodeParser.amount)
+                    //print(qrCodeParser.amount)
                     print("Read QR Code is invalid")
                 }
             }
         }
     }
-    
-    
-    
-    
     
     @IBAction func dismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

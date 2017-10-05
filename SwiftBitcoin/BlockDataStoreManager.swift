@@ -23,7 +23,7 @@ public class BlockDataStoreManager {
             }
         }
         
-        for orphanBlk in BlockInfo.fetchOrphans() {
+        /*for orphanBlk in BlockInfo.fetchOrphans() {
             if let previousBlk = BlockInfo.fetch(orphanBlk.previousBlockHash){
                 if previousBlk.height == 0 {
                     continue
@@ -43,7 +43,32 @@ public class BlockDataStoreManager {
                 }
             }
             
-        }
+        }*/
         
+    }
+    
+    public static func connectOrphans() {
+        for orphanBlk in BlockInfo.fetchOrphans() {
+            if let previousBlk = BlockInfo.fetch(orphanBlk.previousBlockHash) {
+                if previousBlk.height == 0 {
+                    continue
+                }
+         
+                orphanBlk.update {
+                    orphanBlk.height = previousBlk.height + 1
+                    
+                }
+                
+            }
+            
+         if orphanBlk.height > latestBlockHeight {
+            let blockChainInfo = BlockChainInfo.loadItem()!
+            blockChainInfo.update {
+                blockChainInfo.lastBlockHash = orphanBlk.blockHash
+                blockChainInfo.lastBlockHeight = orphanBlk.height
+            }
+         }
+            
+        }
     }
 }

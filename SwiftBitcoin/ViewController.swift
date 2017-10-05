@@ -204,6 +204,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         if con.blockSyncCompleted {
             self.txHistoryView.reloadTxHistoryView()
+            self.updateBlanceLabel()
         }
     }
     
@@ -240,6 +241,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         DispatchQueue.main.async {
             self.topStatusView.disposeProgressBar()
             self.updateBlanceLabel()
+            BlockDataStoreManager.connectOrphans()
             if self.transactionAdded {
                 self.txHistoryView.reloadTxHistoryView()
                 self.transactionAdded = false
@@ -369,6 +371,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         } else if segue.identifier == "scanQR" {
             let qrCodeReadViewController = segue.destination as! BIQRCodeReadViewController
             qrCodeReadViewController.delegate = self
+            
         } else if segue.identifier == "showWif" {
             let wifDisplayViewController = segue.destination as! BIWifDisplayViewController
             wifDisplayViewController.WIF = key.wif
