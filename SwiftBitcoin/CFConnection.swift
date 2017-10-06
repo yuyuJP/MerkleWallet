@@ -27,6 +27,7 @@ public enum PeerConnectionMessage {
     case GetDataMessage(GetDataMessage)
     case RejectMessage(RejectMessage)
     case AddressMessage(PeerAddressMessage)
+    case PingMessage(PingMessage)
     
 }
 
@@ -232,6 +233,9 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
             if peerVersion != nil {
                 didConnect()
             }
+            
+        case .Pong:
+            print(message)
             
         case .Ping:
             print(message)

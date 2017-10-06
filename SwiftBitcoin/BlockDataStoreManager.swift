@@ -48,7 +48,15 @@ public class BlockDataStoreManager {
     }
     
     public static func connectOrphans() {
-        for orphanBlk in BlockInfo.fetchOrphans() {
+        
+        let orphans = BlockInfo.fetchOrphans()
+        
+        if orphans.count > 10 {
+            BlockInfo.deleteOrphans()
+            return
+        }
+        
+        for orphanBlk in orphans {
             if let previousBlk = BlockInfo.fetch(orphanBlk.previousBlockHash) {
                 if previousBlk.height == 0 {
                     continue
@@ -56,19 +64,16 @@ public class BlockDataStoreManager {
          
                 orphanBlk.update {
                     orphanBlk.height = previousBlk.height + 1
-                    
                 }
                 
+                if orphanBlk.height > latestBlockHeight {
+                    let blockChainInfo = BlockChainInfo.loadItem()!
+                    blockChainInfo.update {
+                        blockChainInfo.lastBlockHash = orphanBlk.blockHash
+                        blockChainInfo.lastBlockHeight = orphanBlk.height
+                    }
+                }
             }
-            
-         if orphanBlk.height > latestBlockHeight {
-            let blockChainInfo = BlockChainInfo.loadItem()!
-            blockChainInfo.update {
-                blockChainInfo.lastBlockHash = orphanBlk.blockHash
-                blockChainInfo.lastBlockHeight = orphanBlk.height
-            }
-         }
-            
         }
     }
 }

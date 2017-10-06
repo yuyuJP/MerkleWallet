@@ -284,11 +284,13 @@ public class CFController: CFConnectionDelegate {
                 queue.addOperation {
                     self.delegate?.transactionSendRejected(message: rejectMessage.reason)
                 }
-            
-            case let .AddressMessage(_): break
-                /*DispatchQueue.main.async {
-                    PeerAddressDataStoreManager.add(peerAddressMessage: addrMsg)
-             }*/
+
+            case let .PingMessage(pingMessage):
+                print("Sending pong back...")
+                queue.addOperation {
+                    let pongMessage = PongMessage(nonce: pingMessage.nonce)
+                    self.connection?.sendMessageWithPayload(pongMessage)
+                }
             
             default:
                 print(message)

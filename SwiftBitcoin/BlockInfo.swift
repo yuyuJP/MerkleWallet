@@ -95,4 +95,12 @@ public class BlockInfo: Object {
         }
         return res
     }
+    
+    public static func deleteOrphans() {
+        for blk in realm.objects(BlockInfo.self).filter("height == %@", 0) {
+            try! realm.write {
+                realm.delete(blk)
+            }
+        }
+    }
 }

@@ -62,6 +62,8 @@
 		E159FD7A1DED18FC005856FB /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD791DED18FC005856FB /* StringExtension.swift */; };
 		E159FD7D1DED1A55005856FB /* Hash256.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD7C1DED1A55005856FB /* Hash256.swift */; };
 		E159FD7F1DED30B0005856FB /* Hash160.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159FD7E1DED30B0005856FB /* Hash160.swift */; };
+		E15A253A1F87D3A600BC3625 /* PingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A25391F87D3A600BC3625 /* PingMessage.swift */; };
+		E15A253C1F87D52C00BC3625 /* PongMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A253B1F87D52C00BC3625 /* PongMessage.swift */; };
 		E160A31C1DFFA02C00915C94 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160A31B1DFFA02C00915C94 /* Transaction.swift */; };
 		E160A31E1DFFA08400915C94 /* TransactionOutPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160A31D1DFFA08400915C94 /* TransactionOutPoint.swift */; };
 		E160A3201DFFA26100915C94 /* TransactionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160A31F1DFFA26100915C94 /* TransactionOutput.swift */; };
@@ -204,6 +206,8 @@
 		E159FD791DED18FC005856FB /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E159FD7C1DED1A55005856FB /* Hash256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash256.swift; sourceTree = "<group>"; };
 		E159FD7E1DED30B0005856FB /* Hash160.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash160.swift; sourceTree = "<group>"; };
+		E15A25391F87D3A600BC3625 /* PingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingMessage.swift; sourceTree = "<group>"; };
+		E15A253B1F87D52C00BC3625 /* PongMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongMessage.swift; sourceTree = "<group>"; };
 		E160A31B1DFFA02C00915C94 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		E160A31D1DFFA08400915C94 /* TransactionOutPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOutPoint.swift; sourceTree = "<group>"; };
 		E160A31F1DFFA26100915C94 /* TransactionOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOutput.swift; sourceTree = "<group>"; };
@@ -378,6 +382,8 @@
 				E18D54801E0158DC009D2715 /* InventoryMessage.swift */,
 				E14D20771F4C931400823FEF /* GetPeerAddressMessage.swift */,
 				E14D20791F4C950400823FEF /* PeerAddressMessage.swift */,
+				E15A25391F87D3A600BC3625 /* PingMessage.swift */,
+				E15A253B1F87D52C00BC3625 /* PongMessage.swift */,
 				E13C83A41DC5B7B5004E35EE /* PeerServices.swift */,
 				E13C83A21DC5B70E004E35EE /* PeerAddress.swift */,
 				E1D4EC361DC3474A00C15A89 /* IPAddress.swift */,
@@ -752,6 +758,7 @@
 				E1AACD2B1DF661A6005EC11C /* BloomFilter.swift in Sources */,
 				E11454B71DC88F66002122DA /* BitcoinSerializable.swift in Sources */,
 				E1D4EC371DC3474A00C15A89 /* IPAddress.swift in Sources */,
+				E15A253A1F87D3A600BC3625 /* PingMessage.swift in Sources */,
 				E14723E11F3C419500A64C4A /* BlockInfo.swift in Sources */,
 				E1E98D2A1F07DA4D009A8260 /* BITransactionHistoryView.swift in Sources */,
 				E159FD7A1DED18FC005856FB /* StringExtension.swift in Sources */,
@@ -772,6 +779,7 @@
 				E150E49A1DBA88720066B533 /* VarInt.swift in Sources */,
 				E160A3201DFFA26100915C94 /* TransactionOutput.swift in Sources */,
 				E1151F081F2B1C750040988A /* BitcoinPrefixes.swift in Sources */,
+				E15A253C1F87D52C00BC3625 /* PongMessage.swift in Sources */,
 				E1D130D31DBD0B280028651C /* MessageHeader.swift in Sources */,
 				E159FD5F1DED161E005856FB /* FiniteField.swift in Sources */,
 				E1E98D361F07DB7D009A8260 /* BIAddressInputView.swift in Sources */,

@@ -55,7 +55,6 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         
         establishConnection()
 
-
         self.view.backgroundColor = UIColor.backgroundWhite()
         pageControl.currentPageIndicatorTintColor = UIColor.themeColor()
         
@@ -241,13 +240,13 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         DispatchQueue.main.async {
             self.topStatusView.disposeProgressBar()
             self.updateBlanceLabel()
+            
             BlockDataStoreManager.connectOrphans()
             if self.transactionAdded {
                 self.txHistoryView.reloadTxHistoryView()
                 self.transactionAdded = false
             }
         }
-        
     }
     
     func connectionError() {

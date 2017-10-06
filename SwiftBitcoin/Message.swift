@@ -20,6 +20,7 @@ public struct Message {
         case VersionAck = "verack"
         case Address = "addr"
         case Ping = "ping"
+        case Pong = "pong"
         case GetHeaders = "getheaders"
         case Headers = "headers"
         case FilterLoad = "filterload"
