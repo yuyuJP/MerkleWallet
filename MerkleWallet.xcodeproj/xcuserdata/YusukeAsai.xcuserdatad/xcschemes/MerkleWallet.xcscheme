@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
                BuildableName = "Merkle Wallet.app"
-               BlueprintName = "SwiftBitcoin"
-               ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
+               BlueprintName = "MerkleWallet"
+               ReferencedContainer = "container:MerkleWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,34 +29,14 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E1E70FAC1F77E41300751FBC"
-               BuildableName = "SwiftBitcoinTests.xctest"
-               BlueprintName = "SwiftBitcoinTests"
-               ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E102D7B01DB1C4A00078E4C4"
-               BuildableName = "SwiftBitcoinUITests.xctest"
-               BlueprintName = "SwiftBitcoinUITests"
-               ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
             BuildableName = "Merkle Wallet.app"
-            BlueprintName = "SwiftBitcoin"
-            ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
+            BlueprintName = "MerkleWallet"
+            ReferencedContainer = "container:MerkleWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -79,8 +59,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
             BuildableName = "Merkle Wallet.app"
-            BlueprintName = "SwiftBitcoin"
-            ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
+            BlueprintName = "MerkleWallet"
+            ReferencedContainer = "container:MerkleWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -98,8 +78,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
             BuildableName = "Merkle Wallet.app"
-            BlueprintName = "SwiftBitcoin"
-            ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
+            BlueprintName = "MerkleWallet"
+            ReferencedContainer = "container:MerkleWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

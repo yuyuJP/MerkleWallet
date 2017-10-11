@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_SwiftBitcoinTestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_SwiftBitcoinTestsVersionString[];
+FOUNDATION_EXPORT double Pods_MerkleWalletVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_MerkleWalletVersionString[];
 

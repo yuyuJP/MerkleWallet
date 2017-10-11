@@ -1,11 +1,11 @@
 PODS:
   - BigInt (3.0.0):
     - SipHash (~> 1.2)
-  - Realm (2.10.1):
-    - Realm/Headers (= 2.10.1)
-  - Realm/Headers (2.10.1)
-  - RealmSwift (2.10.1):
-    - Realm (= 2.10.1)
+  - Realm (2.10.2):
+    - Realm/Headers (= 2.10.2)
+  - Realm/Headers (2.10.2)
+  - RealmSwift (2.10.2):
+    - Realm (= 2.10.2)
   - SipHash (1.2.0)
 
 DEPENDENCIES:
@@ -14,10 +14,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   BigInt: a7864bcecd2976bced91963baef90079dbdcca25
-  Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
-  RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
+  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
+  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
   SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
 
-PODFILE CHECKSUM: aa43641a112753149b3b2ddac6971e1015d4299f
+PODFILE CHECKSUM: e55e7d985af243e61f5807da893bb2286b615bbd
 
 COCOAPODS: 1.2.0

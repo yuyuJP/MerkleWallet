@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B47AE51C34FF7BBBB2FB3729CA7B384B"
-               BuildableName = "Pods_SwiftBitcoinUITests.framework"
-               BlueprintName = "Pods-SwiftBitcoinUITests"
+               BlueprintIdentifier = "7357EA50D37C2622F71865D441E2A651"
+               BuildableName = "Pods_MerkleWalletTests.framework"
+               BlueprintName = "Pods-MerkleWalletTests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B47AE51C34FF7BBBB2FB3729CA7B384B"
-            BuildableName = "Pods_SwiftBitcoinUITests.framework"
-            BlueprintName = "Pods-SwiftBitcoinUITests"
+            BlueprintIdentifier = "7357EA50D37C2622F71865D441E2A651"
+            BuildableName = "Pods_MerkleWalletTests.framework"
+            BlueprintName = "Pods-MerkleWalletTests"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

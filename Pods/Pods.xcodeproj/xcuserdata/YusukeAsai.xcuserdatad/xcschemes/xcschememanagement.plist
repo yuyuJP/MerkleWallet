@@ -9,17 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-SwiftBitcoin.xcscheme</key>
+		<key>Pods-MerkleWallet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-SwiftBitcoinTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-SwiftBitcoinUITests.xcscheme</key>
+		<key>Pods-MerkleWalletTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

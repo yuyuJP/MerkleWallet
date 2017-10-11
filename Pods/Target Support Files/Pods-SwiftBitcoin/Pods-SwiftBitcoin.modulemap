@@ -1,6 +1,0 @@
-framework module Pods_SwiftBitcoin {
-  umbrella header "Pods-SwiftBitcoin-umbrella.h"
-
-  export *
-  module * { export * }
-}

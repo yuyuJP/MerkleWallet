@@ -4,10 +4,10 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SwiftBitcoin.xcscheme</key>
+		<key>MerkleWallet.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>9</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -23,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>E102D7B01DB1C4A00078E4C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E1E70FAC1F77E41300751FBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

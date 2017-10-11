@@ -1,0 +1,6 @@
+framework module Pods_MerkleWallet {
+  umbrella header "Pods-MerkleWallet-umbrella.h"
+
+  export *
+  module * { export * }
+}

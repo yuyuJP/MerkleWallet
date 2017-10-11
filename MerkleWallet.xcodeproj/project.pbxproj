@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64B5619D16ACE1ADDD6E4CCC /* Pods_MerkleWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B162C4C65B9AF983E0F64BD /* Pods_MerkleWallet.framework */; };
+		C6DF2BD523813FCC7FC52F89 /* Pods_MerkleWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA42320DC6C8BCE1FBEA538 /* Pods_MerkleWalletTests.framework */; };
 		E102D7961DB1C4A00078E4C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7951DB1C4A00078E4C4 /* AppDelegate.swift */; };
 		E102D7981DB1C4A00078E4C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102D7971DB1C4A00078E4C4 /* ViewController.swift */; };
 		E102D79B1DB1C4A00078E4C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E102D7991DB1C4A00078E4C4 /* Main.storyboard */; };
@@ -126,7 +128,6 @@
 		E1E98D3E1F07E9A5009A8260 /* BIQRCodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98D3D1F07E9A5009A8260 /* BIQRCodeParser.swift */; };
 		E1ECF0BD1EA71151007BC2E2 /* TransactionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ECF0BC1EA71151007BC2E2 /* TransactionDetail.swift */; };
 		E1FA9E361E9E60DA00B73A74 /* TransactionDBConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA9E351E9E60DA00B73A74 /* TransactionDBConstructor.swift */; };
-		EC13FC0411979E52CCD3B801 /* Pods_SwiftBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E039D25D00BBFEB3901F0A /* Pods_SwiftBitcoin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,8 +141,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B162C4C65B9AF983E0F64BD /* Pods_MerkleWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MerkleWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA42320DC6C8BCE1FBEA538 /* Pods_MerkleWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MerkleWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2661DDB47F76D7C52E105FEB /* Pods_SwiftBitcoinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBitcoinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B5FD234D0BB4F748C40ECD /* Pods-SwiftBitcoinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBitcoinUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBitcoinUITests/Pods-SwiftBitcoinUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A1FC99E6DF3316B893A7481 /* Pods-MerkleWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MerkleWalletTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MerkleWalletTests/Pods-MerkleWalletTests.release.xcconfig"; sourceTree = "<group>"; };
 		70E039D25D00BBFEB3901F0A /* Pods_SwiftBitcoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBitcoin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FA95BB94545BEEF3BE301E9 /* Pods-SwiftBitcoinUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBitcoinUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBitcoinUITests/Pods-SwiftBitcoinUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9821372F75F6C5EFCFEC0DCA /* Pods-SwiftBitcoinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBitcoinTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBitcoinTests/Pods-SwiftBitcoinTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -259,7 +263,7 @@
 		E1D130D81DBDB6050028651C /* Endianness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endianness.swift; sourceTree = "<group>"; };
 		E1D4EC341DC33FDA00C15A89 /* VersionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionMessage.swift; sourceTree = "<group>"; };
 		E1D4EC361DC3474A00C15A89 /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
-		E1E70FAD1F77E41300751FBC /* SwiftBitcoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBitcoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1E70FAD1F77E41300751FBC /* MerkleWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MerkleWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E70FAF1F77E41300751FBC /* SwiftBitcoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBitcoinTests.swift; sourceTree = "<group>"; };
 		E1E70FB11F77E41300751FBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E8F0231E9350D700119EDB /* OutputScriptType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputScriptType.swift; sourceTree = "<group>"; };
@@ -281,6 +285,9 @@
 		E1E98D3D1F07E9A5009A8260 /* BIQRCodeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIQRCodeParser.swift; sourceTree = "<group>"; };
 		E1ECF0BC1EA71151007BC2E2 /* TransactionDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDetail.swift; sourceTree = "<group>"; };
 		E1FA9E351E9E60DA00B73A74 /* TransactionDBConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDBConstructor.swift; sourceTree = "<group>"; };
+		E2AE18832FF9289C42FD8A3C /* Pods-MerkleWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MerkleWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-MerkleWallet/Pods-MerkleWallet.release.xcconfig"; sourceTree = "<group>"; };
+		E69E0EB8FBDF856689CDB0AF /* Pods-MerkleWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MerkleWalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MerkleWalletTests/Pods-MerkleWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8CADC787F670738047213CF /* Pods-MerkleWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MerkleWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MerkleWallet/Pods-MerkleWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		FC88D0FA2427FCEBC1FD012B /* Pods_SwiftBitcoinUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBitcoinUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -289,7 +296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC13FC0411979E52CCD3B801 /* Pods_SwiftBitcoin.framework in Frameworks */,
+				64B5619D16ACE1ADDD6E4CCC /* Pods_MerkleWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +304,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6DF2BD523813FCC7FC52F89 /* Pods_MerkleWalletTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +320,10 @@
 				9821372F75F6C5EFCFEC0DCA /* Pods-SwiftBitcoinTests.release.xcconfig */,
 				28B5FD234D0BB4F748C40ECD /* Pods-SwiftBitcoinUITests.debug.xcconfig */,
 				8FA95BB94545BEEF3BE301E9 /* Pods-SwiftBitcoinUITests.release.xcconfig */,
+				F8CADC787F670738047213CF /* Pods-MerkleWallet.debug.xcconfig */,
+				E2AE18832FF9289C42FD8A3C /* Pods-MerkleWallet.release.xcconfig */,
+				E69E0EB8FBDF856689CDB0AF /* Pods-MerkleWalletTests.debug.xcconfig */,
+				5A1FC99E6DF3316B893A7481 /* Pods-MerkleWalletTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -341,7 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				E102D7921DB1C4A00078E4C4 /* Merkle Wallet.app */,
-				E1E70FAD1F77E41300751FBC /* SwiftBitcoinTests.xctest */,
+				E1E70FAD1F77E41300751FBC /* MerkleWalletTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -583,6 +595,8 @@
 				70E039D25D00BBFEB3901F0A /* Pods_SwiftBitcoin.framework */,
 				2661DDB47F76D7C52E105FEB /* Pods_SwiftBitcoinTests.framework */,
 				FC88D0FA2427FCEBC1FD012B /* Pods_SwiftBitcoinUITests.framework */,
+				0B162C4C65B9AF983E0F64BD /* Pods_MerkleWallet.framework */,
+				1EA42320DC6C8BCE1FBEA538 /* Pods_MerkleWalletTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -590,9 +604,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E102D7911DB1C4A00078E4C4 /* SwiftBitcoin */ = {
+		E102D7911DB1C4A00078E4C4 /* MerkleWallet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E102D7BA1DB1C4A00078E4C4 /* Build configuration list for PBXNativeTarget "SwiftBitcoin" */;
+			buildConfigurationList = E102D7BA1DB1C4A00078E4C4 /* Build configuration list for PBXNativeTarget "MerkleWallet" */;
 			buildPhases = (
 				764B00265D363B690D549E17 /* [CP] Check Pods Manifest.lock */,
 				E102D78E1DB1C4A00078E4C4 /* Sources */,
@@ -605,27 +619,30 @@
 			);
 			dependencies = (
 			);
-			name = SwiftBitcoin;
+			name = MerkleWallet;
 			productName = TCPClientTest;
 			productReference = E102D7921DB1C4A00078E4C4 /* Merkle Wallet.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E1E70FAC1F77E41300751FBC /* SwiftBitcoinTests */ = {
+		E1E70FAC1F77E41300751FBC /* MerkleWalletTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1E70FB41F77E41300751FBC /* Build configuration list for PBXNativeTarget "SwiftBitcoinTests" */;
+			buildConfigurationList = E1E70FB41F77E41300751FBC /* Build configuration list for PBXNativeTarget "MerkleWalletTests" */;
 			buildPhases = (
+				AD69A62E8D9C314DE65F20C1 /* [CP] Check Pods Manifest.lock */,
 				E1E70FA91F77E41300751FBC /* Sources */,
 				E1E70FAA1F77E41300751FBC /* Frameworks */,
 				E1E70FAB1F77E41300751FBC /* Resources */,
+				E8F695C477E4B11EAA1DBD25 /* [CP] Embed Pods Frameworks */,
+				01EE653F1C2C823BDD55CDFB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				E1E70FB31F77E41300751FBC /* PBXTargetDependency */,
 			);
-			name = SwiftBitcoinTests;
+			name = MerkleWalletTests;
 			productName = SwiftBitcoinTests;
-			productReference = E1E70FAD1F77E41300751FBC /* SwiftBitcoinTests.xctest */;
+			productReference = E1E70FAD1F77E41300751FBC /* MerkleWalletTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -651,7 +668,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E102D78D1DB1C4A00078E4C4 /* Build configuration list for PBXProject "SwiftBitcoin" */;
+			buildConfigurationList = E102D78D1DB1C4A00078E4C4 /* Build configuration list for PBXProject "MerkleWallet" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -664,8 +681,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E102D7911DB1C4A00078E4C4 /* SwiftBitcoin */,
-				E1E70FAC1F77E41300751FBC /* SwiftBitcoinTests */,
+				E102D7911DB1C4A00078E4C4 /* MerkleWallet */,
+				E1E70FAC1F77E41300751FBC /* MerkleWalletTests */,
 			);
 		};
 /* End PBXProject section */
@@ -693,6 +710,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		01EE653F1C2C823BDD55CDFB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MerkleWalletTests/Pods-MerkleWalletTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		764B00265D363B690D549E17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -720,7 +752,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBitcoin/Pods-SwiftBitcoin-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MerkleWallet/Pods-MerkleWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD69A62E8D9C314DE65F20C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C1869B0E8C68D32460D92B9E /* [CP] Copy Pods Resources */ = {
@@ -735,7 +782,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBitcoin/Pods-SwiftBitcoin-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MerkleWallet/Pods-MerkleWallet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8F695C477E4B11EAA1DBD25 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MerkleWalletTests/Pods-MerkleWalletTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -874,7 +936,7 @@
 /* Begin PBXTargetDependency section */
 		E1E70FB31F77E41300751FBC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E102D7911DB1C4A00078E4C4 /* SwiftBitcoin */;
+			target = E102D7911DB1C4A00078E4C4 /* MerkleWallet */;
 			targetProxy = E1E70FB21F77E41300751FBC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1008,7 +1070,7 @@
 		};
 		E102D7BB1DB1C4A00078E4C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C98774F09E1568B000342D5B /* Pods-SwiftBitcoin.debug.xcconfig */;
+			baseConfigurationReference = F8CADC787F670738047213CF /* Pods-MerkleWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CE5KUY3N33;
@@ -1025,7 +1087,7 @@
 		};
 		E102D7BC1DB1C4A00078E4C4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7576F0C77459F622BAAD17A /* Pods-SwiftBitcoin.release.xcconfig */;
+			baseConfigurationReference = E2AE18832FF9289C42FD8A3C /* Pods-MerkleWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CE5KUY3N33;
@@ -1042,6 +1104,7 @@
 		};
 		E1E70FB51F77E41300751FBC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E69E0EB8FBDF856689CDB0AF /* Pods-MerkleWalletTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1058,12 +1121,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBitcoin.app/SwiftBitcoin";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MerkleWallet.app/MerkleWallet";
 			};
 			name = Debug;
 		};
 		E1E70FB61F77E41300751FBC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A1FC99E6DF3316B893A7481 /* Pods-MerkleWalletTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1080,14 +1144,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBitcoin.app/SwiftBitcoin";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MerkleWallet.app/MerkleWallet";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E102D78D1DB1C4A00078E4C4 /* Build configuration list for PBXProject "SwiftBitcoin" */ = {
+		E102D78D1DB1C4A00078E4C4 /* Build configuration list for PBXProject "MerkleWallet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E102D7B81DB1C4A00078E4C4 /* Debug */,
@@ -1096,7 +1160,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E102D7BA1DB1C4A00078E4C4 /* Build configuration list for PBXNativeTarget "SwiftBitcoin" */ = {
+		E102D7BA1DB1C4A00078E4C4 /* Build configuration list for PBXNativeTarget "MerkleWallet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E102D7BB1DB1C4A00078E4C4 /* Debug */,
@@ -1105,7 +1169,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1E70FB41F77E41300751FBC /* Build configuration list for PBXNativeTarget "SwiftBitcoinTests" */ = {
+		E1E70FB41F77E41300751FBC /* Build configuration list for PBXNativeTarget "MerkleWalletTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1E70FB51F77E41300751FBC /* Debug */,

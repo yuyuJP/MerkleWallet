@@ -28,7 +28,7 @@ public struct BigUInt: UnsignedInteger {
     }
 
     internal private(set) var kind: Kind // Internal for testing only
-    public var storage: [Word] // Internal for testing only; stored separately to prevent COW copies
+    internal private(set) var storage: [Word] // Internal for testing only; stored separately to prevent COW copies
 
     /// Initializes a new BigUInt with value 0.
     public init() {

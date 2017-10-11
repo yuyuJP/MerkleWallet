@@ -80,7 +80,7 @@ extension BigUInt {
     
     internal func highestBitOfUInt256() -> Int {
         var bitLength: UInt32 = 256
-        let e = Int(self.storage[3] >> 32)
+        let e = Int(self.words[3] >> 32)
         
         if e == 0 { bitLength -= 32} else {
             for i in 0 ..< 31 {

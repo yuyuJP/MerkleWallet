@@ -1,6 +1,0 @@
-framework module Pods_SwiftBitcoinUITests {
-  umbrella header "Pods-SwiftBitcoinUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
