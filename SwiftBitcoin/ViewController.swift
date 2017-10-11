@@ -227,6 +227,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     func blockSyncStarted() {
         DispatchQueue.main.async {
             self.topStatusView.changeStatusLabel(text: "Syncing...")
+            self.activityIndicatorView.startAnimating()
         }
     }
     
@@ -240,8 +241,9 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         DispatchQueue.main.async {
             self.topStatusView.disposeProgressBar()
             self.updateBlanceLabel()
-            
             BlockDataStoreManager.connectOrphans()
+            self.activityIndicatorView.stopAnimating()
+            
             if self.transactionAdded {
                 self.txHistoryView.reloadTxHistoryView()
                 self.transactionAdded = false

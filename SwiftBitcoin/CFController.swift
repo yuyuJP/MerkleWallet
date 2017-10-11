@@ -257,9 +257,12 @@ public class CFController: CFConnectionDelegate {
                 }
             
             case let .MerkleBlockMessage(merkleBlockMessage):
-                DispatchQueue.main.async {
+                queue.addOperation {
                     BlockDataStoreManager.add(merkleBlockMsg: merkleBlockMessage)
                 }
+                /*DispatchQueue.main.async {
+                    
+                }*/
             
             case let .TransactionMessage(transactionMessage):
                 DispatchQueue.main.async {

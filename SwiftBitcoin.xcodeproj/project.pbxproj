@@ -148,7 +148,7 @@
 		B60F63D5ED8D557F100500D5 /* Pods-SwiftBitcoinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBitcoinTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBitcoinTests/Pods-SwiftBitcoinTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C98774F09E1568B000342D5B /* Pods-SwiftBitcoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBitcoin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBitcoin/Pods-SwiftBitcoin.debug.xcconfig"; sourceTree = "<group>"; };
 		D7576F0C77459F622BAAD17A /* Pods-SwiftBitcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBitcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBitcoin/Pods-SwiftBitcoin.release.xcconfig"; sourceTree = "<group>"; };
-		E102D7921DB1C4A00078E4C4 /* SwiftBitcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBitcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E102D7921DB1C4A00078E4C4 /* Merkle Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merkle Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E102D7951DB1C4A00078E4C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E102D7971DB1C4A00078E4C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E102D79A1DB1C4A00078E4C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,6 +173,15 @@
 		E13018B11F77A2FF00B9CA13 /* BigIntPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigIntPlus.swift; sourceTree = "<group>"; };
 		E13C83A21DC5B70E004E35EE /* PeerAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerAddress.swift; sourceTree = "<group>"; };
 		E13C83A41DC5B7B5004E35EE /* PeerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerServices.swift; sourceTree = "<group>"; };
+		E1443C8D1F8B552600A4EE3C /* icon60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon60@2x.png"; sourceTree = "<group>"; };
+		E1443C8E1F8B553B00A4EE3C /* icon60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon60.png; sourceTree = "<group>"; };
+		E1443C8F1F8B553F00A4EE3C /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+		E1443C901F8B55A900A4EE3C /* icon60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon60@3x.png"; sourceTree = "<group>"; };
+		E1443C911F8B569300A4EE3C /* icon40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon40@2x.png"; sourceTree = "<group>"; };
+		E1443C921F8B56A000A4EE3C /* icon29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon29@2x.png"; sourceTree = "<group>"; };
+		E1443C931F8B56A300A4EE3C /* icon29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon29@3x.png"; sourceTree = "<group>"; };
+		E1443C941F8B56E300A4EE3C /* icon20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon20@3x.png"; sourceTree = "<group>"; };
+		E1443C951F8B570500A4EE3C /* icon20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon20@2x.png"; sourceTree = "<group>"; };
 		E14723DE1F3C402900A64C4A /* BlockChainInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockChainInfo.swift; sourceTree = "<group>"; };
 		E14723E01F3C419500A64C4A /* BlockInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockInfo.swift; sourceTree = "<group>"; };
 		E14723E21F3C43FE00A64C4A /* MatchingTransactionHashInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingTransactionHashInfo.swift; sourceTree = "<group>"; };
@@ -311,6 +320,15 @@
 			isa = PBXGroup;
 			children = (
 				E102D7C71DB203040078E4C4 /* Bridging-Header.h */,
+				E1443C8F1F8B553F00A4EE3C /* appicon.png */,
+				E1443C951F8B570500A4EE3C /* icon20@2x.png */,
+				E1443C941F8B56E300A4EE3C /* icon20@3x.png */,
+				E1443C921F8B56A000A4EE3C /* icon29@2x.png */,
+				E1443C931F8B56A300A4EE3C /* icon29@3x.png */,
+				E1443C911F8B569300A4EE3C /* icon40@2x.png */,
+				E1443C8E1F8B553B00A4EE3C /* icon60.png */,
+				E1443C8D1F8B552600A4EE3C /* icon60@2x.png */,
+				E1443C901F8B55A900A4EE3C /* icon60@3x.png */,
 				E102D7941DB1C4A00078E4C4 /* SwiftBitcoin */,
 				E1E70FAE1F77E41300751FBC /* SwiftBitcoinTests */,
 				E102D7931DB1C4A00078E4C4 /* Products */,
@@ -322,7 +340,7 @@
 		E102D7931DB1C4A00078E4C4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E102D7921DB1C4A00078E4C4 /* SwiftBitcoin.app */,
+				E102D7921DB1C4A00078E4C4 /* Merkle Wallet.app */,
 				E1E70FAD1F77E41300751FBC /* SwiftBitcoinTests.xctest */,
 			);
 			name = Products;
@@ -589,7 +607,7 @@
 			);
 			name = SwiftBitcoin;
 			productName = TCPClientTest;
-			productReference = E102D7921DB1C4A00078E4C4 /* SwiftBitcoin.app */;
+			productReference = E102D7921DB1C4A00078E4C4 /* Merkle Wallet.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E1E70FAC1F77E41300751FBC /* SwiftBitcoinTests */ = {
@@ -997,8 +1015,8 @@
 				INFOPLIST_FILE = SwiftBitcoin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.SwiftBitcoin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.merkle-wallet.merklewallet";
+				PRODUCT_NAME = "Merkle Wallet";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1014,8 +1032,8 @@
 				INFOPLIST_FILE = SwiftBitcoin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.SwiftBitcoin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.merkle-wallet.merklewallet";
+				PRODUCT_NAME = "Merkle Wallet";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

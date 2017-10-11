@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
-               BuildableName = "SwiftBitcoin.app"
+               BuildableName = "Merkle Wallet.app"
                BlueprintName = "SwiftBitcoin"
                ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E102D7A51DB1C4A00078E4C4"
+               BlueprintIdentifier = "E1E70FAC1F77E41300751FBC"
                BuildableName = "SwiftBitcoinTests.xctest"
                BlueprintName = "SwiftBitcoinTests"
                ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
-            BuildableName = "SwiftBitcoin.app"
+            BuildableName = "Merkle Wallet.app"
             BlueprintName = "SwiftBitcoin"
             ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
          </BuildableReference>
@@ -78,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
-            BuildableName = "SwiftBitcoin.app"
+            BuildableName = "Merkle Wallet.app"
             BlueprintName = "SwiftBitcoin"
             ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
          </BuildableReference>
@@ -97,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E102D7911DB1C4A00078E4C4"
-            BuildableName = "SwiftBitcoin.app"
+            BuildableName = "Merkle Wallet.app"
             BlueprintName = "SwiftBitcoin"
             ReferencedContainer = "container:SwiftBitcoin.xcodeproj">
          </BuildableReference>

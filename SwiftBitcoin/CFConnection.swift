@@ -238,7 +238,12 @@ public class CFConnection: NSObject, StreamDelegate, MessageParserDelegate {
             print(message)
             
         case .Ping:
-            print(message)
+            if let pingMsg = PingMessage.fromBitcoinStream(payloadStream) {
+                self.delegateQueue.addOperation {
+                    let message = PeerConnectionMessage.PingMessage(pingMsg)
+                    self.delegate?.cfConnection(peerConnection: self, didReceiveMessage: message)
+                }
+            }
             
         case .Address:
             if let addressMsg = PeerAddressMessage.fromBitcoinStream(payloadStream) {
