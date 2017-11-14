@@ -24,7 +24,6 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
     
     public var txDetail: TransactionDetail? = nil
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +49,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
             confStr = String(txDetail.confirmation)
             
         } else {
-            print("Tx detail is nil. Make sure you pass the value.")
+            print("Tx detail is nil. Make sure you passed a proper value.")
         }
         
         tableView.register(TransactionDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -166,7 +165,8 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
         let copyAction = UIAlertAction(title: "Copy to clipboard", style: .default, handler: {
             (result : UIAlertAction) -> Void in
             let board = UIPasteboard.general
-            board.setValue(copyString, forPasteboardType: "public.text")
+            //board.setValue(copyString, forPasteboardType: "public.text")
+            board.string = copyString
             //print("copy \(copyString) to clipboard.")
         })
         
