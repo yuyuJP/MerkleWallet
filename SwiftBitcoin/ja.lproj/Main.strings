@@ -1,0 +1,33 @@
+
+/* Class = "UITextField"; placeholder = "0.0"; ObjectID = "6wY-kQ-cOx"; */
+"6wY-kQ-cOx.placeholder" = "0.0";
+
+/* Class = "UINavigationItem"; title = "Private Key"; ObjectID = "8XN-pO-AEa"; */
+"8XN-pO-AEa.title" = "Private Key";
+
+/* Class = "UIBarButtonItem"; title = "Send"; ObjectID = "LFj-cI-hT7"; */
+"LFj-cI-hT7.title" = "Send";
+
+/* Class = "UINavigationItem"; title = "Scan QR Code"; ObjectID = "McK-v6-SVS"; */
+"McK-v6-SVS.title" = "Scan QR Code";
+
+/* Class = "UINavigationItem"; title = "Scan QR Code"; ObjectID = "NvV-fF-pEE"; */
+"NvV-fF-pEE.title" = "Scan QR Code";
+
+/* Class = "UINavigationItem"; title = "Transaction Details"; ObjectID = "Ocv-FC-XG2"; */
+"Ocv-FC-XG2.title" = "Transaction Details";
+
+/* Class = "UILabel"; text = "Amount:"; ObjectID = "Tw2-JS-6vN"; */
+"Tw2-JS-6vN.text" = "Amount:";
+
+/* Class = "UINavigationItem"; title = "Send Bitcoin"; ObjectID = "U4z-Rf-V8C"; */
+"U4z-Rf-V8C.title" = "Send Bitcoin";
+
+/* Class = "UILabel"; text = "tBTC"; ObjectID = "Xwy-Oj-bVU"; */
+"Xwy-Oj-bVU.text" = "tBTC";
+
+/* Class = "UILabel"; text = "Address:"; ObjectID = "f6S-yb-Fb3"; */
+"f6S-yb-Fb3.text" = "Address:";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "xjH-Ov-a9K"; */
+"xjH-Ov-a9K.text" = "Amount";

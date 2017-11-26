@@ -27,7 +27,7 @@ class BIReceiveTopView: UIView {
         let bottom = viewHeight / 2.0 - offsetY / 2.0
         
         let sendLabel = UILabel(frame: CGRect(x: 0.0, y: y, width: self.frame.size.width, height: bottom - y))
-        sendLabel.text = "Receive:"
+        sendLabel.text = NSLocalizedString("Receive", comment: "")
         sendLabel.textAlignment = .center
         sendLabel.textColor = .lightGray
         sendLabel.font = UIFont.systemFont(ofSize: 30.0)

@@ -162,22 +162,25 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         let diff = scrollView.frame.width - scrollView.contentOffset.x
         if diff <= 0 {
             topStatusView.frame.origin.x = scrollView.contentOffset.x
-        } else {
-            let halfWidth = scrollView.frame.width / 2.0
-            if diff < halfWidth {
-                let alpha = (halfWidth - diff) / halfWidth
-                topStatusView.alpha = alpha
-                pageControl.alpha = alpha
-                
-            } else {
-                topStatusView.alpha = 0.0
-                pageControl.alpha = 0.0
-            }
+        
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int((scrollView.contentOffset.x + scrollView.frame.size.width / 2) / scrollView.frame.size.width)
+        erasePageControl()
+    }
+    
+    func erasePageControl() {
+        let diff = scrollView.frame.width - scrollView.contentOffset.x
+        
+        let halfWidth = scrollView.frame.width / 2.0
+        if diff < halfWidth {
+            let alpha = (halfWidth - diff) / halfWidth
+            pageControl.alpha = alpha
+        } else {
+            pageControl.alpha = 0.0
+        }
     }
     
     func updateBlanceLabel() {
@@ -216,7 +219,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
         txSentTimer = nil
         activityIndicatorView.stopAnimating()
         
-        displayAlert(title: "Transaction Rejected", message: message)
+        displayAlert(title: NSLocalizedString("txRejected", comment: ""), message: message)
     }
     
     func transactionPassedToNode() {
@@ -226,7 +229,7 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     
     func blockSyncStarted() {
         DispatchQueue.main.async {
-            self.topStatusView.changeStatusLabel(text: "Syncing...")
+            self.topStatusView.changeStatusLabel(text: NSLocalizedString("Syncing", comment: ""))
             self.activityIndicatorView.startAnimating()
         }
     }
@@ -304,13 +307,14 @@ class ViewController: UIViewController, BITransactionHistoryViewDelegate, BISend
     
     func showActionSheetWithCopyMessage(copyString: String) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let copyAction = UIAlertAction(title: "Copy address to clipboard", style: .default, handler: {
+        let copyAction = UIAlertAction(title: NSLocalizedString("CopyAddrClip", comment: ""), style: .default, handler: {
             (result : UIAlertAction) -> Void in
             let board = UIPasteboard.general
-            board.setValue(copyString, forPasteboardType: "public.text")
+            //board.setValue(copyString, forPasteboardType: "public.text")
+            board.string = copyString
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: {
             (result : UIAlertAction) -> Void in
             
         })

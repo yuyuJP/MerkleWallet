@@ -1,0 +1,65 @@
+/* 
+  Localizable.strings
+  MerkleWallet
+
+  Created by Yusuke Asai on 2017/11/26.
+  Copyright © 2017年 Yusuke Asai. All rights reserved.
+*/
+
+"scanQR" = "QR Codeをスキャン";
+
+"enterAddr" = "ビットコインアドレスを入力";
+
+"Send" = "送金:";
+
+"Receive" = "受け取る:";
+
+"txHis" = "トランザクション履歴";
+
+"TO" = "送金先";
+
+"FROM" = "送金元";
+
+"ID" = "ID";
+
+"Date" = "日付";
+
+"Fee" = "手数料";
+
+"Confirmations" = "承認数";
+
+"Sent" = "送金";
+
+"Received" = "受取";
+
+"copyClip" = "クリップボードにコピー";
+
+"Cancel" = "キャンセル";
+
+"invalidInput" = "無効な入力です";
+
+"empty" = "アドレスまたは送金額が未入力です。";
+
+"noDetermine" = "アドレスの形式が無効です。";
+
+"invalidAmount" = "送金額に誤りがあります。";
+
+"belowMin" = "入力された送金額が最低金額よりも低い値です。最低金額は";
+
+"belowMin_" = "satoshiです。";
+
+"invalidInputAmount" = "送金額に誤りがあります。";
+
+"invalidAddress" = "アドレスが無効です。";
+
+"Error" = "エラー";
+
+"txBuildFail" = "トランザクションの構築に失敗しました。";
+
+"txRejected" = "トランザクションがリジェクトされました。";
+
+"Syncing" = "同期中...";
+
+"CopyAddrClip" = "クリップボードにコピー";
+
+

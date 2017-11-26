@@ -30,7 +30,7 @@ class BISendTopView: UIView {
         
         let scanQRBtn = UIButton(frame: CGRect(x: viewSize.width / 2.0 - btnWidth / 2.0, y: viewSize.height / 2.0 - btnHeight / 2.0, width: btnWidth, height: btnHeight))
         scanQRBtn.layer.masksToBounds = true
-        scanQRBtn.setTitle("Scan QR Code", for: .normal)
+        scanQRBtn.setTitle(NSLocalizedString("scanQR", comment: ""), for: .normal)
         scanQRBtn.setBackgroundColorForBothState(UIColor.themeColor())
         scanQRBtn.layer.cornerRadius = 5.0
         
@@ -45,7 +45,7 @@ class BISendTopView: UIView {
         
         let payFromAdrBtn = UIButton(frame: CGRect(x: viewSize.width / 2.0 - btnWidth / 2.0, y: viewSize.height / 2.0 - btnHeight / 2.0 + btnHeight * 2.0, width: btnWidth, height: btnHeight))
         payFromAdrBtn.layer.masksToBounds = true
-        payFromAdrBtn.setTitle("Enter Bitcoin Address", for: .normal)
+        payFromAdrBtn.setTitle(NSLocalizedString("enterAddr", comment: ""), for: .normal)
         payFromAdrBtn.setBackgroundColorForBothState(UIColor.themeColor())
         payFromAdrBtn.layer.cornerRadius = 5.0
         
@@ -67,7 +67,7 @@ class BISendTopView: UIView {
         let bottom = viewHeight / 2.0 - btnHeight / 2.0
         
         let sendLabel = UILabel(frame: CGRect(x: 0.0, y: y, width: self.frame.size.width, height: bottom - y))
-        sendLabel.text = "Send:"
+        sendLabel.text = NSLocalizedString("Send", comment: "")
         sendLabel.textAlignment = .center
         sendLabel.textColor = .lightGray
         sendLabel.font = UIFont.systemFont(ofSize: 30.0)

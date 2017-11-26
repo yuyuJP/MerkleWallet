@@ -10,8 +10,11 @@ import UIKit
 
 class BITransactionDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private var tableTitle = ["", "TO:", "FROM:", ""]
-    private let generalContents = ["ID", "Dete", "Fee", "Confirmations"]
+    private var tableTitle = ["", NSLocalizedString("TO", comment: ""), NSLocalizedString("FROM", comment: ""), ""]
+    private let generalContents = [NSLocalizedString("ID", comment: ""),
+                                   NSLocalizedString("Date", comment: ""),
+                                   NSLocalizedString("Fee", comment: ""),
+                                   NSLocalizedString("Confirmations", comment: "")]
     private var toContents: [String] = []
     private var fromContents: [String] = []
     private var isSpentTransaction = true
@@ -50,7 +53,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
             confStr = String(txDetail.confirmation)
             
         } else {
-            print("Tx detail is nil. Make sure you pass the value.")
+            print("Tx detail is nil. Make sure you passed a proper value.")
         }
         
         tableView.register(TransactionDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -67,7 +70,7 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
         
         switch indexPath.section {
         case 0:
-            let action = isSpentTransaction ? "Sent" : "Received"
+            let action = isSpentTransaction ? NSLocalizedString("Sent", comment: "") : NSLocalizedString("Received", comment: "")
             let textColor = isSpentTransaction ? UIColor.sentRed() : UIColor.receivedGreen()
             cell.selectionStyle = .none
             cell.titleLabel.text = action
@@ -163,14 +166,15 @@ class BITransactionDetailViewController: UIViewController, UITableViewDelegate, 
     
     func showActionSheetWithCopyMessage(copyString: String) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let copyAction = UIAlertAction(title: "Copy to clipboard", style: .default, handler: {
+        let copyAction = UIAlertAction(title: NSLocalizedString("copyClip", comment: ""), style: .default, handler: {
             (result : UIAlertAction) -> Void in
             let board = UIPasteboard.general
-            board.setValue(copyString, forPasteboardType: "public.text")
+            //board.setValue(copyString, forPasteboardType: "public.text")
+            board.string = copyString
             //print("copy \(copyString) to clipboard.")
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: {
             (result : UIAlertAction) -> Void in
             
         })

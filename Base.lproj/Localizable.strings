@@ -1,0 +1,65 @@
+/*
+ Localizable.strings
+ MerkleWallet
+ 
+ Created by Yusuke Asai on 2017/11/26.
+ Copyright © 2017年 Yusuke Asai. All rights reserved.
+ */
+
+"scanQR" = "Scan QR Code";
+
+"enterAddr" = "Enter Bitcoin Address";
+
+"Send" = "Send:";
+
+"Receive" = "Receive:";
+
+"txHis" = "Transaction History";
+
+"TO" = "TO:";
+
+"FROM" = "FROM:";
+
+"ID" = "ID";
+
+"Date" = "Date";
+
+"Fee" = "Fee";
+
+"Confirmations" = "Confirmations";
+
+"Sent" = "Sent";
+
+"Received" = "Received";
+
+"copyClip" = "Copy to clipboard";
+
+"Cancel" = "Cancel";
+
+"invalidInput" = "Invalid Input.";
+
+"empty" = "Address or/and Amount are empty.";
+
+"noDetermine" = "Unable to determine address type.";
+
+"invalidAmount" = "Invalid Amount.";
+
+"belowMin" = "Entered amount is lower than minimum. Minimum amount is";
+
+"belowMin_" = "satoshi.";
+
+"invalidInputAmount" = "Invalid input of amount.";
+
+"invalidAddress" = "Invalid address.";
+
+"Error" = "Error";
+
+"txBuildFail" = "Failed to build a transaction.";
+
+"txRejected" = "Transaction Rejected";
+
+"Syncing" = "Syncing...";
+
+"CopyAddrClip" = "Copy address to clipboard";
+
+

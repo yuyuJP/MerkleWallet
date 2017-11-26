@@ -53,25 +53,25 @@ class BIPayViewController: UIViewController {
     @IBAction func send(_ sender: Any) {
         
         if addressTextField.text == "" || amountTextField.text == "" {
-            self.displayAlert(title: "Invalid Input", message: "Address or/and Amount are empty.")
+            self.displayAlert(title: NSLocalizedString("invalidInput", comment: ""), message: NSLocalizedString("empty", comment: ""))
             //print("Address or amount is empty.")
             return
         }
         
         guard let addressStr = addressTextField.text else {
-            self.displayAlert(title: nil, message: "Invalid input.")
+            self.displayAlert(title: nil, message: NSLocalizedString("invalidInput", comment: ""))
             //print("Address is nil")
             return
         }
         
         guard let amountStr = amountTextField.text else {
-            self.displayAlert(title: nil, message: "Invalid input.")
+            self.displayAlert(title: nil, message: NSLocalizedString("invalidInput", comment: ""))
             //print("Amount is nil")
             return
         }
         
         guard let type = addressStr.determinOutputScriptTypeWithAddress() else {
-            self.displayAlert(title: nil, message: "Unable to determine address type.")
+            self.displayAlert(title: nil, message: NSLocalizedString("noDetermine", comment: ""))
             //print("Could not determin address type")
             return
         }
@@ -98,19 +98,19 @@ class BIPayViewController: UIViewController {
                     self.propagateTx(txConstructor: txConstructor)
 
                 } else {
-                    self.displayAlert(title: "Invalid Amount", message: "Entered amount is lower than minimum. Minimum amount is \(minimumAmount) satoshi.")
+                    self.displayAlert(title: NSLocalizedString("invalidAmount", comment: ""), message: NSLocalizedString("belowMin", comment: "") + " \(minimumAmount) " + NSLocalizedString("belowMin_", comment: ""))
 
                     //print("Entered amount is insufficient. Miminum amount is \(minimumAmount) satoshi.")
                 }
                 
             } else {
-                self.displayAlert(title: nil, message: "Invalid input of amount.")
-                //print("Failed to converted amount properly")
+                self.displayAlert(title: nil, message: NSLocalizedString("invalidInputAmount", comment: ""))
+                //print("Failed to convert amount properly")
                 return
             }
             
         } else {
-            self.displayAlert(title: nil, message: "Invalid address.")
+            self.displayAlert(title: nil, message: NSLocalizedString("invalidAddress", comment: ""))
             //print("Invalid address")
             return
         }
@@ -139,7 +139,7 @@ class BIPayViewController: UIViewController {
             dismissViewControllers()
             
         } else {
-            self.displayAlert(title: "Error", message: "Failed to build a transaction.")
+            self.displayAlert(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("txBuildFail", comment: ""))
         }
     }
     
