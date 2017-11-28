@@ -71,6 +71,7 @@ public class TransactionDetail {
         
         var fromAddr: [String] = []
         for input in tx.inputs {
+            print(input)
             if input.type == "P2PKH" {
                 fromAddr.append(input.hash160.publicKeyHashToPublicAddress(pubKeyPrefix))
             } else if input.type == "P2SH"{
