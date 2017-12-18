@@ -29,6 +29,16 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E14940561FE7A5BB00922134"
+               BuildableName = "Merkle WalletTests.xctest"
+               BlueprintName = "Merkle WalletTests"
+               ReferencedContainer = "container:MerkleWallet.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

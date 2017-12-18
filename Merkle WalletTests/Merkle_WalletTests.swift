@@ -1,14 +1,14 @@
 //
-//  SwiftBitcoinTests.swift
-//  SwiftBitcoinTests
+//  Merkle_WalletTests.swift
+//  Merkle WalletTests
 //
-//  Created by Yusuke Asai on 2017/09/24.
+//  Created by Yusuke Asai on 2017/12/18.
 //  Copyright © 2017年 Yusuke Asai. All rights reserved.
 //
 
 import XCTest
 
-class SwiftBitcoinTests: XCTestCase {
+class Merkle_WalletTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
